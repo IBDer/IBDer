@@ -7,10 +7,12 @@
 冲突时，序号小的赢：
 
 1. 用户的当前指令
-2. [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 的当前公开规则
+2. [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 中**已由人类核验**的公开规则
 3. 本仓库 `docs/adr/` 中的决定与 `openspec/specs/` 中的当前 spec
 4. 已重新核验的原始来源（指南、药监、平台政策）
-5. 历史资料与非公开调研
+5. 历史资料、未核验草稿与非公开调研
+
+> **未核验 = 只能当线索。** 判断一份文档是否已核验，看 [docs/inherited-documents.md](docs/inherited-documents.md) 的状态列；状态不是「已核验」的文档，不得作为实现依据，也不得被引用为「已经决定」。
 
 ## 2. 必读顺序
 
@@ -20,6 +22,8 @@
 4. 与任务相关的 `docs/` 与 `openspec/specs/`
 
 ## 3. 不可越线（医疗安全）
+
+> **状态：待确认。** 以下四条来自未核验的 `SAFETY.md`（见 [docs/inherited-documents.md](docs/inherited-documents.md)）。人类维护者确认前，涉及这些范围的功能一律先问人、不得实现。
 
 - 不诊断、不给个体化治疗建议、不做远程问诊或紧急分诊。
 - **不自动判断疾病活动度**：不显示分数、不给出「缓解 / 活动 / 复发 / 需要加药」这类结论，不把患者报告项命名为 HBI / SCCAI / Mayo / CDAI / PRO2。

@@ -1,6 +1,6 @@
 # 领域词汇表
 
-**状态：初稿，待人类核验后方可视为已发布。**
+**状态：初稿，待人类核验后方可视为已发布。** 本表术语提炼自**未核验**的 `product/legacy-domain-language.md`（见 [../docs/inherited-documents.md](../docs/inherited-documents.md)），核验前只是提案，不是决定。
 
 规则：**代码标识符只能从本表取词**。新概念先加进本表，再写代码；禁止在代码里自创同义词。
 
