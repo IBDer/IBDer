@@ -1,35 +1,35 @@
-name: 功能建议
-description: 面向实现的功能建议。真实患者需求请走 Discussions
+name: Feature request
+description: Implementation-oriented feature suggestions. For real Patient needs, go to Discussions
 title: "[feature] "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        **这不是需求入口。** 本仓库的需求由 OpenSpec 的 change 承载（openspec/changes/），issue 只是看板。
-        真实患者需求与工具创意请走 [Discussions](https://github.com/orgs/IBDer/discussions)。
+        **This is not a requirements entry point.** Requirements in this repository are carried by OpenSpec changes (openspec/changes/); issues are only a board.
+        For real Patient needs and tool ideas, go to [Discussions](https://github.com/orgs/IBDer/discussions).
   - type: textarea
     id: problem
     attributes:
-      label: 解决什么问题
-      description: 描述患者或维护者遇到的具体困难，而不是直接给方案
+      label: What problem this solves
+      description: Describe the concrete difficulty a Patient or maintainer runs into, rather than giving a solution directly
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: 你建议怎么做
+      label: What you suggest doing
   - type: dropdown
     id: boundary
     attributes:
-      label: 是否触及「先决定、再实现」的范围（AGENTS.md §3）
+      label: Whether it touches the "decide first, implement second" scope (AGENTS.md §3)
       options:
-        - 否
-        - 是——诊断 / 治疗建议 / 远程问诊
-        - 是——疾病活动度评分或结论性输出
-        - 是——食物与症状的因果表述
-        - 是——患者社区 UGC
-        - 是——临床量表的名称 / 文字 / 图示 / 译本
-        - 不确定
+        - "No"
+        - "Yes — diagnosis / treatment advice / remote consultation"
+        - "Yes — disease activity scores or conclusive output"
+        - "Yes — causal statements between food and symptoms"
+        - "Yes — Patient community UGC"
+        - "Yes — clinical scale names / wording / images / translations"
+        - "Not sure"
     validations:
       required: true

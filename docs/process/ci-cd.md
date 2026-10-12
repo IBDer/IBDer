@@ -1,30 +1,30 @@
-# 流程：CI 与交付
+# Process: CI and Delivery
 
-**状态：初稿，待评审。**
+**Status: draft, pending review.**
 
-## 现状
+## Current state
 
-- **没有付费 Apple Developer 账号**，因此首版不做真机分发与 TestFlight。
-- 开发与验证在本地 macOS 上完成：可构建 iOS 模拟器目标，也可以「Designed for iPad」形式直接在 Mac 上运行，无需签名。
+- **There is no paid Apple Developer account**, so the first version does not do physical-device distribution or TestFlight.
+- Development and verification happen on a local macOS: the iOS Simulator target can be built, and the app can also run directly on the Mac as "Designed for iPad", without signing.
 
-## CI 目标（GitHub Actions，macOS runner）
+## CI goals (GitHub Actions, macOS runner)
 
-1. 检出代码。
-2. 检测是否存在 Xcode 工程：没有则跳过构建步骤（骨架期保持绿灯）。
-3. 有工程后：`xcodebuild build` + `xcodebuild test`（模拟器目标，不需要签名）。
-4. SwiftFormat / SwiftLint 检查。
+1. Check out the code.
+2. Detect whether an Xcode project exists: if not, skip the build steps (stay green during the skeleton phase).
+3. Once a project exists: `xcodebuild build` + `xcodebuild test` (Simulator target, no signing needed).
+4. SwiftFormat / SwiftLint checks.
 
-## 分支保护
+## Branch protection
 
-- `main` 需要 PR 才能合并，且 CI 必须绿。
-- agent 不自行合并。
+- `main` requires a PR to merge, and CI must be green.
+- agents do not merge on their own.
 
-## 交付节奏
+## Delivery cadence
 
-- 每个归档的 change 由人类打一个 tag。
-- 未来若引入 TestFlight，需要先决定：谁持有开发者账号、证书与描述文件如何管理、是否公开测试。**这是一个独立决定，不在首版范围。**
+- A human applies one tag per archived change.
+- If TestFlight is introduced in the future, the following must be decided first: who holds the developer account, how certificates and provisioning profiles are managed, and whether testing is public. **This is a separate decision, out of scope for the first version.**
 
-## 密钥
+## Secrets
 
-- 仓库内不得出现证书、描述文件、API key。
-- 需要密钥时用 GitHub Actions secrets，并在文档里记录用途。
+- Certificates, provisioning profiles, and API keys must not appear in the repository.
+- When secrets are needed, use GitHub Actions secrets and record their purpose in the documentation.

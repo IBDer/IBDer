@@ -1,47 +1,47 @@
 # IBDer App
 
-面向克罗恩病（CD）与溃疡性结肠炎（UC）患者的自我管理工具：记录饮食、排便、用药、症状与诊疗事件，并把一段时间的事实整理成能带进诊室的复诊摘要。
+A self-management tool for Patients with Crohn's disease (CD) and ulcerative colitis (UC): it records meals, bowel movements, medication, symptoms and care events, and organises the facts of a period of time into a VisitSummary that can be brought into the clinic.
 
-> **当前状态：规范与需求定义阶段，尚未编写应用代码。**
-> 先定规范，再定需求，最后才写代码。
+> **Current status: specification and requirements definition phase; no application code has been written yet.**
+> Define the specification first, then the requirements, and only then write code.
 
-## 阶段
+## Phases
 
-| 阶段 | 状态 |
+| Phase | Status |
 | --- | --- |
-| 仓库规范 / 设计规范 / CI / 测试方式 | 评审中 |
-| 需求与范围（第一个 OpenSpec change） | 未开始 |
-| 应用代码 | 未开始 |
+| Repository conventions / design specifications / CI / testing approach | Under review |
+| Requirements and scope (the first OpenSpec change) | Not started |
+| Application code | Not started |
 
-## 医疗边界
+## Medical boundaries
 
-本项目**当前不预设**医疗安全红线——相关约束随功能逐个决定并记录成 ADR（见 [ADR-0008](docs/adr/0008-no-standing-red-lines.md)）。
+This project **does not currently preset** medical safety red lines — the relevant constraints are decided feature by feature and recorded as their own ADR (see [ADR-0008](docs/adr/0008-no-standing-red-lines.md)).
 
-但下列范围在实现前**必须先由人类维护者做出明确决定**，不得先做后问：
+But the following areas **must be explicitly decided by a human maintainer before implementation**, and must not be built first and asked about later:
 
-- 诊断、个体化治疗建议、远程问诊或紧急分诊
-- 疾病活动度评分，以及「缓解 / 活动 / 复发」这类结论性输出
-- 食物与症状之间的因果表述
-- 患者社区 UGC
-- 临床量表的名称、文字、图示与译本
+- Diagnosis, individualised treatment advice, remote consultations or emergency triage
+- Disease activity scores, and conclusive output such as "remission / active / relapse"
+- Causal statements between food and symptoms
+- Patient community UGC
+- Names, wording, images and translations of clinical scales
 
-数据方面始终成立：**不在**仓库、Issue、Discussion、日志、截图或测试数据中出现可识别的患者信息。
+On the data side this always holds: identifiable Patient information must **not** appear in the repository, Issues, Discussions, logs, screenshots, or test data.
 
-组织层公开规则以 [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 中**已核验**的内容为准。
+Organisation-level public rules are governed by the **verified** content in [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/research](https://github.com/IBDer/research).
 
-## 文档地图
+## Documentation map
 
-| 想知道什么 | 看哪里 |
+| What you want to know | Where to look |
 | --- | --- |
-| Agent 怎么在这个仓库里工作 | [AGENTS.md](AGENTS.md) |
-| 领域术语（中文 / 代码标识符） | [CONTEXT.md](CONTEXT.md) |
-| 为什么这样决定 | [docs/adr/](docs/adr/) |
-| 工程规范（架构 / 风格 / 命名 / 日志） | [docs/engineering/](docs/engineering/) |
-| 设计规范（颜色 / 动效 / 无障碍） | [docs/design/](docs/design/) |
-| 流程（OpenSpec / 评审 / 测试 / CI） | [docs/process/](docs/process/) |
-| 系统当前行为（唯一真相源） | [openspec/specs/](openspec/specs/) |
-| 进行中的变更 | [openspec/changes/](openspec/changes/) |
+| How agents work in this repository | [AGENTS.md](AGENTS.md) |
+| Domain terminology (Chinese / code identifiers) | [CONTEXT.md](CONTEXT.md) |
+| Why it was decided this way | [docs/adr/](docs/adr/) |
+| Engineering conventions (architecture / style / naming / logging) | [docs/engineering/](docs/engineering/) |
+| Design specifications (color / motion / accessibility) | [docs/design/](docs/design/) |
+| Process (OpenSpec / review / testing / CI) | [docs/process/](docs/process/) |
+| Current system behavior (single source of truth) | [openspec/specs/](openspec/specs/) |
+| Changes in progress | [openspec/changes/](openspec/changes/) |
 
-## 许可
+## License
 
-软件代码采用 Apache-2.0，见 [LICENSE](LICENSE)。组织内的研究与文档采用 CC BY 4.0。
+Software code uses Apache-2.0, see [LICENSE](LICENSE). Research and documentation in the organisation use CC BY 4.0.

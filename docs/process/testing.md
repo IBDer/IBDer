@@ -1,40 +1,40 @@
-# 流程：测试
+# Process: Testing
 
-**状态：初稿，待评审。**
+**Status: draft, pending review.**
 
-## TDD 的适用边界
+## Where TDD applies
 
-**必须先写测试**（这些地方出错代价最高，且没有直观反馈）：
+**Tests must be written first** (these are the places where mistakes cost the most, and there is no intuitive feedback):
 
-- 统计口径：计数、分组、时间窗口、分母
-- 记录完整性规则：缺失 ≠ 0；部分记录不得当作完整
-- 计划 / 待办 / 事实的转换与不转换规则
-- 日期与时区边界（自然日窗口、跨零点、夏令时）
-- 导出与恢复：版本校验、完整性校验、失败不破坏现有数据
+- Counting definitions: counts, groupings, time windows, denominators
+- RecordCompleteness rules: missing ≠ 0; a partial record must not be treated as complete
+- The rules for converting and not converting PlanIntent / PendingTask / Fact
+- Date and time zone boundaries (calendar-day window, crossing midnight, daylight saving time)
+- Export and restore: version validation, integrity validation, failure does not damage existing data
 
-**可以后写测试**：纯展示型视图、文案、一次性脚本。
+**Tests may be written later**: display-only views, copy, one-off scripts.
 
-**用 UI 测试**：只覆盖少数关键路径（冷启动 → 记录一次如厕事件 → 返回并看到它）。
+**Cover with UI tests**: only a few critical paths (cold start → record one ToiletEvent → go back and see it).
 
-## 三层结构
+## Three layers
 
-| 层 | 范围 | 速度 | 何时跑 |
+| Layer | Scope | Speed | When it runs |
 | --- | --- | --- | --- |
-| 单元 | Domain（纯逻辑） | 毫秒 | 每次保存 |
-| 集成 | Data（内存持久化） | 秒 | 每次提交 / CI |
-| UI | 关键路径 | 分钟 | CI / 合并前 |
+| Unit | Domain (pure logic) | Milliseconds | Every save |
+| Integration | Data (in-memory persistence) | Seconds | Every commit / CI |
+| UI | Critical paths | Minutes | CI / before merge |
 
-## 测试数据
+## Test data
 
-- **只用合成数据。** 不得使用真实患者记录，包括截图、fixture、日志。
-- 合成数据要覆盖边界：跨零点、空月份、跳过整天、只记一部分、修改过的事件。
+- **Synthetic data only.** Real Patient records must not be used, including screenshots, fixtures, and logs.
+- Synthetic data must cover the boundaries: crossing midnight, empty months, skipping whole days, recording only part of it, edited events.
 
-## 与 spec 的关系
+## Relationship to the spec
 
-- spec 里的每一条验收标准，必须能指向至少一个测试或一条人工验证步骤。
-- 测不了的验收标准要改写，直到它可验证——这是闸门 1 的职责。
+- Every acceptance criterion in the spec must point to at least one test or one manual verification step.
+- Acceptance criteria that cannot be tested must be rewritten until they are verifiable — this is the responsibility of gate 1.
 
-## 禁止
+## Prohibited
 
-- 为了绿而删除或跳过测试（`skip` 需在 PR 里说明原因与补测计划）。
-- 用真实姓名、真实医院、真实药品剂量做 fixture 内容。
+- Deleting or skipping tests to get green (`skip` requires the reason and a plan to add the test to be stated in the PR).
+- Using real names, real hospitals, or real drug doses as fixture content.

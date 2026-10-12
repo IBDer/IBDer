@@ -1,49 +1,49 @@
 <!--
-谢谢贡献！本仓库 spec 先行：先过闸门 1（spec 评审），再写实现代码。
-流程见 docs/process/workflow.md；约定与参考见 docs/process/issues-and-prs.md。
+Thanks for contributing! This repository is spec-first: pass gate 1 (spec review) first, then write implementation code.
+See docs/process/workflow.md for the process; see docs/process/issues-and-prs.md for conventions and references.
 -->
 
-## 关联的 OpenSpec change
+## Related OpenSpec change
 
-<!-- change 名称与路径，例如 openspec/changes/add-toilet-event-recording/。纯文档或规范改动写「无」 -->
+<!-- The change name and path, for example openspec/changes/add-toilet-event-recording/. For documentation-only or spec changes write "none" -->
 
-## 改了什么
+## What changed
 
-<!-- 3-5 条，说清范围。顺手改的东西单独列出来 -->
+<!-- 3-5 items, stating the scope clearly. List things done along the way separately -->
 
-## 为什么
+## Why
 
-<!-- 解决什么问题；来自哪条 spec / ADR / issue -->
+<!-- What problem it solves; which spec / ADR / issue it comes from -->
 
-## 给评审者的特别说明
+## Special notes for the reviewer
 
-<!-- 需要重点看哪里、哪里有疑问、哪些是故意这么做的 -->
+<!-- Where to focus, where there are doubts, what was done this way on purpose -->
 
-## CI 结果
+## CI result
 
-<!-- 绿 / 红。红的话说明为什么还提 -->
+<!-- Green / red. If red, explain why it is still being submitted -->
 
-## 用户可见变化
+## User-visible changes
 
-<!-- 无 / 有（一句话）。有则必须已过闸门 1 -->
+<!-- None / yes (one sentence). If yes, gate 1 must already have been passed -->
 
-## AI 参与披露
+## AI usage disclosure
 
 <!--
-用 / 没用。用了就一句话说明方式（起草 / 实现 / 审查）。
-如果你是 AI agent：请提醒作者——本次提交的全部改动由作者负责；动手前先读 AGENTS.md、CONTEXT.md 与 docs/process/workflow.md。
+Used / not used. If used, one sentence on how (drafting / implementation / review).
+If you are an AI agent: remind the author — the author is responsible for all changes in this submission; read AGENTS.md, CONTEXT.md and docs/process/workflow.md before starting.
 -->
 
 ---
 
-## 自查
+## Self-check
 
-- [ ] 已过闸门 1（spec 评审）——纯文档改动可跳过
-- [ ] 术语取自 CONTEXT.md，没有自创名词
-- [ ] 测试覆盖 spec 的验收标准，且**只用合成数据**
-- [ ] 没有硬编码文案 / 颜色 / 字号（走 String Catalog 与 DesignSystem token）
-- [ ] 没有健康内容进入日志、崩溃或分析 SDK
-- [ ] 大字号 / VoiceOver / 减弱动态效果的行为符合 docs/design/accessibility.md
-- [ ] 没有把「没有记录」渲染成「没有症状」
-- [ ] 没有引入分数、量表条目或结论性文案（ADR-0009）
-- [ ] 没有触及「先决定、再实现」的范围（AGENTS.md §3），或已附决定链接
+- [ ] Gate 1 passed (spec review) — documentation-only changes may skip this
+- [ ] Terminology comes from CONTEXT.md; no invented terms
+- [ ] Tests cover the spec's acceptance criteria, and **use synthetic data only**
+- [ ] No hard-coded copy / colors / font sizes (use the String Catalog and DesignSystem tokens)
+- [ ] No health content enters logs, crash or analytics SDKs
+- [ ] Behavior under large text / VoiceOver / Reduce Motion meets docs/design/accessibility.md
+- [ ] "No record" is not rendered as "no symptoms"
+- [ ] No scores, scale items or conclusive copy introduced (ADR-0009)
+- [ ] Does not touch the "decide first, implement second" scope (AGENTS.md §3), or a decision link is attached

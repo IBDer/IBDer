@@ -1,41 +1,41 @@
-name: 规范变更
-description: 发现 spec 与现实不符，或需要修改 openspec/specs 中的当前行为
+name: Spec change
+description: The spec does not match reality, or the current behavior in openspec/specs needs to change
 title: "[spec] "
 labels: ["spec"]
 body:
   - type: markdown
     attributes:
       value: |
-        规范变更的**正式载体是 OpenSpec change**（openspec/changes/名称/），本 issue 用于记录与跟踪。
-        若你只是想提出想法，请先走 Discussions。
+        The **official carrier of a spec change is an OpenSpec change** (`openspec/changes/<name>/`); this issue is for recording and tracking.
+        If you only want to raise an idea, go through Discussions first.
   - type: input
     id: target
     attributes:
-      label: 涉及的 spec
-      description: 例如 openspec/specs/toilet-event/spec.md
+      label: The spec involved
+      description: For example openspec/specs/toilet-event/spec.md
     validations:
       required: true
   - type: textarea
     id: current
     attributes:
-      label: 现在的 spec 怎么说
+      label: What the spec says now
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: 为什么它不对
-      description: 证据来自哪里（用户反馈 / 临床来源 / 实现约束）
+      label: Why it is wrong
+      description: Where the evidence comes from (user feedback / clinical sources / implementation constraints)
     validations:
       required: true
   - type: textarea
     id: change
     attributes:
-      label: 建议改成什么
+      label: What you suggest changing it to
     validations:
       required: true
   - type: input
     id: adr
     attributes:
-      label: 是否已有相关 ADR
-      description: 没有就写「无」；需要在 change 里补
+      label: Whether a related ADR exists
+      description: Write "none" if there is none; it needs to be added in the change

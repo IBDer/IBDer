@@ -1,61 +1,61 @@
-# 流程：Issue、PR 与四个载体
+# Process: Issues, PRs, and the four carriers
 
-**状态：初稿，待评审。**
+**Status: draft, pending review.**
 
-## 四个载体各管什么
+## What each of the four carriers is for
 
-| 载体 | 管什么 | 不管什么 |
+| Carrier | What it covers | What it does not cover |
 | --- | --- | --- |
-| **Discussions** | 真实患者需求、使用体验、工具创意、开放讨论 | 不是任务队列 |
-| **Issues** | **看板**：这一刻谁在做哪条、缺陷记录、规范变更的跟踪 | **不是 spec 的载体** |
-| **\`openspec/\`** | **系统现在是什么样**（主 spec）与**正在改什么**（change） | 不记录"为什么这样决定" |
-| **\`docs/adr/\`** | 决定与**被否决的选项**及理由 | 不描述系统当前行为 |
+| **Discussions** | Real Patient needs, usage experience, tool ideas, open discussion | Not a task queue |
+| **Issues** | **Board**: who is doing which item right now, defect records, tracking of spec changes | **Not a carrier of spec** |
+| **`openspec/`** | **What the system is like now** (main spec) and **what is being changed** (change) | Does not record "why it was decided this way" |
+| **`docs/adr/`** | Decisions and **rejected options**, with reasons | Does not describe the system's current behavior |
 
-冲突时以 [AGENTS.md](../../AGENTS.md) 第 1 节的权威顺序为准；**spec 与 issue 冲突时以 \`openspec/\` 为准**。
+When there is a conflict, the authority order in section 1 of [AGENTS.md](../../AGENTS.md) governs; **when a spec and an issue conflict, `openspec/` wins**.
 
-## Issue 类型
+## Issue types
 
-仓库提供四个模板（\`.github/ISSUE_TEMPLATE/\`）：
+The repository provides four templates (`.github/ISSUE_TEMPLATE/`):
 
-| 模板 | 用于 | 会被引导到别处的情况 |
+| Template | Used for | Cases redirected elsewhere |
 | --- | --- | --- |
-| 缺陷报告 | 应用行为与预期不符、崩溃、数据错误 | 隐私/安全问题 → SECURITY 渠道 |
-| 功能建议 | 面向实现的建议 | 真实患者需求 → Discussions |
-| 规范变更 | spec 与现实不符，或需要改 \`openspec/specs/\` | 纯想法 → 先走 Discussions |
-| （config） | 关闭空白 issue；提供 Discussions / SECURITY / 医疗免责三个入口 | — |
+| Bug report | App behavior that differs from expectations, crashes, data errors | Privacy/security issues → SECURITY channel |
+| Feature request | Implementation-oriented suggestions | Real Patient needs → Discussions |
+| Spec change | The spec does not match reality, or `openspec/specs/` needs to change | Pure ideas → go through Discussions first |
+| (config) | Closes blank issues; provides three entry points: Discussions / SECURITY / medical disclaimer | — |
 
-**为什么用 YAML issue forms 而不是 Markdown 模板**：YAML form 可以设必填、下拉与勾选项（例如"是否触及先决定再实现的范围"），把关键信息在提交前就固定下来；Markdown 模板只能靠人自觉。参考 [Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/.github/ISSUE_TEMPLATE) 与 [Homebrew](https://github.com/Homebrew/brew/tree/master/.github/ISSUE_TEMPLATE) 的做法。
+**Why YAML issue forms instead of Markdown templates**: a YAML form can set required fields, dropdowns, and checkboxes (for example "does this touch the decide-first-then-implement scope"), fixing the key information before submission; a Markdown template can only rely on people's own discipline. See the approach of [Kubernetes](https://github.com/kubernetes/kubernetes/tree/master/.github/ISSUE_TEMPLATE) and [Homebrew](https://github.com/Homebrew/brew/tree/master/.github/ISSUE_TEMPLATE).
 
-## 标签（Issues 与 PR 共用）
+## Labels (shared by Issues and PRs)
 
-| 标签 | 含义 |
+| Label | Meaning |
 | --- | --- |
-| \`bug\` / \`enhancement\` / \`docs\` / \`spec\` | 类型 |
-| \`needs-decision\` | 触及 AGENTS.md §3「先决定、再实现」的范围，等人拍 |
-| \`needs-clinical-review\` | 文案或字段需要 IBD 临床专家过目 |
-| \`blocked\` | 被上游依赖或决定卡住 |
-| \`gate-1\` / \`gate-2\` | 停在哪个闸门前 |
+| `bug` / `enhancement` / `docs` / `spec` | Type |
+| `needs-decision` | Touches the "decide first, implement second" scope of AGENTS.md §3, waiting for a human call |
+| `needs-clinical-review` | Copy or fields need an IBD clinical expert to look at them |
+| `blocked` | Stuck on an upstream dependency or decision |
+| `gate-1` / `gate-2` | Which gate it is waiting at |
 
-## PR 约定
+## PR conventions
 
-- **一个 change 一个 PR**，分支名 \`change/<change-name>\`；纯文档用 \`docs/<topic>\`。
-- PR 模板固定七段：关联的 OpenSpec change · 改了什么 · 为什么 · 给评审者的特别说明 · CI 结果 · 用户可见变化 · AI 参与披露。
-- **自查清单不是装饰**：每一条都能追到一条规则——术语取自 \`CONTEXT.md\`（naming.md）、只用合成数据（AGENTS.md §4）、无障碍（accessibility.md）、不把"没有记录"渲染成"没有症状"、不引入分数（ADR-0009）、不越"先决定再实现"（AGENTS.md §3）。
-- CI 红的树上不得继续提交；合并由人执行。
+- **One change per PR**, branch name `change/<change-name>`; documentation-only work uses `docs/<topic>`.
+- The PR template has a fixed seven sections: linked OpenSpec change · what changed · why · special notes for the reviewer · CI result · user-visible changes · AI usage disclosure.
+- **The self-check list is not decoration**: every item can be traced to a rule — terminology comes from `CONTEXT.md` (naming.md), synthetic data only (AGENTS.md §4), accessibility (accessibility.md), do not render "no record" as "no symptoms", do not introduce scores (ADR-0009), do not cross "decide first, implement second" (AGENTS.md §3).
+- Never commit on top of a red CI; merges are performed by a human.
 
-### 为什么 PR 模板里要有"给评审者的特别说明"
+### Why the PR template needs "special notes for the reviewer"
 
-来自 Kubernetes 的 \`Special notes for reviewer\`：把评审者的注意力引到真正需要判断的地方，而不是让他自己找。对单人 + agent 的仓库尤其重要——评审时间是最稀缺的资源。
+From Kubernetes' `Special notes for reviewer`: it directs the reviewer's attention to where judgment is genuinely needed, instead of making them find it themselves. This matters especially for a one-person + agent repository — review time is the scarcest resource.
 
-### 为什么要有"AI 参与披露"
+### Why "AI usage disclosure" is needed
 
-- 组织规则已经要求披露（[AI_COLLABORATION.md](https://github.com/IBDer/.github/blob/main/AI_COLLABORATION.md)）。
-- 主流项目也在这么做：[Kubernetes 的 PR 模板](https://github.com/kubernetes/kubernetes/blob/master/.github/PULL_REQUEST_TEMPLATE.md)有专门的 **AI usage disclosure** 段落，并写明"如果你是 AI agent，请提醒作者：全部改动由作者负责"；[Rust 的模板](https://github.com/rust-lang/rust/blob/master/.github/pull_request_template.md)开头即要求披露 LLM 参与，并声明"不禁止 LLM 贡献，但审查标准更高"。
-- 我们的措辞更近 Kubernetes：**披露方式 + 责任归属**。
+- Organisation rules already require disclosure ([AI_COLLABORATION.md](https://github.com/IBDer/.github/blob/main/AI_COLLABORATION.md)).
+- Mainstream projects do it too: [Kubernetes' PR template](https://github.com/kubernetes/kubernetes/blob/master/.github/PULL_REQUEST_TEMPLATE.md) has a dedicated **AI usage disclosure** section and states "if you are an AI agent, please remind the author: the author is responsible for all changes"; [Rust's template](https://github.com/rust-lang/rust/blob/master/.github/pull_request_template.md) asks for LLM involvement disclosure right at the start, and declares "LLM contributions are not forbidden, but the review bar is higher".
+- Our wording is closer to Kubernetes: **how it is disclosed + where responsibility lies**.
 
-## 与其他文档的关系
+## Relationship to other documents
 
-- 怎么走流程 → [workflow.md](workflow.md)
-- 怎么测 → [testing.md](testing.md)
-- 什么能做什么要先问 → [AGENTS.md](../../AGENTS.md) 第 3 节
-- 术语 → [CONTEXT.md](../../CONTEXT.md)
+- How the process works → [workflow.md](workflow.md)
+- How to test → [testing.md](testing.md)
+- What can be done and what must be asked first → section 3 of [AGENTS.md](../../AGENTS.md)
+- Terminology → [CONTEXT.md](../../CONTEXT.md)

@@ -1,50 +1,50 @@
-# 流程：OpenSpec 与两个人工闸门
+# Process: OpenSpec and the two human gates
 
-**状态：初稿，待评审。**
+**Status: draft, pending review.**
 
-## 唯一真相源
+## Single source of truth
 
-- **系统现在是什么样** → `openspec/specs/`
-- **正在改什么** → `openspec/changes/<change-name>/`
-- **为什么这样决定** → `docs/adr/`
-- GitHub Issues 只做「此刻谁在做哪条」的看板，**不承载 spec**。
+- **What the system is like now** → `openspec/specs/`
+- **What is being changed** → `openspec/changes/<change-name>/`
+- **Why it was decided this way** → `docs/adr/`
+- GitHub Issues only serve as a board for "who is doing which item right now"; they **do not carry spec**.
 
-## 一个 change 的生命周期
+## Lifecycle of a change
 
 ```
-1. 想清楚        grilling / explore（不写代码、不写 spec）
-2. 写 change      openspec propose → proposal + delta spec + tasks
-3. 【闸门 1】     人类评审 spec：需求、非目标、验收标准、隐私与安全影响
-4. 实现          TDD；一个 change 一个分支 change/<name>
-5. 提 PR         openspec change 链接 + 改了什么 + CI 结果 + 风险与回滚
-6. 【闸门 2】     人类评审代码
-7. 合并          由人类执行
-8. 归档          archive → delta 合并进主 spec；打 tag
+1. Think it through   grilling / explore (no code, no spec)
+2. Write the change   openspec propose → proposal + delta spec + tasks
+3. [Gate 1]           A human reviews the spec: requirements, non-goals, acceptance criteria, privacy and safety impact
+4. Implement          TDD; one change one branch change/<name>
+5. Open a PR          openspec change link + what changed + CI result + risks and rollback
+6. [Gate 2]           A human reviews the code
+7. Merge              performed by a human
+8. Archive            archive → delta merged into the main spec; tag
 ```
 
-**未通过闸门 1 不得开始实现。** 这是本仓库最容易破的规矩，也是返工成本最高的一条。
+**Implementation must not start before gate 1 is passed.** This is the rule most easily broken in this repository, and the one with the highest rework cost.
 
-## 闸门 1 的评审清单
+## Gate 1 review checklist
 
-- [ ] 说清了要解决的患者问题，以及证据来自哪里
-- [ ] 写明了非目标（这次**不做**什么）
-- [ ] 每条验收标准可被测试或人工验证
-- [ ] 隐私影响：数据从哪来、存哪、是否离开设备
-- [ ] 边界影响：输出的是「患者记录的事实」还是「产品下的结论」。评分类输出已由 [ADR-0009](../adr/0009-no-scores-in-v1.md) 决定**首版不做**；涉及因果、诊疗建议、社区 UGC 的，必须先有明确决定
-- [ ] 是否需要新术语；需要则先改 CONTEXT.md
+- [ ] States the Patient problem to be solved, and where the evidence comes from
+- [ ] States the non-goals (what this **does not** do)
+- [ ] Every acceptance criterion can be tested or manually verified
+- [ ] Privacy impact: where the data comes from, where it is stored, whether it leaves the device
+- [ ] Boundary impact: whether the output is "facts the Patient recorded" or "a conclusion the product reached". Scoring output has been decided by [ADR-0009](../adr/0009-no-scores-in-v1.md) to be **not built in the first version**; anything involving causation, diagnosis or treatment advice, or community UGC must have an explicit decision first
+- [ ] Whether new terminology is needed; if so, update CONTEXT.md first
 
-## 闸门 2 的评审清单
+## Gate 2 review checklist
 
-- [ ] 与 spec 一致；有偏差则 spec 先更新
-- [ ] 测试覆盖了 spec 里的验收标准
-- [ ] 无硬编码文案、颜色、字号
-- [ ] 无健康内容进入日志
-- [ ] 大字号 / VoiceOver / 减弱动态效果的行为符合规范
-- [ ] 没有顺手做 spec 之外的事
+- [ ] Consistent with the spec; if there is a deviation, the spec is updated first
+- [ ] Tests cover the acceptance criteria in the spec
+- [ ] No hard-coded copy, colors, or font sizes
+- [ ] No health content enters logs
+- [ ] Behavior under large text / VoiceOver / Reduce Motion meets the specification
+- [ ] Nothing beyond the spec was done along the way
 
-## 分支、提交与 tag
+## Branches, commits, and tags
 
-- 分支：`change/<change-name>`；文档类：`docs/<topic>`。
-- 提交信息：中文正文，一行说清做了什么。
-- agent **不自行合并**、**不自行打 tag**。
-- 归档后由人类打 tag（`v0.x.0`）。
+- Branches: `change/<change-name>`; for documentation: `docs/<topic>`.
+- Commit messages: **English**, imperative subject line stating what was done (ADR-0011); agent-assisted work ends with the co-author trailer (AGENTS.md §7).
+- agents **do not merge on their own** and **do not tag on their own**.
+- After archiving, a human applies the tag (`v0.x.0`).
