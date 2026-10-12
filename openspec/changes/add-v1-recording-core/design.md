@@ -119,8 +119,8 @@ there is no released version and no stored data outside the developer's device.
 
 ## Open Questions
 
-- Exact field-level anchors for the symptom scales (blood, urgency, pain) — answerable by clinical
-  review without changing the specs, since the schema stores the patient's selection, not an anchor
-  definition.
+- Exact anchor wording for the symptom severities (blood, urgency, pain) — the set itself is fixed by
+  the spec; only the wording is deferred to clinical review, because the schema stores the patient's
+  selection rather than an anchor definition.
 - Whether the daily confirmation is one screen or a sheet per event type — an interaction detail with
   no spec impact.

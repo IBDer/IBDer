@@ -21,16 +21,17 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 - [ ] 3.1 Model the entities in SwiftData and write the mapping from domain types — verify: an in-memory store round-trips every entity with completeness and history intact
 - [ ] 3.2 Prove the no-null-conflation rule at the storage layer — verify: a test writes every completeness state and reads back the same value
-- [ ] 3.3 Record the persistence ADR required by ADR-0002 — verify: docs/adr contains the SwiftData decision with the rejected alternatives
+- [ ] 3.3 Record the persistence ADR required by docs/engineering/architecture.md — verify: docs/adr contains the SwiftData decision with the rejected alternatives
 - [ ] 3.4 Add schema-migration coverage before the schema changes twice — verify: a test opens a store created with the previous schema shape
 
 ## 4. Recording a day (event-recording)
 
-- [ ] 4.1 Build the recording screen with the three peer entry points — verify: an XCUITest records one event of each type in one tap each
+- [ ] 4.1 Build the recording screen with the four peer entry points (three daily types + infusion) — verify: an XCUITest records one of each in one tap each
 - [ ] 4.2 Build the day view with the event list and the empty state — verify: the empty state names the next action rather than showing a bare illustration
 - [ ] 4.3 Build event detail and edit — verify: editing keeps both timestamps and shows the backfill marker
 - [ ] 4.4 Build the daily confirmation with totals, worst symptoms, and per-type completeness — verify: an XCUITest confirms a day with zero events and reads it back as explicit zero
 - [ ] 4.5 Make the primary recording action reachable one-handed at the largest Dynamic Type — verify: manual check at the largest type size, recorded in the PR
+- [ ] 4.6 Implement the fixed symptom set in the daily confirmation — verify: a test asserts every item can be left as "not recorded" and that a symptom outside the set cannot be added
 
 ## 5. Biologic schedule
 
@@ -38,6 +39,9 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 - [ ] 5.2 Build the appointment list and lifecycle (confirm, reschedule, cancel) — verify: an XCUITest reschedules and sees both dates
 - [ ] 5.3 Build infusion recording linked to an appointment — verify: recording marks the appointment done and stores the record as a fact
 - [ ] 5.4 Build after-the-fact tolerability notes — verify: a note can be added after the infusion without changing its date
+- [ ] 5.5 Record an infusion in one tap from the recording entry points — verify: an XCUITest records an infusion in one tap
+- [ ] 5.6 Implement the pending task lifecycle (confirmed / postponed / skipped) — verify: a unit test asserts skipped and postponed tasks create no fact
+- [ ] 5.7 Prove an appointment is never counted as a received dose — verify: a unit test asserts a future appointment is absent from every received-dose count
 
 ## 6. Reminders
 
@@ -48,7 +52,7 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 - [ ] 7.1 Generate the period summary from facts and completeness — verify: a unit test over a synthetic period with gaps states the gaps and counts only recorded days
 - [ ] 7.2 Export the human-readable form — verify: the exported document opens and contains no conclusion wording
-- [ ] 7.3 Export the structured form with per-record provenance — verify: the file parses and every figure maps back to a record
+- [ ] 7.3 Export the structured form with per-record provenance — verify: the file declares its format version, every record carries id / type / happened-at / recorded-at / completeness, and every figure maps back to a record
 - [ ] 7.4 Warn before sharing — verify: the warning appears before the share sheet in an XCUITest
 
 ## 8. Verification and quality gates

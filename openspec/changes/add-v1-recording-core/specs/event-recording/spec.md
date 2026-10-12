@@ -6,11 +6,13 @@
 
 The system SHALL record daily events of three types, treated as peers: toilet events, meals
 (including oral nutritional supplements), and medication actually taken. No type SHALL be presented as
-the primary purpose of the product.
+the primary purpose of the product. The three SHALL carry the same weight as the biologic schedule
+(`biologic-schedule`) — that split is by data shape, not by importance.
 
 #### Scenario: Recording any type costs one tap to start
 - **WHEN** the patient is on the recording screen
-- **THEN** each of the three event types is reachable in one tap
+- **THEN** each of the three daily event types is reachable in one tap
+- **AND** recording an infusion is reachable in one tap as well (`biologic-schedule`)
 - **AND** the time of the event defaults to now and can be changed
 
 #### Scenario: A type is added later without reshaping history
@@ -61,11 +63,23 @@ It SHALL NOT evaluate adherence, and it SHALL NOT suggest a missed dose be made 
 - **THEN** the actual value is stored
 - **AND** no adherence judgement is displayed
 
+### Requirement: Fixed symptom set
+
+The daily confirmation SHALL ask for the worst severity of a **fixed, enumerated symptom set**:
+abdominal pain, stool urgency, visible blood, and waking from sleep because of bowel symptoms. The
+patient MAY switch off items they do not track. A symptom outside the set SHALL NOT be added ad hoc, and
+the set SHALL be versioned so a later change is a mapping rather than a rewrite.
+
+#### Scenario: Asking about symptoms
+- **WHEN** the patient opens the daily confirmation
+- **THEN** every enabled symptom in the fixed set is asked about
+- **AND** each one can be left as "not recorded" instead of being forced to a value
+
 ### Requirement: Daily confirmation
 
-The system SHALL let the patient close a day by confirming totals and the most severe symptoms, and
-SHALL record a completeness value for each event type. The system SHALL NOT compute the confirmation
-from events alone.
+The system SHALL let the patient close a day by confirming totals and, for each enabled symptom in the
+fixed set, its worst severity. It SHALL record a completeness value for each event type. The system
+SHALL NOT compute the confirmation from events alone.
 
 #### Scenario: Confirming a day with no records
 - **WHEN** the patient confirms a day on which nothing was recorded

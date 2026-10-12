@@ -66,3 +66,23 @@ treatment.
 - **WHEN** an appointment passes without a record
 - **THEN** the system shows it as unrecorded
 - **AND** it offers no instruction about what to do
+
+### Requirement: Recording an infusion costs one tap
+
+Recording an infusion SHALL be reachable in one tap from the same recording entry points as the daily
+event types, and SHALL be presented with the same weight.
+
+#### Scenario: Recording an infusion
+- **WHEN** the patient opens the recording entry points
+- **THEN** recording an infusion is one of them
+- **AND** the date defaults to today and can be changed
+
+### Requirement: Pending task lifecycle
+
+A pending task produced by a plan or an appointment SHALL have an explicit lifecycle — confirmed,
+postponed, or skipped — and no transition SHALL turn it into a fact.
+
+#### Scenario: Skipping a pending task
+- **WHEN** the patient skips a pending task
+- **THEN** the task is recorded as skipped
+- **AND** no fact is created

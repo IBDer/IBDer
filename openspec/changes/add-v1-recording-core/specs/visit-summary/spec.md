@@ -34,13 +34,15 @@ verdict, or treatment advice.
 
 ### Requirement: Two export forms
 
-The system SHALL export the summary in a human-readable form and in a structured form, and the
-structured form SHALL preserve the source and the timestamps of the underlying records.
+The system SHALL export the summary in a human-readable form and in a structured form. The structured
+form SHALL be a **documented, versioned format**, and every record in it SHALL carry its identifier, its
+event type, the time it happened, the time it was recorded, and its completeness value.
 
 #### Scenario: Exporting for a clinician
 - **WHEN** the patient exports the summary
 - **THEN** a readable document is produced
-- **AND** a structured file carrying per-record provenance is produced as well
+- **AND** a structured file is produced that declares its format version
+- **AND** every record in that file carries id, type, happened-at, recorded-at and completeness
 
 ### Requirement: Sharing is an explicit act
 

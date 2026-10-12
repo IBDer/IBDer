@@ -27,12 +27,17 @@ missing.
   release blocker before real patient use; food–symptom correlation; any AI assistance (ADR-0004);
   patient-community features.
 
+**All four kinds of fact carry equal weight** (ADR-0001). The capability split below is about *shape*,
+not priority: the three daily types share one event envelope, while the biologic schedule needs three
+separated layers. No type is the product's main feature, and none is deferred.
+
 ## Capabilities
 
 ### New Capabilities
 
 - `event-recording` — recording a day's facts across three peer event types, the daily confirmation
   that closes the day, and the completeness semantics that keep missing data from reading as absence.
+  The three types are peers of the biologic schedule too; the split is by data shape.
 - `biologic-schedule` — the plan / appointment / record separation for biologic treatment, reminders
   derived from it, and the rule that a reminder never becomes a fact on its own.
 - `visit-summary` — producing a period summary a patient can read and share, and what such a summary
