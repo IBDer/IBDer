@@ -1,32 +1,32 @@
-# 设计规范：无障碍与可用性
+# Design Specification: Accessibility and Usability
 
-**状态：初稿，待评审。**
+**Status: draft, pending review.**
 
-## 为什么这里要求更高
+## Why the Bar Is Higher Here
 
-目标用户会在**症状发作时**使用：腹痛、急迫、疲劳、可能单手、可能在小屏上、可能只想花 5 秒。
+Target users will use it **while symptoms are active**: abdominal pain, urgency, fatigue, possibly one-handed, possibly on a small screen, possibly wanting to spend only 5 seconds.
 
-## 硬性要求
+## Hard Requirements
 
-| 项 | 要求 |
+| Item | Requirement |
 | --- | --- |
-| Dynamic Type | 支持到最大档位不截断、不重叠；核心记录流程在最大字号下仍可完成 |
-| VoiceOver | 每个可交互元素有标签；图表有逐点可访问标签与文字摘要 |
-| 对比度 | 正文 ≥ 4.5:1，大字 ≥ 3:1 |
-| 触控区 | ≥ 44×44 pt |
-| 减弱动态效果 | 位移与缩放退化为淡入淡出 |
-| 单手可达 | 核心记录动作在屏幕下半部可完成 |
-| 颜色 | 不单独依赖颜色传达信息（不用红绿表示好坏） |
+| Dynamic Type | Supports the largest setting without truncation or overlap; the core recording flow can still be completed at the largest font size |
+| VoiceOver | Every interactive element has a label; charts have point-by-point accessible labels and a text summary |
+| Contrast | Body text ≥ 4.5:1, large text ≥ 3:1 |
+| Touch target | ≥ 44×44 pt |
+| Reduce Motion | Translation and scaling degrade to cross-fade |
+| One-handed reach | Core recording actions can be completed in the lower half of the screen |
+| Color | Never rely on color alone to convey information (no red/green for good or bad) |
 
-## 核心流程的最低标准
+## Minimum Bar for the Core Flow
 
-「记录一次如厕事件」必须满足：
+"Record one ToiletEvent" must satisfy:
 
-- 从任意主界面**一次点击**进入并完成记录（时间默认当前，其余可选）。
-- 在最大字号 + 单手 + 深色模式下不出现遮挡或需要精确点击的小目标。
-- 中断（来电、切后台）后返回，已填内容不丢失。
+- Entered from any main screen and the record completed in **a single tap** (time defaults to now, the rest optional).
+- At the largest font size + one-handed + dark mode, no occlusion and no small targets that require precise tapping.
+- After an interruption (incoming call, backgrounding), returning loses none of the content already entered.
 
-## 验证方式
+## Verification
 
-- 每个涉及 UI 的 change，验收标准里必须写明在**最大 Dynamic Type**下的行为。
-- 关键流程用 UI 测试覆盖「冷启动 → 记录 → 返回」一条路径。
+- Every change that touches UI must state in its acceptance criteria the behavior at the **largest Dynamic Type**.
+- The key flow is covered by a UI test on one path: "cold launch → record → back".

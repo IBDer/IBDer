@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Patient needs / tool ideas
+    url: https://github.com/orgs/IBDer/discussions
+    about: Real needs, usage experience and tool ideas go to Discussions (the patient needs template); do not open an issue.
+  - name: Vulnerability or privacy leak
+    url: https://github.com/IBDer/.github/blob/main/SECURITY.md
+    about: Security issues, credential leaks, or leaks of identifiable Patient information go through the private channel; do not open a public issue.
+  - name: Medical questions
+    url: https://github.com/IBDer/.github/blob/main/SAFETY.md
+    about: This project does not provide any medical advice. If you feel unwell, consult a doctor; in an emergency, contact your local emergency services.

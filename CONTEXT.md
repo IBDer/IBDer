@@ -1,47 +1,57 @@
-# 领域词汇表
+# Domain vocabulary
 
-**状态：初稿，待人类核验后方可视为已发布。** 本表术语提炼自**未核验**的 `product/legacy-domain-language.md`（见 [../docs/inherited-documents.md](../docs/inherited-documents.md)），核验前只是提案，不是决定。
+**Status: draft, pending human review.** Every term below was extracted from an unverified draft (see [docs/inherited-documents.md](docs/inherited-documents.md)); until the maintainer confirms it, this table is a **proposal**, not a decision.
 
-规则：**代码标识符只能从本表取词**。新概念先加进本表，再写代码；禁止在代码里自创同义词。
+**While it is pending it is still the working vocabulary**: code uses these identifiers, and changing one is a normal pull request against this file. That is what [naming.md](docs/engineering/naming.md) means by "identifiers come from here" — it does not require this table to be finished before code exists.
 
-## 角色
+**Rule: code identifiers may only be taken from this table.** Add a new concept here before writing code that uses it. Synonyms are not allowed.
 
-| 中文 | 代码标识符 | 定义 | 避免使用 |
-| --- | --- | --- | --- |
-| 患者 | `Patient` | 已确诊 CD 或 UC、其健康经历被本产品记录的人。不一定是当前操作者。 | 病人、用户 |
-| 家属 | `FamilyMember` | 经患者授权可查看 / 共同管理日志的人。 | 照护者、监护人 |
-| 患者档案 | `PatientProfile` | 以一名患者为主体的资料集合。**不等同于登录身份**。 | 账号、个人中心、病历 |
+## Roles
 
-## 三类必须区分的信息
-
-| 中文 | 代码标识符 | 定义 |
+| Identifier | Definition | Do not use |
 | --- | --- | --- |
-| 计划意图 | `PlanIntent` | 患者按既有医疗安排录入的**未来**计划。 |
-| 待办实例 | `PendingTask` | 由计划产生、仍待处理的一次任务或预约。 |
-| 实际事实 | `Fact` | 患者确认**实际发生**的事件。勾选提醒不得自动生成事实。 |
+| `Patient` | A person diagnosed with CD or UC whose health experience this product records. Not necessarily the person operating the app. | user, sufferer |
+| `FamilyMember` | A person authorised by the patient to view or co-manage the log. | caregiver, guardian |
+| `PatientProfile` | The body of information about one patient. **Not the same thing as a login identity.** | account, profile page, medical record |
 
-## 记录
+## Three kinds of information that must never impersonate each other
 
-| 中文 | 代码标识符 | 定义 | 避免使用 |
-| --- | --- | --- | --- |
-| 如厕事件 | `ToiletEvent` | 因排便相关感觉发生的一次时间化记录。可以有粪便、只有血或黏液、只有便意未排出，或不确定。**不自动等同于一次排便。** | 排便次数、发作记录 |
-| 每日排便确认 | `DailyStoolConfirmation` | 患者对某自然日内排便事实的补充确认：总次数、软 / 稀便次数、最严重症状、记录完整性。 | 每日病情评分、活动度确认 |
-| 记录完整性 | `RecordCompleteness` | 明确区分「每次都记了 / 总数准确但未逐次记 / 大约次数 / 未记录」。缺失**不得按 0 参与统计**。 | 完整度评分 |
-| 个人基线 | `PersonalBaseline` | 患者本人缓解期（或发病前）的通常排便次数，含来源与更新时间。**不得用人群统一阈值替代。** | 正常范围 |
-| 饮食记录 | `MealRecord` | 某一次正餐或加餐的事实记录。 | 每日饮食、营养分析 |
-| 用药计划 / 用药任务 / 用药记录 | `MedicationPlan` / `MedicationTask` / `MedicationRecord` | 医生要求的安排 / 由计划产生的一次待办 / 实际服药或注射的事实。 | 处方、用药建议 |
-| 生物制剂计划 | `BiologicPlan` | 患者按医生安排录入的生物制剂治疗安排（IV、SC 或二者衔接）。 | 推荐疗程 |
-| 输液预约 / 输液记录 | `InfusionAppointment` / `InfusionRecord` | 计划生成或手动添加的一次待进行事项 / 一次实际输液的事实。 | 输液计划（二者混用） |
+| Identifier | Definition |
+| --- | --- |
+| `PlanIntent` | A **future** arrangement the patient entered from an existing care plan. |
+| `PendingTask` | One still-open task or appointment produced by a plan. |
+| `Fact` | Something the patient confirms **actually happened**. Ticking a reminder must never create a fact. |
 
-## 输出
+## Event types (peers — none is more important than another, see ADR-0001)
 
-| 中文 | 代码标识符 | 定义 | 避免使用 |
-| --- | --- | --- | --- |
-| 客观趋势 | `ObjectiveTrend` | 对原始记录做计数、分组或时间变化的展示。**不推断因果、活动度、诊断或治疗结论。** | 健康评分、病情判断、风险预测 |
-| 复诊摘要 | `VisitSummary` | 选定时间范围内的事实汇总，供患者回顾或主动分享。 | 诊断报告、AI 分析 |
+| Identifier | Definition | Do not use |
+| --- | --- | --- |
+| `Event` | Shared envelope: time it happened, time it was recorded, type, completeness, edit history. | entry, log item |
+| `ToiletEvent` | A time-stamped record of a bowel-related episode: stool, blood or mucus only, urge without passing anything, or uncertain. **Does not automatically equal one bowel movement.** | bowel movement count, flare record |
+| `MealRecord` | One meal or snack that happened. May include an oral nutritional supplement. | daily diet, nutrition analysis |
+| `MedicationRecord` | Medication or self-injection that was actually taken, with actual time and dose. | prescription, adherence score |
+| `BiologicPlan` | The biologic arrangement the patient entered from their care team's instructions. **In v1** (ADR-0001). | treatment recommendation |
+| `InfusionAppointment` | One pending infusion produced by the plan; confirmable, reschedulable, cancellable. **In v1**. | infusion plan, infusion record |
+| `InfusionRecord` | One infusion that actually happened. **In v1, as a basic function** — and never created by dismissing a reminder. | treatment recommendation |
 
-## 用词纪律
+## Daily review
 
-- 结论性词汇（疾病活动度、缓解、复发、加重、评分、风险预测）在相关功能做出明确决定之前，不进入界面文案与代码标识符。
-- 「没有记录」不等于「没有症状」。任何统计的分母都要说明数据完整性。
-- 计划与事实永远分开显示；改期不覆盖原定信息。
+| Identifier | Definition | Do not use |
+| --- | --- | --- |
+| `DailyConfirmation` | The patient's end-of-day confirmation for one local day: totals, worst symptoms, and how completely each event type was recorded. Never auto-computed. | daily score, disease-activity check |
+| `RecordCompleteness` | Explicitly distinguishes "recorded every one", "totals right but not itemised", "approximate", "not recorded". **Missing data is never counted as zero.** | completeness score |
+| `PersonalBaseline` | The patient's own usual bowel frequency in remission (or before onset), with source and update time. **Never replaced by a population threshold.** | normal range |
+
+## Output
+
+| Identifier | Definition | Do not use |
+| --- | --- | --- |
+| `ObjectiveTrend` | Counting, grouping, or showing change over time from raw records. **Infers no causality, activity, diagnosis, or treatment.** | health score, severity, risk prediction |
+| `VisitSummary` | Facts from a chosen period, for the patient to review or share. | diagnostic report, AI analysis |
+
+## Vocabulary discipline
+
+- Conclusion words — disease activity, remission, flare, worsening, score, risk prediction — may not enter UI copy or identifiers before a feature that needs them has its own decision (AGENTS.md §3).
+- "No record" is not "no symptom". Every statistic states its data completeness.
+- Plans and facts are displayed separately; rescheduling never overwrites the original arrangement.
+- Chinese appears only as the `zh-Hans` UI label in the String Catalog, never as an identifier.

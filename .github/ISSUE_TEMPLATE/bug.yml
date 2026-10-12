@@ -1,0 +1,65 @@
+name: Bug report
+description: App behavior that differs from expectations, crashes, data errors
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **Do not paste any real health information.** Do not attach screenshots, logs or data files containing symptoms, drug names, or visit records.
+        When giving an example, use synthetic data (for example "Day 3, 2 times"), and do not write real dates, drugs or hospitals.
+        For privacy or security issues, use the SECURITY channel; do not open an issue.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What the actual behavior is
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected to happen
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open…
+        2. Tap…
+        3. See…
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The version number on the settings page, or the commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: env
+    attributes:
+      label: Runtime environment
+      options:
+        - iOS Simulator
+        - Physical iPhone
+        - Mac (Designed for iPad)
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Before pasting, confirm the logs contain no health content
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have not pasted real or identifiable health information (AGENTS.md §4)
+          required: true
+        - label: I have confirmed this is not a spec problem — the spec is in openspec/, and spec changes should use the "Spec change" template
+          required: true

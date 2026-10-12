@@ -1,24 +1,24 @@
-# ADR-0010：品牌视觉以实际启用的 logo 与 banner 为准
+# ADR-0010: Brand visuals follow the logo and banner actually in use
 
-- **状态**：已接受
-- **日期**：2026-10-12
+- **Status**: Accepted
+- **Date**: 2026-10-12
 
-## 背景
+## Context
 
-`project-context/decisions/brand-direction.md` 的状态写着 "logo deferred"，主色方向描述为 terracotta / apricot / cocoa / aubergine。但组织已于 **2026-10-10** 启用新版 logo 与主页 banner（提交信息 `brand: replace profile banner with new IBDer logo`）。
+The status of `project-context/decisions/brand-direction.md` says "logo deferred", and its primary color direction is described as terracotta / apricot / cocoa / aubergine. But the organization enabled a new logo and homepage banner on **2026-10-10** (commit message `brand: replace profile banner with new IBDer logo`).
 
-两者只部分对应，导致 `docs/design/design-tokens.md` 出现「两个真源」。
+The two correspond only partially, which leaves `docs/design/design-tokens.md` with "two sources of truth".
 
-## 决定
+## Decision
 
-**品牌视觉以实际启用的 logo 与 banner 为准**（组织主页当前资产 `profile/assets/ibder-profile-banner.jpg`，2026-10-10 更新）。色板取自该资产实测：
+**Brand visuals follow the logo and banner actually in use** (the organization homepage's current asset `profile/assets/ibder-profile-banner.jpg`, updated 2026-10-10). The palette is measured from that asset:
 
 `#1B133A` · `#2E1B4A` · `#302B50` · `#6C3474` · `#852E83` · `#9C42A4` · `#A85593` · `#D450B1` · `#DE858A` · `#F4779C` · `#FBB761` · `#EED1B4`
 
-`brand-direction.md` 中的「暖陶土 / 杏色 / 可可 / 茄紫」描述与 "logo deferred" 状态视为**已被取代的历史记录**。
+The "warm terracotta / apricot / cocoa / aubergine" description and the "logo deferred" status in `brand-direction.md` are treated as **superseded historical records**.
 
-## 后果
+## Consequences
 
-- `docs/design/design-tokens.md` 的品牌色与之一致，不再需要第二个来源。
-- `brand-direction.md` 中的 **logo 禁用清单与语气词仍然有效**——它们约束未来的图标工作，不因更换 logo 而失效。
-- 将来若再次更换品牌资产，更新本 ADR，而不是新增一个并列真源。
+- The brand colors in `docs/design/design-tokens.md` match these, and a second source is no longer needed.
+- The **logo prohibition list and tone words** in `brand-direction.md` **remain in effect** — they constrain future icon work and do not lapse because the logo was changed.
+- If brand assets are changed again in the future, update this ADR rather than adding a parallel source of truth.

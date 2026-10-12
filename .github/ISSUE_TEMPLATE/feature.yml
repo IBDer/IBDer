@@ -1,0 +1,35 @@
+name: Feature request
+description: Implementation-oriented feature suggestions. For real Patient needs, go to Discussions
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This is not a requirements entry point.** Requirements in this repository are carried by OpenSpec changes (openspec/changes/); issues are only a board.
+        For real Patient needs and tool ideas, go to [Discussions](https://github.com/orgs/IBDer/discussions).
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem this solves
+      description: Describe the concrete difficulty a Patient or maintainer runs into, rather than giving a solution directly
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you suggest doing
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Whether it touches the "decide first, implement second" scope (AGENTS.md §3)
+      options:
+        - "No"
+        - "Yes — diagnosis / treatment advice / remote consultation"
+        - "Yes — disease activity scores or conclusive output"
+        - "Yes — causal statements between food and symptoms"
+        - "Yes — Patient community UGC"
+        - "Yes — clinical scale names / wording / images / translations"
+        - "Not sure"
+    validations:
+      required: true

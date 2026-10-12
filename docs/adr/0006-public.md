@@ -1,18 +1,18 @@
-# ADR-0006：仓库自第一次提交起公开
+# ADR-0006: The repository is public from the first commit
 
-- **状态**：已接受
-- **日期**：2026-10-11
+- **Status**: Accepted
+- **Date**: 2026-10-11
 
-## 决定
+## Decision
 
-本仓库从第一次提交起就是公开仓库，采用 Apache-2.0。
+This repository is a public repository from its first commit, under Apache-2.0.
 
-## 被否决的选项
+## Rejected options
 
-- **私有开发到 v1 再开源**：git 历史不会自动脱敏，将来清理私有内容的成本与风险更高；且与组织「患者共建」的公开定位矛盾。
+- **Develop privately until v1, then open-source**: git history is not redacted automatically, so cleaning out private content later costs more and carries more risk; it also contradicts the organization's public positioning of "co-building with patients".
 
-## 后果
+## Consequences
 
-- spec 与代码自起草起就要经得起公开审视。
-- 私有调研原文**不得**直接进入本仓库；引用须重新核验公开来源。
-- 「公开」是约束 AI 输出质量的一道外部力量。
+- Specs and code must withstand public scrutiny from the moment they are drafted.
+- Private research source text **must not** enter this repository directly; citations must re-verify public sources.
+- "Public" is an external force that constrains the quality of AI output.

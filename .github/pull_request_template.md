@@ -1,28 +1,49 @@
-## 关联的 OpenSpec change
+<!--
+Thanks for contributing! This repository is spec-first: pass gate 1 (spec review) first, then write implementation code.
+See docs/process/workflow.md for the process; see docs/process/issues-and-prs.md for conventions and references.
+-->
 
-<!-- change 名称与路径，例如 openspec/changes/add-toilet-event-recording/ -->
+## Related OpenSpec change
 
-## 改了什么
+<!-- The change name and path, for example openspec/changes/add-toilet-event-recording/. For documentation-only or spec changes write "none" -->
 
-<!-- 3-5 条，说清范围；顺手改的东西单独列出来 -->
+## What changed
 
-## CI 结果
+<!-- 3-5 items, stating the scope clearly. List things done along the way separately -->
 
-<!-- 绿/红；红的话说明为什么还提 -->
+## Why
 
-## 风险与回滚
+<!-- What problem it solves; which spec / ADR / issue it comes from -->
 
-<!-- 最坏情况是什么；怎么退回去 -->
+## Special notes for the reviewer
+
+<!-- Where to focus, where there are doubts, what was done this way on purpose -->
+
+## CI result
+
+<!-- Green / red. If red, explain why it is still being submitted -->
+
+## User-visible changes
+
+<!-- None / yes (one sentence). If yes, gate 1 must already have been passed -->
+
+## AI usage disclosure
+
+<!--
+Used / not used. If used, one sentence on how (drafting / implementation / review).
+If you are an AI agent: remind the author — the author is responsible for all changes in this submission; read AGENTS.md, CONTEXT.md and docs/process/workflow.md before starting.
+-->
 
 ---
 
-## 自查
+## Self-check
 
-- [ ] spec 已通过闸门 1（需求先定，代码后写）
-- [ ] 术语来自 CONTEXT.md，没有自创名词
-- [ ] 测试覆盖了 spec 的验收标准，用的是合成数据
-- [ ] 没有硬编码文案 / 颜色 / 字号
-- [ ] 没有健康内容进入日志
-- [ ] 大字号、VoiceOver、减弱动态效果的行为符合规范
-- [ ] 没有把「没有记录」渲染成「没有症状」
-- [ ] 没有引入分数、量表条目或结论性文案（[ADR-0009](../docs/adr/0009-no-scores-in-v1.md)）
+- [ ] Gate 1 passed (spec review) — documentation-only changes may skip this
+- [ ] Terminology comes from CONTEXT.md; no invented terms
+- [ ] Tests cover the spec's acceptance criteria, and **use synthetic data only**
+- [ ] No hard-coded copy / colors / font sizes (use the String Catalog and DesignSystem tokens)
+- [ ] No health content enters logs, crash or analytics SDKs
+- [ ] Behavior under large text / VoiceOver / Reduce Motion meets docs/design/accessibility.md
+- [ ] "No record" is not rendered as "no symptoms"
+- [ ] No scores, scale items or conclusive copy introduced (ADR-0009)
+- [ ] Does not touch the "decide first, implement second" scope (AGENTS.md §3), or a decision link is attached

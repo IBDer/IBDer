@@ -1,30 +1,30 @@
-# 错误与日志规范
+# Error and Logging Specification
 
-**状态：初稿，待评审。**
+**Status: draft, pending review.**
 
-## 两条铁律
+## Two Iron Rules
 
-1. **写入失败不得显示成功。** 持久化失败时界面必须明确告诉用户「没有保存」，并保留已填内容。
-2. **健康内容不进日志。** 日志、崩溃报告、分析事件里不得出现症状、用药、便血、备注等任何健康信息。
+1. **A failed write must not display success.** When persistence fails, the UI must clearly tell the user that it was not saved, and keep the content already entered.
+2. **Health content does not go into logs.** Logs, crash reports, and analytics events must not contain symptoms, medication, blood in stool, notes, or any other health information.
 
-## 用户可见错误
+## User-Visible Errors
 
-- 说清楚三件事：发生了什么、数据现在处于什么状态、用户能做什么。
-- 不 blame 用户，不出现技术术语与错误码（错误码可放在可展开的详情里）。
-- 不诱导用户做医疗判断（例如不要把「保存失败」写成「请重试或联系医生」）。
+- State three things clearly: what happened, what state the data is in now, and what the user can do.
+- Do not blame the user, and do not surface technical terms or error codes (error codes may go in an expandable detail section).
+- Do not lead the user into a medical judgment (for example, do not write "Save failed" as "Please retry or contact your doctor").
 
-## 内部日志
+## Internal Logs
 
-- 用 `os.Logger`，分 subsystem / category。
-- 记录**动作与状态**，不记录**内容**：`saved toilet event, fields=[time, blood]` 可以；具体血便程度不可以。
-- 发布构建默认不输出调试级日志。
+- Use `os.Logger`, split by subsystem / category.
+- Log **actions and state**, not **content**: `saved toilet event, fields=[time, blood]` is fine; the specific degree of blood in stool is not.
+- Release builds do not emit debug-level logs by default.
 
-## 崩溃与分析
+## Crashes and Analytics
 
-- 首版**不接入**任何第三方分析或崩溃 SDK。如将来要接，必须单独 change + ADR，并证明不会外传健康内容。
-- 遥测默认关闭；开启必须是用户显式选择。
+- The first version **does not integrate** any third-party analytics or crash SDK. If one is to be added later, it requires a separate change + ADR, and proof that it will not send health content off the device.
+- Telemetry is off by default; turning it on must be an explicit user choice.
 
-## 数据损坏
+## Data Corruption
 
-- 读取失败时：不得静默丢弃，不得用空数据继续渲染成「没有记录」。
-- 显示为「无法读取」并保留原始文件，提供导出以便排查。
+- On a read failure: do not silently discard, and do not keep rendering empty data as "no records".
+- Show it as "unable to read", keep the original file, and provide export for troubleshooting.

@@ -1,27 +1,49 @@
-# ADR-0001：首版范围 = 记录内核 + 复诊简报
+# ADR-0001: v1 records four kinds of facts — three peer daily event types plus the biologic schedule
 
-- **状态**：已接受
-- **日期**：2026-10-11
+- **Status**: Accepted — revised 2026-10-12
+- **Date**: 2026-10-11, revised 2026-10-12
 
-## 背景
+## Context
 
-历史资料倾向于「饮食、用药、排便、输液同时进首版」。行业证据显示，表单式记录的首要风险是依从性崩溃，而不是功能不足。
+IBD self-management is not one activity. A patient may record toilet events, meals (including oral
+nutritional supplements), medication actually taken — and, on a longer rhythm, a biologic infusion
+that was planned, scheduled, and finally received.
 
-## 决定
+Two earlier framings were wrong. They are recorded here so they are not reintroduced:
 
-首版只做两件事：
+1. **"Toilet event first."** The first draft made the toilet event *the* v1 feature. That came from an
+   interaction-cost argument (recording must be cheap), not from a claim about importance.
+   The maintainer rejected it: **the daily event types are equally important.**
+2. **"Defer the biologic workflow."** The second draft deferred it for modelling cost. The maintainer
+   rejected that too: **the infusion workflow is a basic function**, not a later nice-to-have.
 
-1. **记录内核**：如厕事件（一次点击）与每日排便确认（含记录完整性）。
-2. **复诊简报**：把选定时间范围内的事实导出为可读摘要。
+## Decision
 
-生物制剂 / 输液、饮食、常规口服用药后置。
+v1 is a **multi-type daily event recorder with the biologic schedule built in**:
 
-## 被否决的选项
+1. **Daily event types, as peers** — shared event envelope, type-specific fields:
+   - `ToiletEvent`
+   - `MealRecord` (including oral nutritional supplement)
+   - `MedicationRecord` (what was actually taken)
+2. **Biologic schedule** — the one part that needs three layers, kept explicitly separate so they
+   never impersonate each other (see CONTEXT.md):
+   - `BiologicPlan` — the arrangement the patient entered from their care team's instructions
+   - `InfusionAppointment` — one pending appointment; confirmable, reschedulable, cancellable
+   - `InfusionRecord` — one infusion that actually happened
+3. **Daily confirmation** closing the day across all recorded types (`RecordCompleteness`).
+4. **Visit summary** export (human-readable + structured).
 
-- **三件套（记录 + 简报 + 输液）**：输液是低频场景，验证不了留存，却要求先建最重的「计划 / 待办 / 事实」三层模型。
-- **只做输液工作流**：差异化最大，但把首版拖进最复杂的领域建模。
+Still excluded from v1: food–symptom correlation, any score, any AI assistance (ADR-0004, ADR-0009).
 
-## 后果
+"One tap" survives as a **design constraint on every entry path** — it is not a statement about priority.
 
-- 首版验证的是「患者愿不愿意持续记录」，这是最大的未知。
-- 输液与饮食必须在数据模型上留出位置，但不在首版实现。
+## Consequences
+
+- The first OpenSpec change covers: event kernel (three daily types) + biologic schedule (three layers)
+  + daily confirmation + visit summary. It is a large first change; it is sliced **inside** the change
+  rather than postponed.
+- The data model uses a shared envelope for daily events and a strict three-layer separation for the
+  schedule; adding a type later must not reshape the schema.
+- Reminders are generated from appointments and tasks and are **never** turned into facts
+  automatically (the plan/fact boundary in AGENTS.md §3).
+- Infusion-related copy needs clinical review before public distribution.

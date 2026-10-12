@@ -1,21 +1,21 @@
-# ADR-0005：OpenSpec 为唯一真相源，两个人工闸门
+# ADR-0005: OpenSpec as the single source of truth, two human gates
 
-- **状态**：已接受
-- **日期**：2026-10-11
+- **Status**: Accepted
+- **Date**: 2026-10-11
 
-## 决定
+## Decision
 
-- `openspec/` 是「系统现在是什么样」的唯一权威；GitHub Issues 只做看板。
-- 任何实现前必须通过**闸门 1（人评审 spec）**；合并前必须通过**闸门 2（人评审代码）**。
-- 一个 change 一个分支、一个 PR、一个 tag。
+- `openspec/` is the sole authority on "what the system is like now"; GitHub Issues serve only as a kanban.
+- Any implementation must first pass **gate 1 (human spec review)**; any merge must first pass **gate 2 (human code review)**.
+- One change, one branch, one PR, one tag.
 
-## 被否决的选项
+## Rejected options
 
-- **GitHub Issues 承载 spec**：系统全貌会散落在已关闭的 issue 里。
-- **两套并行**：必然漂移，下一个 agent 会挑对它方便的那份读。
-- **主干直推**：与「每次改动都要人评审」冲突。
+- **GitHub Issues carrying the spec**: the overall picture of the system would be scattered across closed issues.
+- **Running both in parallel**: drift is inevitable, and the next agent will read whichever one suits it.
+- **Pushing straight to main**: it conflicts with "every change gets a human review".
 
-## 后果
+## Consequences
 
-- 每次改动都有可 diff、可 review 的 spec 载体。
-- 归档（archive）后 delta spec 合并进主 spec，历史仍可追溯。
+- Every change has a spec carrier that can be diffed and reviewed.
+- After archiving, the delta spec is merged into the main spec, and the history remains traceable.

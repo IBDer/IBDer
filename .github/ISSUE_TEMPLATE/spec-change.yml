@@ -1,0 +1,41 @@
+name: Spec change
+description: The spec does not match reality, or the current behavior in openspec/specs needs to change
+title: "[spec] "
+labels: ["spec"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The **official carrier of a spec change is an OpenSpec change** (`openspec/changes/<name>/`); this issue is for recording and tracking.
+        If you only want to raise an idea, go through Discussions first.
+  - type: input
+    id: target
+    attributes:
+      label: The spec involved
+      description: For example openspec/specs/toilet-event/spec.md
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What the spec says now
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Why it is wrong
+      description: Where the evidence comes from (user feedback / clinical sources / implementation constraints)
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What you suggest changing it to
+    validations:
+      required: true
+  - type: input
+    id: adr
+    attributes:
+      label: Whether a related ADR exists
+      description: Write "none" if there is none; it needs to be added in the change

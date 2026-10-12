@@ -1,38 +1,41 @@
-# 架构规范
+# Architecture Specification
 
-**状态：初稿，待评审。** 首版 iOS 原生（SwiftUI）。
+**Status: draft, pending review.** The first version is iOS native (SwiftUI).
 
-## 分层与依赖方向
+## Layering and Dependency Direction
 
-依赖只能向下，**不能反向，也不能跨层回跳**：
+Dependencies may only point downward, **never in reverse, and never jumping back across layers**:
 
 ```
-App          ← 组装、导航、依赖注入
-  Features   ← 一个患者可感知的功能一个目录
-    Domain   ← 纯逻辑：实体、值对象、规则、用例
-      Core   ← 平台无关工具（时间、ID、序列化）
-    Data     ← 持久化与导出实现
-  DesignSystem ← 设计 token 与通用组件
+App          ← composition, navigation, dependency injection
+  Features   ← one directory per feature the Patient can perceive
+    Domain   ← pure logic: entities, value objects, rules, use cases
+      Core   ← platform-independent utilities (time, ID, serialization)
+    Data     ← persistence and export implementations
+  DesignSystem ← design tokens and shared components
 ```
 
-- **Domain 不认识 UI，也不认识持久化。** 它不 import SwiftUI、不 import SwiftData。
-- Feature 之间不得互相 import；共享的东西下沉到 Domain 或 DesignSystem。
-- Data 依赖 Domain 定义的协议，不反过来。
+- **Domain does not know about UI, and does not know about persistence.** It does not import SwiftUI and does not import SwiftData.
+- Features must not import one another; anything shared sinks down into Domain or DesignSystem.
+- Data depends on protocols defined by Domain, never the reverse.
 
-## 为什么这样切
+## Why This Cut
 
-- Domain 纯逻辑 → 可以用最快的单元测试覆盖统计口径、完整性规则、日期窗口，这是本项目出错代价最高的地方。
-- UI 与持久化可替换 → 首版本地存储，将来若要同步，不必重写规则层。
+- Pure Domain logic → the fastest unit tests can cover statistics definitions, RecordCompleteness rules, and date windows; this is where mistakes cost the most in this project.
+- UI and persistence are replaceable → the first version stores locally, and if sync is wanted later, the rules layer does not have to be rewritten.
 
-## 目录约定
+## Directory Conventions
 
 ```
 IBDer/
   App/
   Features/
-    ToiletEvent/
-    DailyConfirmation/
-    VisitSummary/
+    ToiletEvents/
+    Meals/
+    Medications/
+    BiologicSchedule/
+    DailyConfirmations/
+    VisitSummaries/
   Domain/
     Entities/
     Rules/
@@ -47,18 +50,18 @@ IBDerTests/
 IBDerUITests/
 ```
 
-## 状态与数据流
+## State and Data Flow
 
-- 单向数据流：View 发意图 → UseCase 改状态 → View 观察状态重绘。
-- 不使用全局可变单例承载业务状态；依赖从 App 层注入。
-- 日期与时间一律通过可注入的时钟获取，禁止在 Domain 里直接调用当前时间（这是可测试性的前提）。
+- Unidirectional data flow: View emits an intent → UseCase mutates state → View observes state and redraws.
+- Do not carry business state in a global mutable singleton; dependencies are injected from the App layer.
+- Dates and times are always obtained from an injectable clock; calling the current time directly inside Domain is forbidden (this is the precondition for testability).
 
-## 持久化
+## Persistence
 
-- 首版本地存储；具体技术（SwiftData 或其他）在实现该 change 时决定并记录 ADR。
-- **任何写入失败都不得让界面显示「已保存」。**
+- The first version stores locally; the specific technology (SwiftData or another) is decided when that change is implemented and recorded in an ADR.
+- **No write failure may ever let the UI display "Saved".**
 
-## 模块深度
+## Module Depth
 
-- 优先「小接口 + 厚实现」。一个模块的对外接口应当窄到能用几句话说完。
-- 不为了复用而过早抽象；出现第三个调用方时再提取。
+- Prefer "small interface + thick implementation". A module's public interface should be narrow enough to describe in a few sentences.
+- Do not abstract prematurely for reuse; extract when a third caller appears.

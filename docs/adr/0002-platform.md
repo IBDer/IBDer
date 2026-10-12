@@ -1,19 +1,19 @@
-# ADR-0002：iOS 原生，本地优先
+# ADR-0002: iOS native, local-first
 
-- **状态**：已接受
-- **日期**：2026-10-11
+- **Status**: Accepted
+- **Date**: 2026-10-11
 
-## 决定
+## Decision
 
-首版为 iOS 原生应用（SwiftUI），数据本地优先，无自建后端、无账号体系。
+The first version is a native iOS app (SwiftUI), with local-first data, no self-hosted backend, and no account system.
 
-## 被否决的选项
+## Rejected options
 
-- **微信小程序**：触达最广，但引入主体资质、备案、服务端与受托处理者协议，合规面最大，且无法承载原生动效与本地加密存储。
-- **先不写软件**：无法验证真实的记录行为。
+- **WeChat Mini Program**: the widest reach, but it introduces entity qualifications, regulatory filing, a server side, and entrusted-processor agreements — the largest compliance surface — and it cannot carry native animations or local encrypted storage.
+- **Don't write software yet**: it cannot validate real recording behavior.
 
-## 后果
+## Consequences
 
-- 中国 Android 用户占比高，首版无法覆盖多数患者。这是**明确接受的代价**，首版目标是验证记录模型，不是铺量。
-- 触达形态（小程序 / Web）留待首版验证之后决定。
-- 开发期可直接在 macOS 上以 iOS App 形式运行，无需付费开发者账号。
+- China's Android user share is high, and the first version cannot cover most patients. This is an **explicitly accepted cost**: the goal of the first version is to validate the recording model, not to reach scale.
+- The reach form (Mini Program / Web) is left to be decided after first-version validation.
+- During development it can be run directly on macOS as an iOS app, with no paid developer account.
