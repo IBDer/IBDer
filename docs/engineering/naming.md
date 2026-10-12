@@ -22,9 +22,7 @@
 | `Summary` | 汇总输出，不含结论 |
 | `Trend` | 客观趋势展示 |
 
-5. **禁用词**（出现在标识符、界面文案、注释里都算违规）：
-   疾病活动度、缓解、复发、加重、评分、风险预测、trigger（作因果结论时）。
-   对应英文：`diseaseActivity`、`remission`、`flare`、`severityScore`、`riskPrediction`、`trigger`。
+5. **结论性术语不得自创**：疾病活动度、缓解、复发、加重、评分、风险预测（及对应英文 `diseaseActivity` / `remission` / `flare` / `severityScore` / `riskPrediction`）在相关功能做出明确决定（ADR）之前，不得进入标识符、界面文案或注释。
 
 ## 文件名与目录名
 

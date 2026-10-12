@@ -35,7 +35,7 @@
 
 | 如果这份被废弃或改写 | 需要一起改 |
 | --- | --- |
-| `SAFETY.md` 的四条红线 | AGENTS.md 第 3 节、[ADR-0007](adr/0007-borrow-aidy.md) |
+| `SAFETY.md` 的四条红线 | 已按 [ADR-0008](adr/0008-no-standing-red-lines.md) 决定**不预设**；将来逐条决定时再引用 |
 | `legacy-domain-language.md` | [CONTEXT.md](../CONTEXT.md) 全部术语、[naming.md](engineering/naming.md) 的后缀表与禁用词 |
 | `brand-direction.md` | [design-tokens.md](design/design-tokens.md) 的配色方向 |
 | `rebuild-brief.md` 的 Planning standard | [workflow.md](process/workflow.md) 的闸门 1 |

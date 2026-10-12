@@ -13,15 +13,21 @@
 | 需求与范围（第一个 OpenSpec change） | 未开始 |
 | 应用代码 | 未开始 |
 
-## 边界（不可越线）
+## 医疗边界
 
-- 不诊断、不给个体化治疗建议、不提供远程问诊或紧急服务。
-- **不自动计算或展示疾病活动度评分**（不出现 HBI / SCCAI / Mayo / CDAI / PRO2 的分数或「缓解 / 活动 / 复发」结论）。
-- 不宣称食物与症状之间的因果关系。
-- 不在仓库、Issue、Discussion、测试数据中出现可识别的患者信息。
-- 不使用未完成权利核验的临床量表名称、图示或译本。
+本项目**当前不预设**医疗安全红线——相关约束随功能逐个决定并记录成 ADR（见 [ADR-0008](docs/adr/0008-no-standing-red-lines.md)）。
 
-完整公开规则以 [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 为准。
+但下列范围在实现前**必须先由人类维护者做出明确决定**，不得先做后问：
+
+- 诊断、个体化治疗建议、远程问诊或紧急分诊
+- 疾病活动度评分，以及「缓解 / 活动 / 复发」这类结论性输出
+- 食物与症状之间的因果表述
+- 患者社区 UGC
+- 临床量表的名称、文字、图示与译本
+
+数据方面始终成立：**不在**仓库、Issue、Discussion、日志、截图或测试数据中出现可识别的患者信息。
+
+组织层公开规则以 [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 中**已核验**的内容为准。
 
 ## 文档地图
 
