@@ -1,27 +1,27 @@
-# ADR-0008：暂不预设医疗安全红线，相关功能逐个决定
+# ADR-0008: No standing medical safety red lines for now; such features are decided one by one
 
-- **状态**：已接受
-- **日期**：2026-10-11
+- **Status**: Accepted
+- **Date**: 2026-10-11
 
-## 背景
+## Context
 
-组织历史文档（未核验的 `SAFETY.md`）中列有一组医疗安全红线，本仓库初版把它们原样搬进了 AGENTS.md。维护者决定：**现阶段不设置这些红线**，相关约束随 App 迭代逐个增加。
+The organization's historical documents (the unverified `SAFETY.md`) list a set of medical safety red lines, and this repository's first version copied them verbatim into AGENTS.md. The maintainer decided: **no such red lines are set at this stage**, and the related constraints are added one by one as the App iterates.
 
-## 决定
+## Decision
 
-- 本仓库**当前不预设**医疗安全红线；相关约束随功能迭代逐个决定，并各自记录 ADR。
-- 但下列范围在实现前**必须先由人类维护者明确决定**，不得先做后问：
-  诊断 / 个体化治疗建议 / 远程问诊与紧急分诊；疾病活动度评分与「缓解、活动、复发」等结论性输出；食物与症状的因果表述；患者社区 UGC；临床量表名称、文字、图示与译本。
-- 判断标准：**输出的是「患者记录的事实」，还是「产品自己下的结论」。**
+- This repository **currently sets no** medical safety red lines; the related constraints are decided one by one as features iterate, each recorded in its own ADR.
+- But the following areas **must first be explicitly decided by a human maintainer before implementation**, and must not be done first and asked about afterwards:
+  diagnosis / individualized treatment recommendations / remote consultation and emergency triage; disease activity scores and conclusive outputs such as "remission, active, relapse"; causal statements between food and symptoms; patient community UGC; clinical scale names, wording, graphics, and translations.
+- The test is one sentence: **is the output "a fact the patient recorded", or "a conclusion the product itself reached".**
 
-## 理由
+## Rationale
 
-约束与功能**不对称**：功能可以后加，越线则是「先欠债」——医疗器械定性、平台审核结论、患者信任都难以事后撤销。因此不写成常设条款，但保留一道「先决定、再实现」的门。
+Constraints and features are **asymmetric**: features can be added later, while crossing a line means "borrowing against the future" — medical device classification, platform review outcomes, and patient trust are all hard to revoke after the fact. So it is not written as a standing clause, but a "decide first, implement second" gate is kept.
 
-这道门**不禁止任何功能**，只要求做之前问一次。
+This gate **forbids no feature**; it only requires asking once before doing it.
 
-## 后果
+## Consequences
 
-- 上述范围的功能是正常的产品决策，而不是被禁止的清单。
-- 每个第一次触及这些范围的功能，必须在自己的 change 里带上 ADR。
-- 若将来希望改为常设红线，用新的 ADR 替换本决定。
+- Features in the areas above are normal product decisions, not a forbidden list.
+- The first feature to touch each of these areas must carry an ADR in its own change.
+- If standing red lines are wanted in the future, replace this decision with a new ADR.

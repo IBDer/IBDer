@@ -1,34 +1,34 @@
-# ADR-0009：首版不输出疾病活动度分数，也不复制量表条目
+# ADR-0009: The first version outputs no disease activity score and copies no scale items
 
-- **状态**：已接受
-- **日期**：2026-10-12
+- **Status**: Accepted
+- **Date**: 2026-10-12
 
-## 背景
+## Context
 
-两份临床调研对同一件事给出**相反**立场：
+Two clinical research documents take **opposite** positions on the same matter:
 
-- `ibd-clinical-wiki` §5.3 / §16.2：不复制 Mayo / SCCAI / CDAI / HBI / PRO2 的题目、锚点、权重与阈值；不得自动推断分数或阈值判断。
-- `clinical-measures-and-design-patterns` §6.1 / §6.2：要求「自动派生每日 PRO-2、SCCAI 简版、HBI 近似」，并给出「临床缓解 < 5 分」的阈值；§6.2 还要求「锚点措辞照抄量表通行版本」。
+- `ibd-clinical-wiki` §5.3 / §16.2: do not copy the items, anchors, weights, or thresholds of Mayo / SCCAI / CDAI / HBI / PRO2; do not automatically infer scores or threshold judgments.
+- `clinical-measures-and-design-patterns` §6.1 / §6.2: requires "automatic derivation of a daily PRO-2, a short SCCAI, and an approximate HBI", and gives the threshold "clinical remission < 5 points"; §6.2 also requires "anchor wording copied verbatim from the scale's prevailing version".
 
-同类产品 Aidy 采用后者（官方描述："Modified Harvey-Bradshaw Index for Crohn's and SCCAI for UC, calculated automatically"）。
+A comparable product, Aidy, adopts the latter (official description: "Modified Harvey-Bradshaw Index for Crohn's and SCCAI for UC, calculated automatically").
 
-## 决定
+## Decision
 
-首版**只呈现患者记录的原始事实与客观统计**（计数、分布、时间趋势）：
+The first version **presents only the raw facts recorded by the patient and objective statistics** (counts, distributions, time trends):
 
-- 不计算、不显示任何疾病活动度分数或其阈值；
-- 不使用 HBI / SCCAI / Mayo / CDAI / PRO2 等名称命名患者报告项；
-- 不复制任何量表的题目、锚点、权重文字；
-- 不输出「缓解 / 活动 / 复发 / 需要加药」这类结论。
+- it computes and displays no disease activity score or its thresholds;
+- it does not name patient-reported items using names such as HBI / SCCAI / Mayo / CDAI / PRO2;
+- it copies no scale's items, anchors, or weight wording;
+- it outputs no conclusions such as "remission / active / relapse / needs more medication".
 
-## 理由
+## Rationale
 
-1. 症状与内镜炎症并不一一对应；中国指南要求结合症状、实验室与内镜综合评估，STRIDE-II 也把症状、炎症标志物与内镜目标分开。
-2. 一旦输出分数或阈值判断，软件的**预期用途**可能被认定为疾病监护或诊断辅助，进入医疗器械监管范围——这是定性问题，不是功能问题。
-3. 不可逆性：只呈现事实 → 派生分数可以随时升级；反过来无法撤回已经形成的对外承诺与监管事实。
+1. Symptoms and endoscopic inflammation do not correspond one-to-one; Chinese guidelines require a comprehensive assessment combining symptoms, laboratory results, and endoscopy, and STRIDE-II likewise separates symptoms, inflammatory markers, and endoscopic targets.
+2. Once a score or a threshold judgment is output, the software's **intended use** may be determined to be disease monitoring or diagnostic aid, entering the scope of medical device regulation — this is a classification question, not a feature question.
+3. Irreversibility: presenting facts only → derived scores can be upgraded at any time; the reverse cannot retract external commitments and regulatory facts that have already formed.
 
-## 后果
+## Consequences
 
-- `clinical-measures-and-design-patterns` 的 §1.1–§1.3、§6.1、§6.2 中的**肯定性建议对首版不适用**（该文件头部已加裁决注记，正文保留以存证）。
-- 未来若要做分数功能，需：独立 change + 新 ADR + 临床验证 + 量表权利核验 + 医疗器械分类论证。
-- 首版界面文案与验收标准中不得出现「活动度」「缓解」「复发」等词。
+- The **affirmative recommendations** in §1.1–§1.3, §6.1, and §6.2 of `clinical-measures-and-design-patterns` **do not apply to the first version** (a ruling note has been added at the head of that document, and its body is retained for the record).
+- If score features are to be built in the future, they require: a separate change + a new ADR + clinical validation + scale rights verification + a medical device classification argument.
+- The words "activity", "remission", "relapse" and the like must not appear in the first version's interface copy or acceptance criteria.
