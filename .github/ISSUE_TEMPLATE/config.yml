@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 患者需求 / 工具创意
+    url: https://github.com/orgs/IBDer/discussions
+    about: 真实需求、使用体验与工具创意请走 Discussions（患者需求模板），不要开 issue。
+  - name: 漏洞或隐私泄露
+    url: https://github.com/IBDer/.github/blob/main/SECURITY.md
+    about: 安全问题、凭证泄露、可识别患者信息泄露请走私密渠道，不要公开发 issue。
+  - name: 医疗问题
+    url: https://github.com/IBDer/.github/blob/main/SAFETY.md
+    about: 本项目不提供任何医疗建议。身体不适请咨询医生；紧急情况请联系当地急救。

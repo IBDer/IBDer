@@ -13,7 +13,7 @@
 5. 已重新核验的原始来源（临床指南、监管文件、平台政策）
 6. 未核验草稿、历史资料与非公开调研
 
-> **本表是唯一权威顺序。** [IBDer/project-context](https://github.com/IBDer/project-context) 的 `AGENTS.md` 引用本表，不再另行定义一套（2026-10-12 统一；此前两处各有一套，见 [ADR-0009](docs/adr/0009-no-scores-in-v1.md) 同批处理）。
+> **本表是唯一权威顺序。** [IBDer/project-context](https://github.com/IBDer/project-context) 的 `AGENTS.md` 引用本表，不再另行定义一套（2026-10-12 统一；此前两处各有一套）。
 >
 > **未核验 = 只能当线索。** 判断一份文档是否已核验，看 [docs/inherited-documents.md](docs/inherited-documents.md) 的状态列；状态不是「已核验」的文档，不得作为实现依据，也不得被引用为「已经决定」。
 
