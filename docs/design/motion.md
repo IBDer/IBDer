@@ -1,41 +1,41 @@
-# 设计规范：动效
+# Design Specification: Motion
 
-**状态：初稿。** 时长与曲线的实测值待补（见文末方法）。
+**Status: draft.** The measured values for durations and curves are still to be filled in (see the method at the end).
 
-## 原则
+## Principles
 
-1. **动效服务于「记得更快」，不是装饰。** 每一次动画都要能回答「它帮用户理解了什么」。
-2. **默认克制。** 首版只用三类动效：层级转场、状态反馈、数字变化。
-3. **必须尊重「减弱动态效果」**，开启后退化为淡入淡出，不做位移与缩放。
-4. 不做装饰性循环动画（品牌启动动画除外，且只播一次）。
-5. 动画不得阻塞输入；用户可以在动画中途继续操作。
+1. **Motion serves "remembering faster", not decoration.** Every animation must be able to answer "what did it help the user understand".
+2. **Restrained by default.** The first version uses only three kinds of motion: hierarchy transitions, state feedback, and number changes.
+3. **"Reduce Motion" must be respected**; when it is on, motion degrades to cross-fade, with no translation or scaling.
+4. No decorative looping animations (except the brand launch animation, and that plays only once).
+5. Animation must not block input; the user can keep interacting mid-animation.
 
-## 时长阶梯（初值，待实测校准）
+## Duration Scale (initial values, pending measurement calibration)
 
-| 场景 | 时长 | 曲线 |
+| Scenario | Duration | Curve |
 | --- | --- | --- |
-| 点按反馈 | 100 ms | ease-out |
-| 状态切换（选中、开关） | 180 ms | spring(response 0.28, damping 0.86) |
-| 页面推入 / 弹出 | 300 ms | 系统默认 |
-| 半屏 sheet 进出 | 320 ms | spring(response 0.34, damping 0.88) |
-| 数字 / 图表变化 | 400 ms | ease-in-out |
+| Tap feedback | 100 ms | ease-out |
+| State change (selection, toggle) | 180 ms | spring(response 0.28, damping 0.86) |
+| Page push / pop | 300 ms | system default |
+| Half-screen sheet in / out | 320 ms | spring(response 0.34, damping 0.88) |
+| Number / chart change | 400 ms | ease-in-out |
 
-## 触觉反馈
+## Haptic Feedback
 
-- 记录成功：轻触（`.light`）一次。
-- 删除等破坏性操作确认：warning。
-- 不要为滚动、悬停或每次点击都给反馈。
+- Successful record: one light tap (`.light`).
+- Confirmation of a destructive action such as delete: warning.
+- Do not give feedback for scrolling, hovering, or every tap.
 
-## 无障碍
+## Accessibility
 
-- 开启「减弱动态效果」时：位移与缩放全部改为交叉淡入淡出（≤ 150 ms）。
-- 图表数值变化不得只靠动画传达；必须有文字与可访问标签。
+- When "Reduce Motion" is on: all translation and scaling become cross-fades (≤ 150 ms).
+- Chart value changes must not be conveyed by animation alone; text and accessible labels are required.
 
-## 实测方法（本仓库的标准流程）
+## Measurement Method (this repository's standard procedure)
 
-1. 用 iPhone 自带录屏（60 fps，帧间 16.7 ms）或 `screencapture -v` 录窗口。
-2. `ffmpeg -i in.mov -vf fps=60 frames/%05d.png` 逐帧导出。
-3. 数出动画起止帧 → 时长 = 帧数 ÷ 帧率；量峰值过冲 → 反推 spring 的 damping。
-4. 结果回写本文件，并注明测量机型与录屏帧率。
+1. Record with the iPhone's built-in screen recording (60 fps, 16.7 ms between frames) or `screencapture -v` for a window.
+2. `ffmpeg -i in.mov -vf fps=60 frames/%05d.png` to export frame by frame.
+3. Count the animation's starting and ending frames → duration = frame count ÷ frame rate; measure the peak overshoot → derive the spring's damping.
+4. Write the results back into this file, and note the measured device model and recording frame rate.
 
-**待补**：同类产品（Aidy）关键流程的实测时长，以及我们自己首个版本的对应取值。
+**To be filled in**: the measured durations for the key flows of a comparable product (Aidy), and our own first version's corresponding values.

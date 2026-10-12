@@ -1,58 +1,58 @@
-# 设计规范：Token
+# Design Specification: Tokens
 
-**状态：初稿，待评审。** 颜色取自组织品牌，以**实际启用的 logo 与 banner** 为准（[ADR-0010](../adr/0010-brand-source-of-truth.md)）。
+**Status: draft, pending review.** Colors come from the organization brand and are governed by the **logo and banner actually in use** ([ADR-0010](../adr/0010-brand-source-of-truth.md)).
 
-## 品牌色
+## Brand Colors
 
-| 名称 | Hex | 用途 |
+| Name | Hex | Usage |
 | --- | --- | --- |
-| Ink（深靛紫） | `#1B133A` | 正文、主背景深色、logo 字 |
-| Plum（紫） | `#852E83` | 主色深 |
-| Magenta（品红） | `#D450B1` | 主色 |
-| Rose（粉） | `#F4779C` | 主色浅 / 强调 |
-| Amber（琥珀橙） | `#FBB761` | 强调 / 品牌渐变亮端 |
-| Cocoa（暗紫褐） | `#302B50` | 次级深色 |
-| Sand（杏沙） | `#EED1B4` | 暖底 / 空态插画 |
-| DustyRose（陶土粉） | `#DE858A` | 次级强调 |
+| Ink (deep indigo purple) | `#1B133A` | Body text, dark primary background, logo wordmark |
+| Plum (purple) | `#852E83` | Primary dark |
+| Magenta | `#D450B1` | Primary |
+| Rose (pink) | `#F4779C` | Primary light / emphasis |
+| Amber (amber orange) | `#FBB761` | Emphasis / light end of the brand gradient |
+| Cocoa (dark purple brown) | `#302B50` | Secondary dark |
+| Sand (apricot sand) | `#EED1B4` | Warm background / empty-state illustration |
+| DustyRose (terracotta pink) | `#DE858A` | Secondary emphasis |
 
-品牌渐变（仅用于 logo 与极少数品牌时刻）：`#1B133A → #852E83 → #D450B1 → #F4779C → #FBB761`。
+The brand gradient (only for the logo and very few brand moments): `#1B133A → #852E83 → #D450B1 → #F4779C → #FBB761`.
 
-## 语义色
+## Semantic Colors
 
-| Token | 取值 | 说明 |
+| Token | Value | Notes |
 | --- | --- | --- |
-| `bg` | `#F6F5F7` | 页面底色 |
-| `surface` | `#FFFFFF` | 卡片 |
+| `bg` | `#F6F5F7` | Page background |
+| `surface` | `#FFFFFF` | Card |
 | `textPrimary` | `#1B133A` | |
 | `textSecondary` | `#6B6880` | |
-| `accent` | `#852E83` | 主操作 |
-| `accentSoft` | `#F3E7F2` | 图标底、选中底 |
+| `accent` | `#852E83` | Primary action |
+| `accentSoft` | `#F3E7F2` | Icon background, selected background |
 | `border` | `#E6E4EA` | |
 
-### 硬性约束：**不用颜色表示好坏**
+### Hard constraint: **do not use color to convey good or bad**
 
-- 不引入「红 = 糟糕、绿 = 好转」的趋势配色。IBD 症状的颜色语义会直接变成医学判断。
-- 趋势图统一用品牌色阶；异常与否由用户和医生判断，不由界面判断。
-- 唯一允许的语义色是**错误 / 危险操作**（如删除确认），与症状无关。
+- Do not introduce a trend palette where "red = bad, green = improving". The color semantics of IBD symptoms turn directly into a medical judgment.
+- Trend charts use the brand color ramp uniformly; whether something is abnormal is judged by the user and the doctor, not by the UI.
+- The only permitted semantic color is **error / destructive action** (such as delete confirmation), unrelated to symptoms.
 
-## 字号阶梯
+## Type Scale
 
-| Token | 字号 / 字重 | 用途 |
+| Token | Size / Weight | Usage |
 | --- | --- | --- |
-| `display` | 34 / Bold | 页面主标题 |
-| `title` | 24 / Bold | 卡片标题 |
-| `headline` | 17 / Semibold | 段落标题 |
-| `body` | 17 / Regular | 正文 |
-| `caption` | 13 / Regular | 辅助说明 |
+| `display` | 34 / Bold | Page title |
+| `title` | 24 / Bold | Card title |
+| `headline` | 17 / Semibold | Section title |
+| `body` | 17 / Regular | Body text |
+| `caption` | 13 / Regular | Supporting explanation |
 
-所有字号必须支持 Dynamic Type（用 `.font(.body)` 等语义字体，不写死 point size）。
+All sizes must support Dynamic Type (use semantic fonts such as `.font(.body)`, do not hardcode point sizes).
 
-## 间距与圆角
+## Spacing and Corner Radius
 
-- 间距阶梯：4 / 8 / 12 / 16 / 24 / 32。
-- 圆角：控件 12，卡片 16，大容器 20。
-- 卡片默认无边框 + 极浅阴影；不要用描边堆层次。
+- Spacing scale: 4 / 8 / 12 / 16 / 24 / 32.
+- Corner radius: controls 12, cards 16, large containers 20.
+- Cards have no border and a very light shadow by default; do not stack hierarchy with strokes.
 
-## 落地要求
+## Implementation Requirements
 
-Token 必须**只**存在于 `DesignSystem/Tokens/`，以 Swift 常量暴露。业务代码里出现硬编码颜色或字号视为违规（SwiftLint 自定义规则拦截）。
+Tokens must exist **only** in `DesignSystem/Tokens/`, exposed as Swift constants. Hardcoded colors or font sizes in business code count as a violation (intercepted by a SwiftLint custom rule).
