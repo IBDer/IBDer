@@ -1,40 +1,49 @@
-# ADR-0001: v1 records multiple daily event types, and they are peers
+# ADR-0001: v1 records daily events of four peer types, including the biologic schedule
 
 - **Status**: Accepted — revised 2026-10-12
 - **Date**: 2026-10-11, revised 2026-10-12
 
 ## Context
 
-IBD self-management is not one activity. On a given day a patient may need to record toilet events,
-meals (including oral nutritional supplements), medication actually taken, and biologic doses.
-Treating any one of these as *the* first-version feature misrepresents both the product and the day.
+IBD self-management is not one activity. A patient may record toilet events, meals (including oral
+nutritional supplements), medication actually taken — and, on a longer rhythm, a biologic infusion
+that was planned, scheduled, and finally received.
 
-The first draft of this ADR framed v1 as "toilet event (one tap) + daily confirmation + visit summary".
-That framing came from an **interaction-cost** argument — recording has to be cheap — not from a claim
-about importance. The maintainer rejected the framing: **the event types are equally important.**
+Two earlier framings were wrong. They are recorded here so they are not reintroduced:
+
+1. **"Toilet event first."** The first draft made the toilet event *the* v1 feature. That came from an
+   interaction-cost argument (recording must be cheap), not from a claim about importance.
+   The maintainer rejected it: **the daily event types are equally important.**
+2. **"Defer the biologic workflow."** The second draft deferred it for modelling cost. The maintainer
+   rejected that too: **the infusion workflow is a basic function**, not a later nice-to-have.
 
 ## Decision
 
-v1 is a **multi-type daily event recorder**, plus a confirmed daily review and an exportable summary:
+v1 is a **multi-type daily event recorder with the biologic schedule built in**:
 
-1. **Event recording kernel**, with these types as peers:
+1. **Daily event types, as peers** — shared event envelope, type-specific fields:
    - `ToiletEvent`
    - `MealRecord` (including oral nutritional supplement)
    - `MedicationRecord` (what was actually taken)
-2. **Daily confirmation** closing the day across all recorded types (`RecordCompleteness`).
-3. **Visit summary** export (human-readable + structured).
+2. **Biologic schedule** — the one part that needs three layers, kept explicitly separate so they
+   never impersonate each other (see CONTEXT.md):
+   - `BiologicPlan` — the arrangement the patient entered from their care team's instructions
+   - `InfusionAppointment` — one pending appointment; confirmable, reschedulable, cancellable
+   - `InfusionRecord` — one infusion that actually happened
+3. **Daily confirmation** closing the day across all recorded types (`RecordCompleteness`).
+4. **Visit summary** export (human-readable + structured).
 
-Deferred — **not because they matter less**, but because they need more modelling:
-- the biologic / infusion workflow (`BiologicPlan` → `InfusionAppointment` → `InfusionRecord`),
-  which requires the plan/task/fact three-layer model;
-- food–symptom correlation, scores, and any AI assistance (ADR-0004, ADR-0009).
+Still excluded from v1: food–symptom correlation, any score, any AI assistance (ADR-0004, ADR-0009).
 
-"One tap" survives as a **design constraint on every event entry**, not as a statement about priority.
+"One tap" survives as a **design constraint on every entry path** — it is not a statement about priority.
 
 ## Consequences
 
-- The data model uses a **shared event envelope plus type-specific fields**, so adding a type later
-  does not reshape the schema.
-- Daily confirmation covers completeness across all types, not stool alone.
-- The first OpenSpec change is scoped to: event kernel (three types) + daily confirmation + visit summary.
-- ADR-0008 (decide before implementing) and ADR-0009 (no scores) are unaffected.
+- The first OpenSpec change covers: event kernel (three daily types) + biologic schedule (three layers)
+  + daily confirmation + visit summary. It is a large first change; it is sliced **inside** the change
+  rather than postponed.
+- The data model uses a shared envelope for daily events and a strict three-layer separation for the
+  schedule; adding a type later must not reshape the schema.
+- Reminders are generated from appointments and tasks and are **never** turned into facts
+  automatically (the plan/fact boundary in AGENTS.md §3).
+- Infusion-related copy needs clinical review before public distribution.
