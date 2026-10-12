@@ -8,7 +8,7 @@
 
 | 文档 | 仓库 | 引入提交 | 日期 | 状态 | 现在被用在什么地方 |
 | --- | --- | --- | --- | --- | --- |
-| `SAFETY.md` | IBDer/.github | 92907297 | 10-09 | **未核验** | AGENTS.md 第 3 节的四条红线（待确认） |
+| `SAFETY.md` | IBDer/.github | 92907297 | 10-09 | **未核验** | AGENTS.md 第 3 节的来源之一。**核对更正**：该节列 5 项，其中「患者社区 UGC」「临床量表名称/文字/图示/译本」实际来自 `project-direction.md`，而 SAFETY.md 的「用药调整建议」「未经适当证据支持的疗效或安全性结论」并未进入该节 |
 | `AI_COLLABORATION.md` | IBDer/.github | 92907297 | 10-09 | **未核验** | AGENTS.md 第 9 节的 AI 披露 |
 | `PRIVACY.md` | IBDer/.github | 92907297 | 10-09 | **未核验** | 只用合成测试数据 |
 | `GOVERNANCE.md` `ROADMAP.md` `CONTRIBUTING.md` `RESEARCH_POLICY.md` | IBDer/.github | 9ada592f / 92907297 | 10-08/09 | **未核验** | 未使用 |
@@ -22,6 +22,8 @@
 | `research/`（公开） | IBDer/research | 3 个提交 | 10-08/09 | **未核验** | 未使用 |
 
 > 提交身份说明：`Zachary-wW <zhihaowei1117@gmail.com>` 是本地 git 客户端；`Zachary WEI <124166324+Zachary-wW@users.noreply.github.com>` 是 GitHub 网页编辑器或 API 写入。**git 无法区分「人写的」与「agent 代为写的」**，因此本表只记录事实，不判断作者。
+>
+> **可查证的评审记录：无。** `IBDer/.github` 共 11 个提交、0 个 PR、0 个 Issue，全部直接提交到 main；`IBDer/project-context` 3 个提交、0 个 PR。也就是说，这批文档**没有留下任何人类评审的痕迹**——「已由人类核验」在 git 上既无法证实，也无法证伪。
 
 ## 核验方式
 
