@@ -30,9 +30,12 @@ App          ← composition, navigation, dependency injection
 IBDer/
   App/
   Features/
-    ToiletEvent/
-    DailyConfirmation/
-    VisitSummary/
+    ToiletEvents/
+    Meals/
+    Medications/
+    BiologicSchedule/
+    DailyConfirmations/
+    VisitSummaries/
   Domain/
     Entities/
     Rules/
