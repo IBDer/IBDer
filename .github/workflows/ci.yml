@@ -36,16 +36,21 @@ jobs:
             echo "No lint config yet - skipping."
           fi
 
-      - name: Build and test
+      - name: Build
+        if: steps.detect.outputs.exists == 'true'
+        run: |
+          xcodebuild build \
+            -scheme IBDer \
+            -destination 'platform=iOS Simulator,name=iPhone 17'
+
+      - name: Test
         if: steps.detect.outputs.exists == 'true'
         run: |
           set -o pipefail
           xcodebuild test \
             -scheme IBDer \
             -destination 'platform=iOS Simulator,name=iPhone 17' \
-            -resultBundlePath TestResults.xcresult | xcbeautify || xcodebuild test \
-            -scheme IBDer \
-            -destination 'platform=iOS Simulator,name=iPhone 17'
+            -resultBundlePath TestResults.xcresult
 
       - name: Upload results
         if: always() && steps.detect.outputs.exists == 'true'
