@@ -1,84 +1,88 @@
-# Agent 工作约定
+# Agent working agreement
 
-本文件是这个仓库里所有 AI agent 的入口。**动手前先读完本文件。**
+Every AI agent working in this repository starts here. **Read this file before doing anything.**
 
-## 1. 权威顺序（唯一权威顺序）
+## 1. Authority order (the only one)
 
-冲突时，序号小的赢：
+When two sources conflict, the lower number wins:
 
-1. 用户的当前指令
-2. [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 中**已由人类核验**的公开规则
-3. 本仓库 `docs/adr/` 中已接受的 ADR 与 `openspec/specs/` 中的当前 spec
-4. [project-context](https://github.com/IBDer/project-context) 中**已由维护者确认**的决定
-5. 已重新核验的原始来源（临床指南、监管文件、平台政策）
-6. 未核验草稿、历史资料与非公开调研
+1. The user's current instruction
+2. Public rules in [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/research](https://github.com/IBDer/research) that **a human has verified**
+3. Accepted ADRs in `docs/adr/` and the current spec in `openspec/specs/`
+4. Decisions in [project-context](https://github.com/IBDer/project-context) that **the maintainer has confirmed**
+5. Re-verified primary sources (clinical guidelines, regulators, platform policy)
+6. Unverified drafts, historical material, private research
 
-> **本表是唯一权威顺序。** [IBDer/project-context](https://github.com/IBDer/project-context) 的 `AGENTS.md` 引用本表，不再另行定义一套（2026-10-12 统一；此前两处各有一套）。
+> **This table is the only authority order.** `project-context/AGENTS.md` refers to it instead of defining its own (unified 2026-10-12).
 >
-> **未核验 = 只能当线索。** 判断一份文档是否已核验，看 [docs/inherited-documents.md](docs/inherited-documents.md) 的状态列；状态不是「已核验」的文档，不得作为实现依据，也不得被引用为「已经决定」。
+> **Unverified = lead only.** Check the status column in [docs/inherited-documents.md](docs/inherited-documents.md). A document that is not verified may not be used as a basis for implementation, and may not be cited as "already decided".
 
-## 2. 必读顺序
+## 2. Reading order
 
-1. 本文件
-2. [CONTEXT.md](CONTEXT.md) —— 术语必须从这里取
-3. [docs/process/workflow.md](docs/process/workflow.md) —— 变更怎么走
-4. 与任务相关的 `docs/` 与 `openspec/specs/`
+1. This file
+2. [CONTEXT.md](CONTEXT.md) — identifiers come from here
+3. [docs/process/workflow.md](docs/process/workflow.md) — how a change moves
+4. The `docs/` files and `openspec/specs/` relevant to the task
 
-## 3. 医疗边界：先决定，再实现
+## 3. Medical boundary: decide first, implement second
 
-**本仓库当前不预设医疗安全红线**（决定与理由见 [ADR-0008](docs/adr/0008-no-standing-red-lines.md)）。相关约束随功能逐个决定，并各自记录 ADR。
+**This repository does not preset medical red lines** (see [ADR-0008](docs/adr/0008-no-standing-red-lines.md)). Constraints are decided per feature and recorded as their own ADR.
 
-下列范围在实现前**必须先由人类维护者明确决定**，不得先做后问：
+The following must be **explicitly decided by a human maintainer before implementation** — do not build first and ask later:
 
-- 诊断、个体化治疗建议、远程问诊或紧急分诊
-- 疾病活动度评分，以及「缓解 / 活动 / 复发」这类结论性输出
-- 食物与症状之间的因果表述
-- 患者社区 UGC
-- 临床量表的名称、文字、图示与译本
+- diagnosis, individualised treatment advice, telemedicine, emergency triage
+- disease-activity scores, and verdict-style output such as "remission / active / flare"
+- causal claims linking food to symptoms
+- patient-community UGC
+- names, wording, images, or translations of clinical scales
 
-判断标准只有一句：**输出的是「患者记录的事实」，还是「产品自己下的结论」。** 前者可以直接做，后者先问人。
+One test settles it: **is the output a fact the patient recorded, or a conclusion the product reached?** Facts can be built. Conclusions get decided first.
 
-## 4. 数据与隐私
+## 4. Data and privacy
 
-- 只用**合成测试数据**。真实或可识别的患者数据不得进入仓库、Issue、Discussion、日志、截图或第三方 AI 服务。
-- 应用内不得把健康内容上报给崩溃 / 分析 SDK。
-- 未经明确决定，不引入会把健康数据传出设备的依赖。
+- **Synthetic data only.** Real or identifiable patient data must never enter the repository, issues, discussions, logs, screenshots, or any third-party AI service.
+- The app must not report health content to crash or analytics SDKs.
+- Do not add a dependency that sends health data off the device without an explicit decision.
 
-## 5. 内容来源纪律
+## 5. Sourcing discipline
 
-- 私有调研仓库（project-context）中的原文**不得直接搬运**到本仓库。需要引用时，重新核验公开来源，用自己的话写，并标注来源与不确定性。
-- 区分**事实 / 解释 / 产品假设 / 项目决定**，不要把后三者写成第一者。
-- 引用法规与政策时只使用官方来源，记录地区、有效期与核验日期。
+- Text from the private research repository must **not** be copied into this repository. Re-verify public sources, write it in your own words, and state the uncertainty.
+- Distinguish **fact / interpretation / product hypothesis / project decision**. Never present the last three as the first.
+- For regulation and policy, cite official sources only, and record region, validity period, and verification date.
 
-## 6. 工作流（唯一真相源：OpenSpec）
+## 6. Workflow (OpenSpec is the single source of truth)
 
 ```
-grilling / explore 想清楚
-  → openspec change（proposal + delta spec + tasks）
-      → 【闸门 1：人评审 spec】        ← 需求不对就不动手
-          → 实现（TDD）
-              → PR（附 CI 证据）
-                  → 【闸门 2：人评审代码】 → 合并 → archive
+grilling / explore      think it through
+  -> openspec change    proposal + delta spec + tasks
+      -> [GATE 1: human reviews the spec]      <- no implementation before this
+          -> implement (TDD)
+              -> PR with CI evidence
+                  -> [GATE 2: human reviews the code] -> merge -> archive
 ```
 
-- **OpenSpec 是「系统现在是什么样」的唯一权威**。GitHub Issues 只做看板，不承载 spec。
-- GitHub Issues 不作为第二个真相源；两者冲突时以 `openspec/` 为准。
-- 未通过闸门 1 的 change，不得开始写实现代码。
+- **OpenSpec is the authority on what the system does.** GitHub Issues is a board; it does not carry spec.
+- If an issue and a spec disagree, `openspec/` wins.
+- A change that has not passed gate 1 must not be implemented.
 
-## 7. 提交与评审
+## 7. Commits and review
 
-- 一个 change 一个分支：`change/<change-name>`。
-- PR 必须包含四件事：关联的 OpenSpec change、改了什么、CI 结果、风险与回滚方式。
-- CI 红的树上不得继续提交。
-- 合并由人执行；agent 不自行合并、不自行打 tag。
-- 每个完成并归档的 change 打一个 tag。
+- One change per branch: `change/<change-name>`. Docs-only work: `docs/<topic>`.
+- Every PR carries: the linked OpenSpec change, what changed, why, CI result, risk and rollback.
+- Never commit on top of a red CI.
+- Humans merge; agents do not merge and do not tag.
+- Tag each archived change.
+- **Co-author trailer**: agent-assisted work ends its commit message with
+  `Co-authored-by: ConceptWei <60024976+ConceptWei@users.noreply.github.com>`.
+- **Commit messages, PR bodies, and issues are written in English** (ADR-0011).
 
-## 8. 语言
+## 8. Language
 
-- 文档、Issue、PR、提交信息的正文：**中文**。
-- 代码标识符与代码注释：**英文**（标识符必须取自 [CONTEXT.md](CONTEXT.md)）。
-- 面向患者的界面文案：中文，且不得出现医学结论。
+- **English everywhere**: documentation, ADRs, OpenSpec specs, code identifiers, code comments, commit messages, PRs, issues, branch names (ADR-0011).
+- **Only exception**: user-facing product strings. The app ships `zh-Hans`; those live in the String Catalog, never in docs, comments, or code literals.
+- Identifiers come from [CONTEXT.md](CONTEXT.md).
+- New project content is never written in Chinese.
 
-## 9. AI 参与披露
+## 9. AI disclosure
 
-重要内容（规范、需求、设计决定）由 AI 起草时必须可追溯，并在 PR 中说明；最终责任由人类维护者承担。公开发布的内容按组织模板标注 AI 参与情况。
+When AI drafts anything material — a rule, a requirement, a design decision — that must be traceable and stated in the PR. Final responsibility rests with the human maintainer. Public content follows the organisation template.

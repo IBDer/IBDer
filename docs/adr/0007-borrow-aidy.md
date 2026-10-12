@@ -1,20 +1,41 @@
-# ADR-0007：借鉴同类产品的动效与交互模式，不复制其界面与结论
+# ADR-0007: Learn from Aidy's product design, do not copy its assets or its conclusions
 
-- **状态**：已接受
-- **日期**：2026-10-11
+- **Status**: Accepted — expanded 2026-10-12
+- **Date**: 2026-10-11, revised 2026-10-12
 
-## 背景
+## Context
 
-同类产品（Aidy）的动效质量被认可，但其首屏即展示 HBI 分数与「Remission」结论，落在本项目明令禁止的范围内。
+The maintainer rates Aidy's motion design highly and wants v1 to lean on it **more**, because our own
+UI, interaction model, and content structure are not settled yet and a later refactor is expected.
+Aidy also demonstrates things we have decided **not** to do — it displays automatically calculated
+HBI / SCCAI and a "Remission" verdict (see ADR-0009).
 
-## 决定
+## Decision
 
-- 借鉴范围：动效节奏、层级与留白、卡片与 CTA 几何、空态处理、记录入口的排布。
-- 不借鉴：视觉皮肤（配色与品牌）、界面像素级复刻、信息架构、自动评分与结论性文案。
-- 不接触其二进制、不提取素材、不复用其文案。
+**Borrow, as a product-design reference:**
+- **Motion language**: durations, curves, stagger, empty-state treatment, transition types.
+- **Layout rhythm and hierarchy**: card geometry, spacing scale, CTA prominence, large-weight headings.
+- **Information architecture and recording flows**: the log-type entry row, the daily check-in ramp,
+  the "today" timeline, chip-based multi-select, the profile/settings split.
+- **Content structure**: what a suggestion card contains, how a report is organised — structure only,
+  never wording.
 
-## 后果
+**Do not borrow:**
+- **Visual identity**: colours, logo, iconography (ADR-0010 governs the palette).
+- **Pixel-level replication** of screens.
+- **Assets, code, or copy** taken from the app or its binary.
+- **Disease-activity scores, thresholds, or verdict-style conclusions** (ADR-0009).
+- **Food-causality claims.**
 
-- 本 ADR **只限定「从竞品借鉴的范围」**，不代表本项目自身的功能取舍。
-- 本项目是否展示评分或结论性输出属于**未决事项**，需单独 ADR；决定之前按 [ADR-0008](0008-no-standing-red-lines.md) 先问人。
-- 配色采用组织品牌色（深靛紫 → 紫 → 品红 → 粉 → 琥珀橙），与竞品的紫蓝区分。
+**Method**: analysis happens on the running app by observation only — screenshots, the accessibility
+tree, and screen recording. No binary analysis, no asset extraction, no decryption, no runtime hooking
+of the production app.
+
+## Consequences
+
+- Design work must produce **our own spec**: screen inventory, a motion spec with measured values, and
+  an interaction critique. That spec is what we hand to the next agent, so a refactor does not start
+  from zero. The maintainer's reason for borrowing is exactly this: handoff speed.
+- Aidy's English copy is a structural reference only; our Chinese UI strings are written by us.
+- Where Aidy's structure implies a capability we have deferred (biologic scheduling), we borrow the
+  *layout pattern*, not the feature.
