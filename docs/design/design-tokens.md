@@ -1,6 +1,6 @@
 # 设计规范：Token
 
-**状态：初稿，待评审。** 颜色取自组织品牌（IBDer logo 与 banner）。
+**状态：初稿，待评审。** 颜色取自组织品牌，以**实际启用的 logo 与 banner** 为准（[ADR-0010](../adr/0010-brand-source-of-truth.md)）。
 
 ## 品牌色
 

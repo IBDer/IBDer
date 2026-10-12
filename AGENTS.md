@@ -2,16 +2,19 @@
 
 本文件是这个仓库里所有 AI agent 的入口。**动手前先读完本文件。**
 
-## 1. 权威顺序
+## 1. 权威顺序（唯一权威顺序）
 
 冲突时，序号小的赢：
 
 1. 用户的当前指令
 2. [IBDer/.github](https://github.com/IBDer/.github) 与 [IBDer/research](https://github.com/IBDer/research) 中**已由人类核验**的公开规则
-3. 本仓库 `docs/adr/` 中的决定与 `openspec/specs/` 中的当前 spec
-4. 已重新核验的原始来源（指南、药监、平台政策）
-5. 历史资料、未核验草稿与非公开调研
+3. 本仓库 `docs/adr/` 中已接受的 ADR 与 `openspec/specs/` 中的当前 spec
+4. [project-context](https://github.com/IBDer/project-context) 中**已由维护者确认**的决定
+5. 已重新核验的原始来源（临床指南、监管文件、平台政策）
+6. 未核验草稿、历史资料与非公开调研
 
+> **本表是唯一权威顺序。** [IBDer/project-context](https://github.com/IBDer/project-context) 的 `AGENTS.md` 引用本表，不再另行定义一套（2026-10-12 统一；此前两处各有一套，见 [ADR-0009](docs/adr/0009-no-scores-in-v1.md) 同批处理）。
+>
 > **未核验 = 只能当线索。** 判断一份文档是否已核验，看 [docs/inherited-documents.md](docs/inherited-documents.md) 的状态列；状态不是「已核验」的文档，不得作为实现依据，也不得被引用为「已经决定」。
 
 ## 2. 必读顺序

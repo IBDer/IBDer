@@ -4,6 +4,8 @@
 
 **规则：状态不是「已核验」的文档只能当线索，不能当依据。**（见 [AGENTS.md](../AGENTS.md) 第 1 节）
 
+**权威顺序已统一（2026-10-12）**：此前 App 仓库 `AGENTS.md` 与 `project-context/AGENTS.md` 各有一套顺序。现以 [AGENTS.md](../AGENTS.md) 第 1 节为唯一权威顺序，`project-context` 侧改为引用本表。
+
 ## 清单
 
 | 文档 | 仓库 | 引入提交 | 日期 | 状态 | 现在被用在什么地方 |
@@ -14,7 +16,7 @@
 | `GOVERNANCE.md` `ROADMAP.md` `CONTRIBUTING.md` `RESEARCH_POLICY.md` | IBDer/.github | 9ada592f / 92907297 | 10-08/09 | **未核验** | 未使用 |
 | `decisions/project-direction.md` | project-context（私有） | 48637080 | 10-08 | **未核验** | 初版曾当既定约束，现降级为线索 |
 | `decisions/community-direction.md` | project-context（私有） | — | 10-09 | **未核验** | 未使用 |
-| `decisions/brand-direction.md` | project-context（私有） | — | 10-08 | **未核验** | 设计 token 的暖色方向参考 |
+| `decisions/brand-direction.md` | project-context（私有） | — | 10-08 | **部分被取代** | 品牌视觉改以实际启用的 logo/banner 为准（[ADR-0010](../adr/0010-brand-source-of-truth.md)）；**logo 禁用清单与语气词仍有效** |
 | `product/rebuild-brief.md` | project-context（私有） | 48637080 | 10-08 | **未核验** | 「先定问题与规范，再选技术栈」 |
 | `product/legacy-domain-language.md` | project-context（私有） | 48637080 | 10-08 | **未核验** | **CONTEXT.md 词汇表的全部来源** |
 | `product/legacy-product-learnings.md` | project-context（私有） | — | 10-08 | **未核验** | 「不继承旧决定」的清单 |
