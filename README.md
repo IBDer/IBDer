@@ -10,7 +10,7 @@ A self-management tool for Patients with Crohn's disease (CD) and ulcerative col
 | Phase | Status |
 | --- | --- |
 | Repository conventions / design specifications / CI / testing approach | Under review |
-| Requirements and scope (the first OpenSpec change) | Not started |
+| Requirements and scope (the first OpenSpec change) | Drafted — gate 1 review pending |
 | Application code | Not started |
 
 ## Medical boundaries
@@ -27,14 +27,14 @@ But the following areas **must be explicitly decided by a human maintainer befor
 
 On the data side this always holds: identifiable Patient information must **not** appear in the repository, Issues, Discussions, logs, screenshots, or test data.
 
-Organisation-level public rules are governed by the **verified** content in [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/research](https://github.com/IBDer/research).
+Public rules from [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/research](https://github.com/IBDer/research) bind this repository **only once a human has verified them**. None of them is verified yet — see [docs/inherited-documents.md](docs/inherited-documents.md).
 
 ## Documentation map
 
 | What you want to know | Where to look |
 | --- | --- |
 | How agents work in this repository | [AGENTS.md](AGENTS.md) |
-| Domain terminology (Chinese / code identifiers) | [CONTEXT.md](CONTEXT.md) |
+| Domain terminology (identifiers and definitions) | [CONTEXT.md](CONTEXT.md) |
 | Why it was decided this way | [docs/adr/](docs/adr/) |
 | Engineering conventions (architecture / style / naming / logging) | [docs/engineering/](docs/engineering/) |
 | Design specifications (color / motion / accessibility) | [docs/design/](docs/design/) |

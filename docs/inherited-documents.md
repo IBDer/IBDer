@@ -16,7 +16,7 @@ Before this project started, a batch of documents already existed in the organis
 | `GOVERNANCE.md` `ROADMAP.md` `CONTRIBUTING.md` `RESEARCH_POLICY.md` | IBDer/.github | 9ada592f / 92907297 | 10-08/09 | **Not verified** | Not used |
 | `decisions/project-direction.md` | project-context (private) | 48637080 | 10-08 | **Not verified** | The first version treated it as an established constraint; it is now downgraded to a lead |
 | `decisions/community-direction.md` | project-context (private) | — | 10-09 | **Not verified** | Not used |
-| `decisions/brand-direction.md` | project-context (private) | — | 10-08 | **Partially superseded** | Brand visuals now follow the logo/banner actually in use ([ADR-0010](../adr/0010-brand-source-of-truth.md)); **the logo prohibition list and tone words are still in effect** |
+| `decisions/brand-direction.md` | project-context (private) | — | 10-08 | **Partially superseded** | Brand visuals now follow the logo/banner actually in use ([ADR-0010](adr/0010-brand-source-of-truth.md)); **the logo prohibition list and tone words are still in effect** |
 | `product/rebuild-brief.md` | project-context (private) | 48637080 | 10-08 | **Not verified** | "Define the problem and the specification first, then choose the tech stack" |
 | `product/legacy-domain-language.md` | project-context (private) | 48637080 | 10-08 | **Not verified** | **The entire source of the CONTEXT.md glossary** |
 | `product/legacy-product-learnings.md` | project-context (private) | — | 10-08 | **Not verified** | The list of "decisions not inherited" |

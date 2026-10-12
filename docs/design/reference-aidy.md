@@ -52,8 +52,8 @@ not have to rediscover them.
 
 ## Motion: measurement, and an honest caveat
 
-Method: `screencapture -l <window-id> -v` on the running app, then `ffmpeg` frame extraction at 120 fps,
-then a frame-to-frame difference timeline (`PIL`, mean absolute difference) to locate transitions.
+Method: the standard procedure in [motion.md](motion.md), applied to this app — a window-level
+recording, then frame extraction and a frame-to-frame difference timeline to locate transitions.
 
 What the measurement showed:
 

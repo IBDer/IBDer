@@ -23,5 +23,5 @@ messages, pull requests, issues — is easier to hand over, review, and search i
 ## Consequences
 
 - Existing Chinese docs are translated in place; git history keeps the original wording.
-- CONTEXT.md lists English identifiers with the Chinese UI label as a localisation note.
+- CONTEXT.md lists English identifiers only. The Chinese UI string for a term lives in the String Catalog, keyed by that identifier — it is not a column in CONTEXT.md.
 - Reviewers should not accept new Chinese documentation, except the String Catalog.

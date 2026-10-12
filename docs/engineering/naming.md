@@ -9,7 +9,7 @@ When several agents develop in relays, the biggest hidden loss is **one concept 
 ## Rules
 
 1. New domain concept → open a PR to change CONTEXT.md first → then write code.
-2. Code identifiers are in English and must be the verbatim right-column entry of the glossary (for example `ToiletEvent`, not `BowelMovement`).
+2. Code identifiers are in English and must be the entry in the **identifier column** of the glossary (for example `ToiletEvent`, not `BowelMovement`).
 3. Synonyms are forbidden: one concept allows exactly one identifier.
 4. Type suffixes have fixed meanings:
 
@@ -22,7 +22,7 @@ When several agents develop in relays, the biggest hidden loss is **one concept 
 | `Summary` | summary output, containing no conclusion |
 | `Trend` | ObjectiveTrend display |
 
-5. **Conclusive terms must not be invented**: disease activity, remission, flare, exacerbation, score, risk prediction (and the corresponding English `diseaseActivity` / `remission` / `flare` / `severityScore` / `riskPrediction`) must not enter identifiers, UI copy, or comments before the relevant feature has made an explicit decision (ADR).
+5. **Conclusive terms must not be invented.** The canonical list lives in [CONTEXT.md](../../CONTEXT.md) — disease activity, remission, flare, worsening, score, risk prediction — and the same restriction applies to their identifier forms (`diseaseActivity`, `remission`, `flare`, `severityScore`, `riskPrediction`). None of them may enter identifiers, UI copy, or comments before the relevant feature has its own decision (ADR).
 
 ## File Names and Directory Names
 

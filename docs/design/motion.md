@@ -10,7 +10,12 @@
 4. No decorative looping animations (except the brand launch animation, and that plays only once).
 5. Animation must not block input; the user can keep interacting mid-animation.
 
-## Duration Scale (initial values, pending measurement calibration)
+## Duration scale (placeholders — **not measurements**)
+
+The numbers below are starting points chosen by hand. They are **not** measurements, and presenting a
+guess as a measurement is forbidden by [ADR-0012](../adr/0012-design-direction.md) and by the
+`ibder-design` skill. A screen does not pass design review on placeholder values; measure it with the
+procedure at the end of this file and replace the row.
 
 | Scenario | Duration | Curve |
 | --- | --- | --- |

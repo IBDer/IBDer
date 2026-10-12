@@ -1,4 +1,4 @@
-# ADR-0001: v1 records daily events of four peer types, including the biologic schedule
+# ADR-0001: v1 records four kinds of facts — three peer daily event types plus the biologic schedule
 
 - **Status**: Accepted — revised 2026-10-12
 - **Date**: 2026-10-11, revised 2026-10-12
