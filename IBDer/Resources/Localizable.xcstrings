@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "app.root.placeholder" : {
+      "comment" : "Placeholder shown until the first feature lands.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录内核开发中"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

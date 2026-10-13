@@ -67,7 +67,7 @@ grilling / explore      think it through
 
 ## 7. Commits and review
 
-- One change per branch: `change/<change-name>`. Docs-only work: `docs/<topic>`.
+- One change per branch: `change/<change-name>`. Implementing an already-merged change: `impl/<change-name>`. Docs-only work: `docs/<topic>`.
 - Every PR carries: the linked OpenSpec change, what changed, why, CI result, risk and rollback.
 - Never commit on top of a red CI.
 - Humans merge; agents do not merge and do not tag.
