@@ -4,7 +4,7 @@ import SwiftUI
 struct IBDerApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView()
+            TodayView()            // RootView is kept for the placeholder until routing lands.
         }
     }
 }

@@ -68,7 +68,8 @@ grilling / explore      think it through
 ## 7. Commits and review
 
 - One change per branch: `change/<change-name>`. Implementing an already-merged change: `impl/<change-name>`. Docs-only work: `docs/<topic>`.
-- Every PR carries: the linked OpenSpec change, what changed, why, CI result, risk and rollback.
+- **Write every PR for someone who does not read code**: at most three short sections — what changed, what to look at, what is deliberately not in it — plus **screenshots for anything visible**. See [docs/process/review-gates.md](docs/process/review-gates.md).
+- **Never ask the maintainer to read code or a long document.** If a decision can only be shown in code, make it visible in behaviour instead.
 - Never commit on top of a red CI.
 - Humans merge; agents do not merge and do not tag.
 - Tag each archived change.

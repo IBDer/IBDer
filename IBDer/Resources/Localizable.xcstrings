@@ -1,17 +1,149 @@
 {
-  "sourceLanguage" : "zh-Hans",
-  "strings" : {
-    "app.root.placeholder" : {
-      "comment" : "Placeholder shown until the first feature lands.",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "记录内核开发中"
+  "sourceLanguage": "zh-Hans",
+  "strings": {
+    "app.root.placeholder": {
+      "comment": "Placeholder shown until the first feature lands.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录内核开发中"
+          }
+        }
+      }
+    },
+    "today.section.events": {
+      "comment": "Section header above the day's recorded facts.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日记录"
+          }
+        }
+      }
+    },
+    "today.empty.title": {
+      "comment": "Empty day heading.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天还没有记录"
+          }
+        }
+      }
+    },
+    "today.empty.body": {
+      "comment": "Empty day: names the next action.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从下面记一次，或者完成今天的确认"
+          }
+        }
+      }
+    },
+    "today.previousDay": {
+      "comment": "Accessibility label for the previous-day arrow.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前一天"
+          }
+        }
+      }
+    },
+    "today.nextDay": {
+      "comment": "Accessibility label for the next-day arrow.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后一天"
+          }
+        }
+      }
+    },
+    "entry.toilet": {
+      "comment": "Recording entry point: toilet event.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如厕"
+          }
+        }
+      }
+    },
+    "entry.meal": {
+      "comment": "Recording entry point: meal (including oral nutritional supplement).",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "饮食"
+          }
+        }
+      }
+    },
+    "entry.medication": {
+      "comment": "Recording entry point: medication actually taken.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用药"
+          }
+        }
+      }
+    },
+    "entry.infusion": {
+      "comment": "Recording entry point: biologic infusion.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输液"
+          }
+        }
+      }
+    },
+    "confirm.title": {
+      "comment": "The daily confirmation row.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每日确认"
+          }
+        }
+      }
+    },
+    "confirm.subtitle": {
+      "comment": "Hint under the daily confirmation row.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击完成"
+          }
+        }
+      }
+    },
+    "event.partial": {
+      "comment": "Marks a record the patient filled in only partly.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记了一部分"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
