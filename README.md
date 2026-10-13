@@ -2,16 +2,29 @@
 
 A self-management tool for Patients with Crohn's disease (CD) and ulcerative colitis (UC): it records meals, bowel movements, medication, symptoms and care events, and organises the facts of a period of time into a VisitSummary that can be brought into the clinic.
 
-> **Current status: specification and requirements definition phase; no application code has been written yet.**
-> Define the specification first, then the requirements, and only then write code.
+> **Current status: implementation has started.** The repository conventions and the first OpenSpec
+> change are merged; the first implementation slice (project skeleton, design tokens) is in review.
+> The rule that got us here still holds: specification first, then requirements, then code.
 
 ## Phases
 
 | Phase | Status |
 | --- | --- |
-| Repository conventions / design specifications / CI / testing approach | Under review |
-| Requirements and scope (the first OpenSpec change) | Drafted — gate 1 review pending |
-| Application code | Not started |
+| Repository conventions / design specifications / CI / testing approach | Merged |
+| Requirements and scope (the first OpenSpec change) | Merged — 38 tracked tasks in `openspec/changes/add-v1-recording-core/` |
+| Application code | Started: project skeleton and design tokens |
+
+## Build
+
+The Xcode project is **generated, not committed** ([ADR-0013](docs/adr/0013-generated-xcode-project.md)):
+
+```bash
+brew install xcodegen swiftlint swiftformat
+xcodegen generate
+open IBDer.xcodeproj          # or: xcodebuild test -scheme IBDer -destination 'platform=iOS Simulator,name=iPhone 17'
+```
+
+Lint before pushing: `swiftformat --lint . && swiftlint --strict`.
 
 ## Medical boundaries
 
