@@ -1,11 +1,10 @@
-import Testing
-import SwiftUI
 @testable import IBDer
+import SwiftUI
+import Testing
 
 /// Task 1.2 verification: every token equals the value documented in
 /// docs/design/design-tokens.md. If a token drifts, this test is the alarm.
 struct DesignTokensTests {
-
     @Test func spacingScaleMatchesDocumentation() {
         #expect(DesignTokens.Spacing.xSmall == 4)
         #expect(DesignTokens.Spacing.small == 8)

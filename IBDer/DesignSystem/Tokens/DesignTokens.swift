@@ -4,7 +4,6 @@ import SwiftUI
 /// spacing or font size in a screen is a review failure
 /// (docs/design/design-tokens.md, docs/engineering/naming.md).
 public enum DesignTokens {
-
     // MARK: - Colour
 
     public enum Color {

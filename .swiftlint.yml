@@ -6,6 +6,9 @@ line_length:
   ignores_comments: false
 disabled_rules:
   - todo
+  # SwiftFormat owns comma placement (it keeps the trailing comma in multiline
+  # collections). Two tools disagreeing turns every list edit into a lint failure.
+  - trailing_comma
 opt_in_rules:
   - force_unwrapping
   - implicitly_unwrapped_optional
