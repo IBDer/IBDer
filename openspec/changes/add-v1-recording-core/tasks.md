@@ -6,8 +6,8 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 - [x] 1.1 Create the iOS app target (SwiftUI, iOS 18+) with the folder layout from docs/engineering/architecture.md — verify: builds for the iOS Simulator and runs with an empty root view
 - [x] 1.2 Add the DesignSystem token module with the values from docs/design/design-tokens.md — verify: a unit test asserts every token equals the documented value
-- [ ] 1.3 Add SwiftLint/SwiftFormat configuration and wire it into CI — verify: CI fails on a deliberately introduced force-unwrap
-- [ ] 1.4 Add the test targets and a CI job that runs unit tests on a simulator — verify: CI is green on an empty test suite
+- [x] 1.3 Add SwiftLint/SwiftFormat configuration and wire it into CI — verify: CI fails on a deliberately introduced force-unwrap
+- [x] 1.4 Add the test targets and a CI job that runs unit tests on a simulator — verify: CI is green on an empty test suite
 
 ## 2. Domain model (no UI, no persistence)
 
