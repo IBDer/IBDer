@@ -23,7 +23,9 @@ struct RecordedEvent: Identifiable {
     /// A record the patient filled in only partly — shown, never counted as complete.
     let isPartial: Bool
 
-    var symbol: String { kind.symbol }
+    var symbol: String {
+        kind.symbol
+    }
 
     var titleKey: LocalizedStringKey {
         switch kind {

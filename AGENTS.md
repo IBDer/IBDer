@@ -58,7 +58,7 @@ grilling / explore      think it through
       -> [GATE 1: human reviews the spec]      <- no implementation before this
           -> implement (TDD)
               -> PR with CI evidence
-                  -> [GATE 2: human reviews the code] -> merge -> archive
+                  -> [GATE 2: human reviews the running product] -> merge -> archive
 ```
 
 - **OpenSpec is the authority on what the system does.** GitHub Issues is a board; it does not carry spec.
