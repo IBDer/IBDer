@@ -11,10 +11,10 @@ struct TodayView: View {
     }
 
     private static let dayFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "zh-Hans")
-        f.setLocalizedDateFormatFromTemplate("MMMd EEEE")
-        return f
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh-Hans")
+        formatter.setLocalizedDateFormatFromTemplate("MMMd EEEE")
+        return formatter
     }()
 
     var body: some View {
