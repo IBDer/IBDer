@@ -1,0 +1,61 @@
+# XcodeGen project definition. The .xcodeproj is generated, never committed:
+#   xcodegen generate
+# Declarative project files are diffable and reviewable; a .pbxproj is not (ADR-0013).
+name: IBDer
+options:
+  bundleIdPrefix: org.ibder
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: false
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    CODE_SIGNING_ALLOWED: NO
+
+targets:
+  IBDer:
+    type: application
+    platform: iOS
+    sources:
+      - path: IBDer
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.ibder.app
+        PRODUCT_NAME: IBDer
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: IBDer
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        SUPPORTS_MACCATALYST: NO
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: ""
+    info:
+      path: IBDer/Info.plist
+      properties:
+        CFBundleDevelopmentRegion: zh-Hans
+        CFBundleLocalizations: [zh-Hans, en]
+  IBDerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: IBDerTests
+    dependencies:
+      - target: IBDer
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.ibder.app.tests
+
+schemes:
+  IBDer:
+    build:
+      targets:
+        IBDer: all
+        IBDerTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - IBDerTests

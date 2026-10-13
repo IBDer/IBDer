@@ -1,88 +1,98 @@
 # Agent working agreement
 
-Every AI agent working in this repository starts here. **Read this file before doing anything.**
+Every agent working in this repository starts here. Read it before doing anything.
 
-## 1. Authority order (the only one)
+## 1. Authority order
 
-When two sources conflict, the lower number wins:
+Lower number wins:
 
 1. The user's current instruction
 2. Public rules in [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/research](https://github.com/IBDer/research) that **a human has verified**
 3. Accepted ADRs in `docs/adr/` and the current spec in `openspec/specs/`
-4. Decisions in [project-context](https://github.com/IBDer/project-context) that **the maintainer has confirmed**
-5. Re-verified primary sources (clinical guidelines, regulators, platform policy)
+4. Confirmed decisions in [project-context](https://github.com/IBDer/project-context)
+5. Re-verified primary sources (guidelines, regulators, platform policy)
 6. Unverified drafts, historical material, private research
 
-> **This table is the only authority order.** `project-context/AGENTS.md` refers to it instead of defining its own (unified 2026-10-12).
->
-> **Unverified = lead only.** Check the status column in [docs/inherited-documents.md](docs/inherited-documents.md). A document that is not verified may not be used as a basis for implementation, and may not be cited as "already decided".
+**Unverified = lead only.** Status lives in [docs/inherited-documents.md](docs/inherited-documents.md).
 
-## 2. Reading order
+## 2. Where things live
 
-1. This file
-2. [CONTEXT.md](CONTEXT.md) — identifiers come from here
-3. [docs/process/workflow.md](docs/process/workflow.md) — how a change moves
-4. The `docs/` files and `openspec/specs/` relevant to the task
+| The question | The file |
+| --- | --- |
+| How do I work here? | this file |
+| What does this word mean? | [CONTEXT.md](CONTEXT.md) |
+| Why was this decided? | [docs/adr/](docs/adr/) |
+| What does the system do? | [openspec/specs/](openspec/specs/) |
+| Who reviews what? | [docs/process/review-gates.md](docs/process/review-gates.md) |
+| Can I trust this old document? | [docs/inherited-documents.md](docs/inherited-documents.md) |
 
-## 3. Medical boundary: decide first, implement second
+Everything else is superseded: [docs/archive/](docs/archive/).
 
-**This repository does not preset medical red lines** (see [ADR-0008](docs/adr/0008-no-standing-red-lines.md)). Constraints are decided per feature and recorded as their own ADR.
+**One entry point.** Never add `CLAUDE.md`, `.cursorrules` or a tool-specific copy — every tool reads this file, and copies only drift. A rule belongs here only if **every session needs it**; otherwise it becomes a skill (loaded when its description matches) or a document (read when relevant).
 
-The following must be **explicitly decided by a human maintainer before implementation** — do not build first and ask later:
-
-- diagnosis, individualised treatment advice, telemedicine, emergency triage
-- disease-activity scores, and verdict-style output such as "remission / active / flare"
-- causal claims linking food to symptoms
-- patient-community UGC
-- names, wording, images, or translations of clinical scales
-
-One test settles it: **is the output a fact the patient recorded, or a conclusion the product reached?** Facts can be built. Conclusions get decided first.
-
-## 4. Data and privacy
-
-- **Synthetic data only.** Real or identifiable patient data must never enter the repository, issues, discussions, logs, screenshots, or any third-party AI service.
-- The app must not report health content to crash or analytics SDKs.
-- Do not add a dependency that sends health data off the device without an explicit decision.
-
-## 5. Sourcing discipline
-
-- Text from the private research repository must **not** be copied into this repository. Re-verify public sources, write it in your own words, and state the uncertainty.
-- Distinguish **fact / interpretation / product hypothesis / project decision**. Never present the last three as the first.
-- For regulation and policy, cite official sources only, and record region, validity period, and verification date.
-
-## 6. Workflow (OpenSpec is the single source of truth)
+## 3. Code layout
 
 ```
-grilling / explore      think it through
-  -> openspec change    proposal + delta spec + tasks
-      -> [GATE 1: human reviews the spec]      <- no implementation before this
-          -> implement (TDD)
-              -> PR with CI evidence
-                  -> [GATE 2: human reviews the code] -> merge -> archive
+IBDer/
+  App/            assembly, navigation, dependency injection
+  Features/       one folder per capability, plural names
+  Domain/         entities, rules, use cases — imports neither SwiftUI nor SwiftData
+  Data/           persistence, export
+  DesignSystem/   Tokens/ and Components/
+IBDerTests/
 ```
 
-- **OpenSpec is the authority on what the system does.** GitHub Issues is a board; it does not carry spec.
-- If an issue and a spec disagree, `openspec/` wins.
-- A change that has not passed gate 1 must not be implemented.
+Dependencies point downwards only.
 
-## 7. Commits and review
+## 4. Decide first, implement second
 
-- One change per branch: `change/<change-name>`. Docs-only work: `docs/<topic>`.
-- Every PR carries: the linked OpenSpec change, what changed, why, CI result, risk and rollback.
-- Never commit on top of a red CI.
-- Humans merge; agents do not merge and do not tag.
-- Tag each archived change.
-- **Co-author trailer**: agent-assisted work ends its commit message with
-  `Co-authored-by: ConceptWei <60024976+ConceptWei@users.noreply.github.com>`.
-- **Commit messages, PR bodies, and issues are written in English** (ADR-0011).
+This repository presets no medical red lines (ADR-0008). The maintainer decides these **before**
+implementation: diagnosis / treatment advice / telemedicine / triage; disease-activity scores and
+verdicts such as "remission / active / flare"; food-to-symptom causation; patient-community UGC;
+clinical scale names, wording, images, translations.
 
-## 8. Language
+The test: **is the output a fact the patient recorded, or a conclusion the product reached?**
 
-- **English everywhere**: documentation, ADRs, OpenSpec specs, code identifiers, code comments, commit messages, PRs, issues, branch names (ADR-0011).
-- **Only exception**: user-facing product strings. The app ships `zh-Hans`; those live in the String Catalog, never in docs, comments, or code literals.
-- Identifiers come from [CONTEXT.md](CONTEXT.md).
-- New project content is never written in Chinese.
+## 5. Data and privacy
 
-## 9. AI disclosure
+- **Synthetic data only.** Never real or identifiable patient data — not in the repository, issues, logs, screenshots, or any third-party AI service.
+- No health content in crash or analytics SDKs.
+- No dependency that moves health data off the device without a decision.
 
-When AI drafts anything material — a rule, a requirement, a design decision — that must be traceable and stated in the PR. Final responsibility rests with the human maintainer. Public content follows the organisation template.
+## 6. Sourcing
+
+- Never copy text from the private research repository. Re-verify, rewrite, state the uncertainty.
+- Distinguish fact / interpretation / hypothesis / decision.
+- For rules and policy: official sources only, with region, validity, and verification date.
+
+## 7. Language
+
+English everywhere — docs, ADRs, specs, identifiers, comments, commit messages, PRs, issues, branch
+names (ADR-0011). The single exception is the `zh-Hans` product strings in the String Catalog.
+
+## 8. Work
+
+- **Spec first**: `openspec/changes/<name>/`, then [gate 1](docs/process/review-gates.md), then code.
+- Branches: `change/<name>`, `impl/<name>`, `docs/<topic>`.
+- **Test first where the risk is real**: counting, completeness, date windows, plan/fact boundaries, export and restore.
+- Style is enforced by tools, not by memory: `swiftformat --lint . && swiftlint --strict`.
+- Design work follows the `ibder-design` skill; every UI change follows `visual-acceptance`.
+- Commit messages end with:
+  `Co-authored-by: ConceptWei <60024976+ConceptWei@users.noreply.github.com>`
+
+## 9. Review
+
+- **Write every PR for someone who does not read code**: what changed, what to look at, what is deliberately not in it — plus screenshots for anything visible.
+- **Never ask the maintainer to read code or a long document.** If a decision can only be shown in code, make it visible in behaviour instead.
+- Humans merge and tag; agents do not.
+- Never commit on a red CI.
+
+## 10. What the maintainer decides
+
+Four things, and only four: **how it looks and behaves**; **what we say publicly**; **money and law**
+(accounts, filing, licensing); **anything inside §4**. Everything else the agent decides and records as
+an ADR.
+
+## 11. AI disclosure
+
+Material drafted by AI is traceable and stated in the PR. The human maintainer is accountable.
