@@ -21,12 +21,27 @@ VERDICT_WORDS = ["remission", "flare", "disease activity", "severity score", "ri
 VERDICT_IDENTIFIERS = ["diseaseActivity", "remission", "flare", "severityScore", "riskPrediction"]
 
 
-def tracked_files(suffix=None):
-    out = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True, text=True, check=True)
-    files = [f for f in out.stdout.splitlines() if not f.endswith(BINARY_SUFFIXES)]
-    if suffix:
-        files = [f for f in files if f.endswith(suffix)]
-    return files
+SKIP_DIRS = (".git", "node_modules", ".build", "build", "IBDer.xcodeproj", "DerivedData", ".swiftpm")
+# The archive is provenance, not policy: it is allowed to be stale, foreign, or Chinese.
+EXEMPT_PREFIXES = ("docs/archive/",)
+
+
+def tracked_files(suffix=None, include_archive=False):
+    """Walk the working tree, not git: a file that is not staged yet is exactly the file
+    that breaks CI five minutes later."""
+    found = []
+    for path in ROOT.rglob("*"):
+        if not path.is_file() or path.is_symlink():
+            continue
+        rel = path.relative_to(ROOT).as_posix()
+        if rel.split("/")[0] in SKIP_DIRS or rel.endswith(BINARY_SUFFIXES):
+            continue
+        if not include_archive and rel.startswith(EXEMPT_PREFIXES):
+            continue
+        if suffix and not rel.endswith(suffix):
+            continue
+        found.append(rel)
+    return sorted(found)
 
 
 def read(rel):
