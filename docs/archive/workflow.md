@@ -25,7 +25,7 @@
 **Implementation must not start before gate 1 is passed.** This is the rule most easily broken in this repository, and the one with the highest rework cost.
 
 What the maintainer is asked to judge — and what machines prove instead — is in
-[review-gates.md](review-gates.md).
+[review-gates.md](../process/review-gates.md).
 
 ## Gate 1 review checklist
 

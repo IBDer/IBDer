@@ -1,54 +1,72 @@
-# Process: who reviews what, and how
+# Process: the loop
 
-**Status: draft, pending review.**
+**Status: current.** This is the only document that describes how work moves.
 
-The maintainer does not write or read Swift. This repository is built by agents, so the review model is
-built around what a human can actually judge: **the running product**. Everything else is proven by
-machines, or not claimed at all.
+## One picture
+
+```
+think        grilling / explore — no code, no spec
+  |
+specify      openspec change: proposal + delta spec + design + tasks
+  |
+[gate 1]     the maintainer reads a plain-language summary, plus a reference image if it is visual
+  |
+build        TDD; branch change/<name> or impl/<name>
+  |
+self-check   the agent looks at the result against the acceptance criteria and fixes it first
+  |
+[gate 2]     the maintainer looks at screenshots, or a short recording — never at code
+  |
+merge        a human merges and tags
+  |
+archive      openspec archive — the delta merges into the main spec
+```
+
+**Implementation must not start before gate 1 is passed.** It is the rule most easily broken here, and
+the one with the highest rework cost.
 
 ## The two human gates
 
-| Gate | When | What the maintainer sees | What they answer |
+| Gate | When | What the maintainer sees | They answer |
 | --- | --- | --- | --- |
-| **Gate 1 — requirements** | before code | a plain-language summary of what will exist and what will not, plus a reference image where the change is visual | yes / no / change this |
-| **Gate 2 — the product** | after code | screenshots, or a short screen recording, of the running app, plus one line on what changed | yes / no / change this |
+| **1 — requirements** | before code | a plain-language summary of what will exist and what will not, plus a reference image where the change is visual | yes / no / change this |
+| **2 — the product** | after code | screenshots or a short recording of the running app, plus one line on what changed | yes / no / change this |
 
 **A gate is never a code review.** The maintainer is not asked to read Swift, diffs, or long documents.
-If a slice cannot be shown as a screenshot or a demo, it does not get its own gate — see the batching
-rule below.
+
+## The self-check comes before gate 2
+
+Before asking for review the agent runs the `visual-acceptance` skill: open the app, look at the result
+against the acceptance criteria, **fix what it finds**, and only then hand over the before/after pair.
+The maintainer's time is spent on what survives that.
+
+## Batching: invisible work does not get its own gate
+
+A slice with no visible surface — domain model, persistence, CI, a refactor — is proven by tests alone
+and reported in **one line** ("the event envelope is in, 23 tests, CI green"). Do not ask for a review.
+
+**Cap: no more than ~600 lines of unreviewed code may accumulate.** When invisible work reaches that,
+it ships together with the next slice that has something to look at.
 
 ## What machines prove instead
 
 | Concern | Proven by |
 | --- | --- |
-| It compiles and the tests pass | CI on a macOS runner (`.github/workflows/ci.yml`) |
-| The style rules hold | SwiftLint / SwiftFormat in CI |
-| The change matches the spec | the two-axis review (`code-review`) that the agent runs **before** asking for review; the outcome is reported in one line |
-| No health content in logs, no score on screen | the self-check list in the PR template, checked by the agent |
-
-A slice with **no visible surface** — domain model, persistence, CI, a refactor — is verified by tests
-alone. The agent reports it in **one line** ("the event envelope is in, 23 tests, CI green") and does not
-ask for a review. Only slices with something to look at interrupt the maintainer.
+| It compiles, tests pass | CI on a macOS runner |
+| Style | `swiftformat --lint` and `swiftlint --strict` in CI |
+| Documentation integrity | `scripts/check-docs.py` in CI: links resolve, no rule is stated twice, the conclusions vocabulary stays out, Chinese stays in the String Catalog, AGENTS.md stays under its cap |
+| The change matches the spec | `openspec validate` in CI, plus the two-axis `code-review` the agent runs before asking |
+| The interface did not silently change | snapshot tests — every UI change surfaces a PNG in the pull request |
 
 ## Rules for agents
 
-1. **Every UI slice ends with screenshots.** Store them under
-   `docs/design/review/<date>-<slice>/` with a short README, and say in the PR which states they show.
-2. **Ask concrete questions.** Three or four, not "please review". Bad: "review the Today screen".
-   Good: "can you tell in one second what today contains?"
-3. **Write PR descriptions for a non-programmer**: at most three short sections — what changed, what to
-   look at, what is deliberately not in it. No file lists, no test names, no diff summaries.
-4. **Never ask the maintainer to read code.** If a decision can only be explained by code, make the
-   decision visible instead — a screenshot, or one sentence describing the difference in behaviour.
-5. **Batch invisible work.** If a slice produces nothing to look at, it ships together with the next
-   slice that does.
+1. Every UI slice ends with screenshots under `docs/review/<date>-<slice>/`, plus three or four concrete questions in the PR — never "please review".
+2. Write PR descriptions for a non-programmer: what changed, what to look at, what is deliberately not in it.
+3. Never ask the maintainer to read code. If a decision can only be shown in code, make it visible in behaviour instead.
+4. If a rule can be executed by a machine, execute it — do not write it down. Prose is for what machines cannot check.
 
 ## What this costs
 
-- **A visual-first order.** Screens come before the data layer beneath them, fed by synthetic data that
-  is clearly marked. Expect rework when the real model lands; that is the accepted price of reviewing
-  what actually matters.
-- **Screenshots go stale.** They are review artifacts, not product assets. They are replaced when the
-  screen changes, never maintained.
-- **The agent carries more of the correctness burden**, because a human no longer checks it. That is why
-  CI and the tests are mandatory rather than advisory.
+- Visual-first order: screens come before the layer beneath them, fed by clearly marked synthetic data. Rework when the real model lands is the accepted price.
+- Screenshots go stale. They are review artifacts, not product assets.
+- The agent carries more of the correctness burden, which is why CI and tests are mandatory rather than advisory.

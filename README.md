@@ -49,8 +49,8 @@ Public rules from [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/r
 | How agents work in this repository | [AGENTS.md](AGENTS.md) |
 | Domain terminology (identifiers and definitions) | [CONTEXT.md](CONTEXT.md) |
 | Why it was decided this way | [docs/adr/](docs/adr/) |
-| Engineering conventions (architecture / style / naming / logging) | [docs/engineering/](docs/engineering/) |
-| Design specifications (color / motion / accessibility) | [docs/design/](docs/design/) |
+| How the work moves (the loop, the two gates) | [docs/process/review-gates.md](docs/process/review-gates.md) |
+| Superseded documents, kept for provenance | [docs/archive/](docs/archive/) |
 | Process (OpenSpec / review / testing / CI) | [docs/process/](docs/process/) |
 | Current system behavior (single source of truth) | [openspec/specs/](openspec/specs/) |
 | Changes in progress | [openspec/changes/](openspec/changes/) |

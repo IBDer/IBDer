@@ -11,6 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Documentation integrity
+        run: python3 scripts/check-docs.py
+
+      - name: Validate the specs
+        run: |
+          brew install openspec
+          openspec validate --all --strict
+
       - name: Generate the Xcode project
         id: detect
         run: |

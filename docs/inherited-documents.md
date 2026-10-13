@@ -40,6 +40,6 @@ For each document, the human maintainer gives one of three conclusions:
 | If this one is discarded or rewritten | What must be changed along with it |
 | --- | --- |
 | The four red lines in `SAFETY.md` | It has been decided to **not preset** them, per [ADR-0008](adr/0008-no-standing-red-lines.md); reference them later when each one is decided |
-| `legacy-domain-language.md` | All terminology in [CONTEXT.md](../CONTEXT.md), and the suffix table and prohibited words in [naming.md](engineering/naming.md) |
-| `brand-direction.md` | The color direction in [design-tokens.md](design/design-tokens.md) |
-| The Planning standard in `rebuild-brief.md` | Gate 1 in [workflow.md](process/workflow.md) |
+| `legacy-domain-language.md` | All terminology, the suffix table and the prohibited words in [CONTEXT.md](../CONTEXT.md) |
+| `brand-direction.md` | The palette in `IBDer/DesignSystem/Tokens/DesignTokens.swift` (ADR-0010) |
+| The Planning standard in `rebuild-brief.md` | Gate 1 in [review-gates.md](process/review-gates.md) |
