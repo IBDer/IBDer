@@ -112,6 +112,19 @@ def check_unique_doc_names():
     return [f"{name}: {', '.join(paths)}" for name, paths in seen.items() if len(paths) > 1]
 
 
+def check_backticked_paths():
+    """A repository path in backticks is a reference too, and the link check cannot see it."""
+    # Repository paths only. `IBDer/...` is excluded on purpose: the org name and the source
+    # directory share a prefix, and source paths are already checked by the compiler.
+    pattern = re.compile(r"`((?:docs|openspec|scripts|\\.github)/[A-Za-z0-9_./-]+)`")
+    bad = []
+    for rel in tracked_files(".md"):
+        for target in pattern.findall(read(rel)):
+            if not (ROOT / target.rstrip("/")).exists():
+                bad.append(f"{rel} -> {target}")
+    return bad
+
+
 def check_duplicate_rules():
     """A rule stated twice is a rule that will disagree with itself."""
     seen = defaultdict(set)
@@ -133,6 +146,7 @@ CHECKS = [
     ("no verdict words in UI text or identifiers", check_verdicts, True),
     ("one instruction entry point", check_no_second_entry_point, True),
     ("no document exists twice", check_unique_doc_names, True),
+    ("backticked paths exist", check_backticked_paths, True),
     ("no rule stated twice", check_duplicate_rules, False),
 ]
 

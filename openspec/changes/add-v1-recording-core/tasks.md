@@ -9,7 +9,7 @@ below are dependency order, not delivery order.
 | --- | --- | --- |
 | 1. Skeleton, tokens, lint, CI | 1.1-1.4 | done |
 | 2. The today screen, with a UI test and snapshot baselines | 4.1 | in review (PR #5) |
-| 3. The four recording forms, against an in-memory store | 4.2-4.4, 4.6 | next |
+| 3. The four recording forms, against an in-memory store | 4.7-4.9, 4.2-4.3 | next |
 | 4. The event envelope and persistence, replacing the stub | 2.1-2.5, 3.1-3.4 | after 3 |
 | 5. The biologic schedule and reminders | 5.1-5.7, 6.1-6.3 | after 4 |
 | 6. The visit summary and its export | 7.1-7.4 | last |
@@ -18,8 +18,8 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 ## 1. Project skeleton
 
-- [x] 1.1 Create the iOS app target (SwiftUI, iOS 18+) with the folder layout from docs/engineering/architecture.md — verify: builds for the iOS Simulator and runs with an empty root view
-- [x] 1.2 Add the DesignSystem token module with the values from docs/design/design-tokens.md — verify: a unit test asserts every token equals the documented value
+- [x] 1.1 Create the iOS app target (SwiftUI, iOS 18+) with the folder layout from AGENTS.md §3 — verify: builds for the iOS Simulator and runs with an empty root view
+- [x] 1.2 Add the DesignSystem token module with the values from `IBDer/DesignSystem/Tokens/DesignTokens.swift` — verify: a unit test asserts every token equals the documented value
 - [x] 1.3 Add SwiftLint/SwiftFormat configuration and wire it into CI — verify: CI fails on a deliberately introduced force-unwrap
 - [x] 1.4 Add the test targets and a CI job that runs unit tests on a simulator — verify: CI is green on an empty test suite
 
@@ -35,7 +35,7 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 - [ ] 3.1 Model the entities in SwiftData and write the mapping from domain types — verify: an in-memory store round-trips every entity with completeness and history intact
 - [ ] 3.2 Prove the no-null-conflation rule at the storage layer — verify: a test writes every completeness state and reads back the same value
-- [ ] 3.3 Record the persistence ADR required by docs/engineering/architecture.md — verify: docs/adr contains the SwiftData decision with the rejected alternatives
+- [ ] 3.3 Record the persistence ADR required by AGENTS.md §3 — verify: docs/adr contains the SwiftData decision with the rejected alternatives
 - [ ] 3.4 Add schema-migration coverage before the schema changes twice — verify: a test opens a store created with the previous schema shape
 
 ## 4. Recording a day (event-recording)
@@ -46,6 +46,9 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 - [ ] 4.4 Build the daily confirmation with totals, worst symptoms, and per-type completeness — verify: an XCUITest confirms a day with zero events and reads it back as explicit zero
 - [ ] 4.5 Make the primary recording action reachable one-handed at the largest Dynamic Type — verify: manual check at the largest type size, recorded in the PR
 - [ ] 4.6 Implement the fixed symptom set in the daily confirmation — verify: a test asserts every item can be left as "not recorded" and that a symptom outside the set cannot be added
+- [ ] 4.7 Build the toilet event form (what passed, when) — verify: an XCUITest records one in two taps
+- [ ] 4.8 Build the meal record form (description or supplement, no photo in v1) — verify: an XCUITest records one in two taps
+- [ ] 4.9 Build the medication record form (actual dose, actual time) — verify: an XCUITest records one in two taps
 
 ## 5. Biologic schedule
 
@@ -71,8 +74,8 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 ## 8. Verification and quality gates
 
-- [ ] 8.1 Accessibility pass: VoiceOver labels, contrast, Reduce Motion, largest type — verify: docs/design/accessibility.md checklist completed in the PR
-- [ ] 8.2 Confirm no surface computes a score, severity, or verdict — verify: a grep for the forbidden vocabulary in UI strings returns nothing (docs/engineering/naming.md)
+- [ ] 8.1 Accessibility pass: VoiceOver labels, contrast, Reduce Motion, largest type — verify: the accessibility checklist in the `ibder-design` skill completed in the PR
+- [ ] 8.2 Confirm no surface computes a score, severity, or verdict — verify: a grep for the forbidden vocabulary in UI strings returns nothing (CONTEXT.md, Vocabulary discipline)
 - [ ] 8.3 Confirm no health content reaches logs — verify: the app log for a full synthetic session contains no field values
 - [ ] 8.4 Confirm clinical wording is flagged for review — verify: every string about blood, pain, urgency, night waking, or care-seeking is listed in the PR as pending clinical review
 

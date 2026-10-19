@@ -58,6 +58,21 @@ it ships together with the next slice that has something to look at.
 | The change matches the spec | `openspec validate` in CI, plus the two-axis `code-review` the agent runs before asking |
 | The interface did not silently change | snapshot tests — every UI change surfaces a PNG in the pull request |
 
+## The item loop: how one Issue gets done
+
+Every Issue is one turn of this loop. Nothing skips step 1.
+
+1. **Grill** — the `grilling` skill. Three to five questions, each with a recommended answer. The
+   answers are the decision; write them down before touching code.
+2. **Specify** — `openspec update change`: the decisions become requirement or scenario changes in the
+   capability they belong to. A decision that constrains future work also becomes an ADR.
+3. **Build** — `tdd` for the logic, `ibder-design` for the screen.
+4. **Self-check** — `visual-acceptance`: screenshot it, compare with the scenarios, fix what is wrong.
+5. **Hand over** — PR with `Closes #N`, the screenshots, and three concrete questions.
+6. **Fix or merge** — "no" returns to step 1 or 3; "yes" merges and closes the Issue.
+
+An Issue is not started until step 1 has happened, and not closed until step 5 was reviewed.
+
 ## Rules for agents
 
 1. Every UI slice ends with screenshots under `docs/review/<date>-<slice>/`, plus three or four concrete questions in the PR — never "please review".

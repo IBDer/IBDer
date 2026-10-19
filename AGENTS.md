@@ -25,10 +25,10 @@ Lower number wins:
 | What does the system do? | [openspec/specs/](openspec/specs/) |
 | Who reviews what? | [docs/process/review-gates.md](docs/process/review-gates.md) |
 | Can I trust this old document? | [docs/inherited-documents.md](docs/inherited-documents.md) |
-| What is waiting on me? | [docs/pending.md](docs/pending.md) |
+| What is waiting on me? | the [needs-decision issues](https://github.com/IBDer/IBDer/issues?q=is%3Aissue+is%3Aopen+label%3Aneeds-decision) |
 | Where are we right now? | `scripts/handoff.sh` — generated, never stale |
 
-Everything else is superseded: [docs/archive/](docs/archive/).
+Anything else that looks like a rule is history: the five places above are the whole of it.
 
 **One entry point.** Never add `CLAUDE.md`, `.cursorrules` or a tool-specific copy — every tool reads this file, and copies only drift. A rule belongs here only if **every session needs it**; otherwise it becomes a skill (loaded when its description matches) or a document (read when relevant).
 
@@ -74,6 +74,7 @@ names (ADR-0011). The single exception is the `zh-Hans` product strings in the S
 
 ## 8. Work
 
+- **Issue first**: every slice starts as a GitHub Issue; the PR body says `Closes #N`.
 - **Spec first**: `openspec/changes/<name>/`, then [gate 1](docs/process/review-gates.md), then code.
 - Branches: `change/<name>`, `impl/<name>`, `docs/<topic>`.
 - **Test first where the risk is real**: counting, completeness, date windows, plan/fact boundaries, export and restore.

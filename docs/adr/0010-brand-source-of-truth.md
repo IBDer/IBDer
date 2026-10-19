@@ -7,7 +7,7 @@
 
 The status of `project-context/decisions/brand-direction.md` says "logo deferred", and its primary color direction is described as terracotta / apricot / cocoa / aubergine. But the organization enabled a new logo and homepage banner on **2026-10-10** (commit message `brand: replace profile banner with new IBDer logo`).
 
-The two correspond only partially, which leaves `docs/design/design-tokens.md` with "two sources of truth".
+The two correspond only partially, which leaves the token file with "two sources of truth".
 
 ## Decision
 
@@ -19,6 +19,6 @@ The "warm terracotta / apricot / cocoa / aubergine" description and the "logo de
 
 ## Consequences
 
-- The brand colors in `docs/design/design-tokens.md` match these, and a second source is no longer needed.
+- The brand colors in `IBDer/DesignSystem/Tokens/DesignTokens.swift` match these, and a second source is no longer needed.
 - The **logo prohibition list and tone words** in `brand-direction.md` **remain in effect** — they constrain future icon work and do not lapse because the logo was changed.
 - If brand assets are changed again in the future, update this ADR rather than adding a parallel source of truth.
