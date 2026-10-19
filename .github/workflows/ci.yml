@@ -11,15 +11,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Detect Xcode project
+      - name: Documentation integrity
+        run: python3 scripts/check-docs.py
+
+      - name: Validate the specs
+        run: |
+          brew install openspec
+          openspec validate --all --strict
+
+      - name: Generate the Xcode project
         id: detect
         run: |
-          if ls *.xcodeproj *.xcworkspace >/dev/null 2>&1; then
+          if [ -f project.yml ]; then
+            brew install xcodegen
+            xcodegen generate
             echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "Found Xcode project."
+            echo "Generated IBDer.xcodeproj from project.yml."
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
-            echo "No Xcode project yet - skipping build (skeleton phase)."
+            echo "No project.yml yet - skipping build."
           fi
 
       - name: Show toolchain

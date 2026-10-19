@@ -2,7 +2,7 @@
 
 **Status: draft, pending human review.** Every term below was extracted from an unverified draft (see [docs/inherited-documents.md](docs/inherited-documents.md)); until the maintainer confirms it, this table is a **proposal**, not a decision.
 
-**While it is pending it is still the working vocabulary**: code uses these identifiers, and changing one is a normal pull request against this file. That is what [naming.md](docs/engineering/naming.md) means by "identifiers come from here" — it does not require this table to be finished before code exists.
+**While it is pending it is still the working vocabulary**: code uses these identifiers, and changing one is a normal pull request against this file. "Identifiers come from here" does not require this table to be finished before code exists.
 
 **Rule: code identifiers may only be taken from this table.** Add a new concept here before writing code that uses it. Synonyms are not allowed.
 
@@ -48,6 +48,19 @@
 | --- | --- | --- |
 | `ObjectiveTrend` | Counting, grouping, or showing change over time from raw records. **Infers no causality, activity, diagnosis, or treatment.** | health score, severity, risk prediction |
 | `VisitSummary` | Facts from a chosen period, for the patient to review or share. | diagnostic report, AI analysis |
+
+## Identifiers
+
+Code identifiers come from the identifier column above. One concept, one identifier, no synonyms.
+
+| Suffix | Means |
+| --- | --- |
+| `Plan` | an intention, in the future |
+| `Task` / `Appointment` | a pending instance produced by a plan |
+| `Record` / `Event` | a fact: something that happened |
+| `Confirmation` | the patient's statement about a period |
+| `Summary` | an output that contains no conclusion |
+| `Trend` | an `ObjectiveTrend` display |
 
 ## Vocabulary discipline
 
