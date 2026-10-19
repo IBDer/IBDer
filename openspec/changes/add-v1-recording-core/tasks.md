@@ -1,13 +1,27 @@
 # Tasks: v1 recording core
 
+## Slice order
+
+**Visual first**: what the maintainer can see ships before the layer beneath it. The group numbers
+below are dependency order, not delivery order.
+
+| Slice | Tasks | State |
+| --- | --- | --- |
+| 1. Skeleton, tokens, lint, CI | 1.1-1.4 | done |
+| 2. The today screen, with a UI test and snapshot baselines | 4.1 | in review (PR #5) |
+| 3. The four recording forms, against an in-memory store | 4.2-4.4, 4.6 | next |
+| 4. The event envelope and persistence, replacing the stub | 2.1-2.5, 3.1-3.4 | after 3 |
+| 5. The biologic schedule and reminders | 5.1-5.7, 6.1-6.3 | after 4 |
+| 6. The visit summary and its export | 7.1-7.4 | last |
+
 Every task states how it is verified. Tests use synthetic data only (AGENTS.md §4).
 
 ## 1. Project skeleton
 
-- [ ] 1.1 Create the iOS app target (SwiftUI, iOS 18+) with the folder layout from docs/engineering/architecture.md — verify: builds for the iOS Simulator and runs with an empty root view
-- [ ] 1.2 Add the DesignSystem token module with the values from docs/design/design-tokens.md — verify: a unit test asserts every token equals the documented value
-- [ ] 1.3 Add SwiftLint/SwiftFormat configuration and wire it into CI — verify: CI fails on a deliberately introduced force-unwrap
-- [ ] 1.4 Add the test targets and a CI job that runs unit tests on a simulator — verify: CI is green on an empty test suite
+- [x] 1.1 Create the iOS app target (SwiftUI, iOS 18+) with the folder layout from docs/engineering/architecture.md — verify: builds for the iOS Simulator and runs with an empty root view
+- [x] 1.2 Add the DesignSystem token module with the values from docs/design/design-tokens.md — verify: a unit test asserts every token equals the documented value
+- [x] 1.3 Add SwiftLint/SwiftFormat configuration and wire it into CI — verify: CI fails on a deliberately introduced force-unwrap
+- [x] 1.4 Add the test targets and a CI job that runs unit tests on a simulator — verify: CI is green on an empty test suite
 
 ## 2. Domain model (no UI, no persistence)
 
@@ -26,7 +40,7 @@ Every task states how it is verified. Tests use synthetic data only (AGENTS.md �
 
 ## 4. Recording a day (event-recording)
 
-- [ ] 4.1 Build the recording screen with the four peer entry points (three daily types + infusion) — verify: an XCUITest records one of each in one tap each
+- [ ] 4.1 Build the recording screen with the four peer entry points (three daily types + infusion) — verify: an XCUITest asserts all four entry points exist and are hittable in one tap (recording itself is verified in 4.2-4.4)
 - [ ] 4.2 Build the day view with the event list and the empty state — verify: the empty state names the next action rather than showing a bare illustration
 - [ ] 4.3 Build event detail and edit — verify: editing keeps both timestamps and shows the backfill marker
 - [ ] 4.4 Build the daily confirmation with totals, worst symptoms, and per-type completeness — verify: an XCUITest confirms a day with zero events and reads it back as explicit zero

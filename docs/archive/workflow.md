@@ -14,15 +14,18 @@
 ```
 1. Think it through   grilling / explore (no code, no spec)
 2. Write the change   openspec propose → proposal + delta spec + tasks
-3. [Gate 1]           A human reviews the spec: requirements, non-goals, acceptance criteria, privacy and safety impact
+3. [Gate 1]           The maintainer reads a plain-language summary, plus a reference image where the change is visual
 4. Implement          TDD; one change one branch change/<name>
-5. Open a PR          openspec change link + what changed + CI result + risks and rollback
-6. [Gate 2]           A human reviews the code
+5. Open a PR          screenshots or a demo + a one-line statement of what changed
+6. [Gate 2]           The maintainer looks at the running product, never at the code
 7. Merge              performed by a human
 8. Archive            archive → delta merged into the main spec; tag
 ```
 
 **Implementation must not start before gate 1 is passed.** This is the rule most easily broken in this repository, and the one with the highest rework cost.
+
+What the maintainer is asked to judge — and what machines prove instead — is in
+[review-gates.md](../process/review-gates.md).
 
 ## Gate 1 review checklist
 
