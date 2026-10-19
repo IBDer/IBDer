@@ -16,14 +16,17 @@ final class TodaySnapshotTests: XCTestCase {
     /// A fixed day, so the header text is stable.
     private let day = Date(timeIntervalSince1970: 1_791_000_000) // 2026-10-03, 09:20 UTC+8
 
-    /// Pixel comparison only means something on the machine that recorded the baselines.
-    /// A CI runner has a different simulator build, so it renders different pixels for the same
-    /// view — comparing there would fail without anything being wrong. CI still builds the target;
-    /// the baselines stay in git, where a reviewer sees them in the pull request diff.
+    /// The runtime the baselines belong to. Font rendering and a few control metrics change
+    /// between iOS releases, so the same view produces different pixels on 26.5 and 27.0 -
+    /// comparing across them fails with nothing wrong. Comparison therefore happens only on the
+    /// recording runtime; elsewhere the target still builds and the tests skip.
+    private static let recordedOSMajor = 27
+
     override func setUpWithError() throws {
+        let major = ProcessInfo.processInfo.operatingSystemVersion.majorVersion
         try XCTSkipIf(
-            ProcessInfo.processInfo.environment["CI"] != nil,
-            "Snapshots are recorded and compared on a fixed simulator, not on the CI runner."
+            major != Self.recordedOSMajor,
+            "Baselines belong to iOS \(Self.recordedOSMajor); this runtime is iOS \(major)."
         )
     }
 
