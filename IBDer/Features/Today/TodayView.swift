@@ -3,11 +3,13 @@ import SwiftUI
 /// The home screen. Three things, in this order: which day it is, what was recorded,
 /// and the ways to record more. Facts only — no score, no verdict (ADR-0009).
 struct TodayView: View {
-    @State private var day = Date()
+    @State private var day: Date
     @State private var events: [RecordedEvent]
 
-    init(events: [RecordedEvent] = RecordedEvent.launchSample) {
+    /// `day` is injectable so a snapshot can pin the date; otherwise every baseline changes daily.
+    init(events: [RecordedEvent] = RecordedEvent.launchSample, day: Date = .now) {
         _events = State(initialValue: events)
+        _day = State(initialValue: day)
     }
 
     private static let dayFormatter: DateFormatter = {
