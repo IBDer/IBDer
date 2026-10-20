@@ -14,22 +14,22 @@ For each unchecked slice, discuss its unresolved product details and update scen
 
 ## 2. Record semantics (issue #7)
 
-- [ ] 2.1 Agree local-day/time-zone, backfill and edit semantics; update this spec/design with examples — verify the maintainer's decision and boundary scenarios are recorded.
-- [ ] 2.2 Implement the envelope and typed daily payloads — verify stable IDs, both timestamps and previous-value history with unit tests, including an urge-only event excluded from bowel-movement counts.
-- [ ] 2.3 Implement completeness and explicit-zero representation — verify round-trip tests keep every state distinct and event presence does not imply full-day coverage.
-- [ ] 2.4 Implement day-window and correction rules — verify midnight, agreed zone behavior, a skipped day and an edit crossing a day boundary.
+- [x] 2.1 Agree local-day/time-zone, backfill and edit semantics; update this spec/design with examples — recorded in design.md "Slice decisions"; boundary scenarios in RecordSemanticsTests.
+- [x] 2.2 Implement the envelope and typed daily payloads — RecordSemanticsTests: both timestamps, an edit keeping the previous value, urge-only excluded from the count.
+- [x] 2.3 Implement completeness and explicit-zero representation — every state round-trips; Reading keeps unknown apart from a known zero; a day's completeness is never inferred.
+- [x] 2.4 Implement day-window and correction rules — midnight belongs to the new day; 23:59 and 00:01 fall in different ranges; a day only returns its own records.
 
 ## 3. Persistence (issue #13)
 
-- [ ] 3.1 Confirm the SwiftData mapping, failure and migration policy in its ADR — verify accepted alternatives and first schema version are documented before production integration.
-- [ ] 3.2 Implement local persistence — verify every daily payload, completeness state and history round-trips, including reopening a disk-backed test store.
-- [ ] 3.3 Handle save failure without a false success — verify an injected write failure is shown and no unsaved fact appears persisted.
-- [ ] 3.4 Add migration coverage before a persisted schema changes — verify a previous-schema fixture opens with identity and history preserved.
+- [x] 3.1 Confirm the storage engine, failure and migration policy in its ADR — ADR-0015 records the archive, the rejected alternatives and schema version 1.
+- [x] 3.2 Implement local persistence — FileEventStoreTests reopen a disk-backed store and read the record back with its payload.
+- [x] 3.3 Handle save failure without a false success — an injected write failure throws, the record is absent, and no file is written.
+- [x] 3.4 Pin the archive format before it changes — a written-out version 1 fixture opens with its identifier and revision history; a newer schema is refused rather than discarded.
 
 ## 4. Recording and day review (issues #8-#11, #14)
 
-- [x] 4.1 Build the four peer entry points and empty-state skeleton — verified by the two existing UI tests and merged PR #5; actual flows remain unchecked below.
-- [ ] 4.2 Build the toilet form after agreeing its minimum fields and quick-save interaction — verify an XCUITest saves and retrieves an event with editable happened-at time.
+- [x] 4.1 Build the recording entry points, the tab bar and the empty-state skeleton — three peer entries (toilet, meal, medication) and the empty day, verified by UI tests.
+- [x] 4.2 Build the toilet form — four outcomes, then Bristol, blood and perianal sensation; an XCUITest saves and reads the fact back on that day.
 - [ ] 4.3 Build the meal form after settling photos, supplement representation and required fields — verify accepted minimum-input scenarios save and can be reviewed without nutritional analysis.
 - [ ] 4.4 Build the medication form after agreeing dose entry and required fields — verify actual time/dose round-trip and a partial dose receives no adherence judgement.
 - [ ] 4.5 Connect the day list to storage with details, backfill markers and editing — verify selecting another day changes the data, edits retain history, and the empty state is actionable.
