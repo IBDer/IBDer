@@ -22,7 +22,7 @@ body:
   - type: dropdown
     id: boundary
     attributes:
-      label: Whether it touches the "decide first, implement second" scope (AGENTS.md §3)
+      label: Whether it touches the "decide first, implement second" scope (AGENTS.md section 4)
       options:
         - "No"
         - "Yes — diagnosis / treatment advice / remote consultation"

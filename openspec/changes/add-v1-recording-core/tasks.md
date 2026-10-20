@@ -1,87 +1,49 @@
-# Tasks: v1 recording core
+# Tasks: daily recording and persistence
 
-## Slice order
+This change now owns only daily recording. PR #5 merged the skeleton and Today entry-point screen;
+that evidence completes 1.1-1.4 and 4.1, not the placeholder buttons' recording behavior.
+The original schedule, daily-confirmation and summary tasks moved into their own named changes.
+For each unchecked slice, discuss its unresolved product details and update scenarios before coding.
 
-**Visual first**: what the maintainer can see ships before the layer beneath it. The group numbers
-below are dependency order, not delivery order.
+## 1. Merged skeleton
 
-| Slice | Tasks | State |
-| --- | --- | --- |
-| 1. Skeleton, tokens, lint, CI | 1.1-1.4 | done |
-| 2. The today screen, with a UI test and snapshot baselines | 4.1 | in review (PR #5) |
-| 3. The four recording forms, against an in-memory store | 4.7-4.9, 4.2-4.3 | next |
-| 4. The event envelope and persistence, replacing the stub | 2.1-2.5, 3.1-3.4 | after 3 |
-| 5. The biologic schedule and reminders | 5.1-5.7, 6.1-6.3 | after 4 |
-| 6. The visit summary and its export | 7.1-7.4 | last |
+- [x] 1.1 Create the iOS app target — verified by the merged simulator build.
+- [x] 1.2 Add DesignSystem tokens — verified by the existing token unit tests.
+- [x] 1.3 Add SwiftFormat and SwiftLint in CI — verified by the merged CI runs.
+- [x] 1.4 Add unit, UI and snapshot targets — verified by their build and execution/skip reporting; snapshot runtime alignment remains an acceptance task below.
 
-Every task states how it is verified. Tests use synthetic data only (AGENTS.md §4).
+## 2. Record semantics (issue #7)
 
-## 1. Project skeleton
+- [ ] 2.1 Agree local-day/time-zone, backfill and edit semantics; update this spec/design with examples — verify the maintainer's decision and boundary scenarios are recorded.
+- [ ] 2.2 Implement the envelope and typed daily payloads — verify stable IDs, both timestamps and previous-value history with unit tests, including an urge-only event excluded from bowel-movement counts.
+- [ ] 2.3 Implement completeness and explicit-zero representation — verify round-trip tests keep every state distinct and event presence does not imply full-day coverage.
+- [ ] 2.4 Implement day-window and correction rules — verify midnight, agreed zone behavior, a skipped day and an edit crossing a day boundary.
 
-- [x] 1.1 Create the iOS app target (SwiftUI, iOS 18+) with the folder layout from AGENTS.md §3 — verify: builds for the iOS Simulator and runs with an empty root view
-- [x] 1.2 Add the DesignSystem token module with the values from `IBDer/DesignSystem/Tokens/DesignTokens.swift` — verify: a unit test asserts every token equals the documented value
-- [x] 1.3 Add SwiftLint/SwiftFormat configuration and wire it into CI — verify: CI fails on a deliberately introduced force-unwrap
-- [x] 1.4 Add the test targets and a CI job that runs unit tests on a simulator — verify: CI is green on an empty test suite
+## 3. Persistence (issue #13)
 
-## 2. Domain model (no UI, no persistence)
+- [ ] 3.1 Confirm the SwiftData mapping, failure and migration policy in its ADR — verify accepted alternatives and first schema version are documented before production integration.
+- [ ] 3.2 Implement local persistence — verify every daily payload, completeness state and history round-trips, including reopening a disk-backed test store.
+- [ ] 3.3 Handle save failure without a false success — verify an injected write failure is shown and no unsaved fact appears persisted.
+- [ ] 3.4 Add migration coverage before a persisted schema changes — verify a previous-schema fixture opens with identity and history preserved.
 
-- [ ] 2.1 Implement the event envelope value types (happened-at, recorded-at, type, completeness, edit history) — verify: unit tests cover backfill, edit, and history retention
-- [ ] 2.2 Implement the three daily event payloads (toilet, meal, medication) — verify: unit tests assert an urge-only event is excluded from bowel-movement counts
-- [ ] 2.3 Implement the completeness enum and the explicit-zero value — verify: unit tests assert zero and not-recorded are different values and neither serialises to the other
-- [ ] 2.4 Implement the three schedule entities with links and history — verify: unit tests assert a reschedule keeps the previous arrangement and that a dismissed reminder creates no fact
-- [ ] 2.5 Implement date-window rules for the local day, including midnight crossing — verify: unit tests cover midnight, a skipped day, and a day with an edited event
+## 4. Recording and day review (issues #8-#11, #14)
 
-## 3. Persistence
+- [x] 4.1 Build the four peer entry points and empty-state skeleton — verified by the two existing UI tests and merged PR #5; actual flows remain unchecked below.
+- [ ] 4.2 Build the toilet form after agreeing its minimum fields and quick-save interaction — verify an XCUITest saves and retrieves an event with editable happened-at time.
+- [ ] 4.3 Build the meal form after settling photos, supplement representation and required fields — verify accepted minimum-input scenarios save and can be reviewed without nutritional analysis.
+- [ ] 4.4 Build the medication form after agreeing dose entry and required fields — verify actual time/dose round-trip and a partial dose receives no adherence judgement.
+- [ ] 4.5 Connect the day list to storage with details, backfill markers and editing — verify selecting another day changes the data, edits retain history, and the empty state is actionable.
+- [ ] 4.6 Implement deletion after agreeing retention and undo behavior — verify the deleted record leaves active lists/counts and other facts remain unchanged.
+- [ ] 4.7 Verify largest text, VoiceOver and one-handed reachability — attach relevant captures and demonstrate all three recording flows remain completable.
 
-- [ ] 3.1 Model the entities in SwiftData and write the mapping from domain types — verify: an in-memory store round-trips every entity with completeness and history intact
-- [ ] 3.2 Prove the no-null-conflation rule at the storage layer — verify: a test writes every completeness state and reads back the same value
-- [ ] 3.3 Record the persistence ADR required by AGENTS.md §3 — verify: docs/adr contains the SwiftData decision with the rejected alternatives
-- [ ] 3.4 Add schema-migration coverage before the schema changes twice — verify: a test opens a store created with the previous schema shape
+## 5. Recording acceptance
 
-## 4. Recording a day (event-recording)
-
-- [ ] 4.1 Build the recording screen with the four peer entry points (three daily types + infusion) — verify: an XCUITest asserts all four entry points exist and are hittable in one tap (recording itself is verified in 4.2-4.4)
-- [ ] 4.2 Build the day view with the event list and the empty state — verify: the empty state names the next action rather than showing a bare illustration
-- [ ] 4.3 Build event detail and edit — verify: editing keeps both timestamps and shows the backfill marker
-- [ ] 4.4 Build the daily confirmation with totals, worst symptoms, and per-type completeness — verify: an XCUITest confirms a day with zero events and reads it back as explicit zero
-- [ ] 4.5 Make the primary recording action reachable one-handed at the largest Dynamic Type — verify: manual check at the largest type size, recorded in the PR
-- [ ] 4.6 Implement the fixed symptom set in the daily confirmation — verify: a test asserts every item can be left as "not recorded" and that a symptom outside the set cannot be added
-- [ ] 4.7 Build the toilet event form (what passed, when) — verify: an XCUITest records one in two taps
-- [ ] 4.8 Build the meal record form (description or supplement, no photo in v1) — verify: an XCUITest records one in two taps
-- [ ] 4.9 Build the medication record form (actual dose, actual time) — verify: an XCUITest records one in two taps
-
-## 5. Biologic schedule
-
-- [ ] 5.1 Build plan entry — verify: no default regimen, dose, or interval is offered anywhere in the flow
-- [ ] 5.2 Build the appointment list and lifecycle (confirm, reschedule, cancel) — verify: an XCUITest reschedules and sees both dates
-- [ ] 5.3 Build infusion recording linked to an appointment — verify: recording marks the appointment done and stores the record as a fact
-- [ ] 5.4 Build after-the-fact tolerability notes — verify: a note can be added after the infusion without changing its date
-- [ ] 5.5 Record an infusion in one tap from the recording entry points — verify: an XCUITest records an infusion in one tap
-- [ ] 5.6 Implement the pending task lifecycle (confirmed / postponed / skipped) — verify: a unit test asserts skipped and postponed tasks create no fact
-- [ ] 5.7 Prove an appointment is never counted as a received dose — verify: a unit test asserts a future appointment is absent from every received-dose count
-
-## 6. Reminders
-
-- [ ] 6.1 Schedule local notifications from pending appointments and tasks — verify: a test asserts one notification per pending item and none for completed ones
-- [ ] 6.2 Make dismissal create nothing and confirmation create the fact — verify: an XCUITest dismisses a reminder and asserts no record exists
-
-## 7. Visit summary
-
-- [ ] 7.1 Generate the period summary from facts and completeness — verify: a unit test over a synthetic period with gaps states the gaps and counts only recorded days
-- [ ] 7.2 Export the human-readable form — verify: the exported document opens and contains no conclusion wording
-- [ ] 7.3 Export the structured form with per-record provenance — verify: the file declares its format version, every record carries id / type / happened-at / recorded-at / completeness, and every figure maps back to a record
-- [ ] 7.4 Warn before sharing — verify: the warning appears before the share sheet in an XCUITest
-
-## 8. Verification and quality gates
-
-- [ ] 8.1 Accessibility pass: VoiceOver labels, contrast, Reduce Motion, largest type — verify: the accessibility checklist in the `ibder-design` skill completed in the PR
-- [ ] 8.2 Confirm no surface computes a score, severity, or verdict — verify: a grep for the forbidden vocabulary in UI strings returns nothing (CONTEXT.md, Vocabulary discipline)
-- [ ] 8.3 Confirm no health content reaches logs — verify: the app log for a full synthetic session contains no field values
-- [ ] 8.4 Confirm clinical wording is flagged for review — verify: every string about blood, pain, urgency, night waking, or care-seeking is listed in the PR as pending clinical review
+- [ ] 5.1 Align the existing snapshot runtime and baselines — verify required comparisons execute rather than silently skip; record any unavailable comparison explicitly.
+- [ ] 5.2 Provide development-signing and device-run instructions without committing credentials — verify a synthetic save, force-quit, relaunch and day-history exercise on the maintainer's phone.
+- [ ] 5.3 Verify shared-evidence hygiene — a synthetic recording/edit/delete session exposes no health field values in logs and contains no conclusive product copy.
 
 ## Workflow follow-up
 
-- Gate 1 review of this change before any implementation starts.
-- Gate 2 review of the implementation PR.
-- Archive the change and tag it.
-- Separate change: encrypted backup and restore (ADR-0003), required before real patient use.
+- M1 also requires add-biologic-schedule, add-objective-trends and cross-capability device acceptance.
+- Resolve the real-data backup gate in the delivery plan before using real patient records.
+- Verify this capability before syncing its spec; archive only after its own tasks and review are complete.

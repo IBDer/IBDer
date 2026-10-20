@@ -27,6 +27,7 @@ Lower number wins:
 | Can I trust this old document? | [docs/inherited-documents.md](docs/inherited-documents.md) |
 | What is waiting on me? | the [needs-decision issues](https://github.com/IBDer/IBDer/issues?q=is%3Aissue+is%3Aopen+label%3Aneeds-decision) |
 | Where are we right now? | `scripts/handoff.sh` — generated, never stale |
+| What belongs in each milestone? | [docs/process/delivery-plan.md](docs/process/delivery-plan.md) |
 
 Anything else that looks like a rule is history: the five places above are the whole of it.
 
@@ -75,7 +76,7 @@ names (ADR-0011). The single exception is the `zh-Hans` product strings in the S
 ## 8. Work
 
 - **Issue first**: every slice starts as a GitHub Issue; the PR body says `Closes #N`.
-- **Spec first**: `openspec/changes/<name>/`, then [gate 1](docs/process/review-gates.md), then code.
+- **Slice first**: before implementing or revising a capability, follow [the iteration loop](docs/process/review-gates.md); existing maintainer decisions count as authorization.
 - Branches: `change/<name>`, `impl/<name>`, `docs/<topic>`.
 - **Test first where the risk is real**: counting, completeness, date windows, plan/fact boundaries, export and restore.
 - Style is enforced by tools, not by memory: `swiftformat --lint . && swiftlint --strict`.

@@ -1,111 +1,121 @@
 # event-recording — delta
 
+## Purpose
+
+Record daily facts with their provenance and completeness, preserving them through edits, local storage and day-based review.
+
 ## ADDED Requirements
 
 ### Requirement: Peer event types
 
-The system SHALL record daily events of three types, treated as peers: toilet events, meals
-(including oral nutritional supplements), and medication actually taken. No type SHALL be presented as
-the primary purpose of the product. The three SHALL carry the same weight as the biologic schedule
-(`biologic-schedule`) — that split is by data shape, not by importance.
+The system SHALL offer medication, meal and toilet recording as peers, each reachable in one tap from
+the recording entry points. Event time SHALL default to now and be editable. These flows SHALL coexist
+with the biologic recording capability without implying a priority between types.
 
-#### Scenario: Recording any type costs one tap to start
-- **WHEN** the patient is on the recording screen
-- **THEN** each of the three daily event types is reachable in one tap
-- **AND** the time of the event defaults to now and can be changed
-
-#### Scenario: A type is added later without reshaping history
-- **WHEN** a new event type is introduced in a future change
-- **THEN** previously recorded events remain readable and unchanged
+#### Scenario: Starting a daily record
+- **WHEN** the patient chooses any daily type
+- **THEN** its recording flow opens from the shared entry points
+- **AND** its event time can be changed before saving
 
 ### Requirement: Shared event envelope
 
-Every recorded event SHALL carry: the time it happened, the time it was recorded, its type, its
-record completeness, and its edit history. The time it happened and the time it was recorded SHALL be
-separate values.
+Every record SHALL retain a stable identifier, happened-at and recorded-at timestamps, its type,
+completeness and edit history. Happened-at and recorded-at SHALL remain separate values.
 
 #### Scenario: Backfilling an event
-- **WHEN** a patient records an event that happened earlier
-- **THEN** the event keeps both timestamps
-- **AND** the interface marks it as backfilled
+- **WHEN** the patient records an earlier event
+- **THEN** both timestamps are retained
+- **AND** the interface identifies it as backfilled
 
 #### Scenario: Editing an event
-- **WHEN** a patient edits a recorded event
-- **THEN** the previous values remain in the edit history
+- **WHEN** the patient changes a stored record
+- **THEN** previous values remain in history
+- **AND** the original recorded-at timestamp is preserved
 
 ### Requirement: Toilet event fields
 
-A toilet event SHALL distinguish what was passed: stool, blood or mucus only, urge without passing
-anything, or uncertain. An urge without passing anything SHALL NOT be counted as a bowel movement.
+A toilet event SHALL distinguish stool, blood or mucus only, urge without passing anything, and
+uncertain. An urge without passing anything SHALL NOT count as a bowel movement.
 
 #### Scenario: Recording an urge-only event
-- **WHEN** the patient records an event and selects "urge without passing anything"
-- **THEN** the event is stored
+- **WHEN** the patient saves an urge-only event
+- **THEN** it is visible in the day's records
 - **AND** it is excluded from bowel-movement counts
 
 ### Requirement: Meal record fields
 
-A meal record SHALL capture that a meal or snack happened, and MAY carry a short description, a photo,
-and a note. A meal record SHALL NOT be required to carry nutritional analysis.
+A meal record SHALL capture that a meal or snack happened, including oral nutritional supplements.
+Required fields and any photo support SHALL be explicitly agreed in the meal slice before production
+implementation; this outline neither requires a photo-only flow nor excludes photos from M1.
 
-#### Scenario: Recording a meal with only a photo
-- **WHEN** the patient attaches a photo and no description
-- **THEN** the meal record is saved
+#### Scenario: Saving the agreed minimum meal record
+- **WHEN** the patient supplies the minimum fields agreed for the meal slice
+- **THEN** the meal and its actual time are stored
+- **AND** the flow does not require nutritional analysis
 
 ### Requirement: Medication record fields
 
-A medication record SHALL capture what was actually taken, with the actual time and the actual dose.
-It SHALL NOT evaluate adherence, and it SHALL NOT suggest a missed dose be made up.
+A medication record SHALL capture what was actually taken, with actual time and dose. It SHALL NOT
+evaluate adherence or advise making up a missed dose.
 
 #### Scenario: Recording a partial dose
-- **WHEN** the patient records a dose different from the planned one
-- **THEN** the actual value is stored
-- **AND** no adherence judgement is displayed
-
-### Requirement: Fixed symptom set
-
-The daily confirmation SHALL ask for the worst severity of a **fixed, enumerated symptom set**:
-abdominal pain, stool urgency, visible blood, and waking from sleep because of bowel symptoms. The
-patient MAY switch off items they do not track. A symptom outside the set SHALL NOT be added ad hoc, and
-the set SHALL be versioned so a later change is a mapping rather than a rewrite.
-
-#### Scenario: Asking about symptoms
-- **WHEN** the patient opens the daily confirmation
-- **THEN** every enabled symptom in the fixed set is asked about
-- **AND** each one can be left as "not recorded" instead of being forced to a value
-
-### Requirement: Daily confirmation
-
-The system SHALL let the patient close a day by confirming totals and, for each enabled symptom in the
-fixed set, its worst severity. It SHALL record a completeness value for each event type. The system
-SHALL NOT compute the confirmation from events alone.
-
-#### Scenario: Confirming a day with no records
-- **WHEN** the patient confirms a day on which nothing was recorded
-- **THEN** the patient can explicitly state zero events
-- **AND** that statement is distinguishable from "not recorded"
-
-#### Scenario: Correcting an auto-filled total
-- **WHEN** the patient changes the total proposed from recorded events
-- **THEN** both the event count and the confirmed total are stored
+- **WHEN** the patient records a dose different from their plan
+- **THEN** the actual value is saved without an adherence judgement
 
 ### Requirement: Completeness semantics
 
-The system SHALL distinguish, for every day and event type: recorded every one, totals accurate but not
-itemised, approximate, and not recorded. Missing data SHALL NOT participate in any statistic as zero.
+The system SHALL preserve the distinction between recorded every one, totals accurate but not
+itemised, approximate and not recorded. Saving some events alone SHALL NOT imply a complete day.
+Missing observations SHALL NOT participate in statistics as confirmed zero.
 
-#### Scenario: A skipped day in a trend
-- **WHEN** a period contains a day with no records and no confirmation
-- **THEN** the trend shows a gap for that day
-- **AND** the gap is not rendered as zero events
+#### Scenario: A day with a partial history
+- **WHEN** some records exist without an explicit completeness statement
+- **THEN** the system shows recorded facts without asserting that the day is fully recorded
 
 ### Requirement: Explicit zero is not absence
 
-Where a value can legitimately be zero, the system SHALL allow the patient to state zero explicitly,
-and that state SHALL be stored and displayed differently from a missing value.
+An explicitly recorded zero SHALL remain distinct from missing data in storage and display. A future
+daily confirmation may supply explicit totals; M1 SHALL NOT require that future screen to retain gaps.
 
-#### Scenario: No blood observed versus not answered
-- **WHEN** the patient confirms "no blood" on a day
-- **THEN** the value reads as explicitly none
-- **WHEN** the patient does not answer
-- **THEN** the value reads as not recorded
+#### Scenario: An unanswered value
+- **WHEN** no observation or explicit zero exists for a value
+- **THEN** it remains unknown rather than becoming a confirmed zero
+
+### Requirement: Day view and record lifecycle
+
+The system SHALL retrieve records for the selected local day, allow detail review, editing and
+deletion, and show an actionable empty state. Deleted records SHALL leave active lists and counts;
+the deletion and history-retention policy SHALL be agreed before that slice is implemented.
+
+#### Scenario: Looking back at another day
+- **WHEN** the patient selects an earlier day
+- **THEN** the list shows that day's records under the agreed date policy
+- **AND** a day without records offers a way to record rather than reusing today's samples
+
+#### Scenario: Deleting a record
+- **WHEN** the patient deletes a record
+- **THEN** it is absent from the active day list and subsequent counts
+- **AND** other records remain unchanged
+
+### Requirement: Records survive restart
+
+Saved records and their timestamps, completeness and history SHALL survive app termination and
+relaunch. A failed write SHALL be reported as a failure rather than presented as a completed save.
+Schema changes SHALL preserve previously saved records under the documented migration policy.
+
+#### Scenario: Relaunching after a save
+- **WHEN** the patient terminates and reopens the app after saving records on several days
+- **THEN** those records and their provenance can still be retrieved by day
+
+#### Scenario: A write fails
+- **WHEN** storage rejects a save
+- **THEN** the patient receives an error and the interface does not claim the record was saved
+
+### Requirement: Accessible recording flows
+
+The daily recording and review flows SHALL remain completable at the largest supported Dynamic Type
+size, with labelled controls and reachable primary actions.
+
+#### Scenario: Recording with large text
+- **WHEN** the largest text size is enabled
+- **THEN** the patient can complete each daily recording flow and review it without clipped essential controls

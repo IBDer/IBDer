@@ -1,6 +1,6 @@
 # ADR-0005: OpenSpec as the single source of truth, two human gates
 
-- **Status**: Accepted
+- **Status**: Superseded by [ADR-0014](0014-m1-dogfood-and-iterative-delivery.md); retained as decision history
 - **Date**: 2026-10-11
 
 ## Decision

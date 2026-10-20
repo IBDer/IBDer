@@ -62,7 +62,7 @@ Code identifiers come from the identifier column above. One concept, one identif
 
 ## Vocabulary discipline
 
-- Conclusion words — disease activity, remission, flare, worsening, score, risk prediction — may not enter UI copy or identifiers before a feature that needs them has its own decision (AGENTS.md §3).
+- Conclusion words — disease activity, remission, flare, worsening, score, risk prediction — may not enter UI copy or identifiers before a feature that needs them has its own decision (AGENTS.md section 4).
 - "No record" is not "no symptom". Every statistic states its data completeness.
 - Plans and facts are displayed separately; rescheduling never overwrites the original arrangement.
 - Chinese appears only as the `zh-Hans` UI label in the String Catalog, never as an identifier.

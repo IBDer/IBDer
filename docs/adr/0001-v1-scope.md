@@ -1,6 +1,6 @@
 # ADR-0001: v1 records four kinds of facts — three peer daily event types plus the biologic schedule
 
-- **Status**: Accepted — revised 2026-10-12
+- **Status**: Accepted for the original v1 direction; delivery scope and packaging superseded by [ADR-0014](0014-m1-dogfood-and-iterative-delivery.md)
 - **Date**: 2026-10-11, revised 2026-10-12
 
 ## Context
