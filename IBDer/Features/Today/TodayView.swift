@@ -70,6 +70,8 @@ struct TodayView: View {
                 Text(Self.dayFormatter.string(from: model.day))
                     .font(DesignTokens.Typography.title)
                     .foregroundStyle(DesignTokens.Color.textPrimary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
                 Text(model.day, format: .dateTime.year())
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(DesignTokens.Color.textSecondary)
@@ -85,6 +87,8 @@ struct TodayView: View {
         }
         .padding(.horizontal, DesignTokens.Spacing.regular)
         .padding(.top, DesignTokens.Spacing.small)
+        // The date is display text, not body text: it may scale, but it must not push the entries off screen.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
     }
 
     private func arrow(

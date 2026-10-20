@@ -34,7 +34,7 @@ For each unchecked slice, discuss its unresolved product details and update scen
 - [x] 4.4 Build the medication form — name, dose, unit, time, plus the last three distinct medications as one-tap chips; no adherence field exists at all.
 - [ ] 4.5 Connect the day list to storage with details, backfill markers and editing — verify selecting another day changes the data, edits retain history, and the empty state is actionable.
 - [ ] 4.6 Implement deletion after agreeing retention and undo behavior — verify the deleted record leaves active lists/counts and other facts remain unchanged.
-- [ ] 4.7 Verify largest text, VoiceOver and one-handed reachability — attach relevant captures and demonstrate all three recording flows remain completable.
+- [ ] 4.7 Verify largest text, VoiceOver and one-handed reachability — Today and the toilet sheet stay completable at the largest size (capture 08), every control has a spoken label, and the dark appearance keeps system controls readable (capture 09); the meal and medication sheets and one-handed reach are still to check.
 
 ## 5. Recording acceptance
 

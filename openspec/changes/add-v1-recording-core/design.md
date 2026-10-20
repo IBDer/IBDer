@@ -60,5 +60,9 @@ Agreed with the maintainer on 2026-10-20, before this slice was implemented:
   another app's artwork.
 - **Medication**: the last three distinct medications appear as chips, so a daily tablet is not
   retyped every day.
+- **Dark appearance**: the semantic tokens carry a dark set. The first version left fixed light
+  colours next to system controls, which made the time picker unreadable in dark mode.
+- **Largest text**: the date header and the entry chips cap their scaling so three entries stay on
+  one row, and the timeline drops its fixed time column rather than clipping the time.
 - **Meal and medication forms**: implemented as a first cut ahead of their own design conversation;
   their tasks stay unchecked until the maintainer agrees the fields.

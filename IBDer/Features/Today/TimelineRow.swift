@@ -1,10 +1,15 @@
 import SwiftUI
 
-/// One fact in the day's timeline: the time on the left, a dot on the line, the fact on the right.
-/// No card, no verdict, and no colour that means bad (ADR-0009).
+/// One fact in the day's timeline: the time, a dot on the line, and the fact. No card, no verdict,
+/// and no colour that means bad (ADR-0009).
+///
+/// At accessibility text sizes the left time column is dropped and the time moves above the fact:
+/// a fixed 42-point column cannot hold "19:17" once the text grows.
 struct TimelineRow: View {
     let event: RecordedEvent
     let isLast: Bool
+
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     private static let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -12,57 +17,78 @@ struct TimelineRow: View {
         return formatter
     }()
 
+    private var timeText: String {
+        Self.timeFormatter.string(from: event.happenedAt)
+    }
+
     var body: some View {
         HStack(alignment: .top, spacing: DesignTokens.Spacing.medium) {
-            Text(Self.timeFormatter.string(from: event.happenedAt))
-                .font(DesignTokens.Typography.caption.monospacedDigit())
-                .foregroundStyle(DesignTokens.Color.textSecondary)
-                .frame(width: 42, alignment: .trailing)
-                .padding(.top, 3)
-
-            VStack(spacing: 0) {
-                Circle()
-                    .fill(DesignTokens.Color.accent)
-                    .frame(width: 7, height: 7)
-                    .padding(.top, 7)
-                if !isLast {
-                    Rectangle()
-                        .fill(DesignTokens.Color.border)
-                        .frame(width: 1)
-                        .frame(maxHeight: .infinity)
-                }
+            if !typeSize.isAccessibilitySize {
+                Text(timeText)
+                    .font(DesignTokens.Typography.caption.monospacedDigit())
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+                    .frame(width: 42, alignment: .trailing)
+                    .padding(.top, 3)
             }
-            .frame(width: 8)
 
-            VStack(alignment: .leading, spacing: 2) {
+            rail
+
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
+                if typeSize.isAccessibilitySize {
+                    Text(timeText)
+                        .font(DesignTokens.Typography.caption.monospacedDigit())
+                        .foregroundStyle(DesignTokens.Color.textSecondary)
+                }
+
                 EventSummary.title(of: event)
                     .font(DesignTokens.Typography.body)
                     .foregroundStyle(DesignTokens.Color.textPrimary)
+
                 if let detail = EventSummary.detail(of: event) {
                     detail
                         .font(DesignTokens.Typography.caption)
                         .foregroundStyle(DesignTokens.Color.textSecondary)
                 }
+
+                markers
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-
-            VStack(alignment: .trailing, spacing: 2) {
-                if event.isBackfilled() {
-                    Text("today.backfilled")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(DesignTokens.Color.textSecondary)
-                }
-                if !event.revisions.isEmpty {
-                    Text("today.edited")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(DesignTokens.Color.textSecondary)
-                }
-            }
         }
         .padding(.vertical, DesignTokens.Spacing.small)
         .contentShape(Rectangle())
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("timeline.\(event.kind.rawValue)")
+    }
+
+    private var rail: some View {
+        VStack(spacing: 0) {
+            Circle()
+                .fill(DesignTokens.Color.accent)
+                .frame(width: 7, height: 7)
+                .padding(.top, 7)
+            if !isLast {
+                Rectangle()
+                    .fill(DesignTokens.Color.border)
+                    .frame(width: 1)
+                    .frame(maxHeight: .infinity)
+            }
+        }
+        .frame(width: 8)
+    }
+
+    @ViewBuilder private var markers: some View {
+        if event.isBackfilled() || !event.revisions.isEmpty {
+            HStack(spacing: DesignTokens.Spacing.small) {
+                if event.isBackfilled() {
+                    Text("today.backfilled")
+                }
+                if !event.revisions.isEmpty {
+                    Text("today.edited")
+                }
+            }
+            .font(DesignTokens.Typography.caption)
+            .foregroundStyle(DesignTokens.Color.textSecondary)
+        }
     }
 }
 

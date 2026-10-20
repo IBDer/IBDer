@@ -11,21 +11,24 @@ struct EntryChip: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: DesignTokens.Spacing.small) {
+            VStack(spacing: DesignTokens.Spacing.xSmall) {
                 Image(systemName: symbol)
                     .font(.title3)
                     .foregroundStyle(DesignTokens.Color.accent)
-                    .frame(height: 22)
                 Text(titleKey)
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(DesignTokens.Color.textPrimary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.85)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
             }
+            .padding(.vertical, DesignTokens.Spacing.small)
             .frame(maxWidth: .infinity)
             .frame(minHeight: DesignTokens.Layout.minimumTouchTarget + 20)
             .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
         }
+        // Three entries have to stay on one row: the label may grow, the layout may not.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility2)
         .buttonStyle(.plain)
         .accessibilityLabel(Text(titleKey))
         .accessibilityIdentifier(identifier)
