@@ -21,6 +21,8 @@ The zh-Hans display names are product strings and live in the String Catalog, no
 | Vedolizumab | IV | 300 mg at weeks 0, 2, 6 | every 8 weeks |
 | Adalimumab | SC | 160 mg on day 1, 80 mg on day 15 | 40 mg every other week from day 29 |
 | Risankizumab | IV then SC | 600 mg IV at weeks 0, 4, 8 | 180 mg SC at week 12, then every 8 weeks |
+| Ustekinumab | IV then SC | one IV dose by weight at week 0: 260 mg up to 55 kg, 390 mg up to 85 kg, 520 mg above | 90 mg SC at week 8, then every 12 weeks (every 8 weeks if response is incomplete) |
+| Guselkumab | IV then SC | 200 mg IV at weeks 0, 4, 8 (or 400 mg SC as two injections) | 100 mg SC from week 16, every 8 weeks |
 
 Sources, read on 2026-10-20:
 
@@ -28,17 +30,20 @@ Sources, read on 2026-10-20:
 - Entyvio: <https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ENTYVIO>
 - Humira: <https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=HUMIRA>
 - Skyrizi: <https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7148c8eb-b39e-e20a-6494-a6df82392858>
+- Stelara and Tremfya, including the Crohn's and colitis sections the US pages cut off:
+  <https://www.medicines.org.uk/emc/product/4412/smpc>, <https://www.medicines.org.uk/emc/product/4413/smpc>,
+  <https://www.medicines.org.uk/emc/product/9587/smpc> (UK summaries, read on 2026-10-20).
 
 The risankizumab programme matches what the maintainer described: three intravenous doses four weeks
 apart, the fourth dose subcutaneous, then subcutaneous every eight weeks.
 
 ## Not verified here
 
-| Drug | What is missing |
+| What | Why it matters |
 | --- | --- |
-| Ustekinumab | The Crohn's induction dose (weight-banded) and the maintenance interval; the label section was beyond what the fetch returned. |
-| Guselkumab | The Crohn's and ulcerative colitis induction and maintenance programme, for the same reason. |
-| Any biosimilar | Not checked at all; the brand name matters for the patient's own record. |
+| Biosimilar brand names | The patient's own record should carry the product they are actually given, not just the molecule. Not checked. |
+| The Chinese labels, word for word | The zh-Hans indications and wording must come from the Chinese label; this note is a starting point, not a substitute. |
+| Dose rounding and vial sizes | The hospital decides the prepared dose; the app records what was given. |
 
 ## What this means for the app
 
