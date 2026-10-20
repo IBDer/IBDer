@@ -331,6 +331,501 @@
         }
       }
     },
+    "profile.complication.anaemiaNutrition": {
+      "comment": "Anaemia or nutrition problems.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "贫血或营养"
+          }
+        }
+      }
+    },
+    "profile.complication.eyes": {
+      "comment": "Eye group.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "眼睛"
+          }
+        }
+      }
+    },
+    "profile.complication.joints": {
+      "comment": "Joint group.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关节"
+          }
+        }
+      }
+    },
+    "profile.complication.liverBiliary": {
+      "comment": "Liver and biliary group.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "肝胆"
+          }
+        }
+      }
+    },
+    "profile.complication.mouthUlcers": {
+      "comment": "Mouth ulcers.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "口腔溃疡"
+          }
+        }
+      }
+    },
+    "profile.complication.perianal": {
+      "comment": "Perianal group.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "肛周（肛瘘/脓肿/肛裂）"
+          }
+        }
+      }
+    },
+    "profile.complication.skin": {
+      "comment": "Skin group.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "皮肤（结节性红斑/脓皮病）"
+          }
+        }
+      }
+    },
+    "profile.complications": {
+      "comment": "Known complications, as broad groups.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有没有这些情况"
+          }
+        }
+      }
+    },
+    "profile.diagnosis": {
+      "comment": "The diagnosis the patient already has.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "诊断"
+          }
+        }
+      }
+    },
+    "profile.diagnosis.colitis": {
+      "comment": "Ulcerative colitis.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "溃疡性结肠炎"
+          }
+        }
+      }
+    },
+    "profile.diagnosis.crohns": {
+      "comment": "Crohn's disease.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "克罗恩病"
+          }
+        }
+      }
+    },
+    "profile.diagnosis.unsure": {
+      "comment": "The patient does not know or has not been told.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还不确定"
+          }
+        }
+      }
+    },
+    "profile.edit": {
+      "comment": "Edit the profile.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑"
+          }
+        }
+      }
+    },
+    "profile.empty": {
+      "comment": "Nothing entered for this field.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没填"
+          }
+        }
+      }
+    },
+    "profile.finish": {
+      "comment": "Save the profile.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
+          }
+        }
+      }
+    },
+    "profile.height": {
+      "comment": "Body height.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "身高"
+          }
+        }
+      }
+    },
+    "profile.height.placeholder": {
+      "comment": "Example height shown while the field is empty.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如 170"
+          }
+        }
+      }
+    },
+    "profile.height.unit": {
+      "comment": "Centimetres.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "厘米"
+          }
+        }
+      }
+    },
+    "profile.next": {
+      "comment": "Next page of the profile.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一步"
+          }
+        }
+      }
+    },
+    "profile.page.body.subtitle": {
+      "comment": "Why height and weight are asked for.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "身高体重只用来算生物制剂的剂量。"
+          }
+        }
+      }
+    },
+    "profile.page.body.title": {
+      "comment": "First profile page: the body.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你是"
+          }
+        }
+      }
+    },
+    "profile.page.disease.subtitle": {
+      "comment": "Reassurance about who can see it.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只在这台手机上，只有你看得到。"
+          }
+        }
+      }
+    },
+    "profile.page.disease.title": {
+      "comment": "Second profile page: the disease.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的病"
+          }
+        }
+      }
+    },
+    "profile.page.treatment.subtitle": {
+      "comment": "The treatment list is multi-select.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可以多选，也可以以后再说。"
+          }
+        }
+      }
+    },
+    "profile.page.treatment.title": {
+      "comment": "Third profile page: the treatment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的治疗"
+          }
+        }
+      }
+    },
+    "profile.section.body": {
+      "comment": "Body values.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "身体"
+          }
+        }
+      }
+    },
+    "profile.section.disease": {
+      "comment": "Disease facts.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "疾病"
+          }
+        }
+      }
+    },
+    "profile.section.treatment": {
+      "comment": "Treatment facts.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "治疗"
+          }
+        }
+      }
+    },
+    "profile.skip": {
+      "comment": "Move on without answering this page.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过"
+          }
+        }
+      }
+    },
+    "profile.state": {
+      "comment": "The doctor's current assessment, quoted.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "医生目前怎么判断"
+          }
+        }
+      }
+    },
+    "profile.state.active": {
+      "comment": "The doctor says active.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "活动期"
+          }
+        }
+      }
+    },
+    "profile.state.note": {
+      "comment": "The state is quoted, never calculated.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以你医生的判断为准；这一项不参与任何计算。"
+          }
+        }
+      }
+    },
+    "profile.state.inactive": {
+      "comment": "The doctor says inactive.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缓解期"
+          }
+        }
+      }
+    },
+    "profile.state.unsure": {
+      "comment": "The patient is not sure what the doctor said.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不确定"
+          }
+        }
+      }
+    },
+    "profile.treatment": {
+      "comment": "Current treatment, multi-select.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "现在在做什么治疗"
+          }
+        }
+      }
+    },
+    "profile.treatment.biologic": {
+      "comment": "Biologic treatment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "生物制剂"
+          }
+        }
+      }
+    },
+    "profile.treatment.exclusiveEnteral": {
+      "comment": "Exclusive enteral nutrition.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全肠内营养"
+          }
+        }
+      }
+    },
+    "profile.treatment.none": {
+      "comment": "No treatment at the moment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时没有用药"
+          }
+        }
+      }
+    },
+    "profile.treatment.oralMedication": {
+      "comment": "Oral medication.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "口服药（美沙拉秦/激素/免疫抑制剂）"
+          }
+        }
+      }
+    },
+    "profile.treatment.otherDiet": {
+      "comment": "A diet not listed.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他饮食"
+          }
+        }
+      }
+    },
+    "profile.treatment.partialEnteral": {
+      "comment": "Partial enteral nutrition.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分肠内营养"
+          }
+        }
+      }
+    },
+    "profile.weight": {
+      "comment": "Body weight, used only for a weight-based dose.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "体重"
+          }
+        }
+      }
+    },
+    "profile.weight.note": {
+      "comment": "What the weight is and is not used for.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "体重只用来按说明书算剂量，不做别的。"
+          }
+        }
+      }
+    },
+    "profile.weight.placeholder": {
+      "comment": "Example weight shown while the field is empty.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如 60"
+          }
+        }
+      }
+    },
+    "profile.weight.unit": {
+      "comment": "Kilograms.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公斤"
+          }
+        }
+      }
+    },
     "record.time": {
       "comment": "The time of day a record happened.",
       "localizations": {

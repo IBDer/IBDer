@@ -5,9 +5,27 @@ import XCTest
 final class TodayUITests: XCTestCase {
     private func launchEmptyDay() -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-inMemory"]
+        app.launchArguments = ["-inMemory", "-skipOnboarding"]
         app.launch()
         return app
+    }
+
+    func testTheProfileCanBeSkippedEntirely() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-inMemory"]
+        app.launch()
+
+        XCTAssertTrue(
+            app.buttons["profile.next"].waitForExistence(timeout: 10),
+            "the first launch opens the profile"
+        )
+        for _ in 0 ..< 3 {
+            app.buttons["profile.skip"].tap()
+        }
+        XCTAssertTrue(
+            app.buttons["entry.toilet"].waitForExistence(timeout: 10),
+            "skipping every page still leaves a usable app"
+        )
     }
 
     func testThreeEntryPointsAreOneTapAway() {
