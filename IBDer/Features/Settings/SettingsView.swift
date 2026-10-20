@@ -3,7 +3,9 @@ import SwiftUI
 /// The settings tab. Today it holds the profile and the truth about where the data lives.
 struct SettingsView: View {
     let profile: ProfileModel
+    let biologic: BiologicModel
     @State private var isEditing = false
+    @State private var showingBiologic = false
 
     var body: some View {
         NavigationStack {
@@ -25,6 +27,18 @@ struct SettingsView: View {
 
                 Section {
                     LabeledContent("profile.treatment", value: treatmentText)
+                    Button {
+                        showingBiologic = true
+                    } label: {
+                        HStack {
+                            Text("biologic.title")
+                                .foregroundStyle(DesignTokens.Color.textPrimary)
+                            Spacer()
+                            Text(biologicSummary)
+                                .foregroundStyle(DesignTokens.Color.textSecondary)
+                        }
+                    }
+                    .accessibilityIdentifier("settings.biologic")
                 } header: {
                     Text("profile.section.treatment")
                 }
@@ -67,7 +81,18 @@ struct SettingsView: View {
             .sheet(isPresented: $isEditing) {
                 ProfileEditor(profile: profile) { isEditing = false }
             }
+            .sheet(isPresented: $showingBiologic) {
+                BiologicPlanView(model: biologic, profile: profile)
+            }
         }
+    }
+
+    private var biologicSummary: String {
+        guard let plan = biologic.plan else { return String(localized: "biologic.card.setUp") }
+        if let name = biologic.displayNameKey {
+            return String(localized: String.LocalizationValue(name))
+        }
+        return plan.customName ?? String(localized: "biologic.card.setUp")
     }
 
     private var heightText: String {

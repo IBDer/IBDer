@@ -12,6 +12,501 @@
         }
       }
     },
+    "biologic.amount.unknown": {
+      "comment": "No amount recorded.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剂量未填"
+          }
+        }
+      }
+    },
+    "biologic.card.noNextDose": {
+      "comment": "No dose is expected.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有下一次"
+          }
+        }
+      }
+    },
+    "biologic.card.setUp": {
+      "comment": "No plan yet; the card invites one.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置生物制剂计划"
+          }
+        }
+      }
+    },
+    "biologic.checklist": {
+      "comment": "What must happen before the infusion.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输液前"
+          }
+        }
+      }
+    },
+    "biologic.checklist.bloodTest": {
+      "comment": "Blood tests done.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抽血化验已做"
+          }
+        }
+      }
+    },
+    "biologic.checklist.timeAndPlace": {
+      "comment": "Time and place confirmed.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间和地点确认"
+          }
+        }
+      }
+    },
+    "biologic.dueIn %lld": {
+      "comment": "Whole days until the dose.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 天后"
+          }
+        }
+      }
+    },
+    "biologic.dueToday": {
+      "comment": "The dose is today.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天"
+          }
+        }
+      }
+    },
+    "biologic.dueTomorrow": {
+      "comment": "The dose is tomorrow.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明天"
+          }
+        }
+      }
+    },
+    "biologic.name.adalimumab": {
+      "comment": "Product name.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "阿达木单抗"
+          }
+        }
+      }
+    },
+    "biologic.name.guselkumab": {
+      "comment": "Product name.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "古塞奇尤单抗"
+          }
+        }
+      }
+    },
+    "biologic.name.infliximab": {
+      "comment": "Product name.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "英夫利西单抗"
+          }
+        }
+      }
+    },
+    "biologic.name.risankizumab": {
+      "comment": "Product name.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "利生奇珠单抗"
+          }
+        }
+      }
+    },
+    "biologic.name.ustekinumab": {
+      "comment": "Product name.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "乌司奴单抗"
+          }
+        }
+      }
+    },
+    "biologic.name.vedolizumab": {
+      "comment": "Product name.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "维得利珠单抗"
+          }
+        }
+      }
+    },
+    "biologic.nextDose": {
+      "comment": "The next expected dose.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一次"
+          }
+        }
+      }
+    },
+    "biologic.noNextDose": {
+      "comment": "Nothing is planned.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有待办的下一次"
+          }
+        }
+      }
+    },
+    "biologic.overdue %lld": {
+      "comment": "Whole days a dose is late.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已过 %lld 天"
+          }
+        }
+      }
+    },
+    "biologic.postpone": {
+      "comment": "Move this one appointment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推迟"
+          }
+        }
+      }
+    },
+    "biologic.postpone.bloodTest": {
+      "comment": "Waiting for a blood test.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等化验结果"
+          }
+        }
+      }
+    },
+    "biologic.postpone.date": {
+      "comment": "New date",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "改到"
+          }
+        }
+      }
+    },
+    "biologic.postpone.reason": {
+      "comment": "Reason",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原因"
+          }
+        }
+      }
+    },
+    "biologic.postpone.title": {
+      "comment": "Moving one appointment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推迟这一次"
+          }
+        }
+      }
+    },
+    "biologic.postpone.travel": {
+      "comment": "Travel.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "出差或旅行"
+          }
+        }
+      }
+    },
+    "biologic.postpone.unwell": {
+      "comment": "Unwell.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不舒服"
+          }
+        }
+      }
+    },
+    "biologic.record": {
+      "comment": "Record the dose that happened.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录这次"
+          }
+        }
+      }
+    },
+    "biologic.record.amount": {
+      "comment": "The amount the hospital prepared.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剂量"
+          }
+        }
+      }
+    },
+    "biologic.record.amount.placeholder": {
+      "comment": "Example amount.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "例如 600"
+          }
+        }
+      }
+    },
+    "biologic.record.note": {
+      "comment": "Free text. Optional.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "备注（可不填）"
+          }
+        }
+      }
+    },
+    "biologic.record.title": {
+      "comment": "Recording a dose.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录这次"
+          }
+        }
+      }
+    },
+    "biologic.record.unit": {
+      "comment": "Milligrams.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毫克"
+          }
+        }
+      }
+    },
+    "biologic.regimen.adalimumab": {
+      "comment": "The label's text.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "皮下 160 mg、第 15 天 80 mg；第 29 天起 40 mg 隔周"
+          }
+        }
+      }
+    },
+    "biologic.regimen.guselkumab": {
+      "comment": "The label's text.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静脉 200 mg，第 0、4、8 周；第 16 周起 100 mg 皮下，每 8 周"
+          }
+        }
+      }
+    },
+    "biologic.regimen.infliximab": {
+      "comment": "The label's text, shown as the label's text.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静脉 5 mg/kg，第 0、2、6 周；之后每 8 周"
+          }
+        }
+      }
+    },
+    "biologic.regimen.risankizumab": {
+      "comment": "The label's text.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静脉 600 mg，第 0、4、8 周；第 12 周起 180 mg 皮下，每 8 周"
+          }
+        }
+      }
+    },
+    "biologic.regimen.ustekinumab": {
+      "comment": "The label's text.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静脉按体重一次（≤55 kg 260 mg，≤85 kg 390 mg，>85 kg 520 mg）；第 8 周起 90 mg 皮下，每 12 周"
+          }
+        }
+      }
+    },
+    "biologic.regimen.vedolizumab": {
+      "comment": "The label's text.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静脉 300 mg，第 0、2、6 周；之后每 8 周"
+          }
+        }
+      }
+    },
+    "biologic.route.intravenous": {
+      "comment": "Route.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静脉输注"
+          }
+        }
+      }
+    },
+    "biologic.route.subcutaneous": {
+      "comment": "Route.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "皮下注射"
+          }
+        }
+      }
+    },
+    "biologic.start.date": {
+      "comment": "First dose",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第一次"
+          }
+        }
+      }
+    },
+    "biologic.start.explain": {
+      "comment": "The dates come from the label. Every one can be changed.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日期照说明书写，每一个都能改。"
+          }
+        }
+      }
+    },
+    "biologic.start.save": {
+      "comment": "Save the plan",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保存计划"
+          }
+        }
+      }
+    },
+    "biologic.start.title": {
+      "comment": "Choosing a product.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置计划"
+          }
+        }
+      }
+    },
+    "biologic.title": {
+      "comment": "The biologic sheet.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "生物制剂"
+          }
+        }
+      }
+    },
+    "biologic.upcoming": {
+      "comment": "The doses after the next one.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "之后几次"
+          }
+        }
+      }
+    },
     "common.cancel": {
       "comment": "Dismiss a sheet without saving.",
       "localizations": {
@@ -19,6 +514,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "取消"
+          }
+        }
+      }
+    },
+    "common.close": {
+      "comment": "Close a sheet.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
           }
         }
       }
@@ -672,17 +1178,6 @@
         }
       }
     },
-    "profile.state.note": {
-      "comment": "The state is quoted, never calculated.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "以你医生的判断为准；这一项不参与任何计算。"
-          }
-        }
-      }
-    },
     "profile.state.inactive": {
       "comment": "The doctor says inactive.",
       "localizations": {
@@ -690,6 +1185,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "缓解期"
+          }
+        }
+      }
+    },
+    "profile.state.note": {
+      "comment": "The state is quoted, never calculated.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以你医生的判断为准；这一项不参与任何计算。"
           }
         }
       }
@@ -855,6 +1361,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "数据只在这台手机上"
+          }
+        }
+      }
+    },
+    "settings.section.treatment": {
+      "comment": "Section header for the treatment settings.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "治疗"
           }
         }
       }

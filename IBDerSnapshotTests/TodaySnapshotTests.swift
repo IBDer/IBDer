@@ -33,6 +33,20 @@ final class TodaySnapshotTests: XCTestCase {
         return controller
     }
 
+    private func today(_ events: [RecordedEvent]) -> some View {
+        TodayView(
+            model: model(with: events),
+            biologic: BiologicModel(store: InMemoryBiologicStore()),
+            profile: ProfileModel(store: InMemoryProfileStore(profile: completedProfile()))
+        )
+    }
+
+    private func completedProfile() -> PatientProfile {
+        var profile = PatientProfile()
+        profile.hasCompletedOnboarding = true
+        return profile
+    }
+
     private func model(with events: [RecordedEvent]) -> RecordsModel {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = .current
@@ -69,10 +83,10 @@ final class TodaySnapshotTests: XCTestCase {
 
     func testTodayWithRecords() {
         let events = sampleEvents()
-        assertSnapshot(of: host(TodayView(model: model(with: events))), as: .image)
+        assertSnapshot(of: host(today(events)), as: .image)
     }
 
     func testEmptyDay() {
-        assertSnapshot(of: host(TodayView(model: model(with: []))), as: .image)
+        assertSnapshot(of: host(today([])), as: .image)
     }
 }
