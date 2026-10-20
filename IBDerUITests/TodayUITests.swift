@@ -45,6 +45,21 @@ final class TodayUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["today.empty.title"].exists, "the day is no longer empty")
     }
 
+    func testRecordingASupplementKeepsTheScoopCount() {
+        let app = launchEmptyDay()
+        app.buttons["entry.meal"].tap()
+
+        let supplement = app.buttons["meal.kind.supplement"]
+        XCTAssertTrue(supplement.waitForExistence(timeout: 10))
+        supplement.tap()
+
+        app.buttons["common.save"].tap()
+
+        let row = app.descendants(matching: .any).matching(identifier: "timeline.meal").firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 10), "the powder is its own record, not a meal flag")
+        XCTAssertTrue(row.label.contains("6"), "the scoop count survives the save")
+    }
+
     func testTheDayCanBeChanged() {
         let app = launchEmptyDay()
         let date = app.staticTexts["today.date"]

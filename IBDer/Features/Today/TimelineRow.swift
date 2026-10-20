@@ -73,7 +73,7 @@ enum EventSummary {
         case let .toilet(toilet):
             Text(toiletTitle(toilet.outcome))
         case let .meal(meal):
-            Text(meal.kind == .meal ? "meal.kind.meal" : "meal.kind.snack")
+            Text(mealTitle(meal.kind))
         case let .medication(medication):
             Text(verbatim: medication.name)
         }
@@ -91,7 +91,8 @@ enum EventSummary {
             }
             return joined(parts)
         case let .meal(meal):
-            return meal.isNutritionalSupplement ? Text("meal.supplement") : nil
+            guard meal.kind == .supplement, let scoops = meal.scoops else { return nil }
+            return Text(verbatim: "\(scoops)") + Text(verbatim: " ") + Text("meal.scoops.unit")
         case let .medication(medication):
             guard let dose = medication.dose.value else { return nil }
             return Text(verbatim: "\(dose.formatted()) \(medication.unit)")
@@ -104,6 +105,14 @@ enum EventSummary {
             result = result + Text(verbatim: " · ") + part
         }
         return result
+    }
+
+    private static func mealTitle(_ kind: MealEvent.Kind) -> LocalizedStringKey {
+        switch kind {
+        case .meal: "meal.kind.meal"
+        case .snack: "meal.kind.snack"
+        case .supplement: "meal.kind.supplement"
+        }
     }
 
     private static func toiletTitle(_ outcome: ToiletEvent.Outcome) -> LocalizedStringKey {

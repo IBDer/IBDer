@@ -217,7 +217,11 @@ struct TodayView: View {
                     await model.save(meal: meal, at: happenedAt, editing: nil)
                 }
             case .medication:
-                MedicationSheet(day: model.day, editing: nil) { medication, happenedAt in
+                MedicationSheet(
+                    day: model.day,
+                    editing: nil,
+                    recent: model.recentMedications
+                ) { medication, happenedAt in
                     await model.save(medication: medication, at: happenedAt, editing: nil)
                 }
             }
@@ -232,7 +236,11 @@ struct TodayView: View {
                     await model.save(meal: meal, at: happenedAt, editing: event)
                 }
             case .medication:
-                MedicationSheet(day: model.day, editing: event) { medication, happenedAt in
+                MedicationSheet(
+                    day: model.day,
+                    editing: event,
+                    recent: model.recentMedications
+                ) { medication, happenedAt in
                     await model.save(medication: medication, at: happenedAt, editing: event)
                 }
             }

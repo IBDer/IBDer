@@ -57,7 +57,7 @@ final class TodaySnapshotTests: XCTestCase {
             RecordedEvent(
                 happenedAt: at(8, 15),
                 recordedAt: at(8, 16),
-                payload: .meal(MealEvent(kind: .meal, isNutritionalSupplement: true))
+                payload: .meal(MealEvent(kind: .supplement, scoops: 6))
             ),
             RecordedEvent(
                 happenedAt: at(13, 40),

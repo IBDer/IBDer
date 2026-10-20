@@ -30,8 +30,8 @@ For each unchecked slice, discuss its unresolved product details and update scen
 
 - [x] 4.1 Build the recording entry points, the tab bar and the empty-state skeleton — three peer entries (toilet, meal, medication) and the empty day, verified by UI tests.
 - [x] 4.2 Build the toilet form — four outcomes, then Bristol, blood and perianal sensation; an XCUITest saves and reads the fact back on that day.
-- [ ] 4.3 Build the meal form after settling photos, supplement representation and required fields — verify accepted minimum-input scenarios save and can be reviewed without nutritional analysis.
-- [ ] 4.4 Build the medication form after agreeing dose entry and required fields — verify actual time/dose round-trip and a partial dose receives no adherence judgement.
+- [x] 4.3 Build the meal form — meal, snack or nutritional powder with a scoop count; an XCUITest saves a powder and reads the count back.
+- [x] 4.4 Build the medication form — name, dose, unit, time, plus the last three distinct medications as one-tap chips; no adherence field exists at all.
 - [ ] 4.5 Connect the day list to storage with details, backfill markers and editing — verify selecting another day changes the data, edits retain history, and the empty state is actionable.
 - [ ] 4.6 Implement deletion after agreeing retention and undo behavior — verify the deleted record leaves active lists/counts and other facts remain unchanged.
 - [ ] 4.7 Verify largest text, VoiceOver and one-handed reachability — attach relevant captures and demonstrate all three recording flows remain completable.

@@ -38,12 +38,12 @@ struct ToiletDetails: View {
                     type: type,
                     tint: isSelected ? DesignTokens.Color.accent : DesignTokens.Color.textSecondary
                 )
-                .frame(width: 44, height: 28)
+                .frame(width: 52, height: 34)
                 Text(verbatim: "\(type.rawValue)")
                     .font(DesignTokens.Typography.headline)
                     .foregroundStyle(DesignTokens.Color.textPrimary)
             }
-            .frame(width: 64, height: 76)
+            .frame(width: 72, height: 86)
             .background(
                 isSelected ? DesignTokens.Color.accentSoft : DesignTokens.Color.surface,
                 in: RoundedRectangle(cornerRadius: DesignTokens.Radius.control)

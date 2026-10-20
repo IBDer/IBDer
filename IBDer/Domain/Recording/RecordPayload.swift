@@ -96,14 +96,19 @@ enum PerianalSensation: String, Codable, Sendable, CaseIterable {
     case normal, pain, burning, urge, itch
 }
 
-/// A meal or snack actually eaten, including an oral nutritional supplement. Photos are not M1.
+/// What was eaten. A nutritional powder is its own kind, not a flag on a meal: the patient eats
+/// three meals and adds a powder, and the record has to show that difference.
 struct MealEvent: Codable, Sendable, Equatable {
     enum Kind: String, Codable, Sendable, CaseIterable {
-        case meal, snack
+        case meal
+        case snack
+        /// An oral nutritional supplement mixed from powder.
+        case supplement
     }
 
     var kind: Kind
-    var isNutritionalSupplement: Bool = false
+    /// Scoops of powder. Only meaningful for `.supplement`.
+    var scoops: Int?
     var note: String = ""
 }
 

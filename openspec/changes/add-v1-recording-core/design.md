@@ -54,5 +54,11 @@ Agreed with the maintainer on 2026-10-20, before this slice was implemented:
   as reporting none.
 - **Completeness**: M1 never asks and never displays it. A day without records is empty, not zero.
 - **Photos**: not in M1.
+- **Nutritional powder**: a kind of its own (`supplement`), not a flag on a meal, with a scoop count.
+  The patient eats three meals and adds a powder; the record has to show the difference.
+- **Bristol drawing**: drawn in this repository as seven distinct silhouettes; nothing is taken from
+  another app's artwork.
+- **Medication**: the last three distinct medications appear as chips, so a daily tablet is not
+  retyped every day.
 - **Meal and medication forms**: implemented as a first cut ahead of their own design conversation;
   their tasks stay unchecked until the maintainer agrees the fields.

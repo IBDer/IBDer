@@ -188,13 +188,24 @@
         }
       }
     },
-    "meal.kind.title": {
-      "comment": "Whether this was a meal or a snack.",
+    "meal.kind.supplement": {
+      "comment": "A powder mixed into a drink.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "这一餐是"
+            "value": "营养粉剂"
+          }
+        }
+      }
+    },
+    "meal.kind.title": {
+      "comment": "Whether this was a meal, a snack or a nutritional powder.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这次是"
           }
         }
       }
@@ -210,13 +221,46 @@
         }
       }
     },
-    "meal.supplement": {
-      "comment": "An oral nutritional supplement rather than ordinary food.",
+    "meal.scoops.hint": {
+      "comment": "One level scoop of a standard powder is about 9 g; six scoops with 195 ml water makes one serving.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "这是营养补充剂"
+            "value": "一平勺约 9 克，6 勺配 195 毫升水是一份。"
+          }
+        }
+      }
+    },
+    "meal.scoops.title": {
+      "comment": "How many scoops went into the drink.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "几勺"
+          }
+        }
+      }
+    },
+    "meal.scoops.unit": {
+      "comment": "The unit shown after the scoop count.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "勺"
+          }
+        }
+      }
+    },
+    "meal.supplement": {
+      "comment": "A nutritional powder rather than ordinary food.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "营养粉剂"
           }
         }
       }
@@ -250,6 +294,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "药名"
+          }
+        }
+      }
+    },
+    "medication.recent": {
+      "comment": "Taken before; tap to fill the fields.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次吃过的"
           }
         }
       }

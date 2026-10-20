@@ -10,6 +10,8 @@ final class RecordsModel {
     private(set) var day: Date
     private(set) var events: [RecordedEvent] = []
     private(set) var lastDeleted: RecordedEvent?
+    /// The last few distinct medications, newest first — so the same tablet is not retyped daily.
+    private(set) var recentMedications: [MedicationEvent] = []
     var failure: String?
     private var loadedDay: Date?
 
@@ -46,6 +48,24 @@ final class RecordsModel {
     func loadIfNeeded() async {
         guard loadedDay != day else { return }
         await load()
+        await refreshRecentMedications()
+    }
+
+    private func refreshRecentMedications() async {
+        guard let all = try? await store.allEvents() else { return }
+        var seen = Set<String>()
+        var result: [MedicationEvent] = []
+        for event in all {
+            guard case let .medication(medication) = event.payload,
+                  !medication.name.isEmpty,
+                  seen.insert(medication.name).inserted
+            else { continue }
+            result.append(medication)
+            if result.count == 3 {
+                break
+            }
+        }
+        recentMedications = result
     }
 
     func show(_ date: Date) async {
