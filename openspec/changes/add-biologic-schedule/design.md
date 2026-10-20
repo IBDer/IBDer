@@ -33,5 +33,26 @@ persistence infrastructure without adding a backend or a drug-recommendation dep
 
 ## Slice decisions
 
-Kind entry, optional fields, recurrence, reminder lead times and notification actions need product
-feedback before their production slices. The outline fixes lifecycle guarantees, not those defaults.
+Agreed with the maintainer on 2026-10-20, before implementation:
+
+- **Catalogue, not a recommendation engine.** Six products ship with the regimen printed in their
+  label: infliximab, vedolizumab, adalimumab, risankizumab, ustekinumab, guselkumab. The text comes
+  from the label and is shown as the label's text; the source and the date it was checked live in
+  `docs/research/biologic-regimens.md`. A product outside the catalogue is entered by hand, and no
+  regimen is invented for it.
+- **A plan is a sequence of dated doses**, not one interval: three of the six change amount, route or
+  spacing between induction and maintenance.
+- **A calculated dose is a suggestion.** For a weight-banded label (infliximab 5 mg/kg, ustekinumab
+  by band) the app may calculate from a weight the patient enters and name the band. The record keeps
+  the amount the hospital actually prepared, which the patient confirms. This is the maintainer's
+  decision, taken against the earlier "the app offers no regimen" rule; it is recorded here rather
+  than slipped in.
+- **Reminders**: two weeks, one week and one day before, each switchable.
+- **Overdue is red.** A missed appointment shows the days passed in the alert colour. This is a
+  deliberate, narrow exception to "never colour-as-verdict": the alert is about an appointment the
+  patient asked to be reminded of, never about a symptom or a disease state.
+- **Postpone one, or change the rule.** Moving one appointment asks for a short reason and leaves the
+  spacing untouched. Changing the repeating interval requires a reason and starts from a stated dose.
+- **Pre-infusion checklist**: a short list kept on the appointment (blood tests done and whatever else
+  the patient adds), shown as outstanding rather than as an error, never blocking completion.
+- **Dose is recorded.** The infusion record stores the amount given; it never stores "adherence".
