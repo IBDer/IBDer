@@ -12,7 +12,7 @@ enum ProfileLabels {
 
     static func state(_ item: PatientProfile.DiseaseState) -> LocalizedStringKey {
         switch item {
-        case .remission: "profile.state.remission"
+        case .inactive: "profile.state.inactive"
         case .active: "profile.state.active"
         case .unsure: "profile.state.unsure"
         }

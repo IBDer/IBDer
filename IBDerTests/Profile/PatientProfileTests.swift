@@ -11,7 +11,7 @@ struct PatientProfileTests {
         profile.weightKilograms = 62
         profile.weightRecordedAt = Date(timeIntervalSince1970: 1_791_000_000)
         profile.diagnosis = .crohns
-        profile.diseaseState = .remission
+        profile.diseaseState = .inactive
         profile.treatments = [.biologic, .partialEnteral]
         profile.complications = [.perianal]
         profile.hasCompletedOnboarding = true

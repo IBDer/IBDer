@@ -11,7 +11,7 @@ struct PatientProfile: Codable, Sendable, Equatable {
 
     /// Quoted from the care team. Never calculated, never used in one.
     enum DiseaseState: String, Codable, Sendable, CaseIterable {
-        case remission
+        case inactive
         case active
         case unsure
     }

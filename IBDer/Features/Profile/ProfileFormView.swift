@@ -137,7 +137,7 @@ struct ProfileFormView: View {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
                 SectionTitle(titleKey: "profile.state")
                 HStack(spacing: DesignTokens.Spacing.small) {
-                    stateChip(.remission)
+                    stateChip(.inactive)
                     stateChip(.active)
                     stateChip(.unsure)
                 }

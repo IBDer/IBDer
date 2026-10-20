@@ -93,7 +93,7 @@ struct SettingsView: View {
 
     private var stateText: String {
         switch profile.profile.diseaseState {
-        case .remission: String(localized: "profile.state.remission")
+        case .inactive: String(localized: "profile.state.inactive")
         case .active: String(localized: "profile.state.active")
         case .unsure: String(localized: "profile.state.unsure")
         }

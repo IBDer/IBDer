@@ -683,8 +683,8 @@
         }
       }
     },
-    "profile.state.remission": {
-      "comment": "The doctor says remission.",
+    "profile.state.inactive": {
+      "comment": "The doctor says inactive.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
