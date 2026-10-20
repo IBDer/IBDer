@@ -6,18 +6,28 @@ on:
   pull_request:
 
 jobs:
-  build-and-test:
-    runs-on: macos-latest
+  # Ten seconds on a Linux runner, so a broken document or spec is reported long before a
+  # macOS runner becomes free. This job also gates the expensive one.
+  docs:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Documentation integrity
         run: python3 scripts/check-docs.py
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Validate the specs
-        run: |
-          brew install openspec
-          openspec validate --all --strict
+        run: npx --yes @fission-ai/openspec@1.14.3 validate --all --strict
+
+  build-and-test:
+    needs: docs
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Generate the Xcode project
         id: detect
