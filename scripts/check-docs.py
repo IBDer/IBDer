@@ -22,6 +22,12 @@ VERDICT_IDENTIFIERS = ["diseaseActivity", "remission", "flare", "severityScore",
 
 
 SKIP_DIRS = (".git", "node_modules", ".build", "build", "IBDer.xcodeproj", "DerivedData", ".swiftpm")
+# Vendored third-party skills carry their own prose, languages and links. They are tools,
+# not repository policy, so the rules below do not apply to them.
+VENDORED_SKILL_DIRS = tuple(
+    f"{path.parent.relative_to(ROOT).as_posix()}/"
+    for path in (ROOT / ".dsh" / "skills").glob("*/SOURCE.md")
+)
 # The archive is provenance, not policy: it is allowed to be stale, foreign, or Chinese.
 EXEMPT_PREFIXES = ("docs/archive/",)
 
@@ -35,6 +41,8 @@ def tracked_files(suffix=None, include_archive=False):
             continue
         rel = path.relative_to(ROOT).as_posix()
         if rel.split("/")[0] in SKIP_DIRS or rel.endswith(BINARY_SUFFIXES):
+            continue
+        if rel.startswith(VENDORED_SKILL_DIRS):
             continue
         if not include_archive and rel.startswith(EXEMPT_PREFIXES):
             continue

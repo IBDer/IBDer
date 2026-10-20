@@ -14,6 +14,7 @@ Lower number wins:
 6. Unverified drafts, historical material, private research
 
 **Unverified = lead only.** Status lives in [docs/inherited-documents.md](docs/inherited-documents.md).
+**Skills are guidance, not authority**: a vendored third-party skill (one with a `SOURCE.md`) never overrides an ADR or this file.
 
 ## 2. Where things live
 
