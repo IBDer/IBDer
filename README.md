@@ -12,7 +12,7 @@ A self-management tool for Patients with Crohn's disease (CD) and ulcerative col
 | --- | --- |
 | Repository conventions / design specifications / CI / testing approach | Merged |
 | Requirements and scope (the first OpenSpec change) | Merged — 36 tracked tasks, 4 done (`openspec/changes/add-v1-recording-core/`) |
-| Application code | In review: project skeleton, design tokens, the Today screen |
+| Application code | Recording core in progress — see the [milestones](https://github.com/IBDer/IBDer/milestones) |
 
 ## Build
 
@@ -50,7 +50,6 @@ Public rules from [IBDer/.github](https://github.com/IBDer/.github) and [IBDer/r
 | Domain terminology (identifiers and definitions) | [CONTEXT.md](CONTEXT.md) |
 | Why it was decided this way | [docs/adr/](docs/adr/) |
 | How the work moves (the loop, the two gates) | [docs/process/review-gates.md](docs/process/review-gates.md) |
-| Superseded documents, kept for provenance | [docs/archive/](docs/archive/) |
 | Process (OpenSpec / review / testing / CI) | [docs/process/](docs/process/) |
 | Current system behavior (single source of truth) | [openspec/specs/](openspec/specs/) |
 | Changes in progress | [openspec/changes/](openspec/changes/) |

@@ -23,7 +23,7 @@ that has to be resolved by hand, and a reviewer cannot read what changed.
 - **Tuist**: comparable capability, heavier toolchain and a Swift manifest to maintain, for one app
   target and one test target.
 - **Hand-maintain the project**: same problems as committing a `.pbxproj`, plus it drifts from the
-  folder layout that `docs/engineering/architecture.md` fixes.
+  folder layout that `AGENTS.md` §3 fixes.
 
 ## Consequences
 

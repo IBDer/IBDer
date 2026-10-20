@@ -9,7 +9,7 @@ the app. Constraints that shape the design, and where they come from:
 - No score, severity, or verdict in any read path (ADR-0009).
 - Plan, appointment, and fact must never impersonate each other (CONTEXT.md).
 - Identifiers come from CONTEXT.md; our visual language is ours, with Aidy as a structural reference
-  only (ADR-0007, ADR-0012, docs/design/reference-aidy.md).
+  only (ADR-0007, ADR-0012).
 - Local storage technology is to be decided here and recorded as its own ADR.
 
 ## Goals / Non-Goals
@@ -95,7 +95,7 @@ it could phrase a conclusion.
 
 ### D8. Feature-first SwiftUI layout
 
-Follow `docs/engineering/architecture.md`: `Features/` by capability, `Domain/` free of UI and
+Follow `AGENTS.md` §3: `Features/` by capability, `Domain/` free of UI and
 persistence, `DesignSystem/` for tokens and components. The three capabilities of this change map to
 three feature folders.
 

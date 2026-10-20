@@ -18,9 +18,7 @@
 
 | Identifier | Definition |
 | --- | --- |
-| `PlanIntent` | A **future** arrangement the patient entered from an existing care plan. |
-| `PendingTask` | One still-open task or appointment produced by a plan. |
-| `Fact` | Something the patient confirms **actually happened**. Ticking a reminder must never create a fact. |
+| `Fact` | **A concept, not a type.** Something the patient confirms actually happened; ticking a reminder must never create one. The concrete types are the records in this table. |
 
 ## Event types (peers — none is more important than another, see ADR-0001)
 

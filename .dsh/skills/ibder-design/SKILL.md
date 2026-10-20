@@ -17,7 +17,7 @@ Everything below exists to make recording fast and reading honest.
 1. `docs/adr/0012-design-direction.md` — the visual direction and why the old system's parameters were retired
 2. `docs/adr/0007-borrow-aidy.md` — what may be borrowed from a reference product, and what may not
 3. `docs/adr/0009-no-scores-in-v1.md` — the line the interface must not cross
-4. `docs/design/design-tokens.md` + `docs/design/motion.md` + `docs/design/accessibility.md`
+4. the tokens in `IBDer/DesignSystem/Tokens/DesignTokens.swift`, and the motion and accessibility rules in this skill
 5. `CONTEXT.md` — every label you invent must use its vocabulary
 
 ## Non-negotiables

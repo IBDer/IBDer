@@ -34,7 +34,7 @@ for exactly this patient population and they stay.
 | Gradient | Brand asset only — logo, launch mark, and at most one onboarding moment. **Never UI chrome, never data.** |
 | Corner radius | Scale 12 / 16 / 20. The old 8px cap is retired; pill shapes allowed for chips and segmented controls only. |
 | Type scale | A strong page title is allowed and wanted (Aidy does this well). Still no giant decorative numerals, and no display text inside data rows. |
-| Motion | Intentional, not decorative: page/sheet transitions, state changes, recording feedback. Measured values live in `docs/design/motion.md`, never guessed. |
+| Motion | Intentional, not decorative: page/sheet transitions, state changes, recording feedback. Measured values live in the `ibder-design` skill, never guessed. |
 | Cards | Cards group related facts; no nested cards. Some screens will use full-width rows + dividers where a card adds nothing. |
 | Density | Standard mobile density. Whitespace groups content; oversized headings do not. |
 
@@ -44,7 +44,7 @@ its screen layouts pixel-for-pixel, or its disease-activity scoring and verdicts
 
 ## Consequences
 
-- `docs/design/design-tokens.md` and `docs/design/motion.md` are the working expression of this ADR;
+- `IBDer/DesignSystem/Tokens/DesignTokens.swift` and the `ibder-design` skill are the working expression of this ADR;
   when they disagree with it, this ADR wins and they are updated.
 - The old `MASTER.md` is **archived reference**, not a source of truth. Its principles are carried here;
   its visual parameters are retired deliberately, not by neglect.

@@ -12,7 +12,6 @@ the primary purpose of the product. The three SHALL carry the same weight as the
 #### Scenario: Recording any type costs one tap to start
 - **WHEN** the patient is on the recording screen
 - **THEN** each of the three daily event types is reachable in one tap
-- **AND** recording an infusion is reachable in one tap as well (`biologic-schedule`)
 - **AND** the time of the event defaults to now and can be changed
 
 #### Scenario: A type is added later without reshaping history

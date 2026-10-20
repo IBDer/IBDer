@@ -25,8 +25,8 @@ SHALL NOT recommend a regimen, a dose, an interval, or a substitution.
 
 ### Requirement: Appointment lifecycle
 
-A pending appointment SHALL be confirmable, reschedulable, and cancellable, and a reschedule SHALL
-preserve the original arrangement in history.
+A pending appointment SHALL be confirmable, reschedulable, cancellable, or completed once the infusion
+it produced is recorded. A reschedule SHALL preserve the original arrangement in history.
 
 #### Scenario: Rescheduling
 - **WHEN** the patient moves an appointment to a new date
