@@ -9,7 +9,7 @@ meaning of the underlying records.
 
 ### Requirement: Four time ranges
 
-The system SHALL offer week, month, six-month and year ranges from the first M1 trend implementation.
+The system SHALL offer week, month, six-month and year ranges for M1 acceptance.
 Each range SHALL identify its start and end dates and support browsing historical periods. Exact
 calendar boundaries and aggregation buckets SHALL be agreed before implementing the range slice.
 
