@@ -2,17 +2,20 @@
 
 A self-management tool for Patients with Crohn's disease (CD) and ulcerative colitis (UC): it records meals, bowel movements, medication, symptoms and care events, and organises the facts of a period of time into a VisitSummary that can be brought into the clinic.
 
-> **Current status: implementation has started.** The repository conventions and the first OpenSpec
-> change are merged; the first implementation slice (project skeleton, design tokens) is in review.
-> The rule that got us here still holds: specification first, then requirements, then code.
+> **Current status: early implementation.** The skeleton, tokens and Today screen are merged.
+> The screen uses synthetic data; recording, storage, scheduling and trends remain planned.
+> M1 is a personal MVP, with details refined during each implementation slice.
 
 ## Phases
 
 | Phase | Status |
 | --- | --- |
-| Repository conventions / design specifications / CI / testing approach | Merged |
-| Requirements and scope (the first OpenSpec change) | Merged — 36 tracked tasks, 4 done (`openspec/changes/add-v1-recording-core/`) |
-| Application code | Recording core in progress — see the [milestones](https://github.com/IBDer/IBDer/milestones) |
+| M1: personal dogfood MVP | Daily records, biologic kinds/appointments/reminders, week/month/six-month/year trends |
+| M2: external TestFlight | Follow-up confirmation and summary/export capabilities, refined after personal use |
+| M3: public release | Distribution, clinical wording and release readiness |
+
+See [the delivery plan](docs/process/delivery-plan.md) for acceptance checks and the real-data backup
+gate. GitHub milestones show live progress.
 
 ## Build
 

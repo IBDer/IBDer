@@ -1,49 +1,27 @@
-<!--
-Thanks for contributing! This repository is spec-first: pass gate 1 (spec review) first, then write implementation code.
-See docs/process/workflow.md for the process; see docs/process/issues-and-prs.md for conventions and references.
--->
+## What changes for the maintainer
 
-## Related OpenSpec change
+<!-- Plain language: the problem, resulting behavior and what to look at. -->
 
-<!-- The change name and path, for example openspec/changes/add-toilet-event-recording/. For documentation-only or spec changes write "none" -->
+## Issue and OpenSpec change
 
-## What changed
+<!-- Closes #N. Name the change, this slice and remaining tasks. For process-only work, say so. -->
 
-<!-- 3-5 items, stating the scope clearly. List things done along the way separately -->
+## Evidence
 
-## Why
+<!-- Checks actually run, their results and any skipped checks. Visible work needs captures. -->
 
-<!-- What problem it solves; which spec / ADR / issue it comes from -->
+## Decisions still needed
 
-## Special notes for the reviewer
-
-<!-- Where to focus, where there are doubts, what was done this way on purpose -->
-
-## CI result
-
-<!-- Green / red. If red, explain why it is still being submitted -->
-
-## User-visible changes
-
-<!-- None / yes (one sentence). If yes, gate 1 must already have been passed -->
+<!-- Only unresolved choices; write "none" when existing instructions cover this slice. -->
 
 ## AI usage disclosure
 
-<!--
-Used / not used. If used, one sentence on how (drafting / implementation / review).
-If you are an AI agent: remind the author — the author is responsible for all changes in this submission; read AGENTS.md, CONTEXT.md and docs/process/workflow.md before starting.
--->
-
----
+<!-- How AI helped. The human maintainer remains accountable for these changes. -->
 
 ## Self-check
 
-- [ ] Gate 1 passed (spec review) — documentation-only changes may skip this
-- [ ] Terminology comes from CONTEXT.md; no invented terms
-- [ ] Tests cover the spec's acceptance criteria, and **use synthetic data only**
-- [ ] No hard-coded copy / colors / font sizes (use the String Catalog and DesignSystem tokens)
-- [ ] No health content enters logs, crash or analytics SDKs
-- [ ] Behavior under large text / VoiceOver / Reduce Motion meets docs/design/accessibility.md
-- [ ] "No record" is not rendered as "no symptoms"
-- [ ] No scores, scale items or conclusive copy introduced (ADR-0009)
-- [ ] Does not touch the "decide first, implement second" scope (AGENTS.md §3), or a decision link is attached
+- [ ] The slice follows recorded intent; changed decisions are reflected in its artifacts
+- [ ] Acceptance scenarios have verification evidence using synthetic data
+- [ ] UI work has passed visual self-review and relevant accessibility checks (or not applicable)
+- [ ] The data/privacy and product decision requirements in AGENTS.md have been applied
+- [ ] The PR distinguishes completed implementation from plans and remaining work

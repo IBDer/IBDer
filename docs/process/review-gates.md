@@ -1,87 +1,59 @@
-# Process: the loop
+# Process: the iteration loop
 
-**Status: current.** This is the only document that describes how work moves.
+**Status: current.** Scope lives in [delivery-plan.md](delivery-plan.md); this file owns the working
+method adopted in [ADR-0014](../adr/0014-m1-dogfood-and-iterative-delivery.md).
 
-## One picture
+## One slice at a time
 
-```
-think        grilling / explore — no code, no spec
-  |
-specify      openspec change: proposal + delta spec + design + tasks
-  |
-[gate 1]     the maintainer reads a plain-language summary, plus a reference image if it is visual
-  |
-build        TDD; branch change/<name> or impl/<name>
-  |
-self-check   the agent looks at the result against the acceptance criteria and fixes it first
-  |
-[gate 2]     the maintainer looks at screenshots, or a short recording — never at code
-  |
-merge        a human merges and tags
-  |
-archive      openspec archive — the delta merges into the main spec
-```
+1. **Orient.** Read the Issue, owning OpenSpec change and existing decisions. State the current slice
+   and the observable behavior that will prove it works.
+2. **Resolve what matters now.** Reuse answers already given. Ask targeted questions only when an
+   unresolved choice changes this slice's behavior or data meaning. Use exploration or a disposable
+   prototype to make a choice concrete; no fixed questionnaire is required for every Issue.
+3. **Record and build.** Update the affected requirements, scenarios, design and tasks, then implement
+   the agreed slice. Test meaningful risks first: dates, counting, completeness, persistence and the
+   distinction between plans and facts. Other milestone screens need not be designed first.
+4. **Inspect and refine.** For UI work, run `visual-acceptance`, compare the running result with the
+   scenarios, and fix findings before handover. Feedback may revise any planning artifact; keep the
+   implementation and acceptance checks aligned with the revised intent.
+5. **Hand over.** Open a focused PR linked to its Issue and change. Explain the behavior in plain
+   language, attach captures for visible work, and ask only decisions still needed. Internal work is
+   reported with its verification results.
+6. **Verify and close.** Humans merge. Check Issue acceptance before closing it. Verify and sync a
+   capability when its requirements are implemented and reviewed; archive its change afterwards.
 
-**Implementation must not start before gate 1 is passed.** It is the rule most easily broken here, and
-the one with the highest rework cost.
+The maintainer owns behavior and appearance, public statements, money/law and AGENTS.md section 4.
+Engineering choices within the agreed slice are the agent's responsibility. Existing authorization
+needs no ceremonial second approval; changed intent must become explicit before production changes.
 
-## The two human gates
+## Keep changes small
 
-| Gate | When | What the maintainer sees | They answer |
-| --- | --- | --- | --- |
-| **1 — requirements** | before code | a plain-language summary of what will exist and what will not, plus a reference image where the change is visual | yes / no / change this |
-| **2 — the product** | after code | screenshots or a short recording of the running app, plus one line on what changed | yes / no / change this |
+One OpenSpec change owns one independently verifiable capability. It can span several implementation
+PRs; each names its slice and remaining tasks. Learning about the same intent updates that change;
+independently shippable intent gets a separate change.
 
-**A gate is never a code review.** The maintainer is not asked to read Swift, diffs, or long documents.
+Invisible work is supported by tests and reported briefly. Keep the existing cap of roughly 600 lines
+of unreviewed implementation code, landing it with a visible slice when that helps product review.
 
-## The self-check comes before gate 2
+## Evidence and its limits
 
-Before asking for review the agent runs the `visual-acceptance` skill: open the app, look at the result
-against the acceptance criteria, **fix what it finds**, and only then hand over the before/after pair.
-The maintainer's time is spent on what survives that.
-
-## Batching: invisible work does not get its own gate
-
-A slice with no visible surface — domain model, persistence, CI, a refactor — is proven by tests alone
-and reported in **one line** ("the event envelope is in, 23 tests, CI green"). Do not ask for a review.
-
-**Cap: no more than ~600 lines of unreviewed code may accumulate.** When invisible work reaches that,
-it ships together with the next slice that has something to look at.
-
-## What machines prove instead
-
-| Concern | Proven by |
+| Check | What it establishes |
 | --- | --- |
-| It compiles, tests pass | CI on a macOS runner |
-| Style | `swiftformat --lint` and `swiftlint --strict` in CI |
-| Documentation integrity | `scripts/check-docs.py` in CI: links resolve, no rule is stated twice, the conclusions vocabulary stays out, Chinese stays in the String Catalog, AGENTS.md stays under its cap |
-| The change matches the spec | `openspec validate` in CI, plus the two-axis `code-review` the agent runs before asking |
-| The interface did not silently change | snapshot tests — every UI change surfaces a PNG in the pull request |
+| Documentation script | Mechanical integrity, not agreement between product decisions. |
+| OpenSpec strict validation | Artifact structure and schema validity, not feature completion. |
+| SwiftFormat and SwiftLint | Style consistency. |
+| Build and behavior tests | Compilation and the scenarios those tests actually exercise. |
+| Snapshot comparisons | Visual changes on the configured runtime; skipped snapshots provide no comparison. |
+| Review against scenarios | Coverage, correctness and agreement between artifacts and behavior. |
+| Maintainer device trial | Whether the agreed flows are useful in daily use. |
 
-## The item loop: how one Issue gets done
+Run a code review against the originating Issue/spec before handover. Each completed task needs
+verification evidence. Record skipped or unavailable checks honestly and use synthetic data in all
+shared evidence.
 
-Every Issue is one turn of this loop. Nothing skips step 1.
+## Visible handover
 
-1. **Grill** — the `grilling` skill. Three to five questions, each with a recommended answer. The
-   answers are the decision; write them down before touching code.
-2. **Specify** — `openspec update change`: the decisions become requirement or scenario changes in the
-   capability they belong to. A decision that constrains future work also becomes an ADR.
-3. **Build** — `tdd` for the logic, `ibder-design` for the screen.
-4. **Self-check** — `visual-acceptance`: screenshot it, compare with the scenarios, fix what is wrong.
-5. **Hand over** — PR with `Closes #N`, the screenshots, and three concrete questions.
-6. **Fix or merge** — "no" returns to step 1 or 3; "yes" merges and closes the Issue.
-
-An Issue is not started until step 1 has happened, and not closed until step 5 was reviewed.
-
-## Rules for agents
-
-1. Every UI slice ends with screenshots under `docs/review/<date>-<slice>/`, plus three or four concrete questions in the PR — never "please review".
-2. Write PR descriptions for a non-programmer: what changed, what to look at, what is deliberately not in it.
-3. Never ask the maintainer to read code. If a decision can only be shown in code, make it visible in behaviour instead.
-4. If a rule can be executed by a machine, execute it — do not write it down. Prose is for what machines cannot check.
-
-## What this costs
-
-- Visual-first order: screens come before the layer beneath them, fed by clearly marked synthetic data. Rework when the real model lands is the accepted price.
-- Screenshots go stale. They are review artifacts, not product assets.
-- The agent carries more of the correctness burden, which is why CI and tests are mandatory rather than advisory.
+Store captures under `docs/review/<date>-<slice>/`. Show the empty, populated and changed/error states
+relevant to the slice; check large text and accessibility using `ibder-design`. Ask concrete product
+questions when choices remain. A process-only PR needs neither fake screenshots nor questions whose
+answers are already known.

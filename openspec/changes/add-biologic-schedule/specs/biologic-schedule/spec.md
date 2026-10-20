@@ -1,5 +1,9 @@
 # biologic-schedule — delta
 
+## Purpose
+
+Manage patient-entered biologic arrangements, pending appointments and reminders separately from the doses actually received.
+
 ## ADDED Requirements
 
 ### Requirement: Three separated layers
@@ -86,3 +90,40 @@ postponed, or skipped — and no transition SHALL turn it into a fact.
 - **WHEN** the patient skips a pending task
 - **THEN** the task is recorded as skipped
 - **AND** no fact is created
+
+
+### Requirement: Biologic kinds remain identifiable
+
+The system SHALL retain the biologic kind entered or selected by the patient and identify it on the
+relevant arrangement, appointment and actual record. Changing the current kind SHALL NOT silently
+rewrite the kind associated with historical doses.
+
+#### Scenario: Changing biologic kind
+- **WHEN** the patient changes their current biologic kind
+- **THEN** previously recorded doses keep their original kind
+- **AND** future appointments reflect the explicitly updated arrangement
+
+### Requirement: Reminder state follows appointments
+
+Changing or cancelling an appointment SHALL update or remove its pending local reminders. Completing
+an appointment SHALL remove obsolete pending reminders. Unchanged items SHALL NOT accumulate duplicate
+notifications when the app relaunches.
+
+#### Scenario: Rescheduling an appointment with a reminder
+- **WHEN** the patient changes an appointment date
+- **THEN** its obsolete reminder is removed and the pending reminder reflects the agreed new schedule
+
+#### Scenario: Cancelling an appointment
+- **WHEN** the patient cancels an appointment
+- **THEN** its pending reminder is removed and no actual dose is created
+
+### Requirement: Notification availability is visible
+
+The system SHALL communicate when notification permission or scheduling failure prevents an
+appointment reminder. The appointment SHALL remain available in the app even when reminders cannot
+be delivered; permission denial SHALL NOT erase it or mark it complete.
+
+#### Scenario: Permission is denied
+- **WHEN** the patient denies notification permission
+- **THEN** the appointment is still saved and visible
+- **AND** the app explains that its notification reminder is unavailable

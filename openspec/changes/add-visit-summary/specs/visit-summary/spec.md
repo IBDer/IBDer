@@ -1,5 +1,10 @@
 # visit-summary — delta
 
+## Purpose
+
+Organise recorded facts and their completeness into a period summary the patient can review and
+explicitly export for a clinical visit.
+
 ## ADDED Requirements
 
 ### Requirement: Period summary of facts

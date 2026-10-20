@@ -22,9 +22,7 @@ gh issue list --repo IBDer/IBDer --state open --json number,title,milestone --jq
 
 echo
 echo "openspec"
-printf '  tasks: %s done, %s open\n' \
-  "$(grep -c '^- \[x\]' openspec/changes/add-v1-recording-core/tasks.md)" \
-  "$(grep -c '^- \[ \]' openspec/changes/add-v1-recording-core/tasks.md)"
+openspec list 2>&1 | sed 's/^/  /'
 openspec validate --all --strict 2>&1 | tail -1 | sed 's/^/  /'
 
 echo
