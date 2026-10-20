@@ -1,15 +1,21 @@
 import SwiftUI
 
-/// The home screen. Three things, in this order: which day it is, what was recorded,
-/// and the ways to record more. Facts only — no score, no verdict (ADR-0009).
+/// The home screen: which day, how to record, and what was recorded. Facts only — no score, no
+/// verdict (ADR-0009). The date and the entry points stay put while the timeline scrolls.
 struct TodayView: View {
-    @State private var day: Date
-    @State private var events: [RecordedEvent]
+    let model: RecordsModel
+    @State private var sheet: Sheet?
 
-    /// `day` is injectable so a snapshot can pin the date; otherwise every baseline changes daily.
-    init(events: [RecordedEvent] = RecordedEvent.launchSample, day: Date = .now) {
-        _events = State(initialValue: events)
-        _day = State(initialValue: day)
+    enum Sheet: Identifiable {
+        case create(RecordKind)
+        case edit(RecordedEvent)
+
+        var id: String {
+            switch self {
+            case let .create(kind): "create-\(kind.rawValue)"
+            case let .edit(event): "edit-\(event.id)"
+            }
+        }
     }
 
     private static let dayFormatter: DateFormatter = {
@@ -20,45 +26,77 @@ struct TodayView: View {
     }()
 
     var body: some View {
-        VStack(spacing: DesignTokens.Spacing.regular) {
-            dayHeader
-            eventSection
-            Spacer(minLength: 0)
-            entryRow
-            DashedActionRow(titleKey: "confirm.title", hintKey: "confirm.subtitle", symbol: "checklist") {}
+        VStack(spacing: 0) {
+            header
+            entries
+            timeline
         }
-        .padding(.horizontal, DesignTokens.Spacing.regular)
-        .padding(.top, DesignTokens.Spacing.small)
-        .padding(.bottom, DesignTokens.Spacing.regular)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(DesignTokens.Color.background)
+        .task { await model.loadIfNeeded() }
+        .overlay(alignment: .bottom) { undoBar }
+        .animation(.snappy(duration: 0.22), value: model.lastDeleted?.id)
+        .sheet(item: $sheet) { sheetView(for: $0) }
+        .alert("error.title", isPresented: failurePresented) {
+            Button("common.ok", role: .cancel) { model.failure = nil }
+        } message: {
+            Text(model.failure ?? "")
+        }
     }
 
-    private var dayHeader: some View {
-        HStack {
-            dayArrow(symbol: "chevron.left", labelKey: "today.previousDay") {
-                day = Calendar.current.date(byAdding: .day, value: -1, to: day) ?? day
+    private var failurePresented: Binding<Bool> {
+        Binding(
+            get: { model.failure != nil },
+            set: {
+                if !$0 {
+                    model.failure = nil
+                }
             }
-            Spacer()
+        )
+    }
+
+    private var isToday: Bool {
+        Calendar.current.isDateInToday(model.day)
+    }
+
+    // MARK: - Header
+
+    private var header: some View {
+        HStack(spacing: DesignTokens.Spacing.small) {
+            arrow("chevron.left", label: "today.previousDay", identifier: "today.previousDay") {
+                Task { await model.step(-1) }
+            }
+            Spacer(minLength: 0)
             VStack(spacing: 2) {
-                Text(Self.dayFormatter.string(from: day))
+                Text(Self.dayFormatter.string(from: model.day))
                     .font(DesignTokens.Typography.title)
                     .foregroundStyle(DesignTokens.Color.textPrimary)
-                Text(day, format: .dateTime.year())
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+                Text(model.day, format: .dateTime.year())
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(DesignTokens.Color.textSecondary)
             }
-            Spacer()
-            dayArrow(symbol: "chevron.right", labelKey: "today.nextDay") {
-                day = Calendar.current.date(byAdding: .day, value: 1, to: day) ?? day
+            .accessibilityElement(children: .combine)
+            .accessibilityIdentifier("today.date")
+            Spacer(minLength: 0)
+            arrow("chevron.right", label: "today.nextDay", identifier: "today.nextDay") {
+                Task { await model.step(1) }
             }
-            .disabled(Calendar.current.isDateInToday(day))
-            .opacity(Calendar.current.isDateInToday(day) ? 0.3 : 1)
+            .disabled(isToday)
+            .opacity(isToday ? 0.3 : 1)
         }
+        .padding(.horizontal, DesignTokens.Spacing.regular)
         .padding(.top, DesignTokens.Spacing.small)
+        // The date is display text, not body text: it may scale, but it must not push the entries off screen.
+        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
     }
 
-    private func dayArrow(symbol: String, labelKey: LocalizedStringKey, action: @escaping () -> Void) -> some View {
+    private func arrow(
+        _ symbol: String,
+        label: LocalizedStringKey,
+        identifier: String,
+        action: @escaping () -> Void
+    ) -> some View {
         Button(action: action) {
             Image(systemName: symbol)
                 .font(.headline)
@@ -66,82 +104,150 @@ struct TodayView: View {
                 .frame(width: DesignTokens.Layout.minimumTouchTarget, height: DesignTokens.Layout.minimumTouchTarget)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(Text(labelKey))
+        .accessibilityLabel(Text(label))
+        .accessibilityIdentifier(identifier)
     }
 
-    @ViewBuilder private var eventSection: some View {
-        if events.isEmpty {
+    // MARK: - Entry points
+
+    private var entries: some View {
+        HStack(spacing: DesignTokens.Spacing.small) {
+            EntryChip(symbol: "drop.fill", titleKey: "entry.toilet", identifier: "entry.toilet") {
+                sheet = .create(.toilet)
+            }
+            EntryChip(symbol: "fork.knife", titleKey: "entry.meal", identifier: "entry.meal") {
+                sheet = .create(.meal)
+            }
+            EntryChip(symbol: "pills.fill", titleKey: "entry.medication", identifier: "entry.medication") {
+                sheet = .create(.medication)
+            }
+        }
+        .padding(.horizontal, DesignTokens.Spacing.regular)
+        .padding(.vertical, DesignTokens.Spacing.medium)
+    }
+
+    // MARK: - Timeline
+
+    @ViewBuilder private var timeline: some View {
+        if model.events.isEmpty {
             VStack(spacing: DesignTokens.Spacing.small) {
-                Spacer(minLength: DesignTokens.Spacing.xLarge)
                 Text("today.empty.title")
                     .font(DesignTokens.Typography.headline)
-                    .accessibilityIdentifier("today.empty.title")
                     .foregroundStyle(DesignTokens.Color.textPrimary)
+                    .accessibilityIdentifier("today.empty.title")
                 Text("today.empty.body")
                     .font(DesignTokens.Typography.body)
                     .foregroundStyle(DesignTokens.Color.textSecondary)
-                    .multilineTextAlignment(.center)
-                Spacer(minLength: DesignTokens.Spacing.xLarge)
             }
-            .frame(maxWidth: .infinity)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, DesignTokens.Spacing.large)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {
-            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                Text("today.section.events")
+            List {
+                ForEach(Array(model.events.enumerated()), id: \.element.id) { index, event in
+                    TimelineRow(event: event, isLast: index == model.events.count - 1)
+                        .listRowInsets(EdgeInsets(
+                            top: 0,
+                            leading: DesignTokens.Spacing.regular,
+                            bottom: 0,
+                            trailing: DesignTokens.Spacing.regular
+                        ))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        .contentShape(Rectangle())
+                        .onTapGesture { sheet = .edit(event) }
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                Task { await model.delete(event) }
+                            } label: {
+                                Label("common.delete", systemImage: "trash")
+                            }
+                        }
+                        .swipeActions(edge: .leading) {
+                            Button {
+                                sheet = .edit(event)
+                            } label: {
+                                Label("common.edit", systemImage: "pencil")
+                            }
+                            .tint(DesignTokens.Color.accent)
+                        }
+                }
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+        }
+    }
+
+    // MARK: - Undo
+
+    @ViewBuilder private var undoBar: some View {
+        if let deleted = model.lastDeleted {
+            HStack(spacing: DesignTokens.Spacing.medium) {
+                Text("today.deleted.fact")
                     .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-                    .padding(.leading, DesignTokens.Spacing.xSmall)
-                ForEach(events) { event in
-                    EventRow(event: event)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                Spacer(minLength: 0)
+                Button("common.undo") {
+                    Task { await model.undoDelete() }
+                }
+                .font(DesignTokens.Typography.headline)
+                .foregroundStyle(.white)
+                .accessibilityIdentifier("today.undo")
+                .padding(.leading, DesignTokens.Spacing.small)
+                .opacity(deleted.isDeleted ? 1 : 0)
+            }
+            .padding(.horizontal, DesignTokens.Spacing.regular)
+            .padding(.vertical, DesignTokens.Spacing.medium)
+            .background(DesignTokens.Color.ink, in: Capsule())
+            .padding(.horizontal, DesignTokens.Spacing.regular)
+            .padding(.bottom, DesignTokens.Spacing.small)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+
+    // MARK: - Sheets
+
+    @ViewBuilder private func sheetView(for state: Sheet) -> some View {
+        switch state {
+        case let .create(kind):
+            switch kind {
+            case .toilet:
+                ToiletSheet(day: model.day, editing: nil) { toilet, happenedAt in
+                    await model.save(toilet: toilet, at: happenedAt, editing: nil)
+                }
+            case .meal:
+                MealSheet(day: model.day, editing: nil) { meal, happenedAt in
+                    await model.save(meal: meal, at: happenedAt, editing: nil)
+                }
+            case .medication:
+                MedicationSheet(
+                    day: model.day,
+                    editing: nil,
+                    recent: model.recentMedications
+                ) { medication, happenedAt in
+                    await model.save(medication: medication, at: happenedAt, editing: nil)
+                }
+            }
+        case let .edit(event):
+            switch event.payload {
+            case .toilet:
+                ToiletSheet(day: model.day, editing: event) { toilet, happenedAt in
+                    await model.save(toilet: toilet, at: happenedAt, editing: event)
+                }
+            case .meal:
+                MealSheet(day: model.day, editing: event) { meal, happenedAt in
+                    await model.save(meal: meal, at: happenedAt, editing: event)
+                }
+            case .medication:
+                MedicationSheet(
+                    day: model.day,
+                    editing: event,
+                    recent: model.recentMedications
+                ) { medication, happenedAt in
+                    await model.save(medication: medication, at: happenedAt, editing: event)
                 }
             }
         }
     }
-
-    private var entryRow: some View {
-        HStack(spacing: DesignTokens.Spacing.small) {
-            EntryChip(symbol: "drop.fill", titleKey: "entry.toilet", identifier: "entry.toilet") {}
-            EntryChip(symbol: "fork.knife", titleKey: "entry.meal", identifier: "entry.meal") {}
-            EntryChip(symbol: "pills.fill", titleKey: "entry.medication", identifier: "entry.medication") {}
-            EntryChip(symbol: "syringe.fill", titleKey: "entry.infusion", identifier: "entry.infusion") {}
-        }
-    }
-}
-
-/// One recorded fact. No interpretation is added here on purpose.
-struct EventRow: View {
-    let event: RecordedEvent
-
-    var body: some View {
-        HStack(spacing: DesignTokens.Spacing.medium) {
-            Image(systemName: event.symbol)
-                .font(.body)
-                .foregroundStyle(DesignTokens.Color.accent)
-                .frame(width: 26)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(event.titleKey)
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(DesignTokens.Color.textPrimary)
-                Text(event.timeText)
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-            }
-            Spacer(minLength: DesignTokens.Spacing.small)
-            if event.isPartial {
-                Text("event.partial")
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-            }
-        }
-        .padding(DesignTokens.Spacing.medium)
-        .frame(minHeight: DesignTokens.Layout.minimumTouchTarget)
-        .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
-    }
-}
-
-#Preview("With records") {
-    TodayView()
-}
-
-#Preview("Empty day") {
-    TodayView(events: [])
 }

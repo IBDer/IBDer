@@ -12,68 +12,101 @@
         }
       }
     },
-    "today.section.events": {
-      "comment": "Section header above the day's recorded facts.",
+    "common.cancel": {
+      "comment": "Dismiss a sheet without saving.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "今日记录"
+            "value": "取消"
           }
         }
       }
     },
-    "today.empty.title": {
-      "comment": "Empty day heading.",
+    "common.delete": {
+      "comment": "Swipe action on a record.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "今天还没有记录"
+            "value": "删除"
           }
         }
       }
     },
-    "today.empty.body": {
-      "comment": "Empty day: names the next action.",
+    "common.edit": {
+      "comment": "Swipe action on a record.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "从下面记一次，或者完成今天的确认"
+            "value": "编辑"
           }
         }
       }
     },
-    "today.previousDay": {
-      "comment": "Accessibility label for the previous-day arrow.",
+    "common.ok": {
+      "comment": "Dismiss an alert.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "前一天"
+            "value": "好"
           }
         }
       }
     },
-    "today.nextDay": {
-      "comment": "Accessibility label for the next-day arrow.",
+    "common.save": {
+      "comment": "Primary action on a recording sheet.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "后一天"
+            "value": "保存"
           }
         }
       }
     },
-    "entry.toilet": {
-      "comment": "Recording entry point: toilet event.",
+    "common.undo": {
+      "comment": "Undo a deletion.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "如厕"
+            "value": "撤销"
+          }
+        }
+      }
+    },
+    "confirm.subtitle": {
+      "comment": "Hint under the daily confirmation row.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点击完成"
+          }
+        }
+      }
+    },
+    "confirm.title": {
+      "comment": "The daily confirmation row.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每日确认"
+          }
+        }
+      }
+    },
+    "entry.infusion": {
+      "comment": "Recording entry point: biologic infusion.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输液"
           }
         }
       }
@@ -100,35 +133,24 @@
         }
       }
     },
-    "entry.infusion": {
-      "comment": "Recording entry point: biologic infusion.",
+    "entry.toilet": {
+      "comment": "Recording entry point: toilet event.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "输液"
+            "value": "如厕"
           }
         }
       }
     },
-    "confirm.title": {
-      "comment": "The daily confirmation row.",
+    "error.title": {
+      "comment": "A save failed.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "每日确认"
-          }
-        }
-      }
-    },
-    "confirm.subtitle": {
-      "comment": "Hint under the daily confirmation row.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点击完成"
+            "value": "没有保存成功"
           }
         }
       }
@@ -140,6 +162,655 @@
           "stringUnit": {
             "state": "translated",
             "value": "记了一部分"
+          }
+        }
+      }
+    },
+    "meal.kind.meal": {
+      "comment": "A meal.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正餐"
+          }
+        }
+      }
+    },
+    "meal.kind.snack": {
+      "comment": "A snack.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加餐"
+          }
+        }
+      }
+    },
+    "meal.kind.supplement": {
+      "comment": "A powder mixed into a drink.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "营养粉剂"
+          }
+        }
+      }
+    },
+    "meal.kind.title": {
+      "comment": "Whether this was a meal, a snack or a nutritional powder.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这次是"
+          }
+        }
+      }
+    },
+    "meal.note.placeholder": {
+      "comment": "Free text about what was eaten. Optional.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "吃了什么（可不填）"
+          }
+        }
+      }
+    },
+    "meal.scoops.hint": {
+      "comment": "One level scoop of a standard powder is about 9 g; six scoops with 195 ml water makes one serving.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一平勺约 9 克，6 勺配 195 毫升水是一份。"
+          }
+        }
+      }
+    },
+    "meal.scoops.title": {
+      "comment": "How many scoops went into the drink.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "几勺"
+          }
+        }
+      }
+    },
+    "meal.scoops.unit": {
+      "comment": "The unit shown after the scoop count.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "勺"
+          }
+        }
+      }
+    },
+    "meal.supplement": {
+      "comment": "A nutritional powder rather than ordinary food.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "营养粉剂"
+          }
+        }
+      }
+    },
+    "meal.title": {
+      "comment": "Recording sheet title.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "饮食"
+          }
+        }
+      }
+    },
+    "medication.dose.placeholder": {
+      "comment": "How much was taken.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剂量"
+          }
+        }
+      }
+    },
+    "medication.name.placeholder": {
+      "comment": "The name of what was taken.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "药名"
+          }
+        }
+      }
+    },
+    "medication.recent": {
+      "comment": "Taken before; tap to fill the fields.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上次吃过的"
+          }
+        }
+      }
+    },
+    "medication.title": {
+      "comment": "Recording sheet title.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用药"
+          }
+        }
+      }
+    },
+    "medication.unit.placeholder": {
+      "comment": "mg, 片, 袋…",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "单位"
+          }
+        }
+      }
+    },
+    "record.time": {
+      "comment": "The time of day a record happened.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间"
+          }
+        }
+      }
+    },
+    "settings.data.body": {
+      "comment": "No account and no upload. Deleting the app deletes the records.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有账号，也不会上传。删掉这个 app，数据就没了。"
+          }
+        }
+      }
+    },
+    "settings.data.title": {
+      "comment": "Where the records live.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "数据只在这台手机上"
+          }
+        }
+      }
+    },
+    "settings.title": {
+      "comment": "Settings tab title.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的"
+          }
+        }
+      }
+    },
+    "settings.version": {
+      "comment": "The app version.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本"
+          }
+        }
+      }
+    },
+    "tab.settings": {
+      "comment": "Tab bar: settings and information about the app.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我的"
+          }
+        }
+      }
+    },
+    "tab.today": {
+      "comment": "Tab bar: the day view.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天"
+          }
+        }
+      }
+    },
+    "tab.trends": {
+      "comment": "Tab bar: charts over weeks, months and years.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "趋势"
+          }
+        }
+      }
+    },
+    "today.backfilled": {
+      "comment": "Marker on a record entered on a later day than it happened.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "补记"
+          }
+        }
+      }
+    },
+    "today.deleted.fact": {
+      "comment": "The record the patient just deleted.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已删除"
+          }
+        }
+      }
+    },
+    "today.edited": {
+      "comment": "Marker on a record whose values were changed after saving.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已修改"
+          }
+        }
+      }
+    },
+    "today.empty.body": {
+      "comment": "Empty day: names the next action.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点上面任何一个，记一次就好"
+          }
+        }
+      }
+    },
+    "today.empty.title": {
+      "comment": "Empty day heading.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天还没有记录"
+          }
+        }
+      }
+    },
+    "today.nextDay": {
+      "comment": "Accessibility label for the next-day arrow.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后一天"
+          }
+        }
+      }
+    },
+    "today.previousDay": {
+      "comment": "Accessibility label for the previous-day arrow.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前一天"
+          }
+        }
+      }
+    },
+    "today.section.events": {
+      "comment": "Section header above the day's recorded facts.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日记录"
+          }
+        }
+      }
+    },
+    "toilet.blood.mixed": {
+      "comment": "Blood mixed into the stool.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "混在大便里"
+          }
+        }
+      }
+    },
+    "toilet.blood.mostlyBlood": {
+      "comment": "Mostly blood.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大部分是血"
+          }
+        }
+      }
+    },
+    "toilet.blood.none": {
+      "comment": "No blood seen.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有"
+          }
+        }
+      }
+    },
+    "toilet.blood.onPaper": {
+      "comment": "Blood on the paper only.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手纸上有"
+          }
+        }
+      }
+    },
+    "toilet.blood.title": {
+      "comment": "How much blood was visible.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有血吗"
+          }
+        }
+      }
+    },
+    "toilet.bristol.1": {
+      "comment": "Bristol type 1: separate hard lumps.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一颗颗硬球"
+          }
+        }
+      }
+    },
+    "toilet.bristol.2": {
+      "comment": "Bristol type 2: a lumpy sausage.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "硬结的香肠状"
+          }
+        }
+      }
+    },
+    "toilet.bristol.3": {
+      "comment": "Bristol type 3: a sausage with cracks.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "表面有裂纹的香肠"
+          }
+        }
+      }
+    },
+    "toilet.bristol.4": {
+      "comment": "Bristol type 4: a smooth soft sausage.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "光滑柔软的香肠"
+          }
+        }
+      }
+    },
+    "toilet.bristol.5": {
+      "comment": "Bristol type 5: soft blobs with clear edges.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "边缘柔软的块状"
+          }
+        }
+      }
+    },
+    "toilet.bristol.6": {
+      "comment": "Bristol type 6: mushy with ragged edges.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "糊状，边缘松散"
+          }
+        }
+      }
+    },
+    "toilet.bristol.7": {
+      "comment": "Bristol type 7: entirely liquid.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完全是水"
+          }
+        }
+      }
+    },
+    "toilet.bristol.title": {
+      "comment": "Bristol stool form, types 1 to 7.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大便的样子"
+          }
+        }
+      }
+    },
+    "toilet.outcome.bloodOrMucusOnly": {
+      "comment": "Blood or mucus with no stool.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只有血或黏液"
+          }
+        }
+      }
+    },
+    "toilet.outcome.stool": {
+      "comment": "A bowel movement happened.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解了大便"
+          }
+        }
+      }
+    },
+    "toilet.outcome.title": {
+      "comment": "The four things a toilet event can be.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这次的情况"
+          }
+        }
+      }
+    },
+    "toilet.outcome.uncertain": {
+      "comment": "The patient cannot say which of the others it was.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "说不清"
+          }
+        }
+      }
+    },
+    "toilet.outcome.urgeOnly": {
+      "comment": "Urge with nothing passed. Never counted as a bowel movement.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只有便意"
+          }
+        }
+      }
+    },
+    "toilet.perianal.burning": {
+      "comment": "A burning feeling.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "灼烧"
+          }
+        }
+      }
+    },
+    "toilet.perianal.itch": {
+      "comment": "Itching.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "痒"
+          }
+        }
+      }
+    },
+    "toilet.perianal.normal": {
+      "comment": "Nothing unusual.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正常"
+          }
+        }
+      }
+    },
+    "toilet.perianal.pain": {
+      "comment": "Pain.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "疼痛"
+          }
+        }
+      }
+    },
+    "toilet.perianal.title": {
+      "comment": "What the patient felt around the anus.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "肛周感觉"
+          }
+        }
+      }
+    },
+    "toilet.perianal.urge": {
+      "comment": "Still feels the need to go.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还想解"
+          }
+        }
+      }
+    },
+    "toilet.time": {
+      "comment": "The time of a toilet event.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间"
+          }
+        }
+      }
+    },
+    "toilet.title": {
+      "comment": "Recording sheet title.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如厕"
+          }
+        }
+      }
+    },
+    "trends.empty.body": {
+      "comment": "What the record shows over weeks, months and years appears here.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录多起来以后，这里会按周、月、半年、年把事实排出来"
+          }
+        }
+      }
+    },
+    "trends.empty.title": {
+      "comment": "Nothing to chart yet.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有趋势可看"
           }
         }
       }
