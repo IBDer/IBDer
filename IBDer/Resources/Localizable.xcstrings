@@ -419,6 +419,72 @@
         }
       }
     },
+    "biologic.reminder.lead.1": {
+      "comment": "The day before.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前一天"
+          }
+        }
+      }
+    },
+    "biologic.reminder.lead.14": {
+      "comment": "Two weeks before.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提前两周"
+          }
+        }
+      }
+    },
+    "biologic.reminder.lead.7": {
+      "comment": "One week before.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提前一周"
+          }
+        }
+      }
+    },
+    "biologic.reminder.title": {
+      "comment": "The notification title.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "生物制剂提醒"
+          }
+        }
+      }
+    },
+    "biologic.reminders": {
+      "comment": "The reminder switches.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提醒"
+          }
+        }
+      }
+    },
+    "biologic.reminders.denied": {
+      "comment": "Notifications are not allowed; the plan still works.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知没开；计划还在，只是不会提醒。"
+          }
+        }
+      }
+    },
     "biologic.route.intravenous": {
       "comment": "Route.",
       "localizations": {

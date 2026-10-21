@@ -63,11 +63,20 @@ enum BiologicSchedule {
     }
 
     /// Two weeks, one week and one day before, at 09:00 local time.
-    static func reminderDates(for dose: PlannedDose, calendar: Calendar = .current) -> [Date] {
-        [14, 7, 1].compactMap { offset in
-            guard let day = calendar.date(byAdding: .day, value: -offset, to: dose.date) else { return nil }
-            return calendar.date(bySettingHour: 9, minute: 0, second: 0, of: day)
+    static func reminderDates(
+        for dose: PlannedDose,
+        leadTimes: Set<Int> = [14, 7, 1],
+        now: Date = .now,
+        calendar: Calendar = .current
+    ) -> [Date] {
+        let dates: [Date] = leadTimes.compactMap { offset -> Date? in
+            guard let day = calendar.date(byAdding: .day, value: -offset, to: dose.date),
+                  let atNine = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: day),
+                  atNine > now
+            else { return nil }
+            return atNine
         }
+        return dates.sorted()
     }
 
     /// The number of days until a dose. Negative when it is late.

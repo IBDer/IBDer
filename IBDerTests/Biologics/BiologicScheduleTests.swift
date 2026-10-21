@@ -106,7 +106,7 @@ struct BiologicScheduleTests {
 
     @Test func remindersAreTwoWeeksAWeekAndADayBefore() {
         let dose = PlannedDose(planID: UUID(), date: date(20), amountMilligrams: 300, route: .intravenous)
-        let reminders = BiologicSchedule.reminderDates(for: dose, calendar: calendar)
+        let reminders = BiologicSchedule.reminderDates(for: dose, now: date(1), calendar: calendar)
         #expect(reminders == [date(6), date(13), date(19)])
     }
 

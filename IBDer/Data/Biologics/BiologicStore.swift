@@ -3,12 +3,38 @@ import Foundation
 /// Everything the biologic slice keeps: one arrangement, its expected doses and the doses that
 /// actually happened. Separate from the daily records, which are a different kind of fact.
 struct BiologicState: Codable, Sendable, Equatable {
+    static let defaultLeadTimes: Set<Int> = [14, 7, 1]
+
     var plan: BiologicPlan?
     var doses: [PlannedDose] = []
     var records: [InfusionRecord] = []
+    /// How many days before a dose a reminder fires. Each one can be turned off.
+    var reminderLeadTimes: Set<Int> = BiologicState.defaultLeadTimes
 
     var hasPlan: Bool {
         plan != nil
+    }
+
+    init(
+        plan: BiologicPlan? = nil,
+        doses: [PlannedDose] = [],
+        records: [InfusionRecord] = [],
+        reminderLeadTimes: Set<Int> = BiologicState.defaultLeadTimes
+    ) {
+        self.plan = plan
+        self.doses = doses
+        self.records = records
+        self.reminderLeadTimes = reminderLeadTimes
+    }
+
+    /// An archive written before lead times existed: absence means the defaults.
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        plan = try container.decodeIfPresent(BiologicPlan.self, forKey: .plan)
+        doses = try container.decodeIfPresent([PlannedDose].self, forKey: .doses) ?? []
+        records = try container.decodeIfPresent([InfusionRecord].self, forKey: .records) ?? []
+        reminderLeadTimes = try container.decodeIfPresent(Set<Int>.self, forKey: .reminderLeadTimes)
+            ?? BiologicState.defaultLeadTimes
     }
 }
 
