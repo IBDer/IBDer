@@ -4,6 +4,7 @@ import SwiftUI
 struct IBDerApp: App {
     @State private var model = RecordsModel.live()
     @State private var profile = ProfileModel.live()
+    @State private var biologic = BiologicModel.live()
     @State private var isReady = false
 
     var body: some Scene {
@@ -16,11 +17,12 @@ struct IBDerApp: App {
                 } else if profile.needsOnboarding {
                     OnboardingView(model: profile)
                 } else {
-                    RootView(model: model, profile: profile)
+                    RootView(model: model, profile: profile, biologic: biologic)
                 }
             }
             .task {
                 await profile.load()
+                await biologic.load()
                 isReady = true
             }
         }

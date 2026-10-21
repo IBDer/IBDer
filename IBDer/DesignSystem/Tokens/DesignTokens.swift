@@ -26,6 +26,8 @@ public enum DesignTokens {
         public static let accent = dynamic(light: 0x852E83, dark: 0xC77BC4)
         public static let accentSoft = dynamic(light: 0xF3E7F2, dark: 0x3A2440)
         public static let border = dynamic(light: 0xE6E4EA, dark: 0x2F2B3A)
+        /// Marks a missed appointment the patient asked to be reminded about. Never a symptom.
+        public static let alert = dynamic(light: 0xB3261E, dark: 0xFF8A80)
 
         /// The brand gradient is for the logo/mark only — never UI chrome, never data
         /// (ADR-0012).

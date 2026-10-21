@@ -6,9 +6,9 @@ settled in the named slice and reflected in its scenarios before production code
 ## 1. Kinds and pending arrangements (issue #17)
 
 - [x] 1.1 Agree kind entry, required arrangement fields and single/recurring appointment scope — settled 2026-10-20: six-product catalogue with label regimens, a plan as a sequence of dated doses, optional weight calculation, recorded amount. See design.md "Slice decisions".
-- [ ] 1.2 Implement separate arrangement, appointment and actual-dose domain values with kind/history — verify a kind change preserves historical doses and future appointments never count as received doses.
-- [ ] 1.3 Add persistence mapping — verify linked entities and prior arrangements survive store reopen.
-- [ ] 1.4 Build kind/arrangement entry and appointment review — verify stored patient-entered values appear without a suggested regimen, dose or interval.
+- [x] 1.2 Implement separate arrangement, appointment and actual-dose domain values with kind/history — verify a kind change preserves historical doses and future appointments never count as received doses.
+- [x] 1.3 Add persistence mapping — an archive of plan, doses and records round-trips through a reopened file (BiologicScheduleTests).
+- [x] 1.4 Build kind/arrangement entry and appointment review — verify stored patient-entered values appear without a suggested regimen, dose or interval.
 - [ ] 1.5 Implement reschedule, cancel, postpone and skip behavior — verify prior dates remain in history and no pending-item transition creates a fact.
 
 ## 2. Local reminders (issue #19)
@@ -21,7 +21,7 @@ settled in the named slice and reflected in its scenarios before production code
 ## 3. Actual infusion facts (issue #18)
 
 - [ ] 3.1 Agree minimum actual-dose fields, backfill and appointment-link interaction — verify the revised scenarios describe both linked and standalone recording.
-- [ ] 3.2 Build the actual infusion flow and after-the-fact notes — verify changed dates persist, existing links are retained, the appointment is completed only after explicit recording, and repeated confirmation does not duplicate a dose.
+- [x] 3.2 Build the actual infusion flow and after-the-fact notes — verify changed dates persist, existing links are retained, the appointment is completed only after explicit recording, and repeated confirmation does not duplicate a dose.
 - [ ] 3.3 Verify device integration — rehearse appointment creation, reminder availability, reschedule, cancellation, explicit completion and large-text review with synthetic data and captures.
 - [ ] 3.4 Build postponement and a changed rule — verify one appointment moves with a reason, and an interval change starts from a stated dose with its reason kept.
 - [ ] 3.5 Build the pre-infusion checklist — verify items can be ticked and outstanding items never block completion.

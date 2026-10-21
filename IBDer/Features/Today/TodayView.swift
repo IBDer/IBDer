@@ -4,7 +4,10 @@ import SwiftUI
 /// verdict (ADR-0009). The date and the entry points stay put while the timeline scrolls.
 struct TodayView: View {
     let model: RecordsModel
+    let biologic: BiologicModel
+    let profile: ProfileModel
     @State private var sheet: Sheet?
+    @State private var showingBiologic = false
 
     enum Sheet: Identifiable {
         case create(RecordKind)
@@ -29,6 +32,11 @@ struct TodayView: View {
         VStack(spacing: 0) {
             header
             entries
+            if biologic.plan != nil {
+                BiologicCard(model: biologic) { showingBiologic = true }
+                    .padding(.horizontal, DesignTokens.Spacing.regular)
+                    .padding(.bottom, DesignTokens.Spacing.medium)
+            }
             timeline
         }
         .background(DesignTokens.Color.background)
@@ -36,6 +44,9 @@ struct TodayView: View {
         .overlay(alignment: .bottom) { undoBar }
         .animation(.snappy(duration: 0.22), value: model.lastDeleted?.id)
         .sheet(item: $sheet) { sheetView(for: $0) }
+        .sheet(isPresented: $showingBiologic) {
+            BiologicPlanView(model: biologic, profile: profile)
+        }
         .alert("error.title", isPresented: failurePresented) {
             Button("common.ok", role: .cancel) { model.failure = nil }
         } message: {
