@@ -1,10 +1,11 @@
 import Charts
 import SwiftUI
 
-/// The trends tab: a factual bar chart over four calendar periods, with the days that have no
-/// record kept visible instead of drawn as zero.
+/// The trends tab: several factual blocks over one calendar period, so the screen carries enough
+/// information to be worth a tab without inventing a verdict.
 struct TrendsView: View {
     let model: RecordsModel
+    let biologic: BiologicModel
 
     @State private var range: TrendRange = .week
     @State private var metric: TrendMetric = .bowelMovements
@@ -16,27 +17,32 @@ struct TrendsView: View {
         TrendAggregation.buckets(for: range, containing: anchor, events: events, metric: metric)
     }
 
-    private var unrecorded: Int {
-        TrendAggregation.unrecordedDays(in: buckets)
+    private var period: (start: Date, end: Date) {
+        TrendAggregation.period(for: range, containing: anchor)
     }
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: DesignTokens.Spacing.large) {
-                rangePicker
-                periodHeader
-                metricPicker
-                chart
-                coverage
-                recordedList
-                Spacer(minLength: 0)
+            ScrollView {
+                VStack(spacing: DesignTokens.Spacing.medium) {
+                    rangePicker
+                    periodHeader
+                    mainCard
+                    TrendOverviewCard(events: events, range: range, anchor: anchor, selected: metric)
+                    TrendBristolCard(events: events
+                        .filter { !$0.isDeleted && $0.happenedAt >= period.start && $0.happenedAt < period.end })
+                    if biologic.plan != nil {
+                        TrendBiologicCard(records: biologic.state.records, period: period)
+                    }
+                }
+                .padding(.horizontal, DesignTokens.Spacing.regular)
+                .padding(.bottom, DesignTokens.Spacing.large)
             }
-            .padding(.horizontal, DesignTokens.Spacing.regular)
-            .padding(.top, DesignTokens.Spacing.small)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(DesignTokens.Color.background)
+            .contentMargins(.bottom, 96, for: .scrollContent)
             .navigationTitle("tab.trends")
             .navigationBarTitleDisplayMode(.large)
+            .toolbarBackground(.visible, for: .navigationBar)
             .task(id: loadKey) { await load() }
             .sheet(item: $selected) { bucket in
                 BucketDetailView(bucket: bucket, events: events)
@@ -77,114 +83,78 @@ struct TrendsView: View {
         }
     }
 
-    private var metricPicker: some View {
-        Menu {
-            ForEach(TrendMetric.allCases) { item in
-                Button {
-                    metric = item
+    private var mainCard: some View {
+        TrendCard {
+            HStack {
+                Menu {
+                    ForEach(TrendMetric.allCases) { item in
+                        Button {
+                            metric = item
+                        } label: {
+                            Text(metricTitle(item))
+                        }
+                    }
                 } label: {
-                    Text(metricTitle(item))
-                }
-            }
-        } label: {
-            HStack(spacing: DesignTokens.Spacing.xSmall) {
-                Text(metricTitle(metric))
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(DesignTokens.Color.accent)
-                Image(systemName: "chevron.down")
-                    .font(.caption)
-                    .foregroundStyle(DesignTokens.Color.accent)
-            }
-            .padding(.horizontal, DesignTokens.Spacing.medium)
-            .frame(height: DesignTokens.Layout.minimumTouchTarget)
-            .background(DesignTokens.Color.accentSoft, in: Capsule())
-        }
-        .accessibilityIdentifier("trends.metric")
-    }
-
-    @ViewBuilder private var chart: some View {
-        if buckets.contains(where: { $0.value != nil }) {
-            Chart(buckets) { bucket in
-                BarMark(
-                    x: .value("when", bucketLabel(bucket)),
-                    y: .value("count", bucket.value ?? 0)
-                )
-                .foregroundStyle(DesignTokens.Color.accent)
-                .cornerRadius(4)
-                .opacity(bucket.value == nil ? 0 : 1)
-                .accessibilityLabel(accessibilityLabel(bucket))
-            }
-            .chartXAxis {
-                AxisMarks(values: .automatic(desiredCount: 4)) { _ in
-                    AxisValueLabel()
-                        .foregroundStyle(DesignTokens.Color.textSecondary)
-                }
-            }
-            .frame(height: 220)
-            .accessibilityIdentifier("trends.chart")
-        } else {
-            Text("trends.noRecords")
-                .font(DesignTokens.Typography.body)
-                .foregroundStyle(DesignTokens.Color.textSecondary)
-                .frame(maxWidth: .infinity)
-                .frame(height: 220)
-        }
-    }
-
-    private var coverage: some View {
-        VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
-            if unrecorded > 0 {
-                Text("trends.coverage \(unrecorded)")
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-                    .accessibilityIdentifier("trends.coverage")
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    /// Every bucket that carries a record, as a row: the inspectable version of the chart, and the
-    /// one VoiceOver can read.
-    private var recordedList: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ForEach(buckets.filter { $0.value != nil }) { bucket in
-                Button {
-                    selected = bucket
-                } label: {
-                    HStack {
-                        Text(bucketLabel(bucket))
-                            .font(DesignTokens.Typography.body)
-                            .foregroundStyle(DesignTokens.Color.textPrimary)
-                        Spacer()
-                        Text(verbatim: "\(bucket.value ?? 0)")
+                    HStack(spacing: DesignTokens.Spacing.xSmall) {
+                        Text(metricTitle(metric))
                             .font(DesignTokens.Typography.headline)
                             .foregroundStyle(DesignTokens.Color.textPrimary)
-                        Image(systemName: "chevron.right")
+                        Image(systemName: "chevron.down")
                             .font(.caption)
                             .foregroundStyle(DesignTokens.Color.textSecondary)
                     }
-                    .frame(minHeight: DesignTokens.Layout.minimumTouchTarget)
                 }
-                .buttonStyle(.plain)
-                .accessibilityIdentifier("trends.bucket.\(bucketLabel(bucket))")
+                .accessibilityIdentifier("trends.metric")
+                Spacer()
+                Text("trends.recordedDays \(recordedDays)")
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+            }
+
+            if buckets.contains(where: { $0.value != nil }) {
+                Chart(buckets) { bucket in
+                    BarMark(
+                        x: .value("when", bucketLabel(bucket)),
+                        y: .value("count", bucket.value ?? 0)
+                    )
+                    .foregroundStyle(DesignTokens.Color.accent)
+                    .cornerRadius(3)
+                    .opacity(bucket.value == nil ? 0 : 1)
+                    .accessibilityLabel(accessibilityLabel(bucket))
+                }
+                .chartXAxis {
+                    AxisMarks(values: .automatic(desiredCount: 4)) { _ in
+                        AxisValueLabel()
+                            .foregroundStyle(DesignTokens.Color.textSecondary)
+                    }
+                }
+                .frame(height: 150)
+                .accessibilityIdentifier("trends.chart")
+            } else {
+                Text("trends.noRecords")
+                    .font(DesignTokens.Typography.body)
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+                    .frame(maxWidth: .infinity, minHeight: 150)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var recordedDays: Int {
+        let inPeriod = events.filter {
+            !$0.isDeleted && $0.happenedAt >= period.start && $0.happenedAt < period.end
+        }
+        return Set(inPeriod.map { Calendar.current.startOfDay(for: $0.happenedAt) }).count
     }
 
     private var periodText: String {
-        let period = TrendAggregation.period(for: range, containing: anchor)
         let last = Calendar.current.date(byAdding: .day, value: -1, to: period.end) ?? period.end
         return "\(period.start.formatted(.dateTime.month().day())) – \(last.formatted(.dateTime.month().day()))"
     }
 
     private var canStepForward: Bool {
-        TrendAggregation.period(for: range, containing: Date.now).end
-            > TrendAggregation.period(for: range, containing: anchor).end
+        TrendAggregation.period(for: range, containing: Date.now).end > period.end
     }
 
-    /// A category label per bucket. A continuous date axis gives a single day almost no width at a
-    /// year scale, so the buckets are drawn as categories instead.
     private func bucketLabel(_ bucket: TrendBucket) -> String {
         range == .year
             ? bucket.start.formatted(.dateTime.month(.abbreviated))

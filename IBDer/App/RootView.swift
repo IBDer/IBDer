@@ -11,7 +11,7 @@ struct RootView: View {
             TodayView(model: model, biologic: biologic, profile: profile)
                 .tabItem { Label("tab.today", systemImage: "calendar") }
 
-            TrendsView(model: model)
+            TrendsView(model: model, biologic: biologic)
                 .tabItem { Label("tab.trends", systemImage: "chart.bar.xaxis") }
 
             SettingsView(profile: profile, biologic: biologic)
