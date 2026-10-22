@@ -9,6 +9,7 @@ struct BiologicPlanView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showingRecord = false
     @State private var showingPostpone = false
+    @State private var showingInterval = false
 
     var body: some View {
         NavigationStack {
@@ -26,12 +27,21 @@ struct BiologicPlanView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("common.close") { dismiss() }
                 }
+                if model.plan != nil {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("biologic.interval.title") { showingInterval = true }
+                            .accessibilityIdentifier("biologic.interval")
+                    }
+                }
             }
         }
         .sheet(isPresented: $showingRecord) {
             if let dose = model.nextDose {
                 RecordDoseView(model: model, dose: dose) { showingRecord = false }
             }
+        }
+        .sheet(isPresented: $showingInterval) {
+            ChangeIntervalView(model: model) { showingInterval = false }
         }
         .sheet(isPresented: $showingPostpone) {
             if let dose = model.nextDose {

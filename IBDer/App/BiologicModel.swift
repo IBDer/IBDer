@@ -130,6 +130,49 @@ final class BiologicModel {
         return await commit(next)
     }
 
+    /// Changes the repeating interval from one stated dose onward. Earlier doses keep their dates.
+    @discardableResult
+    func changeInterval(toWeeks weeks: Int, from dose: PlannedDose, reason: String) async -> Bool {
+        guard var plan = state.plan,
+              let regimen = BiologicCatalogue.regimen(id: plan.drugID),
+              let startIndex = state.doses.firstIndex(where: { $0.id == dose.id })
+        else { return false }
+
+        plan.intervalWeeks = weeks
+        plan.intervalChanges.append(
+            IntervalChange(
+                changedAt: .now,
+                weeks: weeks,
+                fromDoseDate: dose.date,
+                reason: reason
+            )
+        )
+
+        var doses = Array(state.doses.prefix(startIndex))
+        var date = dose.date
+        for _ in 0 ..< BiologicSchedule.maintenanceHorizon {
+            doses.append(
+                PlannedDose(
+                    planID: plan.id,
+                    date: date,
+                    amountMilligrams: regimen.maintenanceAmount.milligrams(forWeight: plan.weightKilograms),
+                    route: regimen.maintenanceRoute,
+                    checklist: regimen.maintenanceRoute == .intravenous ? ChecklistItem.defaults : []
+                )
+            )
+            date = Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: date) ?? date
+        }
+
+        return await commit(
+            BiologicState(
+                plan: plan,
+                doses: doses,
+                records: state.records,
+                reminderLeadTimes: state.reminderLeadTimes
+            )
+        )
+    }
+
     @discardableResult
     func toggleChecklist(item: ChecklistItem, in dose: PlannedDose) async -> Bool {
         guard let doseIndex = state.doses.firstIndex(where: { $0.id == dose.id }),

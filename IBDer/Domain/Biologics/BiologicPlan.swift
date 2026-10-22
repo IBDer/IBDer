@@ -10,6 +10,8 @@ struct BiologicPlan: Identifiable, Codable, Sendable, Equatable {
     var startedAt: Date
     var createdAt: Date
     var weightKilograms: Double?
+    /// Every change to the repeating interval, with the reason it was made for.
+    var intervalChanges: [IntervalChange] = []
 
     init(
         id: UUID = UUID(),
@@ -28,6 +30,15 @@ struct BiologicPlan: Identifiable, Codable, Sendable, Equatable {
         self.createdAt = createdAt
         self.weightKilograms = weightKilograms
     }
+}
+
+/// A change to the repeating interval. Applies from one stated dose onward; earlier doses keep
+/// the spacing they were given under.
+struct IntervalChange: Codable, Sendable, Equatable {
+    var changedAt: Date
+    var weeks: Int
+    var fromDoseDate: Date
+    var reason: String
 }
 
 /// One dose the patient expects. A pending dose is a plan, never a fact.
