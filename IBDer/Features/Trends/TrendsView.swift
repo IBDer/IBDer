@@ -196,8 +196,10 @@ struct TrendsView: View {
 
     private func accessibilityLabel(_ bucket: TrendBucket) -> String {
         let date = bucket.start.formatted(.dateTime.month().day())
-        guard let value = bucket.value else { return "\(date)，没有记录" }
-        return "\(date)，\(value)"
+        guard let value = bucket.value else {
+            return date + "，" + String(localized: "trends.axis.none")
+        }
+        return date + "，" + String(localized: "trends.axis.value \(value)")
     }
 
     private func rangeTitle(_ item: TrendRange) -> LocalizedStringKey {
