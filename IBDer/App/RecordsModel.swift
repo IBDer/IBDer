@@ -45,6 +45,11 @@ final class RecordsModel {
         }
     }
 
+    /// Every active record, for the trends screen.
+    func allEvents() async -> [RecordedEvent] {
+        await (try? store.allEvents()) ?? []
+    }
+
     func loadIfNeeded() async {
         guard loadedDay != day else { return }
         await load()

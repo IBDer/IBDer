@@ -1805,6 +1805,83 @@
         }
       }
     },
+    "trends.axis.none": {
+      "comment": "Spoken label for a bucket with no records.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有记录"
+          }
+        }
+      }
+    },
+    "trends.axis.value %lld": {
+      "comment": "Spoken label for a bucket count.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 次"
+          }
+        }
+      }
+    },
+    "trends.bristol.empty": {
+      "comment": "No form was recorded in this period.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这段时间没有记过形态"
+          }
+        }
+      }
+    },
+    "trends.bristol.legend %lld %lld": {
+      "comment": "One legend entry: form type and how many times.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 型 %lld"
+          }
+        }
+      }
+    },
+    "trends.coverage %lld": {
+      "comment": "Days in the period with no record at all.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有 %lld 天没有记录"
+          }
+        }
+      }
+    },
+    "trends.days %lld": {
+      "comment": "Days in the period that carry at least one record.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 天有记录"
+          }
+        }
+      }
+    },
+    "trends.detail.title": {
+      "comment": "The records behind the bar.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这几天的记录"
+          }
+        }
+      }
+    },
     "trends.empty.body": {
       "comment": "What the record shows over weeks, months and years appears here.",
       "localizations": {
@@ -1823,6 +1900,116 @@
           "stringUnit": {
             "state": "translated",
             "value": "还没有趋势可看"
+          }
+        }
+      }
+    },
+    "trends.metric.bowelMovements": {
+      "comment": "Count of bowel movements.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排便次数"
+          }
+        }
+      }
+    },
+    "trends.metric.meals": {
+      "comment": "Count of meals.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正餐"
+          }
+        }
+      }
+    },
+    "trends.metric.medications": {
+      "comment": "Count of medication doses recorded.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用药次数"
+          }
+        }
+      }
+    },
+    "trends.metric.supplements": {
+      "comment": "Count of nutritional powders.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "营养粉剂"
+          }
+        }
+      }
+    },
+    "trends.noRecords": {
+      "comment": "Nothing was recorded in this period.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这段时间没有记录"
+          }
+        }
+      }
+    },
+    "trends.range.month": {
+      "comment": "Range: one month.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月"
+          }
+        }
+      }
+    },
+    "trends.range.sixMonths": {
+      "comment": "Range: six months.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "半年"
+          }
+        }
+      }
+    },
+    "trends.range.week": {
+      "comment": "Range: one week.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周"
+          }
+        }
+      }
+    },
+    "trends.range.year": {
+      "comment": "Range: one year.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "年"
+          }
+        }
+      }
+    },
+    "trends.unit.times": {
+      "comment": "The unit after a count.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次"
           }
         }
       }

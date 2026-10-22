@@ -29,6 +29,19 @@ public enum DesignTokens {
         /// Marks a missed appointment the patient asked to be reminded about. Never a symptom.
         public static let alert = dynamic(light: 0xB3261E, dark: 0xFF8A80)
 
+        /// Identity colours for the four recorded metrics and the seven stool forms. They say which
+        /// series a bar belongs to, never whether it is good or bad (ADR-0009). Taken from the brand
+        /// palette (ADR-0010) and lifted for contrast in the dark appearance.
+        public static let series = [
+            dynamic(light: 0x1B133A, dark: 0x6E63A8),
+            dynamic(light: 0x852E83, dark: 0xC77BC4),
+            dynamic(light: 0xD450B1, dark: 0xE58FD0),
+            dynamic(light: 0xF4779C, dark: 0xF4A0B8),
+            dynamic(light: 0xDE858A, dark: 0xE8A9AD),
+            dynamic(light: 0xFBB761, dark: 0xF6C078),
+            dynamic(light: 0xEED1B4, dark: 0xE9D6C2),
+        ]
+
         /// The brand gradient is for the logo/mark only — never UI chrome, never data
         /// (ADR-0012).
         public static let brandGradient = LinearGradient(
