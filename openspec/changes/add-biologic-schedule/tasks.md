@@ -14,9 +14,9 @@ settled in the named slice and reflected in its scenarios before production code
 ## 2. Local reminders (issue #19)
 
 - [x] 2.1 Agree reminder timing, actions and permission interaction — settled 2026-10-20: two weeks, one week and one day before, each switchable; overdue shown in the alert colour.
-- [ ] 2.2 Implement scheduling and reconciliation — verify one intended notification per item, replacement after reschedule, removal after cancel/complete and no duplicates on relaunch.
-- [ ] 2.3 Show notification denial/scheduling failure without losing the appointment — verify both states using a test scheduler and device permission checks.
-- [ ] 2.4 Connect notification actions — verify dismissal alone saves no dose and any confirmation route requires the patient's explicit actual-dose statement.
+- [x] 2.2 Implement scheduling and reconciliation — verify one intended notification per item, replacement after reschedule, removal after cancel/complete and no duplicates on relaunch.
+- [x] 2.3 Show notification denial/scheduling failure without losing the appointment — verify both states using a test scheduler and device permission checks.
+- [x] 2.4 Connect notification actions — verify dismissal alone saves no dose and any confirmation route requires the patient's explicit actual-dose statement.
 
 ## 3. Actual infusion facts (issue #18)
 

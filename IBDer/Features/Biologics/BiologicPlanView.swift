@@ -72,6 +72,8 @@ struct BiologicPlanView: View {
                         .foregroundStyle(DesignTokens.Color.textSecondary)
                 }
 
+                remindersCard
+
                 upcoming(model.state.doses)
 
                 if let regimen = model.regimen {
@@ -133,7 +135,7 @@ struct BiologicPlanView: View {
                     HStack(spacing: DesignTokens.Spacing.small) {
                         Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                             .foregroundStyle(item.isDone ? DesignTokens.Color.accent : DesignTokens.Color.textSecondary)
-                        Text(LocalizedStringKey("biologic.checklist.\(item.key)"))
+                        Text(Self.checklistTitle(item.key))
                             .font(DesignTokens.Typography.body)
                             .foregroundStyle(DesignTokens.Color.textPrimary)
                         Spacer(minLength: 0)
@@ -147,6 +149,51 @@ struct BiologicPlanView: View {
         .padding(DesignTokens.Spacing.regular)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
+    }
+
+    private var remindersCard: some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+            Text("biologic.reminders")
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+            ForEach([14, 7, 1], id: \.self) { days in
+                Toggle(isOn: Binding(
+                    get: { model.state.reminderLeadTimes.contains(days) },
+                    set: { _ in Task { await model.toggleLeadTime(days) } }
+                )) {
+                    Text(Self.leadTimeTitle(days))
+                        .font(DesignTokens.Typography.body)
+                        .foregroundStyle(DesignTokens.Color.textPrimary)
+                }
+                .tint(DesignTokens.Color.accent)
+                .accessibilityIdentifier("reminder.lead.\(days)")
+            }
+            if !model.remindersAllowed {
+                Text("biologic.reminders.denied")
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+            }
+        }
+        .padding(DesignTokens.Spacing.regular)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
+    }
+
+    /// Compile-time keys only: a key built from a runtime string does not localise.
+    private static func checklistTitle(_ key: String) -> LocalizedStringKey {
+        switch key {
+        case "bloodTest": "biologic.checklist.bloodTest"
+        case "timeAndPlace": "biologic.checklist.timeAndPlace"
+        default: "biologic.checklist"
+        }
+    }
+
+    private static func leadTimeTitle(_ days: Int) -> LocalizedStringKey {
+        switch days {
+        case 14: "biologic.reminder.lead.14"
+        case 7: "biologic.reminder.lead.7"
+        default: "biologic.reminder.lead.1"
+        }
     }
 
     private func upcoming(_ doses: [PlannedDose]) -> some View {

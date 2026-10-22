@@ -92,8 +92,10 @@ struct StartPlanView: View {
         guard let regimen = BiologicCatalogue.regimen(id: selected) else { return }
         isSaving = true
         let weight = Double(weightText.replacingOccurrences(of: ",", with: "."))
+        // A plan starts on a day, not at the minute the form was filled in.
+        let day = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: startDate) ?? startDate
         Task {
-            let saved = await model.startPlan(regimen: regimen, startingAt: startDate, weightKilograms: weight)
+            let saved = await model.startPlan(regimen: regimen, startingAt: day, weightKilograms: weight)
             isSaving = false
             if saved {
                 onSaved()
@@ -173,6 +175,22 @@ struct PostponeView: View {
 
     private static let reasons = ["unwell", "travel", "bloodTest"]
 
+    private static func reasonTitle(_ key: String) -> LocalizedStringKey {
+        switch key {
+        case "travel": "biologic.postpone.travel"
+        case "bloodTest": "biologic.postpone.bloodTest"
+        default: "biologic.postpone.unwell"
+        }
+    }
+
+    private static func reasonText(_ key: String) -> String {
+        switch key {
+        case "travel": String(localized: "biologic.postpone.travel")
+        case "bloodTest": String(localized: "biologic.postpone.bloodTest")
+        default: String(localized: "biologic.postpone.unwell")
+        }
+    }
+
     init(model: BiologicModel, dose: PlannedDose, onSaved: @escaping () -> Void) {
         self.model = model
         self.dose = dose
@@ -191,7 +209,7 @@ struct PostponeView: View {
                     ChoiceGrid {
                         ForEach(Self.reasons, id: \.self) { item in
                             ChoiceChip(
-                                titleKey: LocalizedStringKey("biologic.postpone.\(item)"),
+                                titleKey: Self.reasonTitle(item),
                                 isSelected: reason == item,
                                 identifier: "postpone.\(item)"
                             ) {
@@ -209,7 +227,7 @@ struct PostponeView: View {
                     let saved = await model.postpone(
                         dose,
                         to: date,
-                        reason: String(localized: "biologic.postpone.\(reason)")
+                        reason: Self.reasonText(reason)
                     )
                     isSaving = false
                     if saved {
