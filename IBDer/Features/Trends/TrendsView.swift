@@ -1,11 +1,10 @@
 import Charts
 import SwiftUI
 
-/// The trends tab: several factual blocks over one calendar period, so the screen carries enough
-/// information to be worth a tab without inventing a verdict.
+/// Three blocks: the selected metric big, the four metrics as tiles, and the stool forms as one
+/// strip. Counts only — no score, no average, no verdict.
 struct TrendsView: View {
     let model: RecordsModel
-    let biologic: BiologicModel
 
     @State private var range: TrendRange = .week
     @State private var metric: TrendMetric = .bowelMovements
@@ -21,6 +20,10 @@ struct TrendsView: View {
         TrendAggregation.period(for: range, containing: anchor)
     }
 
+    private var periodEvents: [RecordedEvent] {
+        events.filter { !$0.isDeleted && $0.happenedAt >= period.start && $0.happenedAt < period.end }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -28,12 +31,8 @@ struct TrendsView: View {
                     rangePicker
                     periodHeader
                     mainCard
-                    TrendOverviewCard(events: events, range: range, anchor: anchor, selected: metric)
-                    TrendBristolCard(events: events
-                        .filter { !$0.isDeleted && $0.happenedAt >= period.start && $0.happenedAt < period.end })
-                    if biologic.plan != nil {
-                        TrendBiologicCard(records: biologic.state.records, period: period)
-                    }
+                    tilesCard
+                    TrendBristolStrip(events: periodEvents)
                 }
                 .padding(.horizontal, DesignTokens.Spacing.regular)
                 .padding(.bottom, DesignTokens.Spacing.large)
@@ -42,7 +41,7 @@ struct TrendsView: View {
             .contentMargins(.bottom, 96, for: .scrollContent)
             .navigationTitle("tab.trends")
             .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(DesignTokens.Color.background, for: .navigationBar)
             .task(id: loadKey) { await load() }
             .sheet(item: $selected) { bucket in
                 BucketDetailView(bucket: bucket, events: events)
@@ -85,28 +84,13 @@ struct TrendsView: View {
 
     private var mainCard: some View {
         TrendCard {
-            HStack {
-                Menu {
-                    ForEach(TrendMetric.allCases) { item in
-                        Button {
-                            metric = item
-                        } label: {
-                            Text(metricTitle(item))
-                        }
-                    }
-                } label: {
-                    HStack(spacing: DesignTokens.Spacing.xSmall) {
-                        Text(metricTitle(metric))
-                            .font(DesignTokens.Typography.headline)
-                            .foregroundStyle(DesignTokens.Color.textPrimary)
-                        Image(systemName: "chevron.down")
-                            .font(.caption)
-                            .foregroundStyle(DesignTokens.Color.textSecondary)
-                    }
-                }
-                .accessibilityIdentifier("trends.metric")
+            HStack(alignment: .firstTextBaseline) {
+                Text(verbatim: "\(metricCount)")
+                    .font(.system(size: 44, weight: .semibold, design: .rounded))
+                    .foregroundStyle(DesignTokens.Color.textPrimary)
+                menu
                 Spacer()
-                Text("trends.recordedDays \(recordedDays)")
+                Text("trends.days \(recordedDays)")
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(DesignTokens.Color.textSecondary)
             }
@@ -118,32 +102,73 @@ struct TrendsView: View {
                         y: .value("count", bucket.value ?? 0)
                     )
                     .foregroundStyle(DesignTokens.Color.accent)
-                    .cornerRadius(3)
+                    .cornerRadius(4)
                     .opacity(bucket.value == nil ? 0 : 1)
                     .accessibilityLabel(accessibilityLabel(bucket))
                 }
                 .chartXAxis {
-                    AxisMarks(values: .automatic(desiredCount: 4)) { _ in
+                    AxisMarks(values: .automatic(desiredCount: 3)) { _ in
                         AxisValueLabel()
                             .foregroundStyle(DesignTokens.Color.textSecondary)
                     }
                 }
-                .frame(height: 150)
+                .chartYAxis(.hidden)
+                .frame(height: 170)
                 .accessibilityIdentifier("trends.chart")
             } else {
                 Text("trends.noRecords")
                     .font(DesignTokens.Typography.body)
                     .foregroundStyle(DesignTokens.Color.textSecondary)
-                    .frame(maxWidth: .infinity, minHeight: 150)
+                    .frame(maxWidth: .infinity, minHeight: 170)
             }
         }
     }
 
-    private var recordedDays: Int {
-        let inPeriod = events.filter {
-            !$0.isDeleted && $0.happenedAt >= period.start && $0.happenedAt < period.end
+    private var menu: some View {
+        Menu {
+            ForEach(TrendMetric.allCases) { item in
+                Button {
+                    metric = item
+                } label: {
+                    Text(metricTitle(item))
+                }
+            }
+        } label: {
+            HStack(spacing: 4) {
+                Text(metricTitle(metric))
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 10))
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+            }
         }
-        return Set(inPeriod.map { Calendar.current.startOfDay(for: $0.happenedAt) }).count
+        .accessibilityIdentifier("trends.metric")
+    }
+
+    private var tilesCard: some View {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: DesignTokens.Spacing.regular),
+                            GridItem(.flexible())], spacing: DesignTokens.Spacing.regular) {
+            ForEach(TrendMetric.allCases) { item in
+                let buckets = TrendAggregation.buckets(for: range, containing: anchor, events: events, metric: item)
+                TrendMetricTile(
+                    metric: item,
+                    buckets: buckets,
+                    count: item.count(in: periodEvents),
+                    isSelected: item == metric
+                )
+            }
+        }
+        .padding(DesignTokens.Spacing.regular)
+        .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
+    }
+
+    private var metricCount: Int {
+        metric.count(in: periodEvents)
+    }
+
+    private var recordedDays: Int {
+        Set(periodEvents.map { Calendar.current.startOfDay(for: $0.happenedAt) }).count
     }
 
     private var periodText: String {

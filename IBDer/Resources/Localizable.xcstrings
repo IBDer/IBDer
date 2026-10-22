@@ -1805,39 +1805,6 @@
         }
       }
     },
-    "trends.biologic.doses %lld": {
-      "comment": "How many doses were recorded.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这段时间记录了 %lld 次"
-          }
-        }
-      }
-    },
-    "trends.biologic.last %@": {
-      "comment": "The most recent recorded dose.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "最近一次：%@"
-          }
-        }
-      }
-    },
-    "trends.biologic.title": {
-      "comment": "Biologic doses recorded in the period.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "生物制剂"
-          }
-        }
-      }
-    },
     "trends.bristol.empty": {
       "comment": "No form was recorded in this period.",
       "localizations": {
@@ -1849,24 +1816,13 @@
         }
       }
     },
-    "trends.bristol.title": {
-      "comment": "Stool form distribution.",
+    "trends.bristol.legend %lld %lld": {
+      "comment": "One legend entry: form type and how many times.",
       "localizations": {
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "大便形态分布"
-          }
-        }
-      }
-    },
-    "trends.bristol.type %lld": {
-      "comment": "One Bristol type row.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld 型"
+            "value": "%lld 型 %lld"
           }
         }
       }
@@ -1878,6 +1834,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "有 %lld 天没有记录"
+          }
+        }
+      }
+    },
+    "trends.days %lld": {
+      "comment": "Days in the period that carry at least one record.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 天有记录"
           }
         }
       }
@@ -1970,17 +1937,6 @@
         }
       }
     },
-    "trends.overview": {
-      "comment": "The other metrics at a glance.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "四个指标"
-          }
-        }
-      }
-    },
     "trends.range.month": {
       "comment": "Range: one month.",
       "localizations": {
@@ -2021,17 +1977,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "年"
-          }
-        }
-      }
-    },
-    "trends.recordedDays %lld": {
-      "comment": "Days in the period with at least one record.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有记录 %lld 天"
           }
         }
       }
