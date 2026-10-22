@@ -1409,6 +1409,17 @@
         }
       }
     },
+    "settings.about": {
+      "comment": "The section with the data note and the version.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于"
+          }
+        }
+      }
+    },
     "settings.data.body": {
       "comment": "No account and no upload. Deleting the app deletes the records.",
       "localizations": {
@@ -1427,6 +1438,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "数据只在这台手机上"
+          }
+        }
+      }
+    },
+    "settings.profile.doctorSays": {
+      "comment": "The doctor's current assessment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "医生目前怎么判断"
+          }
+        }
+      }
+    },
+    "settings.profile.empty": {
+      "comment": "Nothing is filled in yet.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没填"
+          }
+        }
+      }
+    },
+    "settings.profile.emptyHint": {
+      "comment": "Tap to fill it in.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点这里补全"
           }
         }
       }
