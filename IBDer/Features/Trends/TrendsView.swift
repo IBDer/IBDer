@@ -1,8 +1,8 @@
 import Charts
 import SwiftUI
 
-/// Three blocks: the selected metric big, the four metrics as tiles, and the stool forms as one
-/// strip. Counts only — no score, no average, no verdict.
+/// The trends tab, laid out like the system's own fitness history: one segmented range control, the
+/// four counts as tiles, one aligned chart for the selected metric, and the stool forms as a ring.
 struct TrendsView: View {
     let model: RecordsModel
 
@@ -27,12 +27,12 @@ struct TrendsView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: DesignTokens.Spacing.medium) {
-                    rangePicker
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
+                    rangeControl
                     periodHeader
-                    mainCard
-                    tilesCard
-                    TrendBristolStrip(events: periodEvents)
+                    tiles
+                    chartCard
+                    ringCard
                 }
                 .padding(.horizontal, DesignTokens.Spacing.regular)
                 .padding(.bottom, DesignTokens.Spacing.large)
@@ -53,42 +53,73 @@ struct TrendsView: View {
         "\(range.rawValue)-\(anchor.timeIntervalSince1970)-\(metric.rawValue)"
     }
 
-    private var rangePicker: some View {
-        HStack(spacing: DesignTokens.Spacing.small) {
+    private var rangeControl: some View {
+        Picker("range", selection: $range) {
             ForEach(TrendRange.allCases) { item in
-                ChoiceChip(
-                    titleKey: rangeTitle(item),
-                    isSelected: range == item,
-                    identifier: "trends.range.\(item.rawValue)"
+                Text(rangeTitle(item)).tag(item)
+            }
+        }
+        .pickerStyle(.segmented)
+        .accessibilityIdentifier("trends.range")
+    }
+
+    private var periodHeader: some View {
+        HStack(spacing: DesignTokens.Spacing.small) {
+            Button { step(-1) } label: {
+                Image(systemName: "chevron.left")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(DesignTokens.Color.accent)
+                    .frame(width: 32, height: 32)
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("trends.previous")
+
+            Text(periodText)
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+                .accessibilityIdentifier("trends.period")
+
+            Button { step(1) } label: {
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(canStepForward ? DesignTokens.Color.accent : DesignTokens.Color.textSecondary
+                        .opacity(0.3))
+                    .frame(width: 32, height: 32)
+            }
+            .buttonStyle(.plain)
+            .disabled(!canStepForward)
+            .accessibilityIdentifier("trends.next")
+
+            Spacer()
+        }
+    }
+
+    private var tiles: some View {
+        LazyVGrid(
+            columns: [
+                GridItem(.flexible(), spacing: DesignTokens.Spacing.medium),
+                GridItem(.flexible(), spacing: DesignTokens.Spacing.medium),
+            ],
+            spacing: DesignTokens.Spacing.medium
+        ) {
+            ForEach(TrendMetric.allCases) { item in
+                TrendMetricTile(
+                    metric: item,
+                    count: item.count(in: periodEvents),
+                    isSelected: item == metric
                 ) {
-                    range = item
+                    metric = item
                 }
             }
         }
     }
 
-    private var periodHeader: some View {
-        HStack {
-            arrow("chevron.left", identifier: "trends.previous") { step(-1) }
-            Spacer()
-            Text(periodText)
-                .font(DesignTokens.Typography.headline)
-                .foregroundStyle(DesignTokens.Color.textPrimary)
-                .accessibilityIdentifier("trends.period")
-            Spacer()
-            arrow("chevron.right", identifier: "trends.next") { step(1) }
-                .disabled(!canStepForward)
-                .opacity(canStepForward ? 1 : 0.3)
-        }
-    }
-
-    private var mainCard: some View {
-        TrendCard {
-            HStack(alignment: .firstTextBaseline) {
-                Text(verbatim: "\(metricCount)")
-                    .font(.system(size: 44, weight: .semibold, design: .rounded))
-                    .foregroundStyle(DesignTokens.Color.textPrimary)
-                menu
+    private var chartCard: some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+            HStack {
+                Text(metricTitle(metric))
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(metric.tint)
                 Spacer()
                 Text("trends.days \(recordedDays)")
                     .font(DesignTokens.Typography.caption)
@@ -101,7 +132,7 @@ struct TrendsView: View {
                         x: .value("when", bucketLabel(bucket)),
                         y: .value("count", bucket.value ?? 0)
                     )
-                    .foregroundStyle(DesignTokens.Color.accent)
+                    .foregroundStyle(metric.tint)
                     .cornerRadius(4)
                     .opacity(bucket.value == nil ? 0 : 1)
                     .accessibilityLabel(accessibilityLabel(bucket))
@@ -113,58 +144,25 @@ struct TrendsView: View {
                     }
                 }
                 .chartYAxis(.hidden)
-                .frame(height: 170)
+                .frame(height: 150)
                 .accessibilityIdentifier("trends.chart")
             } else {
                 Text("trends.noRecords")
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-                    .frame(maxWidth: .infinity, minHeight: 170)
-            }
-        }
-    }
-
-    private var menu: some View {
-        Menu {
-            ForEach(TrendMetric.allCases) { item in
-                Button {
-                    metric = item
-                } label: {
-                    Text(metricTitle(item))
-                }
-            }
-        } label: {
-            HStack(spacing: 4) {
-                Text(metricTitle(metric))
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(DesignTokens.Color.textSecondary)
-                Image(systemName: "chevron.down")
-                    .font(.system(size: 10))
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-            }
-        }
-        .accessibilityIdentifier("trends.metric")
-    }
-
-    private var tilesCard: some View {
-        LazyVGrid(columns: [GridItem(.flexible(), spacing: DesignTokens.Spacing.regular),
-                            GridItem(.flexible())], spacing: DesignTokens.Spacing.regular) {
-            ForEach(TrendMetric.allCases) { item in
-                let buckets = TrendAggregation.buckets(for: range, containing: anchor, events: events, metric: item)
-                TrendMetricTile(
-                    metric: item,
-                    buckets: buckets,
-                    count: item.count(in: periodEvents),
-                    isSelected: item == metric
-                )
+                    .frame(maxWidth: .infinity, minHeight: 150)
             }
         }
         .padding(DesignTokens.Spacing.regular)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
     }
 
-    private var metricCount: Int {
-        metric.count(in: periodEvents)
+    private var ringCard: some View {
+        TrendBristolRing(events: periodEvents)
+            .padding(DesignTokens.Spacing.regular)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
     }
 
     private var recordedDays: Int {
@@ -194,17 +192,6 @@ struct TrendsView: View {
 
     private func load() async {
         events = await model.allEvents()
-    }
-
-    private func arrow(_ symbol: String, identifier: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: symbol)
-                .font(.headline)
-                .foregroundStyle(DesignTokens.Color.accent)
-                .frame(width: DesignTokens.Layout.minimumTouchTarget, height: DesignTokens.Layout.minimumTouchTarget)
-        }
-        .buttonStyle(.plain)
-        .accessibilityIdentifier(identifier)
     }
 
     private func accessibilityLabel(_ bucket: TrendBucket) -> String {

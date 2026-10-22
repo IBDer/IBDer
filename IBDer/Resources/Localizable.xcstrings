@@ -1980,6 +1980,17 @@
           }
         }
       }
+    },
+    "trends.unit.times": {
+      "comment": "The unit after a count.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

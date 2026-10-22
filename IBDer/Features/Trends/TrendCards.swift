@@ -1,49 +1,56 @@
 import Charts
 import SwiftUI
 
-/// The card every trends block sits in.
-struct TrendCard<Content: View>: View {
-    @ViewBuilder var content: Content
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-            content
+/// The identity colour of a metric. It tells the series apart; it never means good or bad.
+extension TrendMetric {
+    var tint: Color {
+        switch self {
+        case .bowelMovements: DesignTokens.Color.series[1]
+        case .meals: DesignTokens.Color.series[5]
+        case .supplements: DesignTokens.Color.series[3]
+        case .medications: DesignTokens.Color.series[0]
         }
-        .padding(DesignTokens.Spacing.regular)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
     }
 }
 
-/// One metric as a tile: the number first, the name second, a strip of the period underneath.
+/// One metric as a square: a coloured dot, the name, the number and its unit.
 struct TrendMetricTile: View {
     let metric: TrendMetric
-    let buckets: [TrendBucket]
     let count: Int
     let isSelected: Bool
+    let action: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
-            Text(verbatim: "\(count)")
-                .font(.title2.weight(.semibold))
-                .foregroundStyle(DesignTokens.Color.textPrimary)
-            Text(title)
-                .font(DesignTokens.Typography.caption)
-                .foregroundStyle(DesignTokens.Color.textSecondary)
-            Chart(buckets) { bucket in
-                BarMark(
-                    x: .value("when", bucket.start),
-                    y: .value("count", bucket.value ?? 0)
-                )
-                .foregroundStyle(DesignTokens.Color.accent.opacity(isSelected ? 1 : 0.45))
-                .cornerRadius(1.5)
-                .opacity(bucket.value == nil ? 0 : 1)
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
+                HStack(spacing: DesignTokens.Spacing.xSmall) {
+                    Circle()
+                        .fill(metric.tint)
+                        .frame(width: 8, height: 8)
+                    Text(title)
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(DesignTokens.Color.textSecondary)
+                        .lineLimit(1)
+                }
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+                    Text(verbatim: "\(count)")
+                        .font(.system(size: 34, weight: .semibold, design: .rounded))
+                        .foregroundStyle(DesignTokens.Color.textPrimary)
+                    Text("trends.unit.times")
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(DesignTokens.Color.textSecondary)
+                }
             }
-            .chartXAxis(.hidden)
-            .chartYAxis(.hidden)
-            .frame(height: 22)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(DesignTokens.Spacing.medium)
+            .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
+            .overlay {
+                RoundedRectangle(cornerRadius: DesignTokens.Radius.card)
+                    .stroke(isSelected ? DesignTokens.Color.accent : .clear, lineWidth: 1.5)
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("trends.tile.\(metric.rawValue)")
     }
 
     private var title: LocalizedStringKey {
@@ -56,12 +63,10 @@ struct TrendMetricTile: View {
     }
 }
 
-/// The Bristol forms as one stacked strip, with a compact legend. No "most common": that is a
-/// conclusion, and this screen only shows counts.
-struct TrendBristolStrip: View {
+/// The stool forms as a ring: one slice per form, sized by how often it was recorded.
+struct TrendBristolRing: View {
     let events: [RecordedEvent]
 
-    /// Only the forms that actually occurred; a zero row is noise, not information.
     private var entries: [(type: Int, count: Int)] {
         let stools = events.compactMap(\.payload.toiletEvent).filter { $0.outcome == .stool }
         return BristolType.allCases.compactMap { type in
@@ -72,42 +77,40 @@ struct TrendBristolStrip: View {
 
     var body: some View {
         let entries = entries
-        let total = entries.reduce(0) { partial, entry in partial + entry.count }
-        TrendCard {
-            if total == 0 {
-                Text("trends.bristol.empty")
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-            } else {
-                GeometryReader { geometry in
-                    HStack(spacing: 2) {
-                        ForEach(entries, id: \.type) { entry in
-                            RoundedRectangle(cornerRadius: 3)
-                                .fill(DesignTokens.Color.accent.opacity(opacity(entry.type)))
-                                .frame(width: max(3, geometry.size.width * CGFloat(entry.count) / CGFloat(total)))
-                        }
-                    }
+        if entries.isEmpty {
+            Text("trends.bristol.empty")
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+        } else {
+            HStack(spacing: DesignTokens.Spacing.large) {
+                Chart(entries, id: \.type) { entry in
+                    SectorMark(
+                        angle: .value("count", entry.count),
+                        innerRadius: .ratio(0.6),
+                        angularInset: 2
+                    )
+                    .foregroundStyle(DesignTokens.Color.series[(entry.type - 1) % DesignTokens.Color.series.count])
+                    .cornerRadius(2)
+                    .accessibilityLabel(Text("trends.bristol.legend \(entry.type) \(entry.count)"))
                 }
-                .frame(height: 18)
+                .chartLegend(.hidden)
+                .frame(width: 120, height: 120)
+                .clipped()
 
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 56), spacing: 8)], alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
                     ForEach(entries, id: \.type) { entry in
-                        HStack(spacing: 4) {
+                        HStack(spacing: DesignTokens.Spacing.xSmall) {
                             Circle()
-                                .fill(DesignTokens.Color.accent.opacity(opacity(entry.type)))
-                                .frame(width: 7, height: 7)
+                                .fill(DesignTokens.Color.series[(entry.type - 1) % DesignTokens.Color.series.count])
+                                .frame(width: 8, height: 8)
                             Text("trends.bristol.legend \(entry.type) \(entry.count)")
                                 .font(DesignTokens.Typography.caption)
                                 .foregroundStyle(DesignTokens.Color.textSecondary)
                         }
                     }
                 }
+                Spacer(minLength: 0)
             }
         }
-    }
-
-    /// One hue, seven steps: the order is the Bristol scale, not a judgement.
-    private func opacity(_ type: Int) -> Double {
-        0.35 + 0.65 * (1 - Double(type - 1) / 6)
     }
 }
