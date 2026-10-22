@@ -111,6 +111,105 @@
         }
       }
     },
+    "biologic.interval.from": {
+      "comment": "Which dose the new interval starts at.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从哪次开始"
+          }
+        }
+      }
+    },
+    "biologic.interval.other": {
+      "comment": "Another reason.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        }
+      }
+    },
+    "biologic.interval.reason": {
+      "comment": "Why the interval changed.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原因"
+          }
+        }
+      }
+    },
+    "biologic.interval.response": {
+      "comment": "The response was not enough.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "效果不够"
+          }
+        }
+      }
+    },
+    "biologic.interval.review": {
+      "comment": "The care team changed the plan.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "医生调整了计划"
+          }
+        }
+      }
+    },
+    "biologic.interval.sideEffect": {
+      "comment": "Side effects.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "副作用"
+          }
+        }
+      }
+    },
+    "biologic.interval.title": {
+      "comment": "Change the repeating interval.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "改间隔"
+          }
+        }
+      }
+    },
+    "biologic.interval.weeks": {
+      "comment": "How often from here on.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每几周"
+          }
+        }
+      }
+    },
+    "biologic.interval.weeksValue %lld": {
+      "comment": "One interval choice.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每 %lld 周"
+          }
+        }
+      }
+    },
     "biologic.name.adalimumab": {
       "comment": "Product name.",
       "localizations": {
