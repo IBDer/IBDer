@@ -1,9 +1,11 @@
 import SwiftUI
 
-/// The settings tab. Today it holds the profile and the truth about where the data lives.
+/// The settings tab: who the app thinks you are, the biologic plan, and the truth about the data.
+/// Entries, not a form — the values live one level down.
 struct SettingsView: View {
     let profile: ProfileModel
     let biologic: BiologicModel
+
     @State private var isEditing = false
     @State private var showingBiologic = false
 
@@ -11,36 +13,23 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 Section {
-                    LabeledContent("profile.height", value: heightText)
-                    LabeledContent("profile.weight", value: weightText)
-                } header: {
-                    Text("profile.section.body")
+                    Button {
+                        isEditing = true
+                    } label: {
+                        summary
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("settings.profile")
                 }
 
                 Section {
-                    LabeledContent("profile.diagnosis", value: diagnosisText)
-                    LabeledContent("profile.state", value: stateText)
-                    LabeledContent("profile.complications", value: complicationsText)
-                } header: {
-                    Text("profile.section.disease")
-                }
-
-                Section {
-                    LabeledContent("profile.treatment", value: treatmentText)
                     Button {
                         showingBiologic = true
                     } label: {
-                        HStack {
-                            Text("biologic.title")
-                                .foregroundStyle(DesignTokens.Color.textPrimary)
-                            Spacer()
-                            Text(biologicSummary)
-                                .foregroundStyle(DesignTokens.Color.textSecondary)
-                        }
+                        entry(title: "biologic.title", value: biologicSummary)
                     }
+                    .buttonStyle(.plain)
                     .accessibilityIdentifier("settings.biologic")
-                } header: {
-                    Text("profile.section.treatment")
                 }
 
                 Section {
@@ -53,31 +42,18 @@ struct SettingsView: View {
                             .foregroundStyle(DesignTokens.Color.textSecondary)
                     }
                     .padding(.vertical, DesignTokens.Spacing.xSmall)
-                }
 
-                Section {
                     LabeledContent("settings.version") {
                         Text(verbatim: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                     }
-                }
-
-                // The floating tab bar covers the last rows; this keeps the version readable.
-                Section {
-                    Color.clear
-                        .frame(height: 56)
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                } header: {
+                    Text("settings.about")
                 }
             }
             .scrollContentBackground(.hidden)
             .background(DesignTokens.Color.background)
-            // The floating tab bar sits over the list; keep the last row clear of it.
             .contentMargins(.bottom, 96, for: .scrollContent)
             .navigationTitle("settings.title")
-            .toolbar {
-                Button("profile.edit") { isEditing = true }
-                    .accessibilityIdentifier("profile.edit")
-            }
             .sheet(isPresented: $isEditing) {
                 ProfileEditor(profile: profile) { isEditing = false }
             }
@@ -85,6 +61,67 @@ struct SettingsView: View {
                 BiologicPlanView(model: biologic, profile: profile)
             }
         }
+    }
+
+    private var summary: some View {
+        HStack(spacing: DesignTokens.Spacing.medium) {
+            summaryText
+            Image(systemName: "chevron.right")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+        }
+        .contentShape(Rectangle())
+    }
+
+    private var summaryText: some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
+            Text(headline)
+                .font(.title3.weight(.semibold))
+                .foregroundStyle(DesignTokens.Color.textPrimary)
+                .multilineTextAlignment(.leading)
+            Text(subhead)
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+                .multilineTextAlignment(.leading)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.vertical, DesignTokens.Spacing.xSmall)
+        .contentShape(Rectangle())
+    }
+
+    private func entry(title: LocalizedStringKey, value: String) -> some View {
+        HStack {
+            Text(title)
+                .foregroundStyle(DesignTokens.Color.textPrimary)
+            Spacer()
+            Text(verbatim: value)
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+            Image(systemName: "chevron.right")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+        }
+        .frame(minHeight: DesignTokens.Layout.minimumTouchTarget)
+        .contentShape(Rectangle())
+    }
+
+    /// "Crohn's · biologic" while there is something to say; one invitation while there is not.
+    private var headline: String {
+        guard profile.profile.hasAnything else { return String(localized: "settings.profile.empty") }
+        var parts: [String] = []
+        if let diagnosis = profile.profile.diagnosis {
+            parts.append(diagnosisName(diagnosis))
+        }
+        if let treatment = profile.profile.treatments.min(by: { $0.rawValue < $1.rawValue }) {
+            parts.append(treatmentName(treatment))
+        }
+        guard !parts.isEmpty else { return String(localized: "settings.profile.empty") }
+        return parts.joined(separator: " · ")
+    }
+
+    private var subhead: String {
+        guard profile.profile.hasAnything else { return String(localized: "settings.profile.emptyHint") }
+        return String(localized: "settings.profile.doctorSays")
+            + "：" + stateName(profile.profile.diseaseState)
     }
 
     private var biologicSummary: String {
@@ -95,62 +132,19 @@ struct SettingsView: View {
         return plan.customName ?? String(localized: "biologic.card.setUp")
     }
 
-    private var heightText: String {
-        guard let height = profile.profile.heightCentimetres else { return String(localized: "profile.empty") }
-        return "\(height.formatted(.number.precision(.fractionLength(0 ... 1)))) " +
-            String(localized: "profile.height.unit")
-    }
-
-    private var weightText: String {
-        guard let weight = profile.profile.weightKilograms else { return String(localized: "profile.empty") }
-        return "\(weight.formatted(.number.precision(.fractionLength(0 ... 1)))) " +
-            String(localized: "profile.weight.unit")
-    }
-
-    private var diagnosisText: String {
-        switch profile.profile.diagnosis {
+    private func diagnosisName(_ item: PatientProfile.Diagnosis) -> String {
+        switch item {
         case .crohns: String(localized: "profile.diagnosis.crohns")
         case .colitis: String(localized: "profile.diagnosis.colitis")
         case .unsure: String(localized: "profile.diagnosis.unsure")
-        case nil: String(localized: "profile.empty")
         }
     }
 
-    private var stateText: String {
-        switch profile.profile.diseaseState {
+    private func stateName(_ item: PatientProfile.DiseaseState) -> String {
+        switch item {
         case .inactive: String(localized: "profile.state.inactive")
         case .active: String(localized: "profile.state.active")
         case .unsure: String(localized: "profile.state.unsure")
-        }
-    }
-
-    private var complicationsText: String {
-        let items = profile.profile.complications
-        guard !items.isEmpty else { return String(localized: "profile.empty") }
-        return items
-            .sorted { $0.rawValue < $1.rawValue }
-            .map { complicationName($0) }
-            .joined(separator: "、")
-    }
-
-    private var treatmentText: String {
-        let items = profile.profile.treatments
-        guard !items.isEmpty else { return String(localized: "profile.empty") }
-        return items
-            .sorted { $0.rawValue < $1.rawValue }
-            .map { treatmentName($0) }
-            .joined(separator: "、")
-    }
-
-    private func complicationName(_ item: PatientProfile.Complication) -> String {
-        switch item {
-        case .perianal: String(localized: "profile.complication.perianal")
-        case .skin: String(localized: "profile.complication.skin")
-        case .joints: String(localized: "profile.complication.joints")
-        case .eyes: String(localized: "profile.complication.eyes")
-        case .mouthUlcers: String(localized: "profile.complication.mouthUlcers")
-        case .liverBiliary: String(localized: "profile.complication.liverBiliary")
-        case .anaemiaNutrition: String(localized: "profile.complication.anaemiaNutrition")
         }
     }
 
@@ -166,7 +160,7 @@ struct SettingsView: View {
     }
 }
 
-/// Editing the profile later uses the same three pages as the first launch.
+/// Editing the profile uses the same three pages as the first launch.
 private struct ProfileEditor: View {
     let profile: ProfileModel
     let onClose: () -> Void
