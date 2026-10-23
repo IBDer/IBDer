@@ -15,7 +15,7 @@ slice; all four ranges remain part of M1. Use synthetic source records for every
 - [x] 2.1 Add the remaining agreed metrics with definitions — verify each formula and denominator against source fixtures; pending appointments never contribute actual-dose counts.
 - [x] 2.2 Implement every range and historical browsing — verify all four work with no records, three days of records and a synthetic year-long history.
 - [x] 2.3 Preserve coverage and respond to corrections — verify missing is not explicit zero, partial event history is not full-day coverage, and cross-period edits/deletions update chart and detail consistently.
-- [ ] 2.4 Verify usable accessible detail — demonstrate bucket inspection, largest text and VoiceOver equivalents in the chosen design, with review captures.
+- [x] 2.4 Verify usable accessible detail — demonstrate bucket inspection, largest text and VoiceOver equivalents in the chosen design, with review captures.
 
 ## 3. Trend acceptance
 

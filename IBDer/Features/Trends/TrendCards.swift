@@ -30,7 +30,8 @@ struct TrendMetricTile: View {
                     Text(title)
                         .font(DesignTokens.Typography.caption)
                         .foregroundStyle(DesignTokens.Color.textSecondary)
-                        .lineLimit(1)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 HStack(alignment: .firstTextBaseline, spacing: 2) {
                     Text(verbatim: "\(count)")

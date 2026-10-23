@@ -6,10 +6,13 @@ struct BiologicPlanView: View {
     let model: BiologicModel
     let profile: ProfileModel
 
+    @Environment(\.dynamicTypeSize) private var typeSize
+
     @Environment(\.dismiss) private var dismiss
     @State private var showingRecord = false
     @State private var showingPostpone = false
     @State private var showingInterval = false
+    @State private var showingCancel = false
 
     var body: some View {
         NavigationStack {
@@ -40,6 +43,9 @@ struct BiologicPlanView: View {
                 RecordDoseView(model: model, dose: dose) { showingRecord = false }
             }
         }
+        .sheet(isPresented: $showingCancel) {
+            CancelAppointmentView(model: model) { showingCancel = false }
+        }
         .sheet(isPresented: $showingInterval) {
             ChangeIntervalView(model: model) { showingInterval = false }
         }
@@ -60,10 +66,11 @@ struct BiologicPlanView: View {
                         PrimaryButton(titleKey: "biologic.record", identifier: "biologic.record") {
                             showingRecord = true
                         }
-                        Button {
-                            showingPostpone = true
+                        Menu {
+                            Button("biologic.postpone") { showingPostpone = true }
+                            Button("biologic.cancel") { showingCancel = true }
                         } label: {
-                            Text("biologic.postpone")
+                            Text("biologic.more")
                                 .font(DesignTokens.Typography.headline)
                                 .foregroundStyle(DesignTokens.Color.accent)
                                 .frame(maxWidth: .infinity)
@@ -73,8 +80,7 @@ struct BiologicPlanView: View {
                                     in: RoundedRectangle(cornerRadius: DesignTokens.Radius.control)
                                 )
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityIdentifier("biologic.postpone")
+                        .accessibilityIdentifier("biologic.more")
                     }
                 } else {
                     Text("biologic.noNextDose")
@@ -101,26 +107,32 @@ struct BiologicPlanView: View {
             Text("biologic.nextDose")
                 .font(DesignTokens.Typography.caption)
                 .foregroundStyle(DesignTokens.Color.textSecondary)
-            HStack(alignment: .firstTextBaseline, spacing: DesignTokens.Spacing.small) {
-                Text(dose.date, format: .dateTime.month().day().hour().minute())
-                    .font(DesignTokens.Typography.title)
-                    .foregroundStyle(DesignTokens.Color.textPrimary)
-                Spacer()
-                BiologicText.due(dose)
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(
-                        BiologicSchedule.overdueDays(for: dose, now: .now) == nil
-                            ? DesignTokens.Color.textSecondary
-                            : DesignTokens.Color.alert
-                    )
+            // At accessibility sizes the two labels need their own lines; side by side they crush
+            // each other into fragments.
+            let due = BiologicText.due(dose)
+                .font(DesignTokens.Typography.body)
+                .foregroundStyle(
+                    BiologicSchedule.overdueDays(for: dose, now: .now) == nil
+                        ? DesignTokens.Color.textSecondary
+                        : DesignTokens.Color.alert
+                )
+            let when = Text(dose.date, format: .dateTime.month().day().hour().minute())
+                .font(DesignTokens.Typography.title)
+                .foregroundStyle(DesignTokens.Color.textPrimary)
+
+            if typeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xSmall) {
+                    when
+                    due
+                }
+            } else {
+                HStack(alignment: .firstTextBaseline, spacing: DesignTokens.Spacing.small) {
+                    when
+                    Spacer()
+                    due
+                }
             }
-            HStack(spacing: DesignTokens.Spacing.small) {
-                Text(dose.route == .intravenous ? "biologic.route.intravenous" : "biologic.route.subcutaneous")
-                Text(verbatim: "·")
-                BiologicText.amount(dose.amountMilligrams)
-            }
-            .font(DesignTokens.Typography.caption)
-            .foregroundStyle(DesignTokens.Color.textSecondary)
+            routeLine(dose)
 
             if let reason = dose.postponementReason {
                 Text(reason)
@@ -131,6 +143,28 @@ struct BiologicPlanView: View {
         .padding(DesignTokens.Spacing.regular)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(DesignTokens.Color.surface, in: RoundedRectangle(cornerRadius: DesignTokens.Radius.card))
+    }
+
+    @ViewBuilder private func routeLine(_ dose: PlannedDose) -> some View {
+        let route: LocalizedStringKey = dose.route == .intravenous
+            ? "biologic.route.intravenous"
+            : "biologic.route.subcutaneous"
+        if typeSize.isAccessibilitySize {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(route)
+                BiologicText.amount(dose.amountMilligrams)
+            }
+            .font(DesignTokens.Typography.caption)
+            .foregroundStyle(DesignTokens.Color.textSecondary)
+        } else {
+            HStack(spacing: DesignTokens.Spacing.small) {
+                Text(route)
+                Text(verbatim: "·")
+                BiologicText.amount(dose.amountMilligrams)
+            }
+            .font(DesignTokens.Typography.caption)
+            .foregroundStyle(DesignTokens.Color.textSecondary)
+        }
     }
 
     private func checklistCard(_ dose: PlannedDose) -> some View {

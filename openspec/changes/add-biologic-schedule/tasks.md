@@ -9,7 +9,7 @@ settled in the named slice and reflected in its scenarios before production code
 - [x] 1.2 Implement separate arrangement, appointment and actual-dose domain values with kind/history — verify a kind change preserves historical doses and future appointments never count as received doses.
 - [x] 1.3 Add persistence mapping — an archive of plan, doses and records round-trips through a reopened file (BiologicScheduleTests).
 - [x] 1.4 Build kind/arrangement entry and appointment review — verify stored patient-entered values appear without a suggested regimen, dose or interval.
-- [ ] 1.5 Implement reschedule, cancel, postpone and skip behavior — verify prior dates remain in history and no pending-item transition creates a fact.
+- [x] 1.5 Implement reschedule, cancel, postpone and skip behavior — verify prior dates remain in history and no pending-item transition creates a fact.
 
 ## 2. Local reminders (issue #19)
 

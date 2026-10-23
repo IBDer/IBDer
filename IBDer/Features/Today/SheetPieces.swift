@@ -3,6 +3,8 @@ import SwiftUI
 /// The title and cancel action every recording sheet starts with.
 struct SheetHeader: View {
     let titleKey: LocalizedStringKey
+    /// "Close" instead of "Cancel" where cancelling is the sheet's own subject.
+    var closeKey: LocalizedStringKey = "common.cancel"
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -11,7 +13,7 @@ struct SheetHeader: View {
                 .font(DesignTokens.Typography.title)
                 .foregroundStyle(DesignTokens.Color.textPrimary)
             Spacer()
-            Button("common.cancel") { dismiss() }
+            Button(closeKey) { dismiss() }
                 .foregroundStyle(DesignTokens.Color.textSecondary)
         }
         .padding(DesignTokens.Spacing.regular)

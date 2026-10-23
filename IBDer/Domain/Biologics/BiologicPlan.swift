@@ -57,6 +57,8 @@ struct PlannedDose: Identifiable, Codable, Sendable, Equatable {
     var status: Status
     /// Why this one moved, when it did. Never a change to the repeating arrangement.
     var postponementReason: String?
+    /// Why this one was called off, when it was. Optional so older archives still decode.
+    var cancellationReason: String?
     var checklist: [ChecklistItem]
 
     init(
@@ -67,6 +69,7 @@ struct PlannedDose: Identifiable, Codable, Sendable, Equatable {
         route: BiologicRegimen.Route,
         status: Status = .planned,
         postponementReason: String? = nil,
+        cancellationReason: String? = nil,
         checklist: [ChecklistItem] = []
     ) {
         self.id = id
@@ -76,6 +79,7 @@ struct PlannedDose: Identifiable, Codable, Sendable, Equatable {
         self.route = route
         self.status = status
         self.postponementReason = postponementReason
+        self.cancellationReason = cancellationReason
         self.checklist = checklist
     }
 }

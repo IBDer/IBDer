@@ -23,6 +23,83 @@
         }
       }
     },
+    "biologic.cancel": {
+      "comment": "Call this appointment off.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消这次"
+          }
+        }
+      }
+    },
+    "biologic.cancel.confirm": {
+      "comment": "Cancel this appointment",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消这次预约"
+          }
+        }
+      }
+    },
+    "biologic.cancel.doctor": {
+      "comment": "The care team changed the plan.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "医生调整了方案"
+          }
+        }
+      }
+    },
+    "biologic.cancel.other": {
+      "comment": "Another reason.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他"
+          }
+        }
+      }
+    },
+    "biologic.cancel.reason": {
+      "comment": "Why it is cancelled.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原因"
+          }
+        }
+      }
+    },
+    "biologic.cancel.skip": {
+      "comment": "This one is not happening.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这次不打了"
+          }
+        }
+      }
+    },
+    "biologic.cancel.title": {
+      "comment": "Cancel one appointment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消这次"
+          }
+        }
+      }
+    },
     "biologic.card.noNextDose": {
       "comment": "No dose is expected.",
       "localizations": {
@@ -206,6 +283,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "每 %lld 周"
+          }
+        }
+      }
+    },
+    "biologic.more": {
+      "comment": "More actions for the next appointment.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更多"
           }
         }
       }
