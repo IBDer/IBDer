@@ -20,11 +20,11 @@ settled in the named slice and reflected in its scenarios before production code
 
 ## 3. Actual infusion facts (issue #18)
 
-- [ ] 3.1 Agree minimum actual-dose fields, backfill and appointment-link interaction — verify the revised scenarios describe both linked and standalone recording.
+- [x] 3.1 Agree minimum actual-dose fields, backfill and appointment-link interaction — verify the revised scenarios describe both linked and standalone recording.
 - [x] 3.2 Build the actual infusion flow and after-the-fact notes — verify changed dates persist, existing links are retained, the appointment is completed only after explicit recording, and repeated confirmation does not duplicate a dose.
 - [ ] 3.3 Verify device integration — rehearse appointment creation, reminder availability, reschedule, cancellation, explicit completion and large-text review with synthetic data and captures.
 - [x] 3.4 Build postponement and a changed rule — verify one appointment moves with a reason, and an interval change starts from a stated dose with its reason kept.
-- [ ] 3.5 Build the pre-infusion checklist — verify items can be ticked and outstanding items never block completion.
+- [x] 3.5 Build the pre-infusion checklist — verify items can be ticked and outstanding items never block completion.
 
 ## Workflow follow-up
 
