@@ -101,23 +101,23 @@ final class BiologicModel {
     /// Records a dose that actually happened and marks the planned dose as taken.
     @discardableResult
     func record(_ dose: PlannedDose, amountMilligrams: Int?, note: String = "") async -> Bool {
-        guard var index = state.doses.firstIndex(where: { $0.id == dose.id }) else { return false }
-        state.doses[index].status = .taken
-        let record = InfusionRecord(
-            planID: dose.planID,
-            plannedDoseID: dose.id,
-            date: dose.date,
-            amountMilligrams: amountMilligrams,
-            route: dose.route,
-            note: note
-        )
+        guard let index = state.doses.firstIndex(where: { $0.id == dose.id }),
+              state.doses[index].status == .planned
+        else { return false }
+
         var next = state
-        next.records.append(record)
-        let ok = await commit(next)
-        if ok {
-            index = next.doses.firstIndex(where: { $0.id == dose.id }) ?? index
-        }
-        return ok
+        next.doses[index].status = .taken
+        next.records.append(
+            InfusionRecord(
+                planID: dose.planID,
+                plannedDoseID: dose.id,
+                date: dose.date,
+                amountMilligrams: amountMilligrams,
+                route: dose.route,
+                note: note
+            )
+        )
+        return await commit(next)
     }
 
     /// Moves one dose. The repeating arrangement is untouched.
