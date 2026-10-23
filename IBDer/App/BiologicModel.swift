@@ -120,6 +120,19 @@ final class BiologicModel {
         return await commit(next)
     }
 
+    /// Calls one appointment off. It leaves the plan and the other appointments alone, and it never
+    /// writes a dose.
+    @discardableResult
+    func cancel(_ dose: PlannedDose, reason: String) async -> Bool {
+        guard let index = state.doses.firstIndex(where: { $0.id == dose.id }),
+              state.doses[index].status == .planned
+        else { return false }
+        var next = state
+        next.doses[index].status = .cancelled
+        next.doses[index].cancellationReason = reason
+        return await commit(next)
+    }
+
     /// Moves one dose. The repeating arrangement is untouched.
     @discardableResult
     func postpone(_ dose: PlannedDose, to date: Date, reason: String) async -> Bool {

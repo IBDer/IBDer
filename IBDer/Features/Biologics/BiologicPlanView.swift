@@ -10,6 +10,7 @@ struct BiologicPlanView: View {
     @State private var showingRecord = false
     @State private var showingPostpone = false
     @State private var showingInterval = false
+    @State private var showingCancel = false
 
     var body: some View {
         NavigationStack {
@@ -40,6 +41,9 @@ struct BiologicPlanView: View {
                 RecordDoseView(model: model, dose: dose) { showingRecord = false }
             }
         }
+        .sheet(isPresented: $showingCancel) {
+            CancelAppointmentView(model: model) { showingCancel = false }
+        }
         .sheet(isPresented: $showingInterval) {
             ChangeIntervalView(model: model) { showingInterval = false }
         }
@@ -60,10 +64,11 @@ struct BiologicPlanView: View {
                         PrimaryButton(titleKey: "biologic.record", identifier: "biologic.record") {
                             showingRecord = true
                         }
-                        Button {
-                            showingPostpone = true
+                        Menu {
+                            Button("biologic.postpone") { showingPostpone = true }
+                            Button("biologic.cancel") { showingCancel = true }
                         } label: {
-                            Text("biologic.postpone")
+                            Text("biologic.more")
                                 .font(DesignTokens.Typography.headline)
                                 .foregroundStyle(DesignTokens.Color.accent)
                                 .frame(maxWidth: .infinity)
@@ -73,8 +78,7 @@ struct BiologicPlanView: View {
                                     in: RoundedRectangle(cornerRadius: DesignTokens.Radius.control)
                                 )
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityIdentifier("biologic.postpone")
+                        .accessibilityIdentifier("biologic.more")
                     }
                 } else {
                     Text("biologic.noNextDose")
