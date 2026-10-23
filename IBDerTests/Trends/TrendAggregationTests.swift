@@ -26,7 +26,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         #expect(buckets.count == 7)
     }
@@ -36,7 +37,8 @@ struct TrendAggregationTests {
             for: .year,
             containing: date(10, 21),
             events: [],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         #expect(buckets.count == 12)
     }
@@ -46,7 +48,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         #expect(buckets.allSatisfy { $0.value == nil })
     }
@@ -57,7 +60,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [meal],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         let day = buckets.first { $0.start == calendar.startOfDay(for: date(10, 21)) }
         #expect(day?.value == 0)
@@ -70,7 +74,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [urge, stool],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         let day = buckets.first { $0.start == calendar.startOfDay(for: date(10, 21)) }
         #expect(day?.value == 1)
@@ -83,7 +88,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [event],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         #expect(buckets.allSatisfy { $0.value == nil })
     }
@@ -94,7 +100,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [meal],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         #expect(TrendAggregation.unrecordedDays(in: buckets) == 6)
     }
@@ -105,7 +112,8 @@ struct TrendAggregationTests {
             for: .week,
             containing: date(10, 21),
             events: [outside],
-            metric: .bowelMovements
+            metric: .bowelMovements,
+            calendar: calendar
         )
         #expect(buckets.allSatisfy { $0.value == nil })
     }
