@@ -5,22 +5,15 @@ struct BiologicCard: View {
     let model: BiologicModel
     let action: () -> Void
 
+    @Environment(\.dynamicTypeSize) private var typeSize
+
     var body: some View {
         Button(action: action) {
             HStack(spacing: DesignTokens.Spacing.small) {
                 Image(systemName: "syringe.fill")
                     .font(.footnote)
                     .foregroundStyle(isOverdue ? DesignTokens.Color.alert : DesignTokens.Color.accent)
-                Text(title)
-                    .font(DesignTokens.Typography.body)
-                    .foregroundStyle(DesignTokens.Color.textPrimary)
-                    .lineLimit(1)
-                Text(verbatim: "·")
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-                subtitle
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(isOverdue ? DesignTokens.Color.alert : DesignTokens.Color.textSecondary)
-                    .lineLimit(1)
+                content
                 Spacer(minLength: 0)
                 Image(systemName: "chevron.right")
                     .font(.footnote)
@@ -32,6 +25,33 @@ struct BiologicCard: View {
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier("biologic.card")
+    }
+
+    /// One line while there is room; the product above the route and the date once the text is large.
+    @ViewBuilder private var content: some View {
+        if typeSize.isAccessibilitySize {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(DesignTokens.Typography.body)
+                    .foregroundStyle(DesignTokens.Color.textPrimary)
+                subtitle
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(isOverdue ? DesignTokens.Color.alert : DesignTokens.Color.textSecondary)
+            }
+        } else {
+            HStack(spacing: DesignTokens.Spacing.small) {
+                Text(title)
+                    .font(DesignTokens.Typography.body)
+                    .foregroundStyle(DesignTokens.Color.textPrimary)
+                    .lineLimit(1)
+                Text(verbatim: "·")
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+                subtitle
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(isOverdue ? DesignTokens.Color.alert : DesignTokens.Color.textSecondary)
+                    .lineLimit(1)
+            }
+        }
     }
 
     private var isOverdue: Bool {
