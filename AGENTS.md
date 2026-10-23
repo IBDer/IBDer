@@ -82,8 +82,6 @@ names (ADR-0011). The single exception is the `zh-Hans` product strings in the S
 - **Test first where the risk is real**: counting, completeness, date windows, plan/fact boundaries, export and restore.
 - Style is enforced by tools, not by memory: `swiftformat --lint . && swiftlint --strict`.
 - Design work follows the `ibder-design` skill; every UI change follows `visual-acceptance`.
-- Commit messages end with:
-  `Co-authored-by: ConceptWei <60024976+ConceptWei@users.noreply.github.com>`
 
 ## 9. Review
 
