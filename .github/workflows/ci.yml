@@ -61,7 +61,8 @@ jobs:
         run: |
           xcodebuild build \
             -scheme IBDer \
-            -destination 'platform=iOS Simulator,name=iPhone 17'
+            -destination 'platform=iOS Simulator,name=iPhone 17' \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Test
         if: steps.detect.outputs.exists == 'true'
@@ -70,7 +71,8 @@ jobs:
           xcodebuild test \
             -scheme IBDer \
             -destination 'platform=iOS Simulator,name=iPhone 17' \
-            -resultBundlePath TestResults.xcresult
+            -resultBundlePath TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Upload results
         if: always() && steps.detect.outputs.exists == 'true'

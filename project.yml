@@ -13,7 +13,8 @@ settings:
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
     ENABLE_USER_SCRIPT_SANDBOXING: YES
-    CODE_SIGNING_ALLOWED: NO
+    # Signing is left to Xcode so the app can be installed on a real phone with a personal team.
+    # CI passes CODE_SIGNING_ALLOWED=NO because a simulator build never signs anything.
     DEVELOPMENT_LANGUAGE: zh-Hans
 
 packages:
