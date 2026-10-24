@@ -17,46 +17,59 @@ struct ToiletDetails: View {
     private var bristolSection: some View {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
             SectionTitle(titleKey: "toilet.bristol.title")
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: DesignTokens.Spacing.small) {
-                    ForEach(BristolType.allCases, id: \.self) { type in
-                        bristolCard(type)
-                    }
+            VStack(spacing: DesignTokens.Spacing.xSmall) {
+                ForEach(BristolType.allCases, id: \.self) { type in
+                    bristolRow(type)
                 }
-                .padding(.vertical, 2)
             }
         }
     }
 
-    private func bristolCard(_ type: BristolType) -> some View {
+    /// One row per form: a shape wide enough to read, the number, and the sentence that actually
+    /// tells someone which one they are looking at.
+    private func bristolRow(_ type: BristolType) -> some View {
         let isSelected = bristol == type
+        let tint = Self.bristolTint(type)
         return Button {
-            bristol = type
+            bristol = isSelected ? nil : type
         } label: {
-            VStack(spacing: DesignTokens.Spacing.xSmall) {
-                BristolGlyph(
-                    type: type,
-                    tint: isSelected ? DesignTokens.Color.accent : DesignTokens.Color.textSecondary
-                )
-                .frame(width: 52, height: 34)
-                Text(verbatim: "\(type.rawValue)")
-                    .font(DesignTokens.Typography.headline)
-                    .foregroundStyle(DesignTokens.Color.textPrimary)
+            HStack(spacing: DesignTokens.Spacing.medium) {
+                BristolGlyph(type: type, tint: tint)
+                    .frame(width: 56, height: 36)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("toilet.bristol.number \(type.rawValue)")
+                        .font(DesignTokens.Typography.headline)
+                        .foregroundStyle(DesignTokens.Color.textPrimary)
+                    Text(Self.bristolTitle(type))
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(DesignTokens.Color.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: DesignTokens.Spacing.small)
+                Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                    .font(DesignTokens.Typography.body)
+                    .foregroundStyle(isSelected ? tint : DesignTokens.Color.border)
             }
-            .frame(width: 72, height: 86)
+            .padding(.horizontal, DesignTokens.Spacing.medium)
+            .padding(.vertical, DesignTokens.Spacing.small)
             .background(
-                isSelected ? DesignTokens.Color.accentSoft : DesignTokens.Color.surface,
+                isSelected ? tint.opacity(0.16) : DesignTokens.Color.surface,
                 in: RoundedRectangle(cornerRadius: DesignTokens.Radius.control)
             )
             .overlay {
                 RoundedRectangle(cornerRadius: DesignTokens.Radius.control)
-                    .stroke(isSelected ? DesignTokens.Color.accent : DesignTokens.Color.border, lineWidth: 1)
+                    .stroke(isSelected ? tint : DesignTokens.Color.border, lineWidth: 1)
             }
+            .contentShape(RoundedRectangle(cornerRadius: DesignTokens.Radius.control))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(Text(Self.bristolTitle(type)))
         .accessibilityIdentifier("toilet.bristol.\(type.rawValue)")
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    static func bristolTint(_ type: BristolType) -> Color {
+        DesignTokens.Color.series[(type.rawValue - 1) % DesignTokens.Color.series.count]
     }
 
     private var bloodSection: some View {
