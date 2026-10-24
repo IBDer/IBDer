@@ -80,6 +80,16 @@ final class RecordsModel {
         await load()
     }
 
+    /// After a write: show the day the fact belongs to and reload it, even when that day is already
+    /// on screen. Reloading is the point — a save on the visible day used to leave the list stale.
+    private func refresh(after date: Date) async {
+        let target = Calendar.current.startOfDay(for: date)
+        if target != day {
+            day = target
+        }
+        await load()
+    }
+
     func step(_ days: Int) async {
         guard let target = Calendar.current.date(byAdding: .day, value: days, to: day) else { return }
         await show(target)
@@ -93,7 +103,7 @@ final class RecordsModel {
         }
         do {
             try await store.save(event)
-            await show(event.happenedAt)
+            await refresh(after: event.happenedAt)
             return true
         } catch {
             failure = String(describing: error)
@@ -109,7 +119,7 @@ final class RecordsModel {
         }
         do {
             try await store.save(event)
-            await show(event.happenedAt)
+            await refresh(after: event.happenedAt)
             return true
         } catch {
             failure = String(describing: error)
@@ -125,7 +135,7 @@ final class RecordsModel {
         }
         do {
             try await store.save(event)
-            await show(event.happenedAt)
+            await refresh(after: event.happenedAt)
             return true
         } catch {
             failure = String(describing: error)

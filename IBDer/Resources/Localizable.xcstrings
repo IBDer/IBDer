@@ -1,2316 +1,2513 @@
 {
-  "sourceLanguage": "zh-Hans",
-  "strings": {
-    "app.root.placeholder": {
-      "comment": "Placeholder shown until the first feature lands.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "记录内核开发中"
+  "sourceLanguage" : "zh-Hans",
+  "strings" : {
+    "app.root.placeholder" : {
+      "comment" : "Placeholder shown until the first feature lands.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录内核开发中"
           }
         }
       }
     },
-    "biologic.amount.unknown": {
-      "comment": "No amount recorded.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "剂量未填"
+    "biologic.amount.unknown" : {
+      "comment" : "No amount recorded.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剂量未填"
           }
         }
       }
     },
-    "biologic.cancel": {
-      "comment": "Call this appointment off.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "取消这次"
+    "biologic.cancel" : {
+      "comment" : "Call this appointment off.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消这次"
           }
         }
       }
     },
-    "biologic.cancel.confirm": {
-      "comment": "Cancel this appointment",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "取消这次预约"
+    "biologic.cancel.confirm" : {
+      "comment" : "Cancel this appointment",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消这次预约"
           }
         }
       }
     },
-    "biologic.cancel.doctor": {
-      "comment": "The care team changed the plan.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "医生调整了方案"
+    "biologic.cancel.doctor" : {
+      "comment" : "The care team changed the plan.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "医生调整了方案"
           }
         }
       }
     },
-    "biologic.cancel.other": {
-      "comment": "Another reason.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "其他"
+    "biologic.cancel.other" : {
+      "comment" : "Another reason.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他"
           }
         }
       }
     },
-    "biologic.cancel.reason": {
-      "comment": "Why it is cancelled.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "原因"
+    "biologic.cancel.reason" : {
+      "comment" : "Why it is cancelled.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原因"
           }
         }
       }
     },
-    "biologic.cancel.skip": {
-      "comment": "This one is not happening.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这次不打了"
+    "biologic.cancel.skip" : {
+      "comment" : "This one is not happening.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这次不打了"
           }
         }
       }
     },
-    "biologic.cancel.title": {
-      "comment": "Cancel one appointment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "取消这次"
+    "biologic.cancel.title" : {
+      "comment" : "Cancel one appointment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消这次"
           }
         }
       }
     },
-    "biologic.card.noNextDose": {
-      "comment": "No dose is expected.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有下一次"
+    "biologic.card.noNextDose" : {
+      "comment" : "No dose is expected.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有下一次"
           }
         }
       }
     },
-    "biologic.card.setUp": {
-      "comment": "No plan yet; the card invites one.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "设置生物制剂计划"
+    "biologic.card.setUp" : {
+      "comment" : "No plan yet; the card invites one.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置生物制剂计划"
           }
         }
       }
     },
-    "biologic.checklist": {
-      "comment": "What must happen before the infusion.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "输液前"
+    "biologic.checklist" : {
+      "comment" : "What must happen before the infusion.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "输液前"
           }
         }
       }
     },
-    "biologic.checklist.bloodTest": {
-      "comment": "Blood tests done.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "抽血化验已做"
+    "biologic.checklist.bloodTest" : {
+      "comment" : "Blood tests done.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "抽血化验已做"
           }
         }
       }
     },
-    "biologic.checklist.timeAndPlace": {
-      "comment": "Time and place confirmed.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "时间和地点确认"
+    "biologic.checklist.timeAndPlace" : {
+      "comment" : "Time and place confirmed.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间和地点确认"
           }
         }
       }
     },
-    "biologic.dueIn %lld": {
-      "comment": "Whole days until the dose.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld 天后"
+    "biologic.dueIn %@" : {
+
+    },
+    "biologic.dueIn %lld" : {
+      "comment" : "Whole days until the dose.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 天后"
+          }
+        }
+      }
+    },
+    "biologic.dueToday" : {
+      "comment" : "The dose is today.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天"
           }
         }
       }
     },
-    "biologic.dueToday": {
-      "comment": "The dose is today.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今天"
+    "biologic.dueTomorrow" : {
+      "comment" : "The dose is tomorrow.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "明天"
           }
         }
       }
     },
-    "biologic.dueTomorrow": {
-      "comment": "The dose is tomorrow.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "明天"
+    "biologic.interval.from" : {
+      "comment" : "Which dose the new interval starts at.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "从哪次开始"
           }
         }
       }
     },
-    "biologic.interval.from": {
-      "comment": "Which dose the new interval starts at.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "从哪次开始"
+    "biologic.interval.other" : {
+      "comment" : "Another reason.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他"
           }
         }
       }
     },
-    "biologic.interval.other": {
-      "comment": "Another reason.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "其他"
+    "biologic.interval.reason" : {
+      "comment" : "Why the interval changed.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原因"
           }
         }
       }
     },
-    "biologic.interval.reason": {
-      "comment": "Why the interval changed.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "原因"
+    "biologic.interval.response" : {
+      "comment" : "The response was not enough.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "效果不够"
           }
         }
       }
     },
-    "biologic.interval.response": {
-      "comment": "The response was not enough.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "效果不够"
+    "biologic.interval.review" : {
+      "comment" : "The care team changed the plan.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "医生调整了计划"
           }
         }
       }
     },
-    "biologic.interval.review": {
-      "comment": "The care team changed the plan.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "医生调整了计划"
+    "biologic.interval.sideEffect" : {
+      "comment" : "Side effects.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "副作用"
           }
         }
       }
     },
-    "biologic.interval.sideEffect": {
-      "comment": "Side effects.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "副作用"
+    "biologic.interval.title" : {
+      "comment" : "Change the repeating interval.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "改间隔"
           }
         }
       }
     },
-    "biologic.interval.title": {
-      "comment": "Change the repeating interval.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "改间隔"
+    "biologic.interval.weeks" : {
+      "comment" : "How often from here on.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每几周"
           }
         }
       }
     },
-    "biologic.interval.weeks": {
-      "comment": "How often from here on.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每几周"
+    "biologic.interval.weeksValue %lld" : {
+      "comment" : "One interval choice.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每 %lld 周"
           }
         }
       }
     },
-    "biologic.interval.weeksValue %lld": {
-      "comment": "One interval choice.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每 %lld 周"
+    "biologic.more" : {
+      "comment" : "More actions for the next appointment.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更多"
           }
         }
       }
     },
-    "biologic.more": {
-      "comment": "More actions for the next appointment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "更多"
+    "biologic.name.adalimumab" : {
+      "comment" : "Product name.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿达木单抗"
           }
         }
       }
     },
-    "biologic.name.adalimumab": {
-      "comment": "Product name.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "阿达木单抗"
+    "biologic.name.guselkumab" : {
+      "comment" : "Product name.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "古塞奇尤单抗"
           }
         }
       }
     },
-    "biologic.name.guselkumab": {
-      "comment": "Product name.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "古塞奇尤单抗"
+    "biologic.name.infliximab" : {
+      "comment" : "Product name.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英夫利西单抗"
           }
         }
       }
     },
-    "biologic.name.infliximab": {
-      "comment": "Product name.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "英夫利西单抗"
+    "biologic.name.risankizumab" : {
+      "comment" : "Product name.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利生奇珠单抗"
           }
         }
       }
     },
-    "biologic.name.risankizumab": {
-      "comment": "Product name.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "利生奇珠单抗"
+    "biologic.name.ustekinumab" : {
+      "comment" : "Product name.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "乌司奴单抗"
           }
         }
       }
     },
-    "biologic.name.ustekinumab": {
-      "comment": "Product name.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "乌司奴单抗"
+    "biologic.name.vedolizumab" : {
+      "comment" : "Product name.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维得利珠单抗"
           }
         }
       }
     },
-    "biologic.name.vedolizumab": {
-      "comment": "Product name.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "维得利珠单抗"
+    "biologic.nextDose" : {
+      "comment" : "The next expected dose.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一次"
           }
         }
       }
     },
-    "biologic.nextDose": {
-      "comment": "The next expected dose.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "下一次"
+    "biologic.noNextDose" : {
+      "comment" : "Nothing is planned.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有待办的下一次"
           }
         }
       }
     },
-    "biologic.noNextDose": {
-      "comment": "Nothing is planned.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有待办的下一次"
+    "biologic.overdue %@" : {
+
+    },
+    "biologic.overdue %lld" : {
+      "comment" : "Whole days a dose is late.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已过 %lld 天"
           }
         }
       }
     },
-    "biologic.overdue %lld": {
-      "comment": "Whole days a dose is late.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已过 %lld 天"
+    "biologic.postpone" : {
+      "comment" : "Move this one appointment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推迟"
           }
         }
       }
     },
-    "biologic.postpone": {
-      "comment": "Move this one appointment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "推迟"
+    "biologic.postpone.bloodTest" : {
+      "comment" : "Waiting for a blood test.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "等化验结果"
           }
         }
       }
     },
-    "biologic.postpone.bloodTest": {
-      "comment": "Waiting for a blood test.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "等化验结果"
+    "biologic.postpone.date" : {
+      "comment" : "New date",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "改到"
           }
         }
       }
     },
-    "biologic.postpone.date": {
-      "comment": "New date",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "改到"
+    "biologic.postpone.reason" : {
+      "comment" : "Reason",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原因"
           }
         }
       }
     },
-    "biologic.postpone.reason": {
-      "comment": "Reason",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "原因"
+    "biologic.postpone.title" : {
+      "comment" : "Moving one appointment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推迟这一次"
           }
         }
       }
     },
-    "biologic.postpone.title": {
-      "comment": "Moving one appointment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "推迟这一次"
+    "biologic.postpone.travel" : {
+      "comment" : "Travel.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "出差或旅行"
           }
         }
       }
     },
-    "biologic.postpone.travel": {
-      "comment": "Travel.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "出差或旅行"
+    "biologic.postpone.unwell" : {
+      "comment" : "Unwell.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不舒服"
           }
         }
       }
     },
-    "biologic.postpone.unwell": {
-      "comment": "Unwell.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "不舒服"
+    "biologic.record" : {
+      "comment" : "Record the dose that happened.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录这次"
           }
         }
       }
     },
-    "biologic.record": {
-      "comment": "Record the dose that happened.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "记录这次"
+    "biologic.record.amount" : {
+      "comment" : "The amount the hospital prepared.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剂量"
           }
         }
       }
     },
-    "biologic.record.amount": {
-      "comment": "The amount the hospital prepared.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "剂量"
+    "biologic.record.amount.placeholder" : {
+      "comment" : "Example amount.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例如 600"
           }
         }
       }
     },
-    "biologic.record.amount.placeholder": {
-      "comment": "Example amount.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "例如 600"
+    "biologic.record.note" : {
+      "comment" : "Free text. Optional.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "备注（可不填）"
           }
         }
       }
     },
-    "biologic.record.note": {
-      "comment": "Free text. Optional.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "备注（可不填）"
+    "biologic.record.title" : {
+      "comment" : "Recording a dose.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录这次"
           }
         }
       }
     },
-    "biologic.record.title": {
-      "comment": "Recording a dose.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "记录这次"
+    "biologic.record.unit" : {
+      "comment" : "Milligrams.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "毫克"
           }
         }
       }
     },
-    "biologic.record.unit": {
-      "comment": "Milligrams.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "毫克"
+    "biologic.regimen.adalimumab" : {
+      "comment" : "The label's text.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "皮下 160 mg、第 15 天 80 mg；第 29 天起 40 mg 隔周"
           }
         }
       }
     },
-    "biologic.regimen.adalimumab": {
-      "comment": "The label's text.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "皮下 160 mg、第 15 天 80 mg；第 29 天起 40 mg 隔周"
+    "biologic.regimen.guselkumab" : {
+      "comment" : "The label's text.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静脉 200 mg，第 0、4、8 周；第 16 周起 100 mg 皮下，每 8 周"
           }
         }
       }
     },
-    "biologic.regimen.guselkumab": {
-      "comment": "The label's text.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "静脉 200 mg，第 0、4、8 周；第 16 周起 100 mg 皮下，每 8 周"
+    "biologic.regimen.infliximab" : {
+      "comment" : "The label's text, shown as the label's text.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静脉 5 mg/kg，第 0、2、6 周；之后每 8 周"
           }
         }
       }
     },
-    "biologic.regimen.infliximab": {
-      "comment": "The label's text, shown as the label's text.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "静脉 5 mg/kg，第 0、2、6 周；之后每 8 周"
+    "biologic.regimen.risankizumab" : {
+      "comment" : "The label's text.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静脉 600 mg，第 0、4、8 周；第 12 周起 180 mg 皮下，每 8 周"
           }
         }
       }
     },
-    "biologic.regimen.risankizumab": {
-      "comment": "The label's text.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "静脉 600 mg，第 0、4、8 周；第 12 周起 180 mg 皮下，每 8 周"
+    "biologic.regimen.ustekinumab" : {
+      "comment" : "The label's text.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静脉按体重一次（≤55 kg 260 mg，≤85 kg 390 mg，>85 kg 520 mg）；第 8 周起 90 mg 皮下，每 12 周"
           }
         }
       }
     },
-    "biologic.regimen.ustekinumab": {
-      "comment": "The label's text.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "静脉按体重一次（≤55 kg 260 mg，≤85 kg 390 mg，>85 kg 520 mg）；第 8 周起 90 mg 皮下，每 12 周"
+    "biologic.regimen.vedolizumab" : {
+      "comment" : "The label's text.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静脉 300 mg，第 0、2、6 周；之后每 8 周"
           }
         }
       }
     },
-    "biologic.regimen.vedolizumab": {
-      "comment": "The label's text.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "静脉 300 mg，第 0、2、6 周；之后每 8 周"
+    "biologic.reminder.lead.1" : {
+      "comment" : "The day before.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前一天"
           }
         }
       }
     },
-    "biologic.reminder.lead.1": {
-      "comment": "The day before.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "前一天"
+    "biologic.reminder.lead.7" : {
+      "comment" : "One week before.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提前一周"
           }
         }
       }
     },
-    "biologic.reminder.lead.14": {
-      "comment": "Two weeks before.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "提前两周"
+    "biologic.reminder.lead.14" : {
+      "comment" : "Two weeks before.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提前两周"
           }
         }
       }
     },
-    "biologic.reminder.lead.7": {
-      "comment": "One week before.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "提前一周"
+    "biologic.reminder.title" : {
+      "comment" : "The notification title.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生物制剂提醒"
           }
         }
       }
     },
-    "biologic.reminder.title": {
-      "comment": "The notification title.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "生物制剂提醒"
+    "biologic.reminders" : {
+      "comment" : "The reminder switches.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提醒"
           }
         }
       }
     },
-    "biologic.reminders": {
-      "comment": "The reminder switches.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "提醒"
+    "biologic.reminders.denied" : {
+      "comment" : "Notifications are not allowed; the plan still works.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知没开；计划还在，只是不会提醒。"
           }
         }
       }
     },
-    "biologic.reminders.denied": {
-      "comment": "Notifications are not allowed; the plan still works.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "通知没开；计划还在，只是不会提醒。"
+    "biologic.route.intravenous" : {
+      "comment" : "Route.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静脉输注"
           }
         }
       }
     },
-    "biologic.route.intravenous": {
-      "comment": "Route.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "静脉输注"
+    "biologic.route.subcutaneous" : {
+      "comment" : "Route.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "皮下注射"
           }
         }
       }
     },
-    "biologic.route.subcutaneous": {
-      "comment": "Route.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "皮下注射"
+    "biologic.start.date" : {
+      "comment" : "First dose",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第一次"
           }
         }
       }
     },
-    "biologic.start.date": {
-      "comment": "First dose",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "第一次"
+    "biologic.start.explain" : {
+      "comment" : "The dates come from the label. Every one can be changed.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期照说明书写，每一个都能改。"
           }
         }
       }
     },
-    "biologic.start.explain": {
-      "comment": "The dates come from the label. Every one can be changed.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "日期照说明书写，每一个都能改。"
+    "biologic.start.save" : {
+      "comment" : "Save the plan",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存计划"
           }
         }
       }
     },
-    "biologic.start.save": {
-      "comment": "Save the plan",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保存计划"
+    "biologic.start.title" : {
+      "comment" : "Choosing a product.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置计划"
           }
         }
       }
     },
-    "biologic.start.title": {
-      "comment": "Choosing a product.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "设置计划"
+    "biologic.title" : {
+      "comment" : "The biologic sheet.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生物制剂"
           }
         }
       }
     },
-    "biologic.title": {
-      "comment": "The biologic sheet.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "生物制剂"
+    "biologic.upcoming" : {
+      "comment" : "The doses after the next one.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "之后几次"
           }
         }
       }
     },
-    "biologic.upcoming": {
-      "comment": "The doses after the next one.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "之后几次"
+    "common.cancel" : {
+      "comment" : "Dismiss a sheet without saving.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
           }
         }
       }
     },
-    "common.cancel": {
-      "comment": "Dismiss a sheet without saving.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "取消"
+    "common.close" : {
+      "comment" : "Close a sheet.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
           }
         }
       }
     },
-    "common.close": {
-      "comment": "Close a sheet.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关闭"
+    "common.delete" : {
+      "comment" : "Swipe action on a record.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除"
           }
         }
       }
     },
-    "common.delete": {
-      "comment": "Swipe action on a record.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "删除"
+    "common.edit" : {
+      "comment" : "Swipe action on a record.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
           }
         }
       }
     },
-    "common.edit": {
-      "comment": "Swipe action on a record.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "编辑"
+    "common.ok" : {
+      "comment" : "Dismiss an alert.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
           }
         }
       }
     },
-    "common.ok": {
-      "comment": "Dismiss an alert.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "好"
+    "common.save" : {
+      "comment" : "Primary action on a recording sheet.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
           }
         }
       }
     },
-    "common.save": {
-      "comment": "Primary action on a recording sheet.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "保存"
+    "common.undo" : {
+      "comment" : "Undo a deletion.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "撤销"
           }
         }
       }
     },
-    "common.undo": {
-      "comment": "Undo a deletion.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "撤销"
+    "confirm.subtitle" : {
+      "comment" : "Hint under the daily confirmation row.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击完成"
           }
         }
       }
     },
-    "confirm.subtitle": {
-      "comment": "Hint under the daily confirmation row.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点击完成"
+    "confirm.title" : {
+      "comment" : "The daily confirmation row.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "每日确认"
           }
         }
       }
     },
-    "confirm.title": {
-      "comment": "The daily confirmation row.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "每日确认"
+    "entry.infusion" : {
+      "comment" : "Recording entry point: biologic infusion.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "输液"
           }
         }
       }
     },
-    "entry.infusion": {
-      "comment": "Recording entry point: biologic infusion.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "输液"
+    "entry.meal" : {
+      "comment" : "Recording entry point: meal (including oral nutritional supplement).",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "饮食"
           }
         }
       }
     },
-    "entry.meal": {
-      "comment": "Recording entry point: meal (including oral nutritional supplement).",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "饮食"
+    "entry.medication" : {
+      "comment" : "Recording entry point: medication actually taken.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用药"
           }
         }
       }
     },
-    "entry.medication": {
-      "comment": "Recording entry point: medication actually taken.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用药"
+    "entry.toilet" : {
+      "comment" : "Recording entry point: toilet event.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如厕"
           }
         }
       }
     },
-    "entry.toilet": {
-      "comment": "Recording entry point: toilet event.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如厕"
+    "error.title" : {
+      "comment" : "A save failed.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有保存成功"
           }
         }
       }
     },
-    "error.title": {
-      "comment": "A save failed.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有保存成功"
+    "event.partial" : {
+      "comment" : "Marks a record the patient filled in only partly.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记了一部分"
           }
         }
       }
     },
-    "event.partial": {
-      "comment": "Marks a record the patient filled in only partly.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "记了一部分"
+    "meal.kind.meal" : {
+      "comment" : "A meal.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正餐"
           }
         }
       }
     },
-    "meal.kind.meal": {
-      "comment": "A meal.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "正餐"
+    "meal.kind.snack" : {
+      "comment" : "A snack.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加餐"
           }
         }
       }
     },
-    "meal.kind.snack": {
-      "comment": "A snack.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "加餐"
+    "meal.kind.supplement" : {
+      "comment" : "A powder mixed into a drink.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "营养粉剂"
           }
         }
       }
     },
-    "meal.kind.supplement": {
-      "comment": "A powder mixed into a drink.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "营养粉剂"
+    "meal.kind.title" : {
+      "comment" : "Whether this was a meal, a snack or a nutritional powder.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这次是"
           }
         }
       }
     },
-    "meal.kind.title": {
-      "comment": "Whether this was a meal, a snack or a nutritional powder.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这次是"
+    "meal.note.placeholder" : {
+      "comment" : "Free text about what was eaten. Optional.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吃了什么（可不填）"
           }
         }
       }
     },
-    "meal.note.placeholder": {
-      "comment": "Free text about what was eaten. Optional.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "吃了什么（可不填）"
+    "meal.scoops.hint" : {
+      "comment" : "One level scoop of a standard powder is about 9 g; six scoops with 195 ml water makes one serving.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一平勺约 9 克，6 勺配 195 毫升水是一份。"
           }
         }
       }
     },
-    "meal.scoops.hint": {
-      "comment": "One level scoop of a standard powder is about 9 g; six scoops with 195 ml water makes one serving.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一平勺约 9 克，6 勺配 195 毫升水是一份。"
+    "meal.scoops.title" : {
+      "comment" : "How many scoops went into the drink.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "几勺"
           }
         }
       }
     },
-    "meal.scoops.title": {
-      "comment": "How many scoops went into the drink.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "几勺"
+    "meal.scoops.unit" : {
+      "comment" : "The unit shown after the scoop count.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "勺"
           }
         }
       }
     },
-    "meal.scoops.unit": {
-      "comment": "The unit shown after the scoop count.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "勺"
+    "meal.supplement" : {
+      "comment" : "A nutritional powder rather than ordinary food.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "营养粉剂"
           }
         }
       }
     },
-    "meal.supplement": {
-      "comment": "A nutritional powder rather than ordinary food.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "营养粉剂"
+    "meal.title" : {
+      "comment" : "Recording sheet title.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "饮食"
           }
         }
       }
     },
-    "meal.title": {
-      "comment": "Recording sheet title.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "饮食"
+    "medication.dose.placeholder" : {
+      "comment" : "How much was taken.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "剂量"
           }
         }
       }
     },
-    "medication.dose.placeholder": {
-      "comment": "How much was taken.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "剂量"
+    "medication.name.placeholder" : {
+      "comment" : "The name of what was taken.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "药名"
           }
         }
       }
     },
-    "medication.name.placeholder": {
-      "comment": "The name of what was taken.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "药名"
+    "medication.recent" : {
+      "comment" : "Taken before; tap to fill the fields.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上次吃过的"
           }
         }
       }
     },
-    "medication.recent": {
-      "comment": "Taken before; tap to fill the fields.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "上次吃过的"
+    "medication.title" : {
+      "comment" : "Recording sheet title.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用药"
           }
         }
       }
     },
-    "medication.title": {
-      "comment": "Recording sheet title.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用药"
+    "medication.unit.placeholder" : {
+      "comment" : "mg, 片, 袋…",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "单位"
           }
         }
       }
     },
-    "medication.unit.placeholder": {
-      "comment": "mg, 片, 袋…",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "单位"
+    "profile.complication.anaemiaNutrition" : {
+      "comment" : "Anaemia or nutrition problems.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "贫血或营养"
           }
         }
       }
     },
-    "profile.complication.anaemiaNutrition": {
-      "comment": "Anaemia or nutrition problems.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "贫血或营养"
+    "profile.complication.eyes" : {
+      "comment" : "Eye group.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "眼睛"
           }
         }
       }
     },
-    "profile.complication.eyes": {
-      "comment": "Eye group.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "眼睛"
+    "profile.complication.joints" : {
+      "comment" : "Joint group.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关节"
           }
         }
       }
     },
-    "profile.complication.joints": {
-      "comment": "Joint group.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关节"
+    "profile.complication.liverBiliary" : {
+      "comment" : "Liver and biliary group.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "肝胆"
           }
         }
       }
     },
-    "profile.complication.liverBiliary": {
-      "comment": "Liver and biliary group.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "肝胆"
+    "profile.complication.mouthUlcers" : {
+      "comment" : "Mouth ulcers.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "口腔溃疡"
           }
         }
       }
     },
-    "profile.complication.mouthUlcers": {
-      "comment": "Mouth ulcers.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "口腔溃疡"
+    "profile.complication.perianal" : {
+      "comment" : "Perianal group.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "肛周（肛瘘/脓肿/肛裂）"
           }
         }
       }
     },
-    "profile.complication.perianal": {
-      "comment": "Perianal group.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "肛周（肛瘘/脓肿/肛裂）"
+    "profile.complication.skin" : {
+      "comment" : "Skin group.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "皮肤（结节性红斑/脓皮病）"
           }
         }
       }
     },
-    "profile.complication.skin": {
-      "comment": "Skin group.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "皮肤（结节性红斑/脓皮病）"
+    "profile.complications" : {
+      "comment" : "Known complications, as broad groups.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有没有这些情况"
           }
         }
       }
     },
-    "profile.complications": {
-      "comment": "Known complications, as broad groups.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有没有这些情况"
+    "profile.diagnosis" : {
+      "comment" : "The diagnosis the patient already has.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "诊断"
           }
         }
       }
     },
-    "profile.diagnosis": {
-      "comment": "The diagnosis the patient already has.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "诊断"
+    "profile.diagnosis.colitis" : {
+      "comment" : "Ulcerative colitis.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "溃疡性结肠炎"
           }
         }
       }
     },
-    "profile.diagnosis.colitis": {
-      "comment": "Ulcerative colitis.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "溃疡性结肠炎"
+    "profile.diagnosis.crohns" : {
+      "comment" : "Crohn's disease.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "克罗恩病"
           }
         }
       }
     },
-    "profile.diagnosis.crohns": {
-      "comment": "Crohn's disease.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "克罗恩病"
+    "profile.diagnosis.unsure" : {
+      "comment" : "The patient does not know or has not been told.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还不确定"
           }
         }
       }
     },
-    "profile.diagnosis.unsure": {
-      "comment": "The patient does not know or has not been told.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "还不确定"
+    "profile.edit" : {
+      "comment" : "Edit the profile.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
           }
         }
       }
     },
-    "profile.edit": {
-      "comment": "Edit the profile.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "编辑"
+    "profile.empty" : {
+      "comment" : "Nothing entered for this field.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还没填"
           }
         }
       }
     },
-    "profile.empty": {
-      "comment": "Nothing entered for this field.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "还没填"
+    "profile.finish" : {
+      "comment" : "Save the profile.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
           }
         }
       }
     },
-    "profile.finish": {
-      "comment": "Save the profile.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完成"
+    "profile.height" : {
+      "comment" : "Body height.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "身高"
           }
         }
       }
     },
-    "profile.height": {
-      "comment": "Body height.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "身高"
+    "profile.height.placeholder" : {
+      "comment" : "Example height shown while the field is empty.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例如 170"
           }
         }
       }
     },
-    "profile.height.placeholder": {
-      "comment": "Example height shown while the field is empty.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "例如 170"
+    "profile.height.unit" : {
+      "comment" : "Centimetres.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "厘米"
           }
         }
       }
     },
-    "profile.height.unit": {
-      "comment": "Centimetres.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "厘米"
+    "profile.next" : {
+      "comment" : "Next page of the profile.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一步"
           }
         }
       }
     },
-    "profile.next": {
-      "comment": "Next page of the profile.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "下一步"
+    "profile.page.body.subtitle" : {
+      "comment" : "Why height and weight are asked for.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "身高体重只用来算生物制剂的剂量。"
           }
         }
       }
     },
-    "profile.page.body.subtitle": {
-      "comment": "Why height and weight are asked for.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "身高体重只用来算生物制剂的剂量。"
+    "profile.page.body.title" : {
+      "comment" : "First profile page: the body.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你是"
           }
         }
       }
     },
-    "profile.page.body.title": {
-      "comment": "First profile page: the body.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你是"
+    "profile.page.disease.subtitle" : {
+      "comment" : "Reassurance about who can see it.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只在这台手机上，只有你看得到。"
           }
         }
       }
     },
-    "profile.page.disease.subtitle": {
-      "comment": "Reassurance about who can see it.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "只在这台手机上，只有你看得到。"
+    "profile.page.disease.title" : {
+      "comment" : "Second profile page: the disease.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你的病"
           }
         }
       }
     },
-    "profile.page.disease.title": {
-      "comment": "Second profile page: the disease.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你的病"
+    "profile.page.treatment.subtitle" : {
+      "comment" : "The treatment list is multi-select.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可以多选，也可以以后再说。"
           }
         }
       }
     },
-    "profile.page.treatment.subtitle": {
-      "comment": "The treatment list is multi-select.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "可以多选，也可以以后再说。"
+    "profile.page.treatment.title" : {
+      "comment" : "Third profile page: the treatment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你的治疗"
           }
         }
       }
     },
-    "profile.page.treatment.title": {
-      "comment": "Third profile page: the treatment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "你的治疗"
+    "profile.section.body" : {
+      "comment" : "Body values.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "身体"
           }
         }
       }
     },
-    "profile.section.body": {
-      "comment": "Body values.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "身体"
+    "profile.section.disease" : {
+      "comment" : "Disease facts.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "疾病"
           }
         }
       }
     },
-    "profile.section.disease": {
-      "comment": "Disease facts.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "疾病"
+    "profile.section.treatment" : {
+      "comment" : "Treatment facts.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "治疗"
           }
         }
       }
     },
-    "profile.section.treatment": {
-      "comment": "Treatment facts.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "治疗"
+    "profile.skip" : {
+      "comment" : "Move on without answering this page.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
           }
         }
       }
     },
-    "profile.skip": {
-      "comment": "Move on without answering this page.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "跳过"
+    "profile.state" : {
+      "comment" : "The doctor's current assessment, quoted.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "医生目前怎么判断"
           }
         }
       }
     },
-    "profile.state": {
-      "comment": "The doctor's current assessment, quoted.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "医生目前怎么判断"
+    "profile.state.active" : {
+      "comment" : "The doctor says active.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "活动期"
           }
         }
       }
     },
-    "profile.state.active": {
-      "comment": "The doctor says active.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "活动期"
+    "profile.state.inactive" : {
+      "comment" : "The doctor says inactive.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "缓解期"
           }
         }
       }
     },
-    "profile.state.inactive": {
-      "comment": "The doctor says inactive.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "缓解期"
+    "profile.state.note" : {
+      "comment" : "The state is quoted, never calculated.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "以你医生的判断为准；这一项不参与任何计算。"
           }
         }
       }
     },
-    "profile.state.note": {
-      "comment": "The state is quoted, never calculated.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "以你医生的判断为准；这一项不参与任何计算。"
+    "profile.state.unsure" : {
+      "comment" : "The patient is not sure what the doctor said.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不确定"
           }
         }
       }
     },
-    "profile.state.unsure": {
-      "comment": "The patient is not sure what the doctor said.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "不确定"
+    "profile.treatment" : {
+      "comment" : "Current treatment, multi-select.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "现在在做什么治疗"
           }
         }
       }
     },
-    "profile.treatment": {
-      "comment": "Current treatment, multi-select.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "现在在做什么治疗"
+    "profile.treatment.biologic" : {
+      "comment" : "Biologic treatment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "生物制剂"
           }
         }
       }
     },
-    "profile.treatment.biologic": {
-      "comment": "Biologic treatment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "生物制剂"
+    "profile.treatment.exclusiveEnteral" : {
+      "comment" : "Exclusive enteral nutrition.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全肠内营养"
           }
         }
       }
     },
-    "profile.treatment.exclusiveEnteral": {
-      "comment": "Exclusive enteral nutrition.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "全肠内营养"
+    "profile.treatment.none" : {
+      "comment" : "No treatment at the moment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂时没有用药"
           }
         }
       }
     },
-    "profile.treatment.none": {
-      "comment": "No treatment at the moment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "暂时没有用药"
+    "profile.treatment.oralMedication" : {
+      "comment" : "Oral medication.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "口服药（美沙拉秦/激素/免疫抑制剂）"
           }
         }
       }
     },
-    "profile.treatment.oralMedication": {
-      "comment": "Oral medication.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "口服药（美沙拉秦/激素/免疫抑制剂）"
+    "profile.treatment.otherDiet" : {
+      "comment" : "A diet not listed.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他饮食"
           }
         }
       }
     },
-    "profile.treatment.otherDiet": {
-      "comment": "A diet not listed.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "其他饮食"
+    "profile.treatment.partialEnteral" : {
+      "comment" : "Partial enteral nutrition.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "部分肠内营养"
           }
         }
       }
     },
-    "profile.treatment.partialEnteral": {
-      "comment": "Partial enteral nutrition.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "部分肠内营养"
+    "profile.weight" : {
+      "comment" : "Body weight, used only for a weight-based dose.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体重"
           }
         }
       }
     },
-    "profile.weight": {
-      "comment": "Body weight, used only for a weight-based dose.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "体重"
+    "profile.weight.note" : {
+      "comment" : "What the weight is and is not used for.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "体重只用来按说明书算剂量，不做别的。"
           }
         }
       }
     },
-    "profile.weight.note": {
-      "comment": "What the weight is and is not used for.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "体重只用来按说明书算剂量，不做别的。"
+    "profile.weight.placeholder" : {
+      "comment" : "Example weight shown while the field is empty.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例如 60"
           }
         }
       }
     },
-    "profile.weight.placeholder": {
-      "comment": "Example weight shown while the field is empty.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "例如 60"
+    "profile.weight.unit" : {
+      "comment" : "Kilograms.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公斤"
           }
         }
       }
     },
-    "profile.weight.unit": {
-      "comment": "Kilograms.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "公斤"
+    "record.time" : {
+      "comment" : "The time of day a record happened.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间"
           }
         }
       }
     },
-    "record.time": {
-      "comment": "The time of day a record happened.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "时间"
+    "settings.about" : {
+      "comment" : "The section with the data note and the version.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于"
           }
         }
       }
     },
-    "settings.about": {
-      "comment": "The section with the data note and the version.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "关于"
+    "settings.data.body" : {
+      "comment" : "No account and no upload. Deleting the app deletes the records.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有账号，也不会上传。删掉这个 app，数据就没了。"
           }
         }
       }
     },
-    "settings.data.body": {
-      "comment": "No account and no upload. Deleting the app deletes the records.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有账号，也不会上传。删掉这个 app，数据就没了。"
+    "settings.data.title" : {
+      "comment" : "Where the records live.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据只在这台手机上"
           }
         }
       }
     },
-    "settings.data.title": {
-      "comment": "Where the records live.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "数据只在这台手机上"
+    "settings.profile.doctorSays" : {
+      "comment" : "The doctor's current assessment.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "医生目前怎么判断"
           }
         }
       }
     },
-    "settings.profile.doctorSays": {
-      "comment": "The doctor's current assessment.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "医生目前怎么判断"
+    "settings.profile.empty" : {
+      "comment" : "Nothing is filled in yet.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还没填"
           }
         }
       }
     },
-    "settings.profile.empty": {
-      "comment": "Nothing is filled in yet.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "还没填"
+    "settings.profile.emptyHint" : {
+      "comment" : "Tap to fill it in.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点这里补全"
           }
         }
       }
     },
-    "settings.profile.emptyHint": {
-      "comment": "Tap to fill it in.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点这里补全"
+    "settings.section.treatment" : {
+      "comment" : "Section header for the treatment settings.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "治疗"
           }
         }
       }
     },
-    "settings.section.treatment": {
-      "comment": "Section header for the treatment settings.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "治疗"
+    "settings.title" : {
+      "comment" : "Settings tab title.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我的"
           }
         }
       }
     },
-    "settings.title": {
-      "comment": "Settings tab title.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我的"
+    "settings.version" : {
+      "comment" : "The app version.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
           }
         }
       }
     },
-    "settings.version": {
-      "comment": "The app version.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "版本"
+    "tab.settings" : {
+      "comment" : "Tab bar: settings and information about the app.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我的"
           }
         }
       }
     },
-    "tab.settings": {
-      "comment": "Tab bar: settings and information about the app.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "我的"
+    "tab.today" : {
+      "comment" : "Tab bar: the day view.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天"
           }
         }
       }
     },
-    "tab.today": {
-      "comment": "Tab bar: the day view.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今天"
+    "tab.trends" : {
+      "comment" : "Tab bar: charts over weeks, months and years.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "趋势"
           }
         }
       }
     },
-    "tab.trends": {
-      "comment": "Tab bar: charts over weeks, months and years.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "趋势"
+    "today.backfilled" : {
+      "comment" : "Marker on a record entered on a later day than it happened.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "补记"
           }
         }
       }
     },
-    "today.backfilled": {
-      "comment": "Marker on a record entered on a later day than it happened.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "补记"
+    "today.deleted.fact" : {
+      "comment" : "The record the patient just deleted.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已删除"
           }
         }
       }
     },
-    "today.deleted.fact": {
-      "comment": "The record the patient just deleted.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已删除"
+    "today.edited" : {
+      "comment" : "Marker on a record whose values were changed after saving.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已修改"
           }
         }
       }
     },
-    "today.edited": {
-      "comment": "Marker on a record whose values were changed after saving.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "已修改"
+    "today.empty.body" : {
+      "comment" : "Empty day: names the next action.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点上面任何一个，记一次就好"
           }
         }
       }
     },
-    "today.empty.body": {
-      "comment": "Empty day: names the next action.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "点上面任何一个，记一次就好"
+    "today.empty.title" : {
+      "comment" : "Empty day heading.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天还没有记录"
           }
         }
       }
     },
-    "today.empty.title": {
-      "comment": "Empty day heading.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今天还没有记录"
+    "today.nextDay" : {
+      "comment" : "Accessibility label for the next-day arrow.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "后一天"
           }
         }
       }
     },
-    "today.nextDay": {
-      "comment": "Accessibility label for the next-day arrow.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "后一天"
+    "today.previousDay" : {
+      "comment" : "Accessibility label for the previous-day arrow.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前一天"
           }
         }
       }
     },
-    "today.previousDay": {
-      "comment": "Accessibility label for the previous-day arrow.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "前一天"
+    "today.section.events" : {
+      "comment" : "Section header above the day's recorded facts.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日记录"
           }
         }
       }
     },
-    "today.section.events": {
-      "comment": "Section header above the day's recorded facts.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "今日记录"
+    "toilet.blood.mixed" : {
+      "comment" : "Blood mixed into the stool.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "混在大便里"
           }
         }
       }
     },
-    "toilet.blood.mixed": {
-      "comment": "Blood mixed into the stool.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "混在大便里"
+    "toilet.blood.mostlyBlood" : {
+      "comment" : "Mostly blood.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大部分是血"
           }
         }
       }
     },
-    "toilet.blood.mostlyBlood": {
-      "comment": "Mostly blood.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "大部分是血"
+    "toilet.blood.none" : {
+      "comment" : "No blood seen.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有"
           }
         }
       }
     },
-    "toilet.blood.none": {
-      "comment": "No blood seen.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有"
+    "toilet.blood.onPaper" : {
+      "comment" : "Blood on the paper only.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "手纸上有"
           }
         }
       }
     },
-    "toilet.blood.onPaper": {
-      "comment": "Blood on the paper only.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "手纸上有"
+    "toilet.blood.title" : {
+      "comment" : "How much blood was visible.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有血吗"
           }
         }
       }
     },
-    "toilet.blood.title": {
-      "comment": "How much blood was visible.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有血吗"
+    "toilet.bristol.1" : {
+      "comment" : "Bristol type 1: separate hard lumps.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一颗颗硬球"
           }
         }
       }
     },
-    "toilet.bristol.1": {
-      "comment": "Bristol type 1: separate hard lumps.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "一颗颗硬球"
+    "toilet.bristol.2" : {
+      "comment" : "Bristol type 2: a lumpy sausage.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "硬结的香肠状"
           }
         }
       }
     },
-    "toilet.bristol.2": {
-      "comment": "Bristol type 2: a lumpy sausage.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "硬结的香肠状"
+    "toilet.bristol.3" : {
+      "comment" : "Bristol type 3: a sausage with cracks.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表面有裂纹的香肠"
           }
         }
       }
     },
-    "toilet.bristol.3": {
-      "comment": "Bristol type 3: a sausage with cracks.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "表面有裂纹的香肠"
+    "toilet.bristol.4" : {
+      "comment" : "Bristol type 4: a smooth soft sausage.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "光滑柔软的香肠"
           }
         }
       }
     },
-    "toilet.bristol.4": {
-      "comment": "Bristol type 4: a smooth soft sausage.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "光滑柔软的香肠"
+    "toilet.bristol.5" : {
+      "comment" : "Bristol type 5: soft blobs with clear edges.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "边缘柔软的块状"
           }
         }
       }
     },
-    "toilet.bristol.5": {
-      "comment": "Bristol type 5: soft blobs with clear edges.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "边缘柔软的块状"
+    "toilet.bristol.6" : {
+      "comment" : "Bristol type 6: mushy with ragged edges.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "糊状，边缘松散"
           }
         }
       }
     },
-    "toilet.bristol.6": {
-      "comment": "Bristol type 6: mushy with ragged edges.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "糊状，边缘松散"
+    "toilet.bristol.7" : {
+      "comment" : "Bristol type 7: entirely liquid.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完全是水"
           }
         }
       }
     },
-    "toilet.bristol.7": {
-      "comment": "Bristol type 7: entirely liquid.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "完全是水"
+    "toilet.bristol.title" : {
+      "comment" : "Bristol stool form, types 1 to 7.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大便的样子"
           }
         }
       }
     },
-    "toilet.bristol.title": {
-      "comment": "Bristol stool form, types 1 to 7.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "大便的样子"
+    "toilet.outcome.bloodOrMucusOnly" : {
+      "comment" : "Blood or mucus with no stool.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只有血或黏液"
           }
         }
       }
     },
-    "toilet.outcome.bloodOrMucusOnly": {
-      "comment": "Blood or mucus with no stool.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "只有血或黏液"
+    "toilet.outcome.stool" : {
+      "comment" : "A bowel movement happened.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "解了大便"
           }
         }
       }
     },
-    "toilet.outcome.stool": {
-      "comment": "A bowel movement happened.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "解了大便"
+    "toilet.outcome.title" : {
+      "comment" : "The four things a toilet event can be.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这次的情况"
           }
         }
       }
     },
-    "toilet.outcome.title": {
-      "comment": "The four things a toilet event can be.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这次的情况"
+    "toilet.outcome.uncertain" : {
+      "comment" : "The patient cannot say which of the others it was.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "说不清"
           }
         }
       }
     },
-    "toilet.outcome.uncertain": {
-      "comment": "The patient cannot say which of the others it was.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "说不清"
+    "toilet.outcome.urgeOnly" : {
+      "comment" : "Urge with nothing passed. Never counted as a bowel movement.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只有便意"
           }
         }
       }
     },
-    "toilet.outcome.urgeOnly": {
-      "comment": "Urge with nothing passed. Never counted as a bowel movement.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "只有便意"
+    "toilet.perianal.burning" : {
+      "comment" : "A burning feeling.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "灼烧"
           }
         }
       }
     },
-    "toilet.perianal.burning": {
-      "comment": "A burning feeling.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "灼烧"
+    "toilet.perianal.itch" : {
+      "comment" : "Itching.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "痒"
           }
         }
       }
     },
-    "toilet.perianal.itch": {
-      "comment": "Itching.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "痒"
+    "toilet.perianal.normal" : {
+      "comment" : "Nothing unusual.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常"
           }
         }
       }
     },
-    "toilet.perianal.normal": {
-      "comment": "Nothing unusual.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "正常"
+    "toilet.perianal.pain" : {
+      "comment" : "Pain.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "疼痛"
           }
         }
       }
     },
-    "toilet.perianal.pain": {
-      "comment": "Pain.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "疼痛"
+    "toilet.perianal.title" : {
+      "comment" : "What the patient felt around the anus.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "肛周感觉"
           }
         }
       }
     },
-    "toilet.perianal.title": {
-      "comment": "What the patient felt around the anus.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "肛周感觉"
+    "toilet.perianal.urge" : {
+      "comment" : "Still feels the need to go.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还想解"
           }
         }
       }
     },
-    "toilet.perianal.urge": {
-      "comment": "Still feels the need to go.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "还想解"
+    "toilet.time" : {
+      "comment" : "The time of a toilet event.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间"
           }
         }
       }
     },
-    "toilet.time": {
-      "comment": "The time of a toilet event.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "时间"
+    "toilet.title" : {
+      "comment" : "Recording sheet title.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如厕"
           }
         }
       }
     },
-    "toilet.title": {
-      "comment": "Recording sheet title.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "如厕"
+    "trends.axis.none" : {
+      "comment" : "Spoken label for a bucket with no records.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有记录"
           }
         }
       }
     },
-    "trends.axis.none": {
-      "comment": "Spoken label for a bucket with no records.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "没有记录"
+    "trends.axis.value %lld" : {
+      "comment" : "Spoken label for a bucket count.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 次"
           }
         }
       }
     },
-    "trends.axis.value %lld": {
-      "comment": "Spoken label for a bucket count.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld 次"
+    "trends.bristol.empty" : {
+      "comment" : "No form was recorded in this period.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这段时间没有记过形态"
           }
         }
       }
     },
-    "trends.bristol.empty": {
-      "comment": "No form was recorded in this period.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这段时间没有记过形态"
+    "trends.bristol.legend %@ %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "trends.bristol.legend %1$@ %2$@"
           }
         }
       }
     },
-    "trends.bristol.legend %lld %lld": {
-      "comment": "One legend entry: form type and how many times.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld 型 %lld"
+    "trends.bristol.legend %lld %lld" : {
+      "comment" : "One legend entry: form type and how many times.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 型 %lld"
           }
         }
       }
     },
-    "trends.coverage %lld": {
-      "comment": "Days in the period with no record at all.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "有 %lld 天没有记录"
+    "trends.coverage %lld" : {
+      "comment" : "Days in the period with no record at all.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有 %lld 天没有记录"
           }
         }
       }
+    },
+    "trends.days %@" : {
+
     },
-    "trends.days %lld": {
-      "comment": "Days in the period that carry at least one record.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld 天有记录"
+    "trends.days %lld" : {
+      "comment" : "Days in the period that carry at least one record.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 天有记录"
           }
         }
       }
     },
-    "trends.detail.title": {
-      "comment": "The records behind the bar.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这几天的记录"
+    "trends.detail.title" : {
+      "comment" : "The records behind the bar.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这几天的记录"
           }
         }
       }
     },
-    "trends.empty.body": {
-      "comment": "What the record shows over weeks, months and years appears here.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "记录多起来以后，这里会按周、月、半年、年把事实排出来"
+    "trends.empty.body" : {
+      "comment" : "What the record shows over weeks, months and years appears here.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "记录多起来以后，这里会按周、月、半年、年把事实排出来"
           }
         }
       }
     },
-    "trends.empty.title": {
-      "comment": "Nothing to chart yet.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "还没有趋势可看"
+    "trends.empty.title" : {
+      "comment" : "Nothing to chart yet.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还没有趋势可看"
           }
         }
       }
     },
-    "trends.metric.bowelMovements": {
-      "comment": "Count of bowel movements.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "排便次数"
+    "trends.metric.bowelMovements" : {
+      "comment" : "Count of bowel movements.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排便次数"
           }
         }
       }
     },
-    "trends.metric.meals": {
-      "comment": "Count of meals.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "正餐"
+    "trends.metric.meals" : {
+      "comment" : "Count of meals.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正餐"
           }
         }
       }
     },
-    "trends.metric.medications": {
-      "comment": "Count of medication doses recorded.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "用药次数"
+    "trends.metric.medications" : {
+      "comment" : "Count of medication doses recorded.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用药次数"
           }
         }
       }
     },
-    "trends.metric.supplements": {
-      "comment": "Count of nutritional powders.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "营养粉剂"
+    "trends.metric.supplements" : {
+      "comment" : "Count of nutritional powders.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "营养粉剂"
           }
         }
       }
     },
-    "trends.noRecords": {
-      "comment": "Nothing was recorded in this period.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "这段时间没有记录"
+    "trends.noRecords" : {
+      "comment" : "Nothing was recorded in this period.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这段时间没有记录"
           }
         }
       }
     },
-    "trends.range.month": {
-      "comment": "Range: one month.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "月"
+    "trends.range.month" : {
+      "comment" : "Range: one month.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月"
           }
         }
       }
     },
-    "trends.range.sixMonths": {
-      "comment": "Range: six months.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "半年"
+    "trends.range.sixMonths" : {
+      "comment" : "Range: six months.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "半年"
           }
         }
       }
     },
-    "trends.range.week": {
-      "comment": "Range: one week.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "周"
+    "trends.range.week" : {
+      "comment" : "Range: one week.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "周"
           }
         }
       }
     },
-    "trends.range.year": {
-      "comment": "Range: one year.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "年"
+    "trends.range.year" : {
+      "comment" : "Range: one year.",
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "年"
           }
         }
       }
     },
-    "trends.unit.times": {
-      "comment": "The unit after a count.",
-      "localizations": {
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "次"
+    "trends.unit.times" : {
+      "comment" : "The unit after a count.",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
