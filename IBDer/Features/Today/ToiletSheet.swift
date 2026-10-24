@@ -1,12 +1,14 @@
 import SwiftUI
 
-/// Recording a toilet event: four outcomes first, then the details only a stool needs.
+/// Recording a toilet event in two steps: did anything pass, and only then the details. The old
+/// single list mixed a result (stool) with a sensation (urge), so every entry needed translation.
 struct ToiletSheet: View {
     let onSave: (ToiletEvent, Date) async -> Bool
 
     @Environment(\.dismiss) private var dismiss
     @State private var happenedAt: Date
     @State private var outcome: ToiletEvent.Outcome?
+    @State private var nothingPassed = false
     @State private var bristol: BristolType?
     @State private var blood: BloodAmount?
     @State private var perianal: PerianalSensation?
@@ -18,6 +20,7 @@ struct ToiletSheet: View {
         let existing = editing?.payload.toiletEvent
         _happenedAt = State(initialValue: editing?.happenedAt ?? Pickers.defaultTime(for: day))
         _outcome = State(initialValue: existing?.outcome)
+        _nothingPassed = State(initialValue: existing.map { $0.outcome != .stool && $0.outcome != .uncertain } ?? false)
         _bristol = State(initialValue: existing?.bristol)
         _blood = State(initialValue: existing?.blood)
         _perianal = State(initialValue: existing?.perianal)
@@ -30,7 +33,10 @@ struct ToiletSheet: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
                     TimeRow(happenedAt: $happenedAt)
-                    outcomeGrid
+                    passedQuestion
+                    if nothingPassed {
+                        nothingPassedQuestion
+                    }
                     if outcome == .stool {
                         ToiletDetails(bristol: $bristol, blood: $blood, perianal: $perianal)
                     }
@@ -50,23 +56,58 @@ struct ToiletSheet: View {
         }
     }
 
-    private var outcomeGrid: some View {
+    private var passedQuestion: some View {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-            SectionTitle(titleKey: "toilet.outcome.title")
-            ChoiceGrid {
-                ForEach(ToiletEvent.Outcome.allCases, id: \.self) { option in
-                    ChoiceChip(
-                        titleKey: Self.outcomeTitle(option),
-                        isSelected: outcome == option,
-                        identifier: "toilet.outcome.\(option.rawValue)"
-                    ) {
-                        outcome = option
-                        if option != .stool {
-                            bristol = nil
-                            blood = nil
-                            perianal = nil
-                        }
-                    }
+            SectionTitle(titleKey: "toilet.passed.title")
+            HStack(spacing: DesignTokens.Spacing.small) {
+                ChoiceChip(
+                    titleKey: "toilet.passed.yes",
+                    isSelected: outcome == .stool,
+                    identifier: "toilet.passed.yes"
+                ) {
+                    nothingPassed = false
+                    outcome = .stool
+                }
+                ChoiceChip(
+                    titleKey: "toilet.passed.no",
+                    isSelected: nothingPassed,
+                    identifier: "toilet.passed.no"
+                ) {
+                    nothingPassed = true
+                    outcome = nil
+                    bristol = nil
+                    blood = nil
+                    perianal = nil
+                }
+                ChoiceChip(
+                    titleKey: "toilet.passed.unsure",
+                    isSelected: outcome == .uncertain,
+                    identifier: "toilet.passed.unsure"
+                ) {
+                    nothingPassed = false
+                    outcome = .uncertain
+                }
+            }
+        }
+    }
+
+    private var nothingPassedQuestion: some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+            SectionTitle(titleKey: "toilet.notpassed.title")
+            HStack(spacing: DesignTokens.Spacing.small) {
+                ChoiceChip(
+                    titleKey: "toilet.outcome.bloodOrMucusOnly",
+                    isSelected: outcome == .bloodOrMucusOnly,
+                    identifier: "toilet.outcome.bloodOrMucusOnly"
+                ) {
+                    outcome = .bloodOrMucusOnly
+                }
+                ChoiceChip(
+                    titleKey: "toilet.outcome.urgeOnly",
+                    isSelected: outcome == .urgeOnly,
+                    identifier: "toilet.outcome.urgeOnly"
+                ) {
+                    outcome = .urgeOnly
                 }
             }
         }
@@ -92,14 +133,5 @@ struct ToiletSheet: View {
         }
         .padding(DesignTokens.Spacing.regular)
         .background(DesignTokens.Color.background)
-    }
-
-    private static func outcomeTitle(_ outcome: ToiletEvent.Outcome) -> LocalizedStringKey {
-        switch outcome {
-        case .stool: "toilet.outcome.stool"
-        case .bloodOrMucusOnly: "toilet.outcome.bloodOrMucusOnly"
-        case .urgeOnly: "toilet.outcome.urgeOnly"
-        case .uncertain: "toilet.outcome.uncertain"
-        }
     }
 }

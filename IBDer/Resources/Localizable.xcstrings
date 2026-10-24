@@ -1948,6 +1948,17 @@
         }
       }
     },
+    "toilet.bristol.number %lld": {
+      "comment": "The Bristol number.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 型"
+          }
+        }
+      }
+    },
     "toilet.bristol.title": {
       "comment": "Bristol stool form, types 1 to 7.",
       "localizations": {
@@ -1955,6 +1966,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "大便的样子"
+          }
+        }
+      }
+    },
+    "toilet.notpassed.title": {
+      "comment": "What was it then?",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "那这次是什么？"
           }
         }
       }
@@ -2010,6 +2032,50 @@
           "stringUnit": {
             "state": "translated",
             "value": "只有便意"
+          }
+        }
+      }
+    },
+    "toilet.passed.no": {
+      "comment": "Nothing passed.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没解出来"
+          }
+        }
+      }
+    },
+    "toilet.passed.title": {
+      "comment": "The first question: did anything pass?",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解出来了吗？"
+          }
+        }
+      }
+    },
+    "toilet.passed.unsure": {
+      "comment": "Not sure what happened.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "说不清"
+          }
+        }
+      }
+    },
+    "toilet.passed.yes": {
+      "comment": "Something passed.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "解出来了"
           }
         }
       }

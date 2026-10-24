@@ -50,9 +50,9 @@ final class TodayUITests: XCTestCase {
         let app = launchEmptyDay()
         app.buttons["entry.toilet"].tap()
 
-        let stool = app.buttons["toilet.outcome.stool"]
-        XCTAssertTrue(stool.waitForExistence(timeout: 10), "the four outcomes should appear at once")
-        stool.tap()
+        let passed = app.buttons["toilet.passed.yes"]
+        XCTAssertTrue(passed.waitForExistence(timeout: 10), "the first question appears at once")
+        passed.tap()
 
         let save = app.buttons["common.save"]
         XCTAssertTrue(save.waitForEnabled(timeout: 5), "an outcome unlocks saving")
@@ -61,6 +61,21 @@ final class TodayUITests: XCTestCase {
         let row = app.descendants(matching: .any).matching(identifier: "timeline.toilet").firstMatch
         XCTAssertTrue(row.waitForExistence(timeout: 10), "the saved fact belongs on that day")
         XCTAssertFalse(app.staticTexts["today.empty.title"].exists, "the day is no longer empty")
+    }
+
+    func testNothingPassedAsksASecondQuestion() {
+        let app = launchEmptyDay()
+        app.buttons["entry.toilet"].tap()
+
+        let nothing = app.buttons["toilet.passed.no"]
+        XCTAssertTrue(nothing.waitForExistence(timeout: 10))
+        nothing.tap()
+
+        let blood = app.buttons["toilet.outcome.bloodOrMucusOnly"]
+        XCTAssertTrue(blood.waitForExistence(timeout: 10), "nothing passing still needs a reason")
+        XCTAssertFalse(app.buttons["common.save"].isEnabled, "saving waits for the second answer")
+        blood.tap()
+        XCTAssertTrue(app.buttons["common.save"].isEnabled)
     }
 
     func testRecordingASupplementKeepsTheScoopCount() {
