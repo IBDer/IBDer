@@ -101,89 +101,30 @@ struct ProfileFormView: View {
 
     // MARK: - Pages
 
-    private var bodyPage: some View {
-        VStack(spacing: DesignTokens.Spacing.small) {
-            NumberRow(
-                titleKey: "profile.height",
-                identifier: "profile.height",
-                placeholder: "profile.height.placeholder",
-                unit: "profile.height.unit",
-                text: $heightText
-            )
-            NumberRow(
-                titleKey: "profile.weight",
-                identifier: "profile.weight",
-                placeholder: "profile.weight.placeholder",
-                unit: "profile.weight.unit",
-                text: $weightText
-            )
-            Text("profile.weight.note")
-                .font(DesignTokens.Typography.caption)
-                .foregroundStyle(DesignTokens.Color.textSecondary)
-        }
-    }
-
-    private var diseasePage: some View {
-        VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
-            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                SectionTitle(titleKey: "profile.diagnosis")
-                HStack(spacing: DesignTokens.Spacing.small) {
-                    diagnosisChip(.crohns)
-                    diagnosisChip(.colitis)
-                    diagnosisChip(.unsure)
-                }
-            }
-
-            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                SectionTitle(titleKey: "profile.state")
-                HStack(spacing: DesignTokens.Spacing.small) {
-                    stateChip(.inactive)
-                    stateChip(.active)
-                    stateChip(.unsure)
-                }
-                Text("profile.state.note")
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(DesignTokens.Color.textSecondary)
-            }
-
-            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                SectionTitle(titleKey: "profile.complications")
-                ChoiceGrid {
-                    ForEach(PatientProfile.Complication.allCases, id: \.self) { item in
-                        ChoiceChip(
-                            titleKey: ProfileLabels.complication(item),
-                            isSelected: draft.complications.contains(item),
-                            identifier: "profile.complication.\(item.rawValue)"
-                        ) {
-                            toggle(item, in: &draft.complications)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private var treatmentPage: some View {
-        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-            SectionTitle(titleKey: "profile.treatment")
-            ChoiceGrid {
-                ForEach(PatientProfile.Treatment.allCases, id: \.self) { item in
-                    ChoiceChip(
-                        titleKey: ProfileLabels.treatment(item),
-                        isSelected: draft.treatments.contains(item),
-                        identifier: "profile.treatment.\(item.rawValue)"
-                    ) {
-                        toggle(item, in: &draft.treatments)
-                    }
-                }
-            }
-        }
-    }
-
     // MARK: - Bottom
 
     private var bottomBar: some View {
         HStack(spacing: DesignTokens.Spacing.medium) {
+            if step > 0 {
+                Button {
+                    back()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(DesignTokens.Typography.headline)
+                        .foregroundStyle(DesignTokens.Color.textSecondary)
+                        .frame(
+                            width: DesignTokens.Layout.minimumTouchTarget,
+                            height: DesignTokens.Layout.minimumTouchTarget
+                        )
+                        .background(
+                            DesignTokens.Color.surface,
+                            in: RoundedRectangle(cornerRadius: DesignTokens.Radius.control)
+                        )
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text("profile.back"))
+                .accessibilityIdentifier("profile.back")
+            }
             if isOnboarding {
                 Button("profile.skip") { advance() }
                     .foregroundStyle(DesignTokens.Color.textSecondary)
@@ -198,6 +139,12 @@ struct ProfileFormView: View {
         }
         .padding(DesignTokens.Spacing.regular)
         .background(DesignTokens.Color.background)
+    }
+
+    private func back() {
+        applyNumbers()
+        guard step > 0 else { return }
+        withAnimation(.snappy(duration: 0.22)) { step -= 1 }
     }
 
     private func advance() {
@@ -256,5 +203,86 @@ struct ProfileFormView: View {
     private static func text(_ value: Double?) -> String {
         guard let value else { return "" }
         return value.formatted(.number.precision(.fractionLength(0 ... 1)).grouping(.never))
+    }
+}
+
+extension ProfileFormView {
+    private var bodyPage: some View {
+        VStack(spacing: DesignTokens.Spacing.small) {
+            NumberRow(
+                titleKey: "profile.height",
+                identifier: "profile.height",
+                placeholder: "profile.height.placeholder",
+                unit: "profile.height.unit",
+                text: $heightText
+            )
+            NumberRow(
+                titleKey: "profile.weight",
+                identifier: "profile.weight",
+                placeholder: "profile.weight.placeholder",
+                unit: "profile.weight.unit",
+                text: $weightText
+            )
+            Text("profile.weight.note")
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(DesignTokens.Color.textSecondary)
+        }
+    }
+
+    private var diseasePage: some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                SectionTitle(titleKey: "profile.diagnosis")
+                ChoiceGrid {
+                    diagnosisChip(.crohns)
+                    diagnosisChip(.colitis)
+                    diagnosisChip(.unsure)
+                }
+            }
+
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                SectionTitle(titleKey: "profile.state")
+                ChoiceGrid {
+                    stateChip(.inactive)
+                    stateChip(.active)
+                    stateChip(.unsure)
+                }
+                Text("profile.state.note")
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(DesignTokens.Color.textSecondary)
+            }
+
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                SectionTitle(titleKey: "profile.complications")
+                ChoiceGrid {
+                    ForEach(PatientProfile.Complication.allCases, id: \.self) { item in
+                        ChoiceChip(
+                            titleKey: ProfileLabels.complication(item),
+                            isSelected: draft.complications.contains(item),
+                            identifier: "profile.complication.\(item.rawValue)"
+                        ) {
+                            toggle(item, in: &draft.complications)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private var treatmentPage: some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+            SectionTitle(titleKey: "profile.treatment")
+            ChoiceGrid {
+                ForEach(PatientProfile.Treatment.allCases, id: \.self) { item in
+                    ChoiceChip(
+                        titleKey: ProfileLabels.treatment(item),
+                        isSelected: draft.treatments.contains(item),
+                        identifier: "profile.treatment.\(item.rawValue)"
+                    ) {
+                        toggle(item, in: &draft.treatments)
+                    }
+                }
+            }
+        }
     }
 }
