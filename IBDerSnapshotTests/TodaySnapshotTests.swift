@@ -29,6 +29,9 @@ final class TodaySnapshotTests: XCTestCase {
 
     private func host(_ view: some View) -> UIViewController {
         let controller = UIHostingController(rootView: view)
+        // Pin the appearance: a baseline recorded on a dark simulator must not turn a light change
+        // into a false failure on someone else's machine.
+        controller.overrideUserInterfaceStyle = .light
         controller.view.frame = CGRect(x: 0, y: 0, width: 393, height: 852)
         return controller
     }
