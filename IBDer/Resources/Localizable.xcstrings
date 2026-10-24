@@ -1090,6 +1090,17 @@
         }
       }
     },
+    "profile.back": {
+      "comment": "The button that returns to the previous page.",
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上一步"
+          }
+        }
+      }
+    },
     "profile.complication.anaemiaNutrition": {
       "comment": "Anaemia or nutrition problems.",
       "localizations": {
